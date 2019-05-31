@@ -12,6 +12,8 @@ import {
   Donate,
   Appointment,
   Admission,
+  Employees,
+  StudyCenter,
   NoMatch
 } from '../pages';
 
@@ -29,6 +31,8 @@ const Routes = () => (
       <Route path="/donate" component={Donate} />
       <Route path="/appointment" component={Appointment} />
       <Route path="/admission" component={Admission} />
+      <Route path="/employees" component={Employees} />
+      <Route path="/study_center" component={StudyCenter} />
       <Route component={NoMatch} />
     </Switch>
     <Footer />

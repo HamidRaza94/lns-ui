@@ -56,6 +56,16 @@ const NavBar = props => {
             Admission
           </Link>
         </li>
+        <li className={classes.li}>
+          <Link className={classes.link} to="/employees">
+            Employees
+          </Link>
+        </li>
+        <li className={classes.li}>
+          <Link className={classes.link} to="/study_center">
+            Study Center
+          </Link>
+        </li>
       </ul>
     </nav>
   );
