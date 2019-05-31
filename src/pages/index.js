@@ -1,3 +1,10 @@
-export { UpperPanel } from './UpperPanel';
 export { Home } from './Home';
-export { Footer } from './Footer';
+export { CentralBoard } from './CentralBoard';
+export { StateBoard } from './StateBoard';
+export { Volunteers } from './Volunteers';
+export { VolunteerShip } from './VolunteerShip';
+export { Complaints } from './Complaints';
+export { Donate } from './Donate';
+export { Appointment } from './Appointment';
+export { Admission } from './Admission';
+export { NoMatch } from './NoMatch';

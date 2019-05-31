@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Typography, List, ListItem, ListItemText, Grid } from '@material-ui/core';
+import {
+  Paper,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Grid
+} from '@material-ui/core';
 
 import { SVG } from '../../../../components';
 
@@ -20,7 +27,10 @@ function Content(props) {
     <div>
       <Paper className={classes.root} elevation={1} square>
         <Grid container>
-          <SVG svg="bookmark" style={{ fill: '#864fa6', width: 45, height: 45 }} />
+          <SVG
+            variant="bookmark"
+            style={{ fill: '#864fa6', width: 45, height: 45 }}
+          />
           <Typography variant="h5" component="h3">
             WELCOME TO PUBLIC JUSTICE INSTITUTION
           </Typography>
@@ -37,7 +47,7 @@ function Content(props) {
         </Typography>
         <List dense={true} disablePadding={true}>
           <ListItem>
-            <SVG svg="yes" style={{ width: 20, height: 20 }} />  
+            <SVG variant="yes" style={{ width: 20, height: 20 }} />
             <ListItemText primary="Single-line item" />
           </ListItem>
         </List>

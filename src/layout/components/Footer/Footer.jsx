@@ -3,7 +3,7 @@ import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 import styles from './style';
-import { SVG } from '../../components';
+import { SVG } from '../../../components';
 
 const Footer = props => {
   const { classes } = props;

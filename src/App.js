@@ -1,18 +1,13 @@
 import React from 'react';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 
 import theme from './theme';
-// import { UpperPanel, Home, Footer } from './pages';
-import { Crd } from './components';
+import { Routes } from './routes';
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    <Crd />
-    {/* <UpperPanel />
-    <Home />
-    <Footer /> */}
+    <Routes />
   </MuiThemeProvider>
 );
 

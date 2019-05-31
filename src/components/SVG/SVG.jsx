@@ -5,9 +5,9 @@ import { SvgIcon } from '@material-ui/core';
 import styles from './style';
 
 const SVG = props => {
-  const { classes, style, svg } = props;
+  const { classes, style, variant } = props;
 
-  switch (svg) {
+  switch (variant) {
     case 'whatsapp':
       return (
         <SvgIcon viewBox="0 0 48 48" className={classes.root} style={style}>
@@ -67,15 +67,35 @@ const SVG = props => {
     case 'bookmark':
       return (
         <SvgIcon viewBox="0 0 48 48" className={classes.root} style={style}>
-          <path className={classes.bookmark} style={style} d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z" />
+          <path
+            className={classes.bookmark}
+            style={style}
+            d="M 6.0097656 2 C 4.9143111 2 4.0097656 2.9025988 4.0097656 3.9980469 L 4 22 L 12 19 L 20 22 L 20 20.556641 L 20 4 C 20 2.9069372 19.093063 2 18 2 L 6.0097656 2 z M 6.0097656 4 L 18 4 L 18 19.113281 L 12 16.863281 L 6.0019531 19.113281 L 6.0097656 4 z"
+          />
         </SvgIcon>
       );
 
     case 'yes':
       return (
         <SvgIcon viewBox="0 0 48 48" className={classes.root} style={style}>
-          <path style={{ fill: '#C8E6C9' }} d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z" />
-          <path style={{ fill: '#4CAF50' }} d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z" />
+          <path
+            style={{ fill: '#C8E6C9' }}
+            d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"
+          />
+          <path
+            style={{ fill: '#4CAF50' }}
+            d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"
+          />
+        </SvgIcon>
+      );
+
+    case 'bullet':
+      return (
+        <SvgIcon viewBox="0 0 200 200" style={{ width: 8 }}>
+          <path
+            style={{ fille: 'black' }}
+            d="M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0"
+          />
         </SvgIcon>
       );
 

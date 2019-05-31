@@ -1,9 +1,15 @@
 export default {
   root: {
-    flexGrow: 1
+    fontSize: '15px',
+    backgroundColor: '#254260'
   },
 
-  tab: {
-    fontWeight: 50
+  toolbar: {
+    marginLeft: 50
+  },
+
+  button: {
+    color: 'inherit',
+    marginLeft: 25
   }
 };

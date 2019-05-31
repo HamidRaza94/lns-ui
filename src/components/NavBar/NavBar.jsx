@@ -1,46 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import { Paper, Tabs, Tab } from '@material-ui/core';
+import { withStyles, AppBar, Toolbar, Button } from '@material-ui/core';
 
 import styles from './style';
 
-class NavBar extends React.Component {
-  state = {
-    value: 0
-  };
+const navBarItems = [
+  'Home',
+  'Central Board',
+  'State Board',
+  'Volunteers',
+  'Volunteer Ship',
+  'Complaints',
+  'Donate',
+  'Appointment',
+  'Admission'
+];
 
-  handleChange = (event, value) => {
-    this.setState({ value });
-  };
+const NavBar = props => {
+  const { classes, ...rest } = props;
 
-  render() {
-    const { classes } = this.props;
-
-    return (
-      <Paper className={classes.root}>
-        <Tabs
-          value={this.state.value}
-          onChange={this.handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          centered
-        >
-          <Tab label="Home" className={classes.tab} />
-          <Tab label="Team" />
-          <Tab label="Membership" />
-          <Tab label="Members" />
-          <Tab label="Complaints" />
-          <Tab label="Donate" />
-          <Tab label="Contact" />
-        </Tabs>
-      </Paper>
-    );
-  }
-}
+  return (
+    <AppBar position="static" className={classes.root}>
+      <Toolbar disableGutters variant="dense" className={classes.toolbar}>
+        {navBarItems.map(navBarItem => (
+          <Button className={classes.button} {...rest}>
+            {navBarItem}
+          </Button>
+        ))}
+      </Toolbar>
+    </AppBar>
+  );
+};
 
 NavBar.propTypes = {
-  classes: PropTypes.object.isRequired
+  classes: PropTypes.shape().isRequired
 };
 
 export default withStyles(styles)(NavBar);
