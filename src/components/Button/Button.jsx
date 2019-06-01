@@ -1,29 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core';
 
 import styles from './style';
 
-const { baseStyle, buttonStyle } = styles;
-
 const Button = props => {
-  const { color, disabled, style, value, ...rest } = props;
+  const {
+    classes,
+    color,
+    backgroundColor,
+    disabled,
+    style,
+    value,
+    ...rest
+  } = props;
 
   return (
-    <div style={{ ...baseStyle }}>
-      <button
-        type="button"
-        disabled={disabled}
-        style={{ ...buttonStyle, ...style, color }}
-        {...rest}
-      >
-        {value}
-      </button>
-    </div>
+    <button
+      type="button"
+      disabled={disabled}
+      className={classes.button}
+      style={{ ...style, color, backgroundColor }}
+      {...rest}
+    >
+      {value}
+    </button>
   );
 };
 
 Button.defaultProps = {
-  color: 'default',
+  color: '',
   disabled: false,
   style: {}
 };
@@ -35,4 +41,4 @@ Button.propTypes = {
   value: PropTypes.string.isRequired
 };
 
-export default Button;
+export default withStyles(styles)(Button);

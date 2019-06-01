@@ -42,6 +42,7 @@ const Home = props => {
 
           <Grid item sm={7}>
             <Content />
+            <Slider banners={gallery} width="100%" height="300" random />
           </Grid>
         </Grid>
       </Grid>

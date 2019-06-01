@@ -7,7 +7,8 @@ import {
   List,
   ListItem,
   ListItemText,
-  Grid
+  Grid,
+  Button
 } from '@material-ui/core';
 
 import { SVG } from '../../../../components';
@@ -50,7 +51,22 @@ function Content(props) {
             <SVG variant="yes" style={{ width: 20, height: 20 }} />
             <ListItemText primary="Single-line item" />
           </ListItem>
+          <ListItem>
+            <SVG variant="yes" style={{ width: 20, height: 20 }} />
+            <ListItemText primary="Single-line item" />
+          </ListItem>
+          <ListItem>
+            <SVG variant="yes" style={{ width: 20, height: 20 }} />
+            <ListItemText primary="Single-line item" />
+          </ListItem>
+          <ListItem>
+            <SVG variant="yes" style={{ width: 20, height: 20 }} />
+            <ListItemText primary="Single-line item" />
+          </ListItem>
         </List>
+        <Button variant="contained" style={{ backgroundColor: '#cfcfcf' }}>
+          More ->
+        </Button>
       </Paper>
     </div>
   );

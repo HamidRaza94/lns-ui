@@ -19,5 +19,10 @@ export default {
   link: {
     color: '#ffffff',
     textDecoration: 'none'
+  },
+
+  navText: {
+    color: '#ffffff',
+    fontSize: 14
   }
 };
