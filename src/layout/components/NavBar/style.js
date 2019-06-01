@@ -1,28 +1,53 @@
 export default {
   nav: {
-    width: '100%',
+    display: 'flex',
     backgroundColor: '#254260'
   },
 
   ul: {
-    width: '100%',
-    margin: '0 auto',
-    padding: 0
+    listStyle: 'none',
+    margin: 0,
+    paddingLeft: 0
   },
 
   li: {
+    background: '#254260',
+    display: 'block',
+    float: 'left',
+    padding: '1rem',
+    position: 'relative',
+    textDecoration: 'none',
+    transitionDuration: '0.5s'
+  },
+
+  text: {
+    color: '#fff'
+  },
+
+  ul_li_ul: {
     listStyle: 'none',
-    display: 'inline-block',
-    padding: 15
+    margin: 0,
+    paddingLeft: 0,
+    background: '#254260',
+    visibility: 'hidden',
+    opacity: 0,
+    minWidth: '5rem',
+    position: 'absolute',
+    transition: 'all 0.5s ease',
+    marginTop: '1rem',
+    left: 0,
+    display: 'none'
   },
 
-  link: {
-    color: '#ffffff',
-    textDecoration: 'none'
-  },
-
-  navText: {
-    color: '#ffffff',
-    fontSize: 14
+  ul_li_ul_li: {
+    clear: 'both',
+    width: 200,
+    background: '#254260',
+    display: 'block',
+    float: 'left',
+    padding: 10,
+    position: 'relative',
+    textDecoration: 'none',
+    transitionDuration: '0.5s'
   }
 };
