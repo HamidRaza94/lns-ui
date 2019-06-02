@@ -11,7 +11,7 @@ import {
   Complaints,
   Donate,
   Appointment,
-  Admission,
+  Academics,
   Employees,
   StudyCenter,
   NoMatch
@@ -23,17 +23,17 @@ const Routes = () => (
     <NavBar />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/central_board" component={CentralBoard} />
-      <Route path="/state_board" component={StateBoard} />
-      <Route path="/volunteers" component={Volunteers} />
-      <Route path="/volunteer_ship" component={VolunteerShip} />
-      <Route path="/complaints" component={Complaints} />
-      <Route path="/donate" component={Donate} />
-      <Route path="/appointment" component={Appointment} />
-      <Route path="/admission" component={Admission} />
-      <Route path="/employees" component={Employees} />
-      <Route path="/study_center" component={StudyCenter} />
-      <Route component={NoMatch} />
+      <Route exact path="/central_board" component={CentralBoard} />
+      <Route exact path="/state_board" component={StateBoard} />
+      <Route exact path="/volunteers" component={Volunteers} />
+      <Route exact path="/volunteer_ship" component={VolunteerShip} />
+      <Route exact path="/complaints" component={Complaints} />
+      <Route exact path="/donate" component={Donate} />
+      <Route exact path="/appointment" component={Appointment} />
+      <Route exact path="/academics" component={Academics} />
+      <Route exact path="/employees" component={Employees} />
+      <Route exact path="/study_center" component={StudyCenter} />
+      <Route exact component={NoMatch} />
     </Switch>
     <Footer />
   </Router>

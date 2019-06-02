@@ -26,19 +26,19 @@ class NavBar extends Component {
       donate: navStyle,
       appointment: navStyle,
       academics: navStyle,
-      academics1: navStyle,
-      academics2: navStyle,
-      academics3: navStyle,
-      academics4: navStyle,
-      academics5: navStyle,
-      academics6: navStyle,
-      academics7: navStyle,
-      academics8: navStyle,
-      academics9: navStyle,
-      academics10: navStyle,
+      studentRegistration: navStyle,
+      examinationRegistration: navStyle,
+      course: navStyle,
+      feeStructure: navStyle,
+      studentList: navStyle,
+      passingCertificate: navStyle,
+      academicCenter: navStyle,
+      payOnlineAcademicsFees: navStyle,
+      syllabus: navStyle,
+      studentAttendance: navStyle,
       employees: navStyle,
       studyCenter: navStyle,
-      academicsLI: {
+      academicsList: {
         visibility: 'hidden',
         opacity: 0,
         display: ''
@@ -53,38 +53,48 @@ class NavBar extends Component {
       }
     });
 
-    if (item === 'academics') {
-      if (value === '#a9502c') {
-        this.handleSubItemEnter(item)();
-      } else {
-        this.handleSubItemLeave(item)();
-      }
+    const itemList = item.toString() + 'List';
+    let visible = false;
+
+    if (value === secondary) {
+      visible = true;
     }
+
+    this.handleSubItem(itemList, visible)();
   };
 
-  handleSubItemEnter = item => () => {
-    this.setState({
-      academicsLI: {
+  handleSubItem = (itemList, visible) => () => {
+    let itemListStyle;
+
+    if (visible) {
+      itemListStyle = {
         visibility: 'visible',
         opacity: 1,
         display: 'block'
-      }
-    });
-  };
-
-  handleSubItemLeave = item => () => {
-    this.setState({
-      academicsLI: {
+      };
+    } else {
+      itemListStyle = {
         visibility: 'hidden',
         opacity: 0,
         display: ''
-      }
+      };
+    }
+
+    this.setState({
+      [itemList]: itemListStyle
+    });
+  };
+
+  handleClick = item => () => {
+    this.setState({
+      active: item
     });
   };
 
   render() {
     const { classes } = this.props;
     const {
+      active,
       home,
       centralBoard,
       stateBoard,
@@ -94,19 +104,19 @@ class NavBar extends Component {
       donate,
       appointment,
       academics,
-      academics1,
-      academics2,
-      academics3,
-      academics4,
-      academics5,
-      academics6,
-      academics7,
-      academics8,
-      academics9,
-      academics10,
+      studentRegistration,
+      examinationRegistration,
+      course,
+      feeStructure,
+      studentList,
+      passingCertificate,
+      academicCenter,
+      payOnlineAcademicsFees,
+      syllabus,
+      studentAttendance,
       employees,
       studyCenter,
-      academicsLI
+      academicsList
     } = this.state;
 
     return (
@@ -118,6 +128,7 @@ class NavBar extends Component {
               style={home}
               onMouseEnter={this.handleButtonHover('home', secondary)}
               onMouseLeave={this.handleButtonHover('home', primary)}
+              onClick={this.handleClick('home')}
             >
               <Typography className={classes.text}>Home</Typography>
             </li>
@@ -128,6 +139,7 @@ class NavBar extends Component {
               style={centralBoard}
               onMouseEnter={this.handleButtonHover('centralBoard', secondary)}
               onMouseLeave={this.handleButtonHover('centralBoard', primary)}
+              onClick={this.handleClick('centralBoard')}
             >
               <Typography className={classes.text}>Central Board</Typography>
             </li>
@@ -192,7 +204,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Appointment</Typography>
             </li>
           </Link>
-          <Link to="/admission">
+          <Link to="/academics">
             <li
               className={classes.li}
               style={academics}
@@ -200,148 +212,163 @@ class NavBar extends Component {
               onMouseLeave={this.handleButtonHover('academics', primary)}
             >
               <Typography className={classes.text}>Academics</Typography>
-              <ul className={classes.ul_li_ul} style={academicsLI}>
-                <Link to="/student_registration">
+              <ul className={classes.ul_li_ul} style={academicsList}>
+                <Link to="/academics/student_registration">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics1}
+                    style={studentRegistration}
                     onMouseEnter={this.handleButtonHover(
-                      'academics1',
+                      'studentRegistration',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics1', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'studentRegistration',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Student Registration
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/examination_registration">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics2}
+                    style={examinationRegistration}
                     onMouseEnter={this.handleButtonHover(
-                      'academics2',
+                      'examinationRegistration',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics2', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'examinationRegistration',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Examination Registration
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/course">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics3}
-                    onMouseEnter={this.handleButtonHover(
-                      'academics3',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover('academics3', primary)}
+                    style={course}
+                    onMouseEnter={this.handleButtonHover('course', secondary)}
+                    onMouseLeave={this.handleButtonHover('course', primary)}
                   >
                     <Typography className={classes.text}>Course</Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/fee_structure">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics4}
+                    style={feeStructure}
                     onMouseEnter={this.handleButtonHover(
-                      'academics4',
+                      'feeStructure',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics4', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'feeStructure',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Fee Structure
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/student_list">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics5}
+                    style={studentList}
                     onMouseEnter={this.handleButtonHover(
-                      'academics5',
+                      'studentList',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics5', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'studentList',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Student List
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/passing_certificate">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics6}
+                    style={passingCertificate}
                     onMouseEnter={this.handleButtonHover(
-                      'academics6',
+                      'passingCertificate',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics6', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'passingCertificate',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Passing Certificate
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/academic_center">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics7}
+                    style={academicCenter}
                     onMouseEnter={this.handleButtonHover(
-                      'academics7',
+                      'academicCenter',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics7', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'academicCenter',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Academic Center
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/pay_online_academics_fees">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics8}
+                    style={payOnlineAcademicsFees}
                     onMouseEnter={this.handleButtonHover(
-                      'academics8',
+                      'payOnlineAcademicsFees',
                       secondary
                     )}
-                    onMouseLeave={this.handleButtonHover('academics8', primary)}
+                    onMouseLeave={this.handleButtonHover(
+                      'payOnlineAcademicsFees',
+                      primary
+                    )}
                   >
                     <Typography className={classes.text}>
                       Pay Online Academic Fees
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/syllabus">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics9}
-                    onMouseEnter={this.handleButtonHover(
-                      'academics9',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover('academics9', primary)}
+                    style={syllabus}
+                    onMouseEnter={this.handleButtonHover('syllabus', secondary)}
+                    onMouseLeave={this.handleButtonHover('syllabus', primary)}
                   >
                     <Typography className={classes.text}>Syllabus</Typography>
                   </li>
                 </Link>
-                <Link to="/examination_registration">
+                <Link to="/academics/student_attendance">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academics10}
+                    style={studentAttendance}
                     onMouseEnter={this.handleButtonHover(
-                      'academics10',
+                      'studentAttendance',
                       secondary
                     )}
                     onMouseLeave={this.handleButtonHover(
-                      'academics10',
+                      'studentAttendance',
                       primary
                     )}
                   >
