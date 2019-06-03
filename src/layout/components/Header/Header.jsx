@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
-import styles from './styles';
+import { styles } from './styles';
 import { LOGO_IMAGE } from '../../../config';
 
 const Header = props => {
@@ -34,7 +34,7 @@ const Header = props => {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item>
+      <Grid item className={classes.header}>
         <Grid container alignItems="center" justify="space-around">
           <Grid item>
             <img
