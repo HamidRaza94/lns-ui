@@ -16,6 +16,11 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
+      active: {
+        home: {
+          backgroundColor: secondary
+        }
+      },
       home: navStyle,
       centralBoard: navStyle,
       stateBoard: navStyle,
@@ -94,13 +99,18 @@ class NavBar extends Component {
 
   handleClick = item => () => {
     this.setState({
-      active: item
+      active: {
+        [item]: {
+          backgroundColor: secondary
+        }
+      }
     });
   };
 
   render() {
     const { classes } = this.props;
     const {
+      active,
       home,
       centralBoard,
       stateBoard,
@@ -135,7 +145,7 @@ class NavBar extends Component {
           <Link to="/">
             <li
               className={classes.li}
-              style={home}
+              style={{ ...home, ...active.home }}
               onMouseEnter={this.handleButtonHover('home', secondary)}
               onMouseLeave={this.handleButtonHover('home', primary)}
               onClick={this.handleClick('home')}
@@ -146,7 +156,7 @@ class NavBar extends Component {
           <Link to="/central_board">
             <li
               className={classes.li}
-              style={centralBoard}
+              style={{ ...centralBoard, ...active.centralBoard }}
               onMouseEnter={this.handleButtonHover('centralBoard', secondary)}
               onMouseLeave={this.handleButtonHover('centralBoard', primary)}
               onClick={this.handleClick('centralBoard')}
@@ -157,9 +167,10 @@ class NavBar extends Component {
           <Link to="/state_board">
             <li
               className={classes.li}
-              style={stateBoard}
+              style={{ ...stateBoard, ...active.stateBoard }}
               onMouseEnter={this.handleButtonHover('stateBoard', secondary)}
               onMouseLeave={this.handleButtonHover('stateBoard', primary)}
+              onClick={this.handleClick('stateBoard')}
             >
               <Typography className={classes.text}>State Board</Typography>
             </li>
@@ -167,9 +178,10 @@ class NavBar extends Component {
           <Link to="/volunteers">
             <li
               className={classes.li}
-              style={volunteers}
+              style={{ ...volunteers, ...active.volunteers }}
               onMouseEnter={this.handleButtonHover('volunteers', secondary)}
               onMouseLeave={this.handleButtonHover('volunteers', primary)}
+              onClick={this.handleClick('volunteers')}
             >
               <Typography className={classes.text}>Volunteers</Typography>
             </li>
@@ -177,9 +189,10 @@ class NavBar extends Component {
           <Link to="/volunteer_ship">
             <li
               className={classes.li}
-              style={volunteerShip}
+              style={{ ...volunteerShip, ...active.volunteerShip }}
               onMouseEnter={this.handleButtonHover('volunteerShip', secondary)}
               onMouseLeave={this.handleButtonHover('volunteerShip', primary)}
+              onClick={this.handleClick('volunteerShip')}
             >
               <Typography className={classes.text}>Volunteer Ship</Typography>
             </li>
@@ -187,9 +200,10 @@ class NavBar extends Component {
           <Link to="/complaints">
             <li
               className={classes.li}
-              style={complaints}
+              style={{ ...complaints, ...active.complaints }}
               onMouseEnter={this.handleButtonHover('complaints', secondary)}
               onMouseLeave={this.handleButtonHover('complaints', primary)}
+              onClick={this.handleClick('complaints')}
             >
               <Typography className={classes.text}>Complaints</Typography>
             </li>
@@ -197,9 +211,10 @@ class NavBar extends Component {
           <Link to="/donate">
             <li
               className={classes.li}
-              style={donate}
+              style={{ ...donate, ...active.donate }}
               onMouseEnter={this.handleButtonHover('donate', secondary)}
               onMouseLeave={this.handleButtonHover('donate', primary)}
+              onClick={this.handleClick('donate')}
             >
               <Typography className={classes.text}>Donate</Typography>
             </li>
@@ -207,9 +222,10 @@ class NavBar extends Component {
           <Link to="/appointment">
             <li
               className={classes.li}
-              style={appointment}
+              style={{ ...appointment, ...active.appointment }}
               onMouseEnter={this.handleButtonHover('appointment', secondary)}
               onMouseLeave={this.handleButtonHover('appointment', primary)}
+              onClick={this.handleClick('appointment')}
             >
               <Typography className={classes.text}>Appointment</Typography>
             </li>
@@ -217,16 +233,20 @@ class NavBar extends Component {
           <Link to="/academics">
             <li
               className={classes.li}
-              style={academics}
+              style={{ ...academics, ...active.academics }}
               onMouseEnter={this.handleButtonHover('academics', secondary)}
               onMouseLeave={this.handleButtonHover('academics', primary)}
+              onClick={this.handleClick('academics')}
             >
               <Typography className={classes.text}>Academics</Typography>
               <ul className={classes.ul_li_ul} style={academicsList}>
                 <Link to="/academics/student_registration">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={studentRegistration}
+                    style={{
+                      ...studentRegistration,
+                      ...active.studentRegistration
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'studentRegistration',
                       secondary
@@ -235,6 +255,7 @@ class NavBar extends Component {
                       'studentRegistration',
                       primary
                     )}
+                    onClick={this.handleClick('studentRegistration')}
                   >
                     <Typography className={classes.text}>
                       Student Registration
@@ -244,7 +265,10 @@ class NavBar extends Component {
                 <Link to="/academics/examination_registration">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={examinationRegistration}
+                    style={{
+                      ...examinationRegistration,
+                      ...active.examinationRegistration
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'examinationRegistration',
                       secondary
@@ -253,6 +277,7 @@ class NavBar extends Component {
                       'examinationRegistration',
                       primary
                     )}
+                    onClick={this.handleClick('examinationRegistration')}
                   >
                     <Typography className={classes.text}>
                       Examination Registration
@@ -262,9 +287,10 @@ class NavBar extends Component {
                 <Link to="/academics/course">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={course}
+                    style={{ ...course, ...active.course }}
                     onMouseEnter={this.handleButtonHover('course', secondary)}
                     onMouseLeave={this.handleButtonHover('course', primary)}
+                    onClick={this.handleClick('course')}
                   >
                     <Typography className={classes.text}>Course</Typography>
                   </li>
@@ -272,7 +298,7 @@ class NavBar extends Component {
                 <Link to="/academics/fee_structure">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={feeStructure}
+                    style={{ ...feeStructure, ...active.feeStructure }}
                     onMouseEnter={this.handleButtonHover(
                       'feeStructure',
                       secondary
@@ -281,6 +307,7 @@ class NavBar extends Component {
                       'feeStructure',
                       primary
                     )}
+                    onClick={this.handleClick('feeStructure')}
                   >
                     <Typography className={classes.text}>
                       Fee Structure
@@ -290,7 +317,7 @@ class NavBar extends Component {
                 <Link to="/academics/student_list">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={studentList}
+                    style={{ ...studentList, ...active.studentList }}
                     onMouseEnter={this.handleButtonHover(
                       'studentList',
                       secondary
@@ -299,6 +326,7 @@ class NavBar extends Component {
                       'studentList',
                       primary
                     )}
+                    onClick={this.handleClick('studentList')}
                   >
                     <Typography className={classes.text}>
                       Student List
@@ -308,7 +336,10 @@ class NavBar extends Component {
                 <Link to="/academics/passing_certificate">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={passingCertificate}
+                    style={{
+                      ...passingCertificate,
+                      ...active.passingCertificate
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'passingCertificate',
                       secondary
@@ -317,6 +348,7 @@ class NavBar extends Component {
                       'passingCertificate',
                       primary
                     )}
+                    onClick={this.handleClick('passingCertificate')}
                   >
                     <Typography className={classes.text}>
                       Passing Certificate
@@ -326,7 +358,7 @@ class NavBar extends Component {
                 <Link to="/academics/academic_center">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={academicCenter}
+                    style={{ ...academicCenter, ...active.academicCenter }}
                     onMouseEnter={this.handleButtonHover(
                       'academicCenter',
                       secondary
@@ -335,6 +367,7 @@ class NavBar extends Component {
                       'academicCenter',
                       primary
                     )}
+                    onClick={this.handleClick('academicCenter')}
                   >
                     <Typography className={classes.text}>
                       Academic Center
@@ -344,7 +377,10 @@ class NavBar extends Component {
                 <Link to="/academics/pay_online_academics_fees">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={payOnlineAcademicsFees}
+                    style={{
+                      ...payOnlineAcademicsFees,
+                      ...active.payOnlineAcademicsFees
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'payOnlineAcademicsFees',
                       secondary
@@ -353,6 +389,7 @@ class NavBar extends Component {
                       'payOnlineAcademicsFees',
                       primary
                     )}
+                    onClick={this.handleClick('payOnlineAcademicsFees')}
                   >
                     <Typography className={classes.text}>
                       Pay Online Academic Fees
@@ -362,9 +399,10 @@ class NavBar extends Component {
                 <Link to="/academics/syllabus">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={syllabus}
+                    style={{ ...syllabus, ...active.syllabus }}
                     onMouseEnter={this.handleButtonHover('syllabus', secondary)}
                     onMouseLeave={this.handleButtonHover('syllabus', primary)}
+                    onClick={this.handleClick('syllabus')}
                   >
                     <Typography className={classes.text}>Syllabus</Typography>
                   </li>
@@ -372,7 +410,10 @@ class NavBar extends Component {
                 <Link to="/academics/student_attendance">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={studentAttendance}
+                    style={{
+                      ...studentAttendance,
+                      ...active.studentAttendance
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'studentAttendance',
                       secondary
@@ -381,6 +422,7 @@ class NavBar extends Component {
                       'studentAttendance',
                       primary
                     )}
+                    onClick={this.handleClick('studentAttendance')}
                   >
                     <Typography className={classes.text}>
                       Student Attendance
@@ -393,9 +435,10 @@ class NavBar extends Component {
           <Link to="/employees">
             <li
               className={classes.li}
-              style={employees}
+              style={{ ...employees, ...active.employees }}
               onMouseEnter={this.handleButtonHover('employees', secondary)}
               onMouseLeave={this.handleButtonHover('employees', primary)}
+              onClick={this.handleClick('employees')}
             >
               <Typography className={classes.text}>Employees</Typography>
             </li>
@@ -403,9 +446,10 @@ class NavBar extends Component {
           <Link to="/employments">
             <li
               className={classes.li}
-              style={employments}
+              style={{ ...employments, ...active.employments }}
               onMouseEnter={this.handleButtonHover('employments', secondary)}
               onMouseLeave={this.handleButtonHover('employments', primary)}
+              onClick={this.handleClick('employments')}
             >
               <Typography className={classes.text}>Employments</Typography>
             </li>
@@ -413,7 +457,7 @@ class NavBar extends Component {
           <Link to="/staff_selection_board">
             <li
               className={classes.li}
-              style={staffSelectionBoard}
+              style={{ ...staffSelectionBoard, ...active.staffSelectionBoard }}
               onMouseEnter={this.handleButtonHover(
                 'staffSelectionBoard',
                 secondary
@@ -422,6 +466,7 @@ class NavBar extends Component {
                 'staffSelectionBoard',
                 primary
               )}
+              onClick={this.handleClick('staffSelectionBoard')}
             >
               <Typography className={classes.text}>
                 Staff Selection Board
@@ -430,7 +475,10 @@ class NavBar extends Component {
                 <Link to="/staff_selection_board/central">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={centralStaffSelectionBoard}
+                    style={{
+                      ...centralStaffSelectionBoard,
+                      ...active.centralStaffSelectionBoard
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'centralStaffSelectionBoard',
                       secondary
@@ -439,6 +487,7 @@ class NavBar extends Component {
                       'centralStaffSelectionBoard',
                       primary
                     )}
+                    onClick={this.handleClick('centralStaffSelectionBoard')}
                   >
                     <Typography className={classes.text}>
                       Central Staff Selection Board
@@ -448,7 +497,10 @@ class NavBar extends Component {
                 <Link to="/staff_selection_board/state">
                   <li
                     className={classes.ul_li_ul_li}
-                    style={stateStaffSelectionBoard}
+                    style={{
+                      ...stateStaffSelectionBoard,
+                      ...active.stateStaffSelectionBoard
+                    }}
                     onMouseEnter={this.handleButtonHover(
                       'stateStaffSelectionBoard',
                       secondary
@@ -457,6 +509,7 @@ class NavBar extends Component {
                       'stateStaffSelectionBoard',
                       primary
                     )}
+                    onClick={this.handleClick('stateStaffSelectionBoard')}
                   >
                     <Typography className={classes.text}>
                       State Staff Selection Board
