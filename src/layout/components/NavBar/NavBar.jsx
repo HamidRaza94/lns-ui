@@ -16,7 +16,6 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
-      active: 'home',
       home: navStyle,
       centralBoard: navStyle,
       stateBoard: navStyle,
@@ -37,8 +36,16 @@ class NavBar extends Component {
       syllabus: navStyle,
       studentAttendance: navStyle,
       employees: navStyle,
-      studyCenter: navStyle,
+      employments: navStyle,
+      staffSelectionBoard: navStyle,
+      centralStaffSelectionBoard: navStyle,
+      stateStaffSelectionBoard: navStyle,
       academicsList: {
+        visibility: 'hidden',
+        opacity: 0,
+        display: ''
+      },
+      staffSelectionBoardList: {
         visibility: 'hidden',
         opacity: 0,
         display: ''
@@ -94,7 +101,6 @@ class NavBar extends Component {
   render() {
     const { classes } = this.props;
     const {
-      active,
       home,
       centralBoard,
       stateBoard,
@@ -115,8 +121,12 @@ class NavBar extends Component {
       syllabus,
       studentAttendance,
       employees,
-      studyCenter,
-      academicsList
+      employments,
+      staffSelectionBoard,
+      centralStaffSelectionBoard,
+      stateStaffSelectionBoard,
+      academicsList,
+      staffSelectionBoardList
     } = this.state;
 
     return (
@@ -390,14 +400,70 @@ class NavBar extends Component {
               <Typography className={classes.text}>Employees</Typography>
             </li>
           </Link>
-          <Link to="/study_center">
+          <Link to="/employments">
             <li
               className={classes.li}
-              style={studyCenter}
-              onMouseEnter={this.handleButtonHover('studyCenter', secondary)}
-              onMouseLeave={this.handleButtonHover('studyCenter', primary)}
+              style={employments}
+              onMouseEnter={this.handleButtonHover('employments', secondary)}
+              onMouseLeave={this.handleButtonHover('employments', primary)}
             >
-              <Typography className={classes.text}>Study Center</Typography>
+              <Typography className={classes.text}>Employments</Typography>
+            </li>
+          </Link>
+          <Link to="/staff_selection_board">
+            <li
+              className={classes.li}
+              style={staffSelectionBoard}
+              onMouseEnter={this.handleButtonHover(
+                'staffSelectionBoard',
+                secondary
+              )}
+              onMouseLeave={this.handleButtonHover(
+                'staffSelectionBoard',
+                primary
+              )}
+            >
+              <Typography className={classes.text}>
+                Staff Selection Board
+              </Typography>
+              <ul className={classes.ul_li_ul} style={staffSelectionBoardList}>
+                <Link to="/staff_selection_board/central">
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={centralStaffSelectionBoard}
+                    onMouseEnter={this.handleButtonHover(
+                      'centralStaffSelectionBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'centralStaffSelectionBoard',
+                      primary
+                    )}
+                  >
+                    <Typography className={classes.text}>
+                      Central Staff Selection Board
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to="/staff_selection_board/state">
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={stateStaffSelectionBoard}
+                    onMouseEnter={this.handleButtonHover(
+                      'stateStaffSelectionBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'stateStaffSelectionBoard',
+                      primary
+                    )}
+                  >
+                    <Typography className={classes.text}>
+                      State Staff Selection Board
+                    </Typography>
+                  </li>
+                </Link>
+              </ul>
             </li>
           </Link>
         </ul>

@@ -2,5 +2,8 @@ export {
   LOGO_IMAGE,
   NAV_BAR_FOLDER,
   NAV_BAR,
-  GALLERY_FOLDER
+  GALLERY_FOLDER,
+  BANNER_FOLDER,
+  SECTION_FOLDER,
+  STATE
 } from './constants';

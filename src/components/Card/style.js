@@ -4,6 +4,10 @@ export default {
     // width: 300
   },
 
+  content: {
+    height: 200
+  },
+
   bullet: {
     display: 'inline-block',
     margin: '0 2px',

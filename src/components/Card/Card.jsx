@@ -23,7 +23,7 @@ function SimpleCard(props) {
       >
         {title}
       </Typography>
-      <CardContent>
+      <CardContent className={classes.content}>
         {value.length
           ? value.map(item => (
               <Typography gutterBottom style={{ ...style.value }}>

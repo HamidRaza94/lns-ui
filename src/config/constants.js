@@ -17,5 +17,49 @@ const NAV_BAR = [
 
 // Gallery
 const GALLERY_FOLDER = `${IMAGE_FOLDER}/gallery`;
+const BANNER_FOLDER = `${IMAGE_FOLDER}/banners`;
 
-export { LOGO_IMAGE, NAV_BAR_FOLDER, NAV_BAR, GALLERY_FOLDER };
+// Section
+const SECTION_FOLDER = `${IMAGE_FOLDER}/section`;
+
+// State
+const STATE = [
+  'Andhra Pradesh',
+  'Arunachal Pradesh',
+  'Assam',
+  'Bihar',
+  'Chattisgarh',
+  'Goa',
+  'Gujarat',
+  'Haryana',
+  'Himachal Pradesh',
+  'Jammu and Kashmir',
+  'Jharkhand',
+  'Karnataka',
+  'Kerala',
+  'Madhya Pradesh',
+  'Maharashtra',
+  'Manipur',
+  'Meghalaya',
+  'Mizoram',
+  'Nagaland',
+  'Odisha',
+  'Punjab',
+  'Rajasthan',
+  'Sikkim',
+  'Tamil Nadu',
+  'Telangana',
+  'Uttar Pradesh',
+  'Uttarakhand',
+  'West Bengal'
+];
+
+export {
+  LOGO_IMAGE,
+  NAV_BAR_FOLDER,
+  NAV_BAR,
+  GALLERY_FOLDER,
+  BANNER_FOLDER,
+  SECTION_FOLDER,
+  STATE
+};

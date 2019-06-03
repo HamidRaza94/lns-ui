@@ -5,8 +5,9 @@ import styles from './style';
 
 const NoMatch = () => {
   return (
-    <div>
-      <h1>NoMatch Page</h1>
+    <div style={styles.root}>
+      <div style={styles.status}>404</div>
+      <div style={styles.message}>Page Not Found</div>
     </div>
   );
 };
