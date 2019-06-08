@@ -1,19 +1,9 @@
 import React, { Component } from 'react';
-import {
-  withStyles,
-  Select,
-  MenuItem,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-  TablePagination
-} from '@material-ui/core';
+import { withStyles, Select, MenuItem } from '@material-ui/core';
 
 import styles from './style';
 import { STATES } from '../../config';
+import { Table } from '../../components';
 
 function createData(name, state, contact) {
   return { name, state, contact };
@@ -46,9 +36,7 @@ class StateBoard extends Component {
     super(props);
     this.state = {
       state: '',
-      stateBoard: rows,
-      rowsPerPage: 5,
-      page: 0
+      stateBoard: rows
     };
   }
 
@@ -64,25 +52,12 @@ class StateBoard extends Component {
 
     this.setState({
       state: currentState,
-      stateBoard: currentStateBoard,
-      page: 0
-    });
-  };
-
-  handleChangeRowsPerPage = event => {
-    this.setState({
-      rowsPerPage: event.target.value
-    });
-  };
-
-  handleChangePage = (event, newPage) => {
-    this.setState({
-      page: newPage
+      stateBoard: currentStateBoard
     });
   };
 
   render() {
-    const { state, stateBoard, rowsPerPage, page } = this.state;
+    const { state, stateBoard } = this.state;
     const { classes } = this.props;
 
     return (
@@ -104,49 +79,7 @@ class StateBoard extends Component {
           </Select>
         </div>
 
-        <Paper className={classes.stateBoard}>
-          <Table className={classes.table}>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">State</TableCell>
-                <TableCell align="right">Contact</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {stateBoard.length ? (
-                stateBoard
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(row => (
-                    <TableRow key={row.name}>
-                      <TableCell component="th" scope="row">
-                        {row.name}
-                      </TableCell>
-                      <TableCell align="right">{row.state}</TableCell>
-                      <TableCell align="right">{row.contact}</TableCell>
-                    </TableRow>
-                  ))
-              ) : (
-                <TableRow key="unknown">
-                  <TableCell component="th" scope="row">
-                    No Data Found
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-          <TablePagination
-            rowsPerPageOptions={[5, 10, 25]}
-            component="div"
-            count={stateBoard.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            backIconButtonProps={{ 'aria-label': 'Previous Page' }}
-            nextIconButtonProps={{ 'aria-label': 'Next Page' }}
-            onChangePage={this.handleChangePage}
-            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-          />
-        </Paper>
+        <Table data={stateBoard} head={['name', 'state', 'contact']} />
       </div>
     );
   }
