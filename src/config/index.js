@@ -7,5 +7,5 @@ export {
   GALLERY_FOLDER,
   BANNER_FOLDER,
   SECTION_FOLDER,
-  STATE
+  STATES
 } from './constants';

@@ -29,7 +29,7 @@ const BANNER_FOLDER = `${IMAGE_FOLDER}/banners`;
 const SECTION_FOLDER = `${IMAGE_FOLDER}/section`;
 
 // State
-const STATE = [
+const STATES = [
   'Andhra Pradesh',
   'Arunachal Pradesh',
   'Assam',
@@ -69,5 +69,5 @@ export {
   GALLERY_FOLDER,
   BANNER_FOLDER,
   SECTION_FOLDER,
-  STATE
+  STATES
 };
