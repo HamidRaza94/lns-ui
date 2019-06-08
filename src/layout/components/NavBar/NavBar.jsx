@@ -56,9 +56,13 @@ class NavBar extends Component {
   }
 
   componentDidMount = () => {
-    const activeButton = _.camelCase(
+    let activeButton = _.camelCase(
       window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
     );
+
+    if (activeButton === '') {
+      activeButton = 'home';
+    }
 
     this.setState({
       active: {
