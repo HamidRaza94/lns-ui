@@ -1,3 +1,9 @@
 export default {
-  root: {}
+  root: {},
+
+  search: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center'
+  }
 };
