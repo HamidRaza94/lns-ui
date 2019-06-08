@@ -180,7 +180,6 @@ class Volunteers extends Component {
 
     return (
       <div>
-        <h1 className={classes.root}>hamid</h1>
         <div className={classes.search}>
           <TextField
             id="outlined-search"
