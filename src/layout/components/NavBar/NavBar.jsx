@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles, Typography } from '@material-ui/core';
+import _ from 'lodash';
 
 import styles from './style';
 
@@ -16,11 +17,7 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
-      active: {
-        home: {
-          backgroundColor: secondary
-        }
-      },
+      active: {},
       home: navStyle,
       centralBoard: navStyle,
       stateBoard: navStyle,
@@ -57,6 +54,20 @@ class NavBar extends Component {
       }
     };
   }
+
+  componentDidMount = () => {
+    const activeButton = _.camelCase(
+      window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
+    );
+
+    this.setState({
+      active: {
+        [activeButton]: {
+          backgroundColor: secondary
+        }
+      }
+    });
+  };
 
   handleButtonHover = (item, value) => () => {
     this.setState({
