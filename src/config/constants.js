@@ -15,6 +15,12 @@ const NAV_BAR = [
   'Contact'
 ];
 
+// Background
+const BACKGROUND_FOLDER = `${IMAGE_FOLDER}/background`;
+
+// Team
+const TEAM_FOLDER = `${IMAGE_FOLDER}/team`;
+
 // Gallery
 const GALLERY_FOLDER = `${IMAGE_FOLDER}/gallery`;
 const BANNER_FOLDER = `${IMAGE_FOLDER}/banners`;
@@ -58,6 +64,8 @@ export {
   LOGO_IMAGE,
   NAV_BAR_FOLDER,
   NAV_BAR,
+  BACKGROUND_FOLDER,
+  TEAM_FOLDER,
   GALLERY_FOLDER,
   BANNER_FOLDER,
   SECTION_FOLDER,

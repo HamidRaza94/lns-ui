@@ -56,21 +56,47 @@ class UpdatePanel extends Component {
     if (!isLoaded) {
       return (
         <div style={styles.root}>
-          <Card title="News" value={['Loading...']} style={styles.news} />
           <Card
+            variant="update"
+            title="News"
+            value={['Loading...']}
+            style={styles.news}
+          />
+          <Card
+            variant="update"
             title="Important Link"
             value={['Loading...']}
             style={styles.link}
           />
-          <Card title="Notice" value={['Loading...']} style={styles.notice} />
+          <Card
+            variant="update"
+            title="Notice"
+            value={['Loading...']}
+            style={styles.notice}
+          />
         </div>
       );
     } else if (error) {
       return (
         <div style={styles.root}>
-          <Card title="News" value={error} style={styles.news} />
-          <Card title="Important Link" value={error} style={styles.link} />
-          <Card title="Notice" value={error} style={styles.notice} />
+          <Card
+            variant="update"
+            title="News"
+            value={error}
+            style={styles.news}
+          />
+          <Card
+            variant="update"
+            title="Important Link"
+            value={error}
+            style={styles.link}
+          />
+          <Card
+            variant="update"
+            title="Notice"
+            value={error}
+            style={styles.notice}
+          />
         </div>
       );
     } else {
@@ -78,9 +104,24 @@ class UpdatePanel extends Component {
 
       return (
         <div style={styles.root}>
-          <Card title="News" value={news} style={styles.news} />
-          <Card title="Important Link" value={link} style={styles.link} />
-          <Card title="Notice" value={notice} style={styles.notice} />
+          <Card
+            variant="update"
+            title="News"
+            value={news}
+            style={styles.news}
+          />
+          <Card
+            variant="update"
+            title="Important Link"
+            value={link}
+            style={styles.link}
+          />
+          <Card
+            variant="update"
+            title="Notice"
+            value={notice}
+            style={styles.notice}
+          />
         </div>
       );
     }
