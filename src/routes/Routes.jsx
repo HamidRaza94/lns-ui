@@ -22,8 +22,8 @@ const Routes = () => (
     <Header />
     <NavBar />
     <Switch>
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/" component={CentralBoard} />
+      <Route exact path="/" component={Home} />
+      <Route exact path="/central_board" component={CentralBoard} />
       <Route exact path="/state_board" component={StateBoard} />
       <Route exact path="/volunteers" component={Volunteers} />
       <Route exact path="/volunteer_ship" component={VolunteerShip} />
