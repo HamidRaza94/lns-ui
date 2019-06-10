@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withStyles, TextField } from '@material-ui/core';
-import _ from 'lodash';
 
 import styles from './style';
 import { Table } from '../../components';

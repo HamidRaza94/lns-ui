@@ -31,33 +31,22 @@ const CentralBoard = props => {
   const { classes } = props;
 
   return (
-    // <div className={classes.root}>
-    //   <h1 className={classes.heading}>Meet the Team</h1>
-    <div className={classes.cardWrapper}>
-      {teams.map(
-        ({
-          name,
-          image,
-          backgroundImage,
-          jobTitle,
-          facebook,
-          whatsapp,
-          twitter
-        }) => (
+    <div className={classes.root}>
+      <div className={classes.cardWrapper}>
+        {teams.map(team => (
           <Card
             variant="team"
-            name={name}
-            image={image}
-            backgroundImage={backgroundImage}
-            jobTitle={jobTitle}
-            facebook={facebook}
-            whatsapp={whatsapp}
-            twitter={twitter}
+            name={team.name}
+            image={team.image}
+            backgroundImage={team.backgroundImage}
+            jobTitle={team.jobTitle}
+            facebook={team.facebook}
+            whatsapp={team.whatsapp}
+            twitter={team.twitter}
           />
-        )
-      )}
+        ))}
+      </div>
     </div>
-    // </div>
   );
 };
 

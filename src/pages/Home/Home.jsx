@@ -5,6 +5,7 @@ import styles from './style';
 import { Content, UpdatePanel } from './components';
 import { Slider, Section } from '../../components';
 import { home } from '../../cms';
+import { TEAM_FOLDER } from '../../config';
 
 const Home = () => {
   const { gallery, banners, sections } = home;
@@ -18,6 +19,14 @@ const Home = () => {
       <Grid item>
         <Grid container justify="center" style={{ backgroundColor: '' }}>
           <Grid item sm={3} style={{ backgroundColor: '' }}>
+            <div>
+              <img
+                src={`${TEAM_FOLDER}/saiyad_shah_alam.jpg`}
+                width={120}
+                height={130}
+                alt="Saiyad Shah Alam"
+              />
+            </div>
             <UpdatePanel />
           </Grid>
 

@@ -8,5 +8,4 @@ export { Donate } from './Donate';
 export { Appointment } from './Appointment';
 export { Academics } from './Academics';
 export { Employees } from './Employees';
-export { StudyCenter } from './StudyCenter';
 export { NoMatch } from './NoMatch';

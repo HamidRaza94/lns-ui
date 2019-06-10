@@ -3,7 +3,8 @@
 export const styles = theme => ({
   root: {
     padding: '0px 50px',
-    backgroundColor: '#ffffff',
+    // backgroundColor: '#ffffff',
+    backgroundColor: '#f2944d',
     [theme.breakpoints.down('sm')]: {
       padding: 0
     }
@@ -38,7 +39,7 @@ export const styles = theme => ({
 
   title: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 18,
     fontFamily: 'Arial, Helvetica, sans-serif',
     [theme.breakpoints.down('sm')]: {
       fontSize: 12

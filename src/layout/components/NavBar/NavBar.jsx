@@ -5,6 +5,7 @@ import { withStyles, Typography } from '@material-ui/core';
 import _ from 'lodash';
 
 import styles from './style';
+import { routes } from '../../../cms';
 
 const primary = '#254260';
 const secondary = '#a9502c';
@@ -154,10 +155,12 @@ class NavBar extends Component {
       staffSelectionBoardList
     } = this.state;
 
+    const { path } = routes;
+
     return (
       <nav className={classes.nav}>
         <ul className={classes.ul}>
-          <Link to="/">
+          <Link to={path.home}>
             <li
               className={classes.li}
               style={{ ...home, ...active.home }}
@@ -168,7 +171,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Home</Typography>
             </li>
           </Link>
-          <Link to="/central_board">
+          <Link to={path.centralBoard}>
             <li
               className={classes.li}
               style={{ ...centralBoard, ...active.centralBoard }}
@@ -179,7 +182,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Central Board</Typography>
             </li>
           </Link>
-          <Link to="/state_board">
+          <Link to={path.stateBoard}>
             <li
               className={classes.li}
               style={{ ...stateBoard, ...active.stateBoard }}
@@ -190,7 +193,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>State Board</Typography>
             </li>
           </Link>
-          <Link to="/volunteers">
+          <Link to={path.volunteers}>
             <li
               className={classes.li}
               style={{ ...volunteers, ...active.volunteers }}
@@ -201,7 +204,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Volunteers</Typography>
             </li>
           </Link>
-          <Link to="/volunteer_ship">
+          <Link to={path.volunteerShip}>
             <li
               className={classes.li}
               style={{ ...volunteerShip, ...active.volunteerShip }}
@@ -212,7 +215,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Volunteer Ship</Typography>
             </li>
           </Link>
-          <Link to="/complaints">
+          <Link to={path.complaints}>
             <li
               className={classes.li}
               style={{ ...complaints, ...active.complaints }}
@@ -223,7 +226,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Complaints</Typography>
             </li>
           </Link>
-          <Link to="/donate">
+          <Link to={path.donate}>
             <li
               className={classes.li}
               style={{ ...donate, ...active.donate }}
@@ -234,7 +237,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Donate</Typography>
             </li>
           </Link>
-          <Link to="/appointment">
+          <Link to={path.appointment}>
             <li
               className={classes.li}
               style={{ ...appointment, ...active.appointment }}
@@ -245,7 +248,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Appointment</Typography>
             </li>
           </Link>
-          <Link to="/academics">
+          <Link to={path.academics.home}>
             <li
               className={classes.li}
               style={{ ...academics, ...active.academics }}
@@ -255,7 +258,7 @@ class NavBar extends Component {
             >
               <Typography className={classes.text}>Academics</Typography>
               <ul className={classes.ul_li_ul} style={academicsList}>
-                <Link to="/academics/student_registration">
+                <Link to={path.academics.studentRegistration}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -277,7 +280,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/examination_registration">
+                <Link to={path.academics.examinationRegistration}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -299,7 +302,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/course">
+                <Link to={path.academics.course}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...course, ...active.course }}
@@ -310,7 +313,7 @@ class NavBar extends Component {
                     <Typography className={classes.text}>Course</Typography>
                   </li>
                 </Link>
-                <Link to="/academics/fee_structure">
+                <Link to={path.academics.feeStructure}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...feeStructure, ...active.feeStructure }}
@@ -329,7 +332,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/student_list">
+                <Link to={path.academics.studentList}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...studentList, ...active.studentList }}
@@ -348,7 +351,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/passing_certificate">
+                <Link to={path.academics.passingCertificate}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -370,7 +373,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/academic_center">
+                <Link to={path.academics.academicCenter}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...academicCenter, ...active.academicCenter }}
@@ -389,7 +392,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/pay_online_academics_fees">
+                <Link to={path.academics.payOnlineAcademicsFees}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -411,7 +414,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/academics/syllabus">
+                <Link to={path.academics.syllabus}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...syllabus, ...active.syllabus }}
@@ -422,7 +425,7 @@ class NavBar extends Component {
                     <Typography className={classes.text}>Syllabus</Typography>
                   </li>
                 </Link>
-                <Link to="/academics/student_attendance">
+                <Link to={path.academics.studentAttendance}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -447,7 +450,7 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to="/employees">
+          <Link to={path.employees}>
             <li
               className={classes.li}
               style={{ ...employees, ...active.employees }}
@@ -458,7 +461,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Employees</Typography>
             </li>
           </Link>
-          <Link to="/employments">
+          <Link to={path.employments}>
             <li
               className={classes.li}
               style={{ ...employments, ...active.employments }}
@@ -469,7 +472,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Employments</Typography>
             </li>
           </Link>
-          <Link to="/staff_selection_board">
+          <Link to={path.staffSelectionBoard.home}>
             <li
               className={classes.li}
               style={{ ...staffSelectionBoard, ...active.staffSelectionBoard }}
@@ -487,7 +490,7 @@ class NavBar extends Component {
                 Staff Selection Board
               </Typography>
               <ul className={classes.ul_li_ul} style={staffSelectionBoardList}>
-                <Link to="/staff_selection_board/central">
+                <Link to={path.staffSelectionBoard.central}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
@@ -509,7 +512,7 @@ class NavBar extends Component {
                     </Typography>
                   </li>
                 </Link>
-                <Link to="/staff_selection_board/state">
+                <Link to={path.staffSelectionBoard.state}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
