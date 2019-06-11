@@ -4,6 +4,7 @@ import { Grid, Typography } from '@material-ui/core';
 
 import { styles } from './styles';
 import { LOGO_IMAGE } from '../../../config';
+import { header } from '../../../cms';
 
 const Header = props => {
   const { classes } = props;
@@ -18,18 +19,14 @@ const Header = props => {
       <Grid item>
         <Grid container alignItems="center">
           <Grid item>
-            <img
-              src={LOGO_IMAGE}
-              alt="Lok Niyay Sansthan"
-              className={classes.lns}
-            />
+            <img src={LOGO_IMAGE} alt={header.lns} className={classes.lns} />
           </Grid>
           <Grid item>
             <Typography align="center" className={classes.title}>
-              लोक न्याय संस्थान <br />
-              PUBLIC JUSTICE INSTITUTION <br />
-              अभिहित अंतर्गत/APP. BY <br />
-              भारत सरकार/GOVERNMENT OF INDIA
+              {header.lnsHindi} <br />
+              {header.pji} <br />
+              {header.approvedBy} <br />
+              {header.goi} <br />
             </Typography>
           </Grid>
         </Grid>
@@ -39,21 +36,21 @@ const Header = props => {
           <Grid item>
             <img
               src={`./images/logo/gandhi-150.jpg`}
-              alt="Gandhi 150"
+              alt={header.gandhi150}
               className={classes.gandhi150}
             />
           </Grid>
           <Grid item>
             <img
               src={`./images/logo/swatch_india.png`}
-              alt="Swatch Bharat"
+              alt={header.swatchBharat}
               className={classes.swatchBharat}
             />
           </Grid>
           <Grid item>
             <img
               src={`./images/logo/code_india.jpg`}
-              alt="Swatch Bharat"
+              alt={header.codeIndia}
               className={classes.codeIndia}
             />
           </Grid>

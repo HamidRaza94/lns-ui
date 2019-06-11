@@ -1,48 +1,104 @@
-// import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 export const styles = theme => ({
   root: {
     padding: '0px 50px',
-    // backgroundColor: '#ffffff',
     backgroundColor: '#f2944d',
-    [theme.breakpoints.down('sm')]: {
-      padding: 0
+    [theme.breakpoints.down(1050)]: {
+      padding: '0px 40px'
+    },
+    [theme.breakpoints.down(1030)]: {
+      padding: '0px 30px'
+    },
+    [theme.breakpoints.down(1010)]: {
+      padding: '0px 20px'
+    },
+    [theme.breakpoints.down(985)]: {
+      padding: '0px 10px'
     }
   },
 
   header: {
-    [theme.breakpoints.down('sm')]: {
-      display: 'none'
+    [theme.breakpoints.down(965)]: {
+      // display: 'none'
     }
   },
 
   lns: {
     width: 140,
     height: 140,
-    [theme.breakpoints.down('sm')]: {
+    margin: '5px 5px 5px 5px',
+    cursor: 'pointer',
+
+    [theme.breakpoints.down(985)]: {
       width: 110,
       height: 110
     },
-    margin: '5px 5px 5px 5px',
-    cursor: 'pointer'
-  },
 
-  gandhi150: {
-    width: 200,
-    height: 110
-  },
-
-  swatchBharat: {
-    width: 150,
-    height: 80
+    [theme.breakpoints.down(940)]: {
+      width: 90,
+      height: 90
+    }
   },
 
   title: {
     fontWeight: 'bold',
     fontSize: 18,
     fontFamily: 'Arial, Helvetica, sans-serif',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: 12
+
+    [theme.breakpoints.down(985)]: {
+      fontSize: 17
+    },
+
+    [theme.breakpoints.down(940)]: {
+      fontSize: 16
+    }
+  },
+
+  gandhi150: {
+    width: 200,
+    height: 110,
+
+    [theme.breakpoints.down(985)]: {
+      width: 180,
+      height: 100
+    },
+
+    [theme.breakpoints.down(940)]: {
+      width: 160,
+      height: 90
+    },
+
+    [theme.breakpoints.down(940)]: {
+      width: 140,
+      height: 65
+    },
+
+    [theme.breakpoints.down(775)]: {
+      display: 'none'
+    }
+  },
+
+  swatchBharat: {
+    width: 150,
+    height: 80,
+
+    [theme.breakpoints.down(985)]: {
+      width: 130,
+      height: 65
+    },
+
+    [theme.breakpoints.down(940)]: {
+      width: 110,
+      height: 50
+    },
+
+    [theme.breakpoints.down(640)]: {
+      display: 'none'
+    }
+  },
+
+  codeIndia: {
+    [theme.breakpoints.down(530)]: {
+      display: 'none'
     }
   }
 });

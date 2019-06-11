@@ -13,7 +13,8 @@ export default {
     display: 'flex',
     justifyContent: 'center',
     paddingTop: 10,
-    color: 'white'
+    fontWeight: 'bolder',
+    color: 'black'
   },
 
   content: {

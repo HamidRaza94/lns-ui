@@ -12,6 +12,7 @@ import {
 } from '@material-ui/core';
 
 import { SVG } from '../../../../components';
+import { home } from '../../../../cms';
 
 const styles = theme => ({
   root: {
@@ -22,6 +23,7 @@ const styles = theme => ({
 });
 
 function Content(props) {
+  const { content } = home;
   const { classes } = props;
 
   return (
@@ -33,39 +35,27 @@ function Content(props) {
             style={{ fill: '#864fa6', width: 45, height: 45 }}
           />
           <Typography variant="h5" component="h3">
-            WELCOME TO PUBLIC JUSTICE INSTITUTION
+            {content.heading}
           </Typography>
         </Grid>
-        <Typography component="p">
-          Department of Consumer Affairs is one of the two Departments under the
-          Ministry of Consumer Affairs, Food &amp; Public Distribution. It was
-          constituted as a separate Department in June 1997 as it was considered
-          necessary to have a separate Department to give a fillip to the
-          nascent consumer movement in the country.
-        </Typography>
+        <Typography component="p">{content.description}</Typography>
         <Typography variant="h6" component="h3" style={{ marginTop: 15 }}>
-          The Department has been entrusted with the following work
+          {content.biologueHeading}
         </Typography>
         <List dense={true} disablePadding={true}>
-          <ListItem>
-            <SVG variant="yes" style={{ width: 20, height: 20 }} />
-            <ListItemText primary="Single-line item" />
-          </ListItem>
-          <ListItem>
-            <SVG variant="yes" style={{ width: 20, height: 20 }} />
-            <ListItemText primary="Single-line item" />
-          </ListItem>
-          <ListItem>
-            <SVG variant="yes" style={{ width: 20, height: 20 }} />
-            <ListItemText primary="Single-line item" />
-          </ListItem>
-          <ListItem>
-            <SVG variant="yes" style={{ width: 20, height: 20 }} />
-            <ListItemText primary="Single-line item" />
-          </ListItem>
+          {content.biologues.map((biologue, index) => {
+            if (index < 7) {
+              return (
+                <ListItem>
+                  <SVG variant="yes" style={{ width: 20, height: 20 }} />
+                  <ListItemText style={{ fontSize: 13 }} primary={biologue} />
+                </ListItem>
+              );
+            }
+          })}
         </List>
         <Button variant="contained" style={{ backgroundColor: '#cfcfcf' }}>
-          More ->
+          {content.button.text} ->
         </Button>
       </Paper>
     </div>
