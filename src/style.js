@@ -17,7 +17,12 @@ export default {
     padding: '1rem',
     position: 'relative',
     textDecoration: 'none',
-    transitionDuration: '0.5s'
+    transitionDuration: '0.5s',
+    cursor: 'pointer',
+
+    '&:hover': {
+      background: '#a9502c'
+    }
   },
 
   text: {
@@ -36,8 +41,7 @@ export default {
     transition: 'all 0.5s ease',
     marginTop: '1rem',
     left: 0,
-    display: 'none',
-    zIndex: 1
+    display: 'none'
   },
 
   ul_li_ul_li: {

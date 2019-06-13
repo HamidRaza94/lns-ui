@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core';
-import Stepper from '@material-ui/core/Stepper';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import {
+  withStyles,
+  Stepper,
+  Step,
+  StepLabel,
+  Button,
+  Typography
+} from '@material-ui/core';
 
 import styles from './style';
+import { PersonalDetail } from './component';
 
-function getSteps() {
-  return [
-    'Select master blaster campaign settings',
-    'Create an ad group',
-    'Create an ad'
-  ];
-}
+const steps = ['Personal Details', 'Incident Detail', 'Witness Detail'];
 
 function getStepContent(stepIndex) {
   switch (stepIndex) {
     case 0:
-      return 'Select campaign settings...';
+      return <PersonalDetail />;
     case 1:
-      return 'What is an ad group anyways?';
+      return 'Incident Detail';
     case 2:
-      return 'This is the bit I really care about!';
+      return 'Witness Detail';
     default:
-      return 'Uknown stepIndex';
+      return 'Unknown stepIndex';
   }
 }
 
@@ -33,33 +30,57 @@ class VolunteerShip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStep: null,
-      setActiveStep: 0
+      activeStep: 0,
+      personalDetail: {
+        candidateName: '',
+        fatherName: '',
+        maritalStatus: '',
+        sex: '',
+        dateOfBirth: '',
+        placeOfBirth: '',
+        occupation: '',
+        religion: '',
+        category: '',
+        photo: false,
+        sign: false,
+        physicalStatus: ''
+      },
+      communicationDetail: {
+        email: '',
+        phone: '',
+        policeStation: '',
+        state: '',
+        pincode: '',
+        address: ''
+      },
+      documentDetail: {
+        aadhaar: '',
+        pan: ''
+      }
     };
   }
 
   handleNext = () => {
     this.setState(prevState => ({
-      setActiveStep: prevState.setActiveStep + 1
+      activeStep: prevState.activeStep + 1
     }));
   };
 
   handleBack = () => {
     this.setState(prevState => ({
-      setActiveStep: prevState.setActiveStep - 1
+      activeStep: prevState.activeStep - 1
     }));
   };
 
   handleReset = () => {
     this.setState({
-      setActiveStep: 0
+      activeStep: 0
     });
   };
 
   render() {
     const classes = this.props;
-    const { activeStep, setActiveStep } = this.state;
-    const steps = getSteps();
+    const { activeStep } = this.state;
 
     return (
       <div className={classes.root}>
@@ -79,7 +100,7 @@ class VolunteerShip extends Component {
               <Button onClick={this.handleReset}>Reset</Button>
             </div>
           ) : (
-            <div>
+            <div className={classes.content}>
               <Typography className={classes.instructions}>
                 {getStepContent(activeStep)}
               </Typography>

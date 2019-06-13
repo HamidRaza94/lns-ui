@@ -4,15 +4,24 @@ const styles = theme => ({
   },
 
   backButton: {
-    marginRight: 1
+    // marginRight: 1
     // marginRight: theme.spacing(1)
   },
 
   instructions: {
-    marginTop: 1,
-    marginBottom: 1
+    // marginTop: 1,
+    // marginBottom: 1
     // marginTop: theme.spacing(1),
     // marginBottom: theme.spacing(1)
+  },
+
+  content: {
+    backgroundColor: 'grey',
+    display: 'flex',
+    flexDirection: 'column',
+    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 });
 
