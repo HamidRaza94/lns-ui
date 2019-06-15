@@ -12,7 +12,7 @@ import {
 } from '@material-ui/core';
 
 import { SVG } from '../../../../components';
-import { home } from '../../../../cms';
+import { content } from '../../../../cms/home';
 
 const styles = theme => ({
   root: {
@@ -23,7 +23,6 @@ const styles = theme => ({
 });
 
 function Content(props) {
-  const { content } = home;
   const { classes } = props;
 
   return (

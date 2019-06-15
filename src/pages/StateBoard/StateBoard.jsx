@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles, Select, MenuItem } from '@material-ui/core';
 
 import styles from './style';
-import { STATES } from '../../config';
+import { STATES } from '../../cms/constants';
 import { Table } from '../../components';
 
 function createData(name, state, contact) {

@@ -1,7 +1,5 @@
-import * as home from './home';
-import * as constants from './constants';
-
-export { home };
+export * from './constants';
+export * from './home';
 export { default as routes } from './routes';
 export { default as header } from './header';
-export { constants };
+export { default as teams } from './teams';

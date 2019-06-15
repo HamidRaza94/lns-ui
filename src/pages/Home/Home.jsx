@@ -4,12 +4,10 @@ import { withStyles, Grid } from '@material-ui/core';
 import styles from './style';
 import { Content, UpdatePanel } from './components';
 import { Slider, Section } from '../../components';
-import { home } from '../../cms';
-import { TEAM_FOLDER } from '../../config';
+import { gallery, banners, sections } from '../../cms/home';
+import { TEAM_FOLDER } from '../../cms/constants';
 
 const Home = () => {
-  const { gallery, banners, sections } = home;
-
   return (
     <Grid container direction="column">
       <Grid item>

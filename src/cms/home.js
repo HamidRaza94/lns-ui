@@ -1,4 +1,47 @@
-export default {
+import { BANNER_FOLDER, GALLERY_FOLDER, SECTION_FOLDER } from './constants';
+
+const banners = [`${BANNER_FOLDER}/1.jpg`];
+
+const gallery = [
+  `${GALLERY_FOLDER}/1.jpg`,
+  `${GALLERY_FOLDER}/2.jpg`,
+  `${GALLERY_FOLDER}/3.jpg`,
+  `${GALLERY_FOLDER}/4.jpg`,
+  `${GALLERY_FOLDER}/5.jpg`,
+  `${GALLERY_FOLDER}/6.jpg`,
+  `${GALLERY_FOLDER}/7.jpg`,
+  `${GALLERY_FOLDER}/8.jpg`,
+  `${GALLERY_FOLDER}/9.jpg`,
+  `${GALLERY_FOLDER}/10.jpg`
+];
+
+const sections = [
+  {
+    media: `${SECTION_FOLDER}/journalism.jpg`,
+    mediaText: 'Journalism',
+    list: ['list1', 'list2', 'list3']
+  },
+
+  {
+    media: `${SECTION_FOLDER}/handicraft.jpg`,
+    mediaText: 'Handicraft',
+    list: ['list1', 'list2', 'list3']
+  },
+
+  {
+    media: `${SECTION_FOLDER}/computer.jpg`,
+    mediaText: 'Computer',
+    list: ['list1', 'list2', 'list3']
+  },
+
+  {
+    media: `${SECTION_FOLDER}/beautician.jpeg`,
+    mediaText: 'Beautician',
+    list: ['list1', 'list2', 'list3']
+  }
+];
+
+const content = {
   heading: 'WELCOME TO PUBLIC JUSTICE INSTITUTION',
   description:
     'Department of Consumer Affairs is one of the two Departments under the Ministry of Consumer Affairs, Food &amp; Public Distribution. It was constituted as a separate Department in June 1997 as it was considered necessary to have a separate Department to give a fillip to the nascent consumer movement in the country.',
@@ -186,4 +229,11 @@ export default {
     'To provide the right to the cultivator and to demands for financial facility to them.',
     'To provide the facility of the letter boxes for the improvement of the problems of the people in which people can drop the letters at any time containing the problems on which the president of the organisation Mr. Shah Alam himself take himself'
   ]
+};
+
+export {
+  banners,
+  gallery,
+  sections,
+  content,
 };

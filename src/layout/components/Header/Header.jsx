@@ -3,8 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
 import { styles } from './styles';
-import { LOGO_IMAGE } from '../../../config';
-import { header } from '../../../cms';
+import header from '../../../cms/header';
+import { LOGO_IMAGE } from '../../../cms/constants';
 
 const Header = props => {
   const { classes } = props;
