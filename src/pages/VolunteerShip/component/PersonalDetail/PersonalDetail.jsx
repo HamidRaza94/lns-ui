@@ -4,9 +4,18 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 
 const personalDetail = props => {
-  // const { classes } = props;
+  const { data } = props;
 
-  return <div>personalDetail</div>;
+  const {
+    candidateName,
+  } = data;
+
+  return (
+    <label>
+      Name:
+      <input type="text" value={candidateName} />
+    </label>
+  );
 };
 
 export default withStyles(styles)(personalDetail);

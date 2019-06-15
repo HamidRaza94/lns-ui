@@ -44,7 +44,7 @@ function Content(props) {
         </Typography>
         <List dense={true} disablePadding={true}>
           {content.biologues.map((biologue, index) => {
-            if (index < 7) {
+            if (index < 6) {
               return (
                 <ListItem>
                   <SVG variant="yes" style={{ width: 20, height: 20 }} />
@@ -52,6 +52,8 @@ function Content(props) {
                 </ListItem>
               );
             }
+
+            return (<></>);
           })}
         </List>
         <Button variant="contained" style={{ backgroundColor: '#cfcfcf' }}>
