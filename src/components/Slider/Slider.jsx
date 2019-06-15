@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import { getRandomNumber, getNextRoundRobin } from '../../lib/utils/helpers';
 import styles from './style';
+import { SliderDefaultProps, SliderPropTypes } from '../../lib/utils/props'
 
 class Slider extends Component {
   constructor(props) {
@@ -61,19 +61,7 @@ class Slider extends Component {
   }
 }
 
-Slider.defaultProps = {
-  altText: 'Lok Niyay Sansthan Gallery',
-  defaultBanner: '',
-  duration: 3000,
-  random: false
-};
-
-Slider.propTypes = {
-  altText: PropTypes.string,
-  banners: PropTypes.arrayOf(PropTypes.string).isRequired,
-  defaultBanner: PropTypes.string,
-  duration: PropTypes.number,
-  random: PropTypes.bool
-};
+Slider.defaultProps = SliderDefaultProps;
+Slider.propTypes = SliderPropTypes;
 
 export default withStyles(styles)(Slider);

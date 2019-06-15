@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   withStyles,
   Grid,
@@ -16,6 +15,7 @@ import {
 
 import styles from './style';
 import { SVG } from '../SVG';
+import { SectionDefaultProps, SectionPropTypes } from '../../lib/utils/props';
 
 function Section(props) {
   const { classes, media, mediaText, list, style } = props;
@@ -67,12 +67,7 @@ function Section(props) {
   );
 }
 
-Section.propTypes = {
-  style: PropTypes.object.isRequired
-};
-
-Section.defaultProps = {
-  style: {}
-};
+Section.defaultProps = SectionDefaultProps;
+Section.propTypes = SectionPropTypes;
 
 export default withStyles(styles)(Section);

@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 import styles from './style';
+import { ButtonDefaultProps, ButtonPropTypes } from '../../lib/utils/props';
 
 const Button = props => {
   const {
@@ -28,17 +28,7 @@ const Button = props => {
   );
 };
 
-Button.defaultProps = {
-  color: '',
-  disabled: false,
-  style: {}
-};
-
-Button.propTypes = {
-  color: PropTypes.string,
-  disabled: PropTypes.bool,
-  style: PropTypes.objectOf(PropTypes.string),
-  value: PropTypes.string.isRequired
-};
+Button.defaultProps = ButtonDefaultProps;
+Button.propTypes = ButtonPropTypes;
 
 export default withStyles(styles)(Button);
