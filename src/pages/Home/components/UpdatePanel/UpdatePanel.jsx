@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Card } from '../../../../components';
 import styles from './style';
+import { config } from '../../../../config';
 
 class UpdatePanel extends Component {
   constructor(props) {
@@ -16,15 +17,17 @@ class UpdatePanel extends Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:9000/api/update')
+    const { SERVER_URL } = config;
+
+    fetch(`${SERVER_URL}/update`)
       .then(res => res.json())
       .then(
-        result => {
+        ({ data }) => {
           const news = [];
           const link = [];
           const notice = [];
 
-          result.data.forEach(({ type, headline }) => {
+          data.forEach(({ type, headline }) => {
             if (type === 'news') {
               news.push(headline);
             } else if (type === 'link') {
