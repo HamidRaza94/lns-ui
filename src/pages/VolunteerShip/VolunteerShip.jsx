@@ -53,7 +53,7 @@ class VolunteerShip extends Component {
     console.log(this.state)
   }
 
-  getStepContent = (activeStep) => {
+  getStepContent = (activeStep, classes) => {
     const {
       candidateName,
       fatherName,
@@ -73,22 +73,20 @@ class VolunteerShip extends Component {
       address,
       aadhaar,
       pan,
-      photo,
-      sign
     } = this.state;
 
     switch (activeStep) {
       case 0:
         return (
           <>
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div className={classes.row}>
               <TextField
                 id="candidateName"
                 label="Candidate Name"
                 value={candidateName}
                 margin="dense"
                 fullWidth
-                style={{ paddingRight: 20 }}
+                className={classes.padding}
                 onChange={this.handleChange('candidateName')}
               />
 
@@ -128,14 +126,14 @@ class VolunteerShip extends Component {
               </RadioGroup>
             </FormControl>
 
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+            <div className={classes.row}>
               <TextField
                 id="dateOfBirth"
                 label="Date Of Birth"
                 value={dateOfBirth}
                 type="date"
                 fullWidth
-                style={{ paddingRight: 20 }}
+                className={classes.padding}
                 onChange={this.handleChange('dateOfBirth')}
                 InputLabelProps={{
                   shrink: true,
@@ -159,8 +157,8 @@ class VolunteerShip extends Component {
               </FormControl>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-              <FormControl fullWidth style={{ paddingRight: 20 }}>
+            <div className={classes.row}>
+              <FormControl fullWidth className={classes.padding}>
                 <InputLabel htmlFor="category-select">Category</InputLabel>
                 <Select
                   value={category}
@@ -193,14 +191,14 @@ class VolunteerShip extends Component {
               </FormControl>
             </div>
 
-            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+            <div className={classes.row}>
               <TextField
                 id="occupation"
                 label="Occupation"
                 value={occupation}
                 margin="dense"
                 fullWidth
-                style={{ paddingRight: 20 }}
+                className={classes.padding}
                 onChange={this.handleChange('occupation')}
               />
 
@@ -367,7 +365,7 @@ class VolunteerShip extends Component {
         <div>
           <div className={classes.form}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {this.getStepContent(activeStep)}
+              {this.getStepContent(activeStep, classes)}
             </div>
           </div>
           <div className={classes.button}>

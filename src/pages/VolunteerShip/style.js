@@ -40,8 +40,23 @@ const styles = theme => ({
     padding: 10
   },
 
-  name: {
-    margin: 20,
+  padding: {
+    paddingRight: 20,
+
+    [theme.breakpoints.down(450)]: {
+      paddingRight: 0,
+    },
+  },
+
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    transition: '0.2s',
+
+    [theme.breakpoints.down(450)]: {
+      flexDirection: 'column',
+    },
   },
 });
 
