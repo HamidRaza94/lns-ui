@@ -1,17 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import {
+  withStyles,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Typography,
+  CircularProgress,
+} from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
 import styles from './style';
 
 function Update(props) {
-  const { classes, title, value, style } = props;
+  const { classes, title, isLoading, value, style } = props;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
@@ -24,14 +27,17 @@ function Update(props) {
         {title}
       </Typography>
       <CardContent className={classes.content}>
-        {value.length
-          ? value.map(item => (
-              <Typography gutterBottom style={{ ...style.value }}>
-                {bull}
-                {item}
-              </Typography>
-            ))
-          : `No ${title} Here !`}
+        {isLoading
+          ? <CircularProgress />
+          : (value.length
+            ? value.map(item => (
+                <Typography gutterBottom style={{ ...style.value }}>
+                  {bull}
+                  {item}
+                </Typography>
+              ))
+            : `No ${title} Here !`)
+        }
       </CardContent>
       <CardActions>
         <Button

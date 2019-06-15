@@ -22,12 +22,12 @@ class UpdatePanel extends Component {
     fetch(`${SERVER_URL}/update`)
       .then(res => res.json())
       .then(
-        ({ data }) => {
+        (result) => {
           const news = [];
           const link = [];
           const notice = [];
 
-          data.forEach(({ type, headline }) => {
+          result.data.forEach(({ type, headline }) => {
             if (type === 'news') {
               news.push(headline);
             } else if (type === 'link') {
@@ -62,19 +62,19 @@ class UpdatePanel extends Component {
           <Card
             variant="update"
             title="News"
-            value={['Loading...']}
+            isLoading
             style={styles.news}
           />
           <Card
             variant="update"
             title="Important Link"
-            value={['Loading...']}
+            isLoading
             style={styles.link}
           />
           <Card
             variant="update"
             title="Notice"
-            value={['Loading...']}
+            isLoading
             style={styles.notice}
           />
         </div>

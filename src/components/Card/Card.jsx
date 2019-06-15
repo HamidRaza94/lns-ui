@@ -8,8 +8,8 @@ const Card = props => {
 
   switch (variant) {
     case 'update':
-      const { title, value, style } = props;
-      return <Update title={title} value={value} style={style} />;
+      const { title, isLoading, value, style } = props;
+      return <Update title={title} isLoading={isLoading} value={value} style={style} />;
 
     case 'team':
       const {
