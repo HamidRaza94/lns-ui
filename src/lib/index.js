@@ -1,2 +1,1 @@
-export { getRandomNumber, getNextRoundRobin } from './utils';
-export { capitalizeAll, capitalizeFirst } from './utils';
+export * from './utils';

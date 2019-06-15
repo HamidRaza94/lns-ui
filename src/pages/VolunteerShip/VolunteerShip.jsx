@@ -19,7 +19,7 @@ import {
 
 import styles from './style';
 import { SEX, MARITAL_STATUS, CATEGORY, RELIGION, PHYSICAL_STATUS, STATES } from '../../cms/constants';
-import { capitalizeAll } from '../../lib/utils'
+import { capitalizeAll } from '../../lib/utils/helpers'
 class VolunteerShip extends Component {
   constructor(props) {
     super(props);

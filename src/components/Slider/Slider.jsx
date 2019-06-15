@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
-import { getRandomNumber, getNextRoundRobin } from '../../lib';
+import { getRandomNumber, getNextRoundRobin } from '../../lib/utils/helpers';
 import styles from './style';
 
 class Slider extends Component {
