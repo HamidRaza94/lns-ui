@@ -10,32 +10,29 @@ const Footer = props => {
 
   return (
     <div className={classes.root}>
-    <div className={classes.rootBackground}>
-      <Typography className={classes.warning}>
-        The Central Chief Director is only authorized to change any person and
-        the designation in written on this website.
-      </Typography>
-      <Typography className={classes.warning}>
-        The available name, designation and photo on this website does not mean
-        that related person is permanent appointed in this institution.
-      </Typography>
-    
+      <div className={classes.warning}>
+        <Typography className={classes.warningMsg}>
+          The Central Chief Director is only authorized to change any person and
+          the designation in written on this website.
+        </Typography>
+        <Typography className={classes.warningMsg}>
+          The available name, designation and photo on this website does not
+          mean that related person is permanent appointed in this institution.
+        </Typography>
       </div>
-      <div className={classes.footer}>
-      <Typography  className={classes.designer}>
-        Copyrights ©  Lok Niyay Sansthan
-      </Typography>
-      
-      <div className={classes.social}>
-        <SVG variant="whatsapp" />
-        <SVG variant="facebook" />
-        <SVG variant="twitter" />
+      <div className={classes.mainFooter}>
+        <Typography className={classes.designer}>
+          Copyrights &copy; Lok Niyay Sansthan
+        </Typography>
+        <div className={classes.social}>
+          <SVG variant="whatsapp" />
+          <SVG variant="facebook" />
+          <SVG variant="twitter" />
+        </div>
+        <Typography className={classes.designer}>
+          Designed by: <br /> Mohammad Hamid Raza &amp; Sagun Saluja
+        </Typography>
       </div>
-      <Typography className={classes.designer}>
-        Designed by:<br/>
-        Mohammad Hamid Raza & Sagun Saluja
-      </Typography>
-    </div>
     </div>
   );
 };
