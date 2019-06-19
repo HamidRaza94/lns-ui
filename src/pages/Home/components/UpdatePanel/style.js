@@ -1,7 +1,12 @@
-export default {
+const style = theme => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+
+    [theme.breakpoints.down(1000)]: {
+      display: 'flex',
+      flexDirection: 'row'
+    }
   },
 
   news: {
@@ -48,4 +53,6 @@ export default {
       backgroundColor: '#4286f4'
     }
   }
-};
+});
+
+export default style;

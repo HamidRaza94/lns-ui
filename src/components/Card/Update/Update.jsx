@@ -7,7 +7,7 @@ import {
   CardContent,
   Button,
   Typography,
-  CircularProgress,
+  CircularProgress
 } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 
@@ -27,17 +27,18 @@ function Update(props) {
         {title}
       </Typography>
       <CardContent className={classes.content}>
-        {isLoading
-          ? <CircularProgress />
-          : (value.length
-            ? value.map(item => (
-                <Typography gutterBottom style={{ ...style.value }}>
-                  {bull}
-                  {item}
-                </Typography>
-              ))
-            : `No ${title} Here !`)
-        }
+        {isLoading ? (
+          <CircularProgress />
+        ) : value.length ? (
+          value.map(item => (
+            <Typography gutterBottom style={{ ...style.value }}>
+              {bull}
+              {item}
+            </Typography>
+          ))
+        ) : (
+          `No ${title} Here !`
+        )}
       </CardContent>
       <CardActions>
         <Button

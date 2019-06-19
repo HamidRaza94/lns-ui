@@ -14,17 +14,31 @@ import {
   FormLabel,
   Select,
   MenuItem,
-  InputLabel,
+  InputLabel
 } from '@material-ui/core';
 
 import styles from './style';
-import { SEX, MARITAL_STATUS, CATEGORY, RELIGION, PHYSICAL_STATUS, STATES } from '../../cms/constants';
-import { capitalizeAll } from '../../lib/utils/helpers'
+import {
+  SEX,
+  MARITAL_STATUS,
+  CATEGORY,
+  RELIGION,
+  PHYSICAL_STATUS,
+  STATES
+} from '../../cms/constants';
+import { capitalizeAll } from '../../lib/utils/helpers';
+
 class VolunteerShip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      steps: ['Personal Details', 'Communication Detail', 'Document Detail', 'Photo and Sign', 'Payment'],
+      steps: [
+        'Personal Details',
+        'Communication Detail',
+        'Document Detail',
+        'Photo and Sign',
+        'Payment'
+      ],
       activeStep: 0,
       candidateName: '',
       fatherName: '',
@@ -50,8 +64,8 @@ class VolunteerShip extends Component {
   }
 
   componentDidUpdate = () => {
-    console.log(this.state)
-  }
+    console.log(this.state);
+  };
 
   getStepContent = (activeStep, classes) => {
     const {
@@ -72,7 +86,7 @@ class VolunteerShip extends Component {
       pincode,
       address,
       aadhaar,
-      pan,
+      pan
     } = this.state;
 
     switch (activeStep) {
@@ -102,8 +116,14 @@ class VolunteerShip extends Component {
 
             <FormControl component="fieldset">
               <FormLabel component="legend">Sex</FormLabel>
-              <RadioGroup aria-label="position" name="position" value={sex} onChange={this.handleChange('sex')} row>
-                {SEX.map((item) => (
+              <RadioGroup
+                aria-label="position"
+                name="position"
+                value={sex}
+                onChange={this.handleChange('sex')}
+                row
+              >
+                {SEX.map(item => (
                   <FormControlLabel
                     value={item}
                     control={<Radio color="primary" />}
@@ -115,8 +135,14 @@ class VolunteerShip extends Component {
 
             <FormControl component="fieldset">
               <FormLabel component="legend">Marital Status</FormLabel>
-              <RadioGroup aria-label="position" name="position" value={maritalStatus} onChange={this.handleChange('maritalStatus')} row>
-                {MARITAL_STATUS.map((item) => (
+              <RadioGroup
+                aria-label="position"
+                name="position"
+                value={maritalStatus}
+                onChange={this.handleChange('maritalStatus')}
+                row
+              >
+                {MARITAL_STATUS.map(item => (
                   <FormControlLabel
                     value={item}
                     control={<Radio color="primary" />}
@@ -136,21 +162,23 @@ class VolunteerShip extends Component {
                 className={classes.padding}
                 onChange={this.handleChange('dateOfBirth')}
                 InputLabelProps={{
-                  shrink: true,
+                  shrink: true
                 }}
               />
 
               <FormControl fullWidth>
-                <InputLabel htmlFor="placeOfBirth-select">Place Of Birth</InputLabel>
+                <InputLabel htmlFor="placeOfBirth-select">
+                  Place Of Birth
+                </InputLabel>
                 <Select
                   value={placeOfBirth}
                   onChange={this.handleChange('placeOfBirth')}
                   inputProps={{
                     name: 'placeOfBirth',
-                    id: 'placeOfBirth-select',
+                    id: 'placeOfBirth-select'
                   }}
                 >
-                  {STATES.map((item) => (
+                  {STATES.map(item => (
                     <MenuItem value={item}>{item}</MenuItem>
                   ))}
                 </Select>
@@ -165,10 +193,10 @@ class VolunteerShip extends Component {
                   onChange={this.handleChange('category')}
                   inputProps={{
                     name: 'category',
-                    id: 'category-select',
+                    id: 'category-select'
                   }}
                 >
-                  {CATEGORY.map((item) => (
+                  {CATEGORY.map(item => (
                     <MenuItem value={item}>{item}</MenuItem>
                   ))}
                 </Select>
@@ -181,10 +209,10 @@ class VolunteerShip extends Component {
                   onChange={this.handleChange('religion')}
                   inputProps={{
                     name: 'religion',
-                    id: 'religion-select',
+                    id: 'religion-select'
                   }}
                 >
-                  {RELIGION.map((item) => (
+                  {RELIGION.map(item => (
                     <MenuItem value={item}>{item}</MenuItem>
                   ))}
                 </Select>
@@ -203,16 +231,18 @@ class VolunteerShip extends Component {
               />
 
               <FormControl fullWidth>
-              <InputLabel htmlFor="physicalStatus-select">Physical Status</InputLabel>
+                <InputLabel htmlFor="physicalStatus-select">
+                  Physical Status
+                </InputLabel>
                 <Select
                   value={physicalStatus}
                   onChange={this.handleChange('physicalStatus')}
                   inputProps={{
                     name: 'physicalStatus',
-                    id: 'physicalStatus-select',
+                    id: 'physicalStatus-select'
                   }}
                 >
-                  {PHYSICAL_STATUS.map((item) => (
+                  {PHYSICAL_STATUS.map(item => (
                     <MenuItem value={item}>{item}</MenuItem>
                   ))}
                 </Select>
@@ -257,10 +287,10 @@ class VolunteerShip extends Component {
                 onChange={this.handleChange('state')}
                 inputProps={{
                   name: 'state',
-                  id: 'state-select',
+                  id: 'state-select'
                 }}
               >
-                {STATES.map((item) => (
+                {STATES.map(item => (
                   <MenuItem value={item}>{item}</MenuItem>
                 ))}
               </Select>
@@ -307,16 +337,13 @@ class VolunteerShip extends Component {
           </>
         );
       case 3:
-        return (
-          <>
-          </>
-        );
+        return <></>;
       default:
         return 'Unknown stepIndex';
     }
-  }
+  };
 
-  handleChange = field => (event) => {
+  handleChange = field => event => {
     let data;
 
     if (field === 'pan') {
@@ -328,7 +355,7 @@ class VolunteerShip extends Component {
     this.setState({
       [field]: data
     });
-  }
+  };
 
   handleNext = () => {
     this.setState(prevState => ({
@@ -354,7 +381,9 @@ class VolunteerShip extends Component {
 
     return (
       <div className={classes.root}>
-        <Typography variant="h4" align="center">Volunteer Ship Form</Typography>
+        <Typography variant="h4" align="center">
+          Volunteer Ship Form
+        </Typography>
         <Stepper activeStep={activeStep} alternativeLabel>
           {steps.map(label => (
             <Step key={label}>

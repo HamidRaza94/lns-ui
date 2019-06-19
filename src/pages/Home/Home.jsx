@@ -7,17 +7,19 @@ import { Slider, Section } from '../../components';
 import { gallery, banners, sections } from '../../cms/home';
 import { TEAM_FOLDER } from '../../cms/constants';
 
-const Home = () => {
-  return (
-    <Grid container direction="column">
-      <Grid item>
-        <Slider banners={banners} width="100%" height="350" random />
-      </Grid>
+const Home = props => {
+  const { classes } = props;
 
-      <Grid item>
-        <Grid container justify="center" style={{ backgroundColor: '' }}>
-          <Grid item sm={3} style={{ backgroundColor: '' }}>
-            <div>
+  return (
+    <div className={classes.root}>
+      <div className={classes.slider}>
+        {/* <Slider banners={banners} className={classes.banner} /> */}
+      </div>
+
+      <div className={classes.body}>
+        <div className={classes.update}>
+          <div className={classes.chiefDirector}>
+            <div className={classes.chiefDirectorImage}>
               <img
                 src={`${TEAM_FOLDER}/saiyad_shah_alam.jpg`}
                 width={120}
@@ -25,30 +27,25 @@ const Home = () => {
                 alt="Saiyad Shah Alam"
               />
             </div>
-            <UpdatePanel />
-          </Grid>
+            <div className={classes.chiefDirectorMessage} />
+          </div>
+          <UpdatePanel className={classes.updatePanel} />
+        </div>
 
-          <Grid item sm={7}>
-            <Content />
-            <Slider banners={gallery} width="100%" height="300" random />
-          </Grid>
-        </Grid>
-      </Grid>
+        <div className={classes.content}>
+          <Content />
+          <Slider banners={gallery} className={classes.banner} random />
+        </div>
+      </div>
 
-      <Grid item style={{ margin: 10 }}>
-        <Grid container justify="center" alignItems="center">
+      <div className={classes.sections}>
+        {sections.map(({ media, mediaText, list }) => (
           <Grid item>
-            <Grid container justify="center">
-              {sections.map(({ media, mediaText, list }) => (
-                <Grid item>
-                  <Section media={media} mediaText={mediaText} list={list} />
-                </Grid>
-              ))}
-            </Grid>
+            <Section media={media} mediaText={mediaText} list={list} />
           </Grid>
-        </Grid>
-      </Grid>
-    </Grid>
+        ))}
+      </div>
+    </div>
   );
 };
 

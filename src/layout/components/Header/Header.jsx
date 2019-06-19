@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
-import { styles } from './styles';
+import styles from './style';
 import header from '../../../cms/header';
 import { LOGO_IMAGE } from '../../../cms/constants';
 

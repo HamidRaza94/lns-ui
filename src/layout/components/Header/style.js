@@ -1,7 +1,9 @@
-export const styles = theme => ({
+const style = theme => ({
   root: {
     padding: '0px 50px',
     backgroundColor: '#f2944d',
+    transition: '0.2s',
+
     [theme.breakpoints.down(1050)]: {
       padding: '0px 40px'
     },
@@ -27,6 +29,7 @@ export const styles = theme => ({
     height: 140,
     margin: '5px 5px 5px 5px',
     cursor: 'pointer',
+    transition: '0.2s',
 
     [theme.breakpoints.down(985)]: {
       width: 110,
@@ -43,6 +46,7 @@ export const styles = theme => ({
     fontWeight: 'bold',
     fontSize: 18,
     fontFamily: 'Arial, Helvetica, sans-serif',
+    transition: '0.2s',
 
     [theme.breakpoints.down(985)]: {
       fontSize: 17
@@ -56,6 +60,7 @@ export const styles = theme => ({
   gandhi150: {
     width: 200,
     height: 110,
+    transition: '0.2s',
 
     [theme.breakpoints.down(985)]: {
       width: 180,
@@ -80,6 +85,7 @@ export const styles = theme => ({
   swatchBharat: {
     width: 150,
     height: 80,
+    transition: '0.2s',
 
     [theme.breakpoints.down(985)]: {
       width: 130,
@@ -97,8 +103,12 @@ export const styles = theme => ({
   },
 
   codeIndia: {
+    transition: '0.2s',
+
     [theme.breakpoints.down(530)]: {
       display: 'none'
     }
   }
 });
+
+export default style;

@@ -22,7 +22,7 @@ class UpdatePanel extends Component {
     fetch(`${SERVER_URL}/update`)
       .then(res => res.json())
       .then(
-        (result) => {
+        result => {
           const news = [];
           const link = [];
           const notice = [];
@@ -59,12 +59,7 @@ class UpdatePanel extends Component {
     if (!isLoaded) {
       return (
         <div style={styles.root}>
-          <Card
-            variant="update"
-            title="News"
-            isLoading
-            style={styles.news}
-          />
+          <Card variant="update" title="News" isLoading style={styles.news} />
           <Card
             variant="update"
             title="Important Link"
