@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { Update } from './Update';
-import { Team } from './Team';
+import { Update, Team } from './components';
 
 const Card = props => {
   const { variant } = props;
 
   switch (variant) {
     case 'update':
-      const { title, isLoading, value, style } = props;
-      return <Update title={title} isLoading={isLoading} value={value} style={style} />;
+      const { title, isLoading, value } = props;
+      return <Update title={title} isLoading={isLoading} value={value} />;
 
     case 'team':
       const {

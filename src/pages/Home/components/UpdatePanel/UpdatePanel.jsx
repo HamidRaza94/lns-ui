@@ -59,18 +59,16 @@ class UpdatePanel extends Component {
     if (!isLoaded) {
       return (
         <div style={styles.root}>
-          <Card variant="update" title="News" isLoading style={styles.news} />
+          <Card variant="update" title="News" isLoading />
           <Card
             variant="update"
             title="Important Link"
             isLoading
-            style={styles.link}
           />
           <Card
             variant="update"
             title="Notice"
             isLoading
-            style={styles.notice}
           />
         </div>
       );
@@ -81,19 +79,16 @@ class UpdatePanel extends Component {
             variant="update"
             title="News"
             value={error}
-            style={styles.news}
           />
           <Card
             variant="update"
             title="Important Link"
             value={error}
-            style={styles.link}
           />
           <Card
             variant="update"
             title="Notice"
             value={error}
-            style={styles.notice}
           />
         </div>
       );
@@ -106,19 +101,16 @@ class UpdatePanel extends Component {
             variant="update"
             title="News"
             value={news}
-            style={styles.news}
           />
           <Card
             variant="update"
             title="Important Link"
             value={link}
-            style={styles.link}
           />
           <Card
             variant="update"
             title="Notice"
             value={notice}
-            style={styles.notice}
           />
         </div>
       );

@@ -14,14 +14,13 @@ import SendIcon from '@material-ui/icons/Send';
 import styles from './style';
 
 function Update(props) {
-  const { classes, title, isLoading, value, style } = props;
+  const { classes, title, isLoading, value } = props;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.card} style={{ ...style.card }}>
+    <Card className={classes.card}>
       <Typography
         className={classes.title}
-        style={{ ...style.title }}
         variant="h5"
       >
         {title}
@@ -31,7 +30,7 @@ function Update(props) {
           <CircularProgress />
         ) : value.length ? (
           value.map(item => (
-            <Typography gutterBottom style={{ ...style.value }}>
+            <Typography gutterBottom>
               {bull}
               {item}
             </Typography>
@@ -45,7 +44,6 @@ function Update(props) {
           variant="contained"
           color="primary"
           className={classes.button}
-          style={{ ...style.button }}
         >
           More {title}
           <SendIcon className={classes.rightIcon} />

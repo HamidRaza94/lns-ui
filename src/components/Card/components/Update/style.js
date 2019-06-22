@@ -1,7 +1,6 @@
 export default {
   card: {
-    // minWidth: 250,
-    // width: 300
+    margin: '0px 5px 5px 0px'
   },
 
   content: {
@@ -16,7 +15,9 @@ export default {
 
   title: {
     textAlign: 'center',
-    padding: 10
+    padding: 10,
+    color: 'white',
+    backgroundColor: '#4286f4'
   },
 
   pos: {
@@ -24,7 +25,8 @@ export default {
   },
 
   button: {
-    margin: 2
+    margin: 2,
+    backgroundColor: '#4286f4'
   },
 
   rightIcon: {

@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 
 import styles from './style';
-import { SVG } from '../../SVG';
+import { SVG } from '../../../SVG';
 
 const Team = props => {
   const {
