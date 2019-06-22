@@ -26,19 +26,13 @@ import {
   PHYSICAL_STATUS,
   STATES
 } from '../../cms/constants';
+import { steps } from '../../cms/volunteerShip';
 import { capitalizeAll } from '../../lib/utils/helpers';
 
 class VolunteerShip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      steps: [
-        'Personal Details',
-        'Communication Detail',
-        'Document Detail',
-        'Photo and Sign',
-        'Payment'
-      ],
       activeStep: 0,
       candidateName: '',
       fatherName: '',
@@ -377,7 +371,7 @@ class VolunteerShip extends Component {
 
   render() {
     const { classes } = this.props;
-    const { steps, activeStep } = this.state;
+    const { activeStep } = this.state;
 
     return (
       <div className={classes.root}>
