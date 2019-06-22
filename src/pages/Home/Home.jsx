@@ -13,11 +13,15 @@ const Home = props => {
   return (
     <div className={classes.root}>
       <div className={classes.slider}>
-        {/* <Slider banners={banners} className={classes.banner} /> */}
+        <Slider banners={banners} className={classes.banner} />
       </div>
 
       <div className={classes.body}>
         <div className={classes.update}>
+          <UpdatePanel className={classes.updatePanel} />
+        </div>
+
+        <div className={classes.content}>
           <div className={classes.chiefDirector}>
             <div className={classes.chiefDirectorImage}>
               <img
@@ -29,10 +33,6 @@ const Home = props => {
             </div>
             <div className={classes.chiefDirectorMessage} />
           </div>
-          <UpdatePanel className={classes.updatePanel} />
-        </div>
-
-        <div className={classes.content}>
           <Content />
           <Slider banners={gallery} className={classes.banner} random />
         </div>

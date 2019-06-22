@@ -9,11 +9,12 @@ const style = theme => ({
   body: {
     display: 'flex',
     flexDirection: 'row',
-    margin: '0px 100px',
+    margin: '0 10%',
     transition: '0.5s',
 
     [theme.breakpoints.down(1000)]: {
-      flexDirection: 'column-reverse'
+      flexDirection: 'column-reverse',
+      margin: '0 5%'
     }
   },
 
@@ -26,17 +27,19 @@ const style = theme => ({
     minWidth: 300
   },
 
-  // updatePanel: {
-  //   [theme.breakpoints.down(1000)]: {
-  //     display: 'flex',
-  //     flexDirection: 'row'
-  //   }
-  // },
+  updatePanel: {
+    [theme.breakpoints.down(1000)]: {
+      display: 'flex',
+      flexDirection: 'row-reverse'
+    }
+  },
 
   sections: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    transition: '0.5s',
   }
 });
 
