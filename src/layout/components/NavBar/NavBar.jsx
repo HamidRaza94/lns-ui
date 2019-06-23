@@ -22,6 +22,8 @@ class NavBar extends Component {
       home: navStyle,
       centralBoard: navStyle,
       stateBoard: navStyle,
+      protectorBoard: navStyle,
+      advisoryBoard: navStyle,
       volunteers: navStyle,
       volunteerShip: navStyle,
       complaints: navStyle,
@@ -38,6 +40,8 @@ class NavBar extends Component {
       payOnlineAcademicsFees: navStyle,
       syllabus: navStyle,
       studentAttendance: navStyle,
+      admissionCell: navStyle,
+      feesCollectionCell: navStyle,
       employees: navStyle,
       employments: navStyle,
       staffSelectionBoard: navStyle,
@@ -130,6 +134,8 @@ class NavBar extends Component {
       home,
       centralBoard,
       stateBoard,
+      protectorBoard,
+      advisoryBoard,
       volunteers,
       volunteerShip,
       complaints,
@@ -146,6 +152,8 @@ class NavBar extends Component {
       payOnlineAcademicsFees,
       syllabus,
       studentAttendance,
+      admissionCell,
+      feesCollectionCell,
       employees,
       employments,
       staffSelectionBoard,
@@ -191,6 +199,28 @@ class NavBar extends Component {
               onClick={this.handleClick('stateBoard')}
             >
               <Typography className={classes.text}>State Board</Typography>
+            </li>
+          </Link>
+          <Link to={path.protectorBoard}>
+            <li
+              className={classes.li}
+              style={{ ...protectorBoard, ...active.protectorBoard }}
+              onMouseEnter={this.handleButtonHover('protectorBoard', secondary)}
+              onMouseLeave={this.handleButtonHover('protectorBoard', primary)}
+              onClick={this.handleClick('protectorBoard')}
+            >
+              <Typography className={classes.text}>Protector Board</Typography>
+            </li>
+          </Link>
+          <Link to={path.advisoryBoard}>
+            <li
+              className={classes.li}
+              style={{ ...advisoryBoard, ...active.advisoryBoard }}
+              onMouseEnter={this.handleButtonHover('advisoryBoard', secondary)}
+              onMouseLeave={this.handleButtonHover('advisoryBoard', primary)}
+              onClick={this.handleClick('advisoryBoard')}
+            >
+              <Typography className={classes.text}>Advisory Board</Typography>
             </li>
           </Link>
           <Link to={path.volunteers}>
@@ -444,6 +474,50 @@ class NavBar extends Component {
                   >
                     <Typography className={classes.text}>
                       Student Attendance
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.academics.admissionCell}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...admissionCell,
+                      ...active.admissionCell
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'admissionCell',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'admissionCell',
+                      primary
+                    )}
+                    onClick={this.handleClick('admissionCell')}
+                  >
+                    <Typography className={classes.text}>
+                      Admission Cell
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.academics.feesCollectionCell}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...feesCollectionCell,
+                      ...active.feesCollectionCell
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'feesCollectionCell',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'feesCollectionCell',
+                      primary
+                    )}
+                    onClick={this.handleClick('feesCollectionCell')}
+                  >
+                    <Typography className={classes.text}>
+                      Fees Collection Cell
                     </Typography>
                   </li>
                 </Link>
