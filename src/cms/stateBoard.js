@@ -1,19 +1,20 @@
-const STATE_INCHARGE = 'STATE INCHARGE';
-const SUPERINTENDENT = 'SUPERINTENDENT';
-const DEPUTY_SUPERINTENDENT = 'DEPUTY SUPERINTENDENT';
-const CHIEF_SECRETORY_STATE = 'CHIEF SECRETORY STATE';
-const STATE_SECRETORY = 'STATE SECRETORY';
-const CHIEF_ACCOUNT_INCHARGE = 'CHIEF ACCOUNT INCHARGE';
-const DIRECTOR_GENERAL = 'DIRECTOR GENERAL';
-const DIRECTOR = 'DIRECTOR';
+import { RANKS } from './constants';
 
-
+const {
+  STATE_INCHARGE,
+  SUPERINTENDENT,
+  DEPUTY_SUPERINTENDENT,
+  CHIEF_SECRETORY_STATE,
+  STATE_SECRETORY,
+  DIRECTOR_GENERAL,
+  DIRECTOR,
+} = RANKS;
 
 function createData(state, name, rank, contact) {
   return { state, name, rank, contact };
 }
 
-const rows = [
+const data = [
   createData('DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397),
   createData('DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081),
   createData('HARYANA', 'MARDAN ALI', DIRECTOR_GENERAL, 9671213606),
@@ -30,4 +31,4 @@ const rows = [
   createData('UTTAR PRADESH', 'CHAUDHARY FARMAN RAYEEM', DIRECTOR, 7417282919)
 ];
 
-export { rows }
+export { data }

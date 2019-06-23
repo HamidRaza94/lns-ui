@@ -3,7 +3,7 @@ import { withStyles, Select, MenuItem } from '@material-ui/core';
 
 import styles from './style';
 import { STATES } from '../../cms/constants';
-import { rows } from '../../cms/stateBoard';
+import { data } from '../../cms/stateBoard';
 import { Table } from '../../components';
 
 class StateBoard extends Component {
@@ -11,7 +11,7 @@ class StateBoard extends Component {
     super(props);
     this.state = {
       state: '',
-      stateBoard: rows
+      stateBoard: data
     };
   }
 
@@ -20,9 +20,9 @@ class StateBoard extends Component {
     let currentStateBoard;
 
     if (currentState === '') {
-      currentStateBoard = rows;
+      currentStateBoard = data;
     } else {
-      currentStateBoard = rows.filter(row => row.state === currentState);
+      currentStateBoard = data.filter(row => row.state === currentState);
     }
 
     this.setState({
