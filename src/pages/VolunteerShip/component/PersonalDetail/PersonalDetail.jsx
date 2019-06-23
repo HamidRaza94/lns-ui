@@ -15,7 +15,7 @@ import {
 import {
   PersonalDetailDefaultProps,
   PersonalDetailPropTypes
-} from '../../../lib/utils/props';
+} from '../../../../lib/utils/props';
 import {
   SEX,
   MARITAL_STATUS,
@@ -23,19 +23,18 @@ import {
   RELIGION,
   PHYSICAL_STATUS,
   STATES
-} from '../../../cms/constants';
+} from '../../../../cms/constants';
 import styles from './style';
 
 class PersonalDetail extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+  handleChange = field => e => {
+    this.props.onChange(field, e.target.value);
   }
 
   render() {
     const {
       classes,
-      name,
+      candidateName,
       fatherName,
       sex,
       maritalStatus,
@@ -44,7 +43,7 @@ class PersonalDetail extends Component {
       category,
       religion,
       occupation,
-      physicalStatus
+      physicalStatus,
     } = this.props;
 
     return (
@@ -53,7 +52,7 @@ class PersonalDetail extends Component {
           <TextField
             id="candidateName"
             label="Candidate Name"
-            value={name}
+            value={candidateName}
             margin="dense"
             fullWidth
             className={classes.padding}

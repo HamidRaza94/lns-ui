@@ -38,7 +38,7 @@ function Content(props) {
           </Typography>
         </Grid>
         <Typography component="p">{content.description}</Typography>
-        <Typography variant="h6" component="h3" style={{ marginTop: 15 }}>
+        {/* <Typography variant="h6" component="h3" style={{ marginTop: 15 }}>
           {content.biologueHeading}
         </Typography>
         <List dense={true} disablePadding={true}>
@@ -57,7 +57,7 @@ function Content(props) {
         </List>
         <Button variant="contained" style={{ backgroundColor: '#cfcfcf' }}>
           {content.button.text} ->
-        </Button>
+        </Button> */}
       </Paper>
     </div>
   );

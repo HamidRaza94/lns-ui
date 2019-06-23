@@ -1,1 +1,3 @@
-export { default as PersonalDetail } from './PersonalDetail';
+export { PersonalDetail } from './PersonalDetail';
+export { CommunicationDetail } from './CommunicationDetail';
+export { DocumentDetail } from './DocumentDetail';

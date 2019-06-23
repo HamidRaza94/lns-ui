@@ -39,25 +39,6 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: 10
   },
-
-  padding: {
-    paddingRight: 20,
-
-    [theme.breakpoints.down(450)]: {
-      paddingRight: 0,
-    },
-  },
-
-  row: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    transition: '0.2s',
-
-    [theme.breakpoints.down(450)]: {
-      flexDirection: 'column',
-    },
-  },
 });
 
 export default styles;

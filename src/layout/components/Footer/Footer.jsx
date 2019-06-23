@@ -1,8 +1,7 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, Typography } from '@material-ui/core';
 
-import { styles } from './style';
+import styles from './style';
 import { SVG } from '../../../components';
 
 const Footer = props => {
@@ -30,7 +29,7 @@ const Footer = props => {
           <SVG variant="twitter" />
         </div>
         <Typography className={classes.designer}>
-          Designed by: <br /> Mohammad Hamid Raza &amp; Sagun Saluja
+          Designed by: <br /> Mohammad Hamid Raza
         </Typography>
       </div>
     </div>

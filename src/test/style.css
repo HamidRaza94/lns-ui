@@ -1,0 +1,43 @@
+/*Related post at: https://superdevresources.com/zoom-effect-image-css/ */
+body {
+  padding-top: 40px;
+  font-family: sans-serif;
+}
+
+.card {
+  float: left;
+  position: relative;
+  width: 300px;
+  height: 350px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0px 0px 2px 2px #cccccc;
+  color: #0b1e0b;
+}
+
+.image {
+  opacity: 0.8;
+  width: 300px;
+  height: 350px;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.image:hover {
+  -webkit-transform: scale(1.08);
+  transform: scale(1.08);
+  opacity: 1;
+}
+
+.text {
+  font-size: 25px;
+  position: absolute;
+  bottom: 8px;
+  left: 16px;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  color: #43ad43;
+}

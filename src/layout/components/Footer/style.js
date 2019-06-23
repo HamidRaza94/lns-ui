@@ -1,4 +1,4 @@
-export const styles = theme => ({
+const styles = theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -52,3 +52,5 @@ export const styles = theme => ({
     }
   }
 });
+
+export default styles;

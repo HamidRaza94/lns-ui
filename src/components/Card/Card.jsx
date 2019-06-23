@@ -1,34 +1,31 @@
 import React from 'react';
 
-import { Update, Team } from './components';
+import { Update, Section, Team } from './components';
 
 const Card = props => {
-  const { variant } = props;
-
-  switch (variant) {
+  switch (props.variant) {
     case 'update':
-      const { title, isLoading, value } = props;
-      return <Update title={title} isLoading={isLoading} value={value} />;
+      return (
+        <Update
+          title={props.title}
+          isLoading={props.isLoading}
+          value={props.value}
+        />
+      );
+
+    case 'section':
+      return <Section media={props.media} mediaText={props.mediaText} />;
 
     case 'team':
-      const {
-        name,
-        image,
-        backgroundImage,
-        jobTitle,
-        facebook,
-        whatsapp,
-        twitter
-      } = props;
       return (
         <Team
-          name={name}
-          image={image}
-          backgroundImage={backgroundImage}
-          jobTitle={jobTitle}
-          facebook={facebook}
-          whatsapp={whatsapp}
-          twitter={twitter}
+          name={props.name}
+          image={props.image}
+          backgroundImage={props.backgroundImage}
+          jobTitle={props.jobTitle}
+          facebook={props.facebook}
+          whatsapp={props.whatsapp}
+          twitter={props.twitter}
         />
       );
 

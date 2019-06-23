@@ -3,33 +3,8 @@ import { withStyles, Select, MenuItem } from '@material-ui/core';
 
 import styles from './style';
 import { STATES } from '../../cms/constants';
+import { rows } from '../../cms/stateBoard';
 import { Table } from '../../components';
-
-function createData(name, state, contact) {
-  return { name, state, contact };
-}
-
-const rows = [
-  createData('Hamid', 'Delhi', 1),
-  createData('Hamid', 'Delhi', 2),
-  createData('Hamid', 'Bihar', 3),
-  createData('Hamid', 'Bihar', 4),
-  createData('Hamid', 'Bihar', 5),
-  createData('Hamid', 'Bihar', 6),
-  createData('Hamid', 'Goa', 7),
-  createData('Hamid', 'Goa', 8),
-  createData('Hamid', 'Goa', 9),
-  createData('Hamid', 'Goa', 10),
-  createData('Hamid', 'Goa', 11),
-  createData('Hamid', 'Goa', 12),
-  createData('Hamid', 'Haryana', 13),
-  createData('Hamid', 'Haryana', 14),
-  createData('Hamid', 'Haryana', 15),
-  createData('Hamid', 'Haryana', 16),
-  createData('Hamid', 'Haryana', 17),
-  createData('Hamid', 'Haryana', 18),
-  createData('Hamid', 'Haryana', 19)
-];
 
 class StateBoard extends Component {
   constructor(props) {
@@ -79,7 +54,7 @@ class StateBoard extends Component {
           </Select>
         </div>
 
-        <Table data={stateBoard} head={['name', 'state', 'contact']} />
+        <Table data={stateBoard} head={['state', 'name', 'rank', 'contact']} />
       </div>
     );
   }

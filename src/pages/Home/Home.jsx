@@ -3,7 +3,7 @@ import { withStyles, Grid } from '@material-ui/core';
 
 import styles from './style';
 import { Content, UpdatePanel } from './components';
-import { Slider, Section } from '../../components';
+import { Slider, Card } from '../../components';
 import { gallery, banners, sections } from '../../cms/home';
 import { TEAM_FOLDER } from '../../cms/constants';
 
@@ -39,9 +39,10 @@ const Home = props => {
       </div>
 
       <div className={classes.sections}>
-        {sections.map(({ media, mediaText, list }) => (
+        {sections.map(({ media, mediaText }) => (
           <Grid item>
-            <Section media={media} mediaText={mediaText} list={list} />
+            <Card variant="section" media={media} mediaText={mediaText} />
+            {/* <Section media={media} mediaText={mediaText} list={list} /> */}
           </Grid>
         ))}
       </div>
