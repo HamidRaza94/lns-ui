@@ -1,10 +1,30 @@
+const board = '/board';
+const stateBoard = `${board}/state`;
+const centralBoard = `${board}/central`;
+
 export default {
   path: {
     home: '/',
-    centralBoard: '/central_board',
-    stateBoard: '/state_board',
-    protectorBoard: '/protector_board',
-    advisoryBoard: 'advisory_board',
+    allBoard: {
+      home: board,
+      central: {
+        home: 'central',
+        board: '/central_board',
+        protectorBoard: '/protector_board',
+        advisoryBoard: 'advisory_board',
+        boardSection: '',
+        staffSelectionBoard: '',
+        disciplinaryBoard: ''
+      },
+      state: {
+        home: 'state',
+        stateBoard: '/state_board',
+        stateAdvisoryBoard: '',
+        stateBoardSection: '',
+        stateStaffSelectionBoard: '',
+        stateDisciplinaryBoard: ''
+      }
+    },
     volunteers: '/volunteers',
     volunteerShip: '/volunteer_ship',
     complaints: '/complaints',
@@ -23,7 +43,7 @@ export default {
       syllabus: '/academics/syllabus',
       studentAttendance: '/academics/student_attendance',
       admissionCell: '/academics/admission_cell',
-      feesCollectionCell: '/academics/fees_collection_cell',
+      feesCollectionCell: '/academics/fees_collection_cell'
     },
     employees: '/employees',
     employments: '/employments',
