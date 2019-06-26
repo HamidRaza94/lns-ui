@@ -30,8 +30,10 @@ export default {
   text: {
     fontSize: 25,
     position: 'absolute',
-    bottom: 8,
-    left: 16,
+    width: '100%',
+    bottom: 10,
+    paddingLeft: 10,
     transition: '0.2s ease',
+    backgroundColor: '#e5e5e5',
   },
 }
