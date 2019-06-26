@@ -26,25 +26,20 @@ export default {
     appointment: '/appointment',
     academics: {
       home: '/academics',
-      studentRegistration: '/academics/student_registration',
-      examinationRegistration: '/academics/examination_registration',
-      course: '/academics/course',
-      feeStructure: '/academics/fee_structure',
-      studentList: '/academics/student_list',
-      passingCertificate: '/academics/passing_certificate',
-      academicCenter: '/academics/academic_center',
-      payOnlineAcademicsFees: '/academics/pay_online_academics_fees',
-      syllabus: '/academics/syllabus',
-      studentAttendance: '/academics/student_attendance',
-      admissionCell: '/academics/admission_cell',
-      feesCollectionCell: '/academics/fees_collection_cell'
+      studentRegistration: '/student_registration',
+      examinationRegistration: '/examination_registration',
+      course: '/course',
+      feeStructure: '/fee_structure',
+      studentList: '/student_list',
+      passingCertificate: '/passing_certificate',
+      academicCenter: '/academic_center',
+      payOnlineAcademicsFees: '/pay_online_academics_fees',
+      syllabus: '/syllabus',
+      studentAttendance: '/student_attendance',
+      admissionCell: '/admission_cell',
+      feesCollectionCell: '/fees_collection_cell'
     },
     employees: '/employees',
-    employments: '/employments',
-    staffSelectionBoard: {
-      home: '/staff_selection_board',
-      central: '/staff_selection_board/central',
-      state: '/staff_selection_board/state'
-    }
+    employments: '/employments'
   }
 };
