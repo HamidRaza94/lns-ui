@@ -216,69 +216,25 @@ class NavBar extends Component {
                   <li
                     className={classes.ul_li_ul_li}
                     style={{
-                      ...stateStaffSelectionBoard,
-                      ...active.stateStaffSelectionBoard
+                      ...protectorBoard,
+                      ...active.protectorBoard
                     }}
                     onMouseEnter={this.handleButtonHover(
-                      'stateStaffSelectionBoard',
+                      'protectorBoard',
                       secondary
                     )}
                     onMouseLeave={this.handleButtonHover(
-                      'stateStaffSelectionBoard',
+                      'protectorBoard',
                       primary
                     )}
-                    onClick={this.handleClick('stateStaffSelectionBoard')}
+                    onClick={this.handleClick('protectorBoard')}
                   >
                     <Typography className={classes.text}>
-                      State Staff Selection Board
+                      Protector Board
                     </Typography>
                   </li>
                 </Link>
               </ul>
-            </li>
-          </Link>
-          <Link to={path.centralBoard}>
-            <li
-              className={classes.li}
-              style={{ ...centralBoard, ...active.centralBoard }}
-              onMouseEnter={this.handleButtonHover('centralBoard', secondary)}
-              onMouseLeave={this.handleButtonHover('centralBoard', primary)}
-              onClick={this.handleClick('centralBoard')}
-            >
-              <Typography className={classes.text}>Central Board</Typography>
-            </li>
-          </Link>
-          <Link to={path.stateBoard}>
-            <li
-              className={classes.li}
-              style={{ ...stateBoard, ...active.stateBoard }}
-              onMouseEnter={this.handleButtonHover('stateBoard', secondary)}
-              onMouseLeave={this.handleButtonHover('stateBoard', primary)}
-              onClick={this.handleClick('stateBoard')}
-            >
-              <Typography className={classes.text}>State Board</Typography>
-            </li>
-          </Link>
-          <Link to={path.protectorBoard}>
-            <li
-              className={classes.li}
-              style={{ ...protectorBoard, ...active.protectorBoard }}
-              onMouseEnter={this.handleButtonHover('protectorBoard', secondary)}
-              onMouseLeave={this.handleButtonHover('protectorBoard', primary)}
-              onClick={this.handleClick('protectorBoard')}
-            >
-              <Typography className={classes.text}>Protector Board</Typography>
-            </li>
-          </Link>
-          <Link to={path.advisoryBoard}>
-            <li
-              className={classes.li}
-              style={{ ...advisoryBoard, ...active.advisoryBoard }}
-              onMouseEnter={this.handleButtonHover('advisoryBoard', secondary)}
-              onMouseLeave={this.handleButtonHover('advisoryBoard', primary)}
-              onClick={this.handleClick('advisoryBoard')}
-            >
-              <Typography className={classes.text}>Advisory Board</Typography>
             </li>
           </Link>
           <Link to={path.volunteers}>
