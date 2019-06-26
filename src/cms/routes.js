@@ -1,22 +1,26 @@
+const BOARD = '/board';
+const CENTRAL_BOARD = `${BOARD}/central`;
+const STATE_BOARD = `${BOARD}/state`;
+
 export default {
   path: {
     home: '/',
     board: {
-      home: '/board',
+      home: BOARD,
       central: {
-        home: '/central',
-        protector: '/protector',
-        advisory: '/advisory',
-        section: '/section',
-        staffSelection: '/staff_selection',
-        disciplinary: '/disciplinary'
+        home: CENTRAL_BOARD,
+        protector: `${CENTRAL_BOARD}/protector`,
+        advisory: `${CENTRAL_BOARD}/advisory`,
+        section: `${CENTRAL_BOARD}/section`,
+        staffSelection: `${CENTRAL_BOARD}/staff_selection`,
+        disciplinary: `${CENTRAL_BOARD}/disciplinary`
       },
       state: {
-        home: '/state',
-        advisory: '/advisory',
-        section: '/section',
-        staffSelection: '/staff_selection',
-        disciplinary: '/disciplinary'
+        home: STATE_BOARD,
+        advisory: `${STATE_BOARD}/advisory`,
+        section: `${STATE_BOARD}/section`,
+        staffSelection: `${STATE_BOARD}/staff_selection`,
+        disciplinary: `${STATE_BOARD}/disciplinary`
       }
     },
     volunteers: '/volunteers',

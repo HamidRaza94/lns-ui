@@ -25,8 +25,8 @@ const Routes = () => (
     <NavBar />
     <Switch>
       <Route exact path={path.home} component={Home} />
-      <Route exact path={path.centralBoard} component={CentralBoard} />
-      <Route exact path={path.stateBoard} component={StateBoard} />
+      <Route exact path={path.board.central.home} component={CentralBoard} />
+      <Route exact path={path.board.state.home} component={StateBoard} />
       <Route exact path={path.volunteers} component={Volunteers} />
       <Route exact path={path.volunteerShip} component={VolunteerShip} />
       <Route exact path={path.complaints} component={Complaints} />
