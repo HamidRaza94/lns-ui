@@ -25,24 +25,7 @@ class NavBar extends Component {
     this.state = {
       active: {},
       home: navStyle,
-      board: {
-        home: navStyle,
-        central: {
-          home: navStyle,
-          protector: navStyle,
-          advisory: navStyle,
-          section: navStyle,
-          staffSelection: navStyle,
-          disciplinary: navStyle
-        },
-        state: {
-          home: navStyle,
-          advisory: navStyle,
-          section: navStyle,
-          staffSelection: navStyle,
-          disciplinary: navStyle
-        }
-      },
+      board: navStyle,
       centralBoard: navStyle,
       stateBoard: navStyle,
       protectorBoard: navStyle,
