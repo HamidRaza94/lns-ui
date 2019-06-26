@@ -34,6 +34,13 @@ class NavBar extends Component {
           section: navStyle,
           staffSelection: navStyle,
           disciplinary: navStyle
+        },
+        state: {
+          home: navStyle,
+          advisory: navStyle,
+          section: navStyle,
+          staffSelection: navStyle,
+          disciplinary: navStyle
         }
       },
       centralBoard: navStyle,
