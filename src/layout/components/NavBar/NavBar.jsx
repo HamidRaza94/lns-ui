@@ -25,7 +25,17 @@ class NavBar extends Component {
     this.state = {
       active: {},
       home: navStyle,
-      board: navStyle,
+      board: {
+        home: navStyle,
+        central: {
+          home: navStyle,
+          protector: navStyle,
+          advisory: navStyle,
+          section: navStyle,
+          staffSelection: navStyle,
+          disciplinary: navStyle
+        }
+      },
       centralBoard: navStyle,
       stateBoard: navStyle,
       protectorBoard: navStyle,
@@ -193,10 +203,7 @@ class NavBar extends Component {
                 <Link to={path.board.central.home}>
                   <li
                     className={classes.ul_li_ul_li}
-                    style={{
-                      ...centralBoard,
-                      ...active.centralBoard
-                    }}
+                    style={{ ...centralBoard, ...active.centralBoard }}
                     onMouseEnter={this.handleButtonHover(
                       'centralBoard',
                       secondary
@@ -209,6 +216,94 @@ class NavBar extends Component {
                   >
                     <Typography className={classes.text}>
                       Central Board
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.board.central.protector}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...protectorBoard,
+                      ...active.protectorBoard
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'protectorBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'protectorBoard',
+                      primary
+                    )}
+                    onClick={this.handleClick('protectorBoard')}
+                  >
+                    <Typography className={classes.text}>
+                      Protector Board
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.board.central.protector}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...protectorBoard,
+                      ...active.protectorBoard
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'protectorBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'protectorBoard',
+                      primary
+                    )}
+                    onClick={this.handleClick('protectorBoard')}
+                  >
+                    <Typography className={classes.text}>
+                      Protector Board
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.board.central.protector}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...protectorBoard,
+                      ...active.protectorBoard
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'protectorBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'protectorBoard',
+                      primary
+                    )}
+                    onClick={this.handleClick('protectorBoard')}
+                  >
+                    <Typography className={classes.text}>
+                      Protector Board
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.board.central.protector}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...protectorBoard,
+                      ...active.protectorBoard
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'protectorBoard',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'protectorBoard',
+                      primary
+                    )}
+                    onClick={this.handleClick('protectorBoard')}
+                  >
+                    <Typography className={classes.text}>
+                      Protector Board
                     </Typography>
                   </li>
                 </Link>
