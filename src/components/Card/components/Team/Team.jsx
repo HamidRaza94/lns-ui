@@ -12,7 +12,7 @@ const Team = props => {
   return (
     <div className={classes.root}>
       <div className={classes.team}>
-        <img src={image} alt="" />
+        <img src={image} alt="" className={classes.image} />
         <div className={classes.name}>{capitalizeAll(name)}</div>
       </div>
       <div className={classes.description}>

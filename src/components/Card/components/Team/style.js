@@ -16,13 +16,20 @@ export default {
     height: 300,
     borderRadius: '5px 5px 0px 0px',
     boxShadow: '0px 0px 1px black',
+    position: 'relative',
+  },
+
+  image: {
+    width: '100%',
+    height: '100%',
+    filter: 'grayscale(100%)',
   },
 
   name: {
     fontWeight: 'bold',
+    position: 'absolute',
     left: 20,
     top: 20,
-    position: 'absolute',
   },
 
   description: {
