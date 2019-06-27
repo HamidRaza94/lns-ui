@@ -55,63 +55,45 @@ class UpdatePanel extends Component {
 
   render() {
     const { error, isLoaded } = this.state;
+    const newsData = { title: 'News' }
+    const linkData = { title: 'Important Link' }
+    const noticeData = { title: 'Notice' }
 
     if (!isLoaded) {
+      newsData.isLoading = true;
+      linkData.isLoading = true;
+      noticeData.isLoading = true;
+
       return (
         <div style={styles.root}>
-          <Card variant="update" title="News" isLoading />
-          <Card
-            variant="update"
-            title="Important Link"
-            isLoading
-          />
-          <Card
-            variant="update"
-            title="Notice"
-            isLoading
-          />
+          <Card variant="update" data={newsData} />
+          <Card variant="update" data={linkData} />
+          <Card variant="update" data={noticeData} />
         </div>
       );
     } else if (error) {
+      newsData.value = error;
+      linkData.value = error;
+      noticeData.value = error;
+
       return (
         <div style={styles.root}>
-          <Card
-            variant="update"
-            title="News"
-            value={error}
-          />
-          <Card
-            variant="update"
-            title="Important Link"
-            value={error}
-          />
-          <Card
-            variant="update"
-            title="Notice"
-            value={error}
-          />
+          <Card variant="update" data={newsData} />
+          <Card variant="update" data={linkData} />
+          <Card variant="update" data={noticeData} />
         </div>
       );
     } else {
       const { news, link, notice } = this.state;
+      newsData.value = news;
+      linkData.value = link;
+      noticeData.value = notice;
 
       return (
         <div style={styles.root}>
-          <Card
-            variant="update"
-            title="News"
-            value={news}
-          />
-          <Card
-            variant="update"
-            title="Important Link"
-            value={link}
-          />
-          <Card
-            variant="update"
-            title="Notice"
-            value={notice}
-          />
+          <Card variant="update" data={newsData} />
+          <Card variant="update" data={linkData} />
+          <Card variant="update" data={noticeData} />
         </div>
       );
     }

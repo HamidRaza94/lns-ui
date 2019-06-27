@@ -14,7 +14,8 @@ import SendIcon from '@material-ui/icons/Send';
 import styles from './style';
 
 function Update(props) {
-  const { classes, title, isLoading, value } = props;
+  const { classes, data } = props;
+  const { title, isLoading, value } = data;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (

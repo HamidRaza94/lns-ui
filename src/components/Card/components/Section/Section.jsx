@@ -5,7 +5,8 @@ import styles from './style';
 import { capitalizeAll } from '../../../../lib/utils/helpers';
 
 const Section = props => {
-  const { classes, media, mediaText } = props;
+  const { classes, data } = props;
+  const { media, mediaText } = data;
 
   return (
     <div className={classes.card}>

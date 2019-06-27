@@ -39,10 +39,9 @@ const Home = props => {
       </div>
 
       <div className={classes.sections}>
-        {sections.map(({ media, mediaText }) => (
+        {sections.map((section) => (
           <Grid item>
-            <Card variant="section" media={media} mediaText={mediaText} />
-            {/* <Section media={media} mediaText={mediaText} list={list} /> */}
+            <Card variant="section" data={section} />
           </Grid>
         ))}
       </div>

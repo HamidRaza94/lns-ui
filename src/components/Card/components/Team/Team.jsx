@@ -1,48 +1,46 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import { withStyles, Typography } from '@material-ui/core';
 
 import styles from './style';
 import { SVG } from '../../../SVG';
+import { capitalizeAll } from '../../../../lib/utils/helpers';
 
 const Team = props => {
-  const {
-    classes,
-    name,
-    image,
-    backgroundImage,
-    jobTitle,
-    facebook,
-    whatsapp,
-    twitter
-  } = props;
+  const { classes, data } = props;
+  const { name, image, rank, facebook, twitter} = data;
 
   return (
-    <div className={classes.card}>
-      <img src={backgroundImage} alt={name} className={classes.cardImg} />
-      <img src={image} alt={name} className={classes.profileImg} />
-      <h1 className={classes.card_h1}>{name}</h1>
-      <p className={classes.jobTitle}>{jobTitle}</p>
-      {/* <p className={classes.about}>{about}</p> */}
-      {/* <h4 className={classes.btn}>Contact</h4> */}
-      <ul className={classes.socialMedia}>
-        {facebook && (
-          <li>
-            <SVG variant="facebook" />
-          </li>
-        )}
-        {whatsapp && (
-          <li>
-            <SVG variant="whatsapp" />
-          </li>
-        )}
-        {twitter && (
-          <li>
-            <SVG variant="twitter" />
-          </li>
-        )}
-      </ul>
+    <div className={classes.root}>
+      <div className={classes.team}>
+        <img src={image} alt="" />
+        <div className={classes.name}>{capitalizeAll(name)}</div>
+      </div>
+      <div className={classes.description}>
+        <span className={classes.span}></span>
+        <Typography variant="h5" className={classes.designation}>{rank}</Typography>
+        <div className={classes.socialDiv}>
+          { facebook && (
+            <div className={classes.social}>
+              <div className={classes.socialTitle}>
+                <SVG variant="facebook" style={{ width: 25, height: 25 }} />
+                <Typography align="left" style={{ color: 'white' }}>Facebook</Typography>
+              </div>
+              <Typography align="right" style={{ color: 'white' }}>{facebook}</Typography>
+            </div>
+          )}
+          { twitter && (
+            <div className={classes.social}>
+              <div className={classes.socialTitle}>
+                <SVG variant="twitter" style={{ width: 25, height: 25 }} />
+                <Typography align="left" style={{ color: 'white' }}>Twitter</Typography>
+              </div>
+              <Typography align="right" style={{ color: 'white' }}>{twitter}</Typography>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
-};
+}
 
 export default withStyles(styles)(Team);

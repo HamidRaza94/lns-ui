@@ -1,15 +1,10 @@
 export default {
   root: {
     display: 'flex',
-    justifyContent: 'center',
-    backgroundColor: '#c64df1'
-  },
-
-  cardWrapper: {
-    display: 'flex',
-    justifyContent: 'center',
     flexDirection: 'row',
+    justifyContent: 'space-around',
     flexWrap: 'wrap',
-    margin: 25
-  }
+    backgroundColor: '#17183f',
+    padding: '20px 0px',
+  },
 };

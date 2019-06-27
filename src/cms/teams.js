@@ -4,8 +4,7 @@ const teams = [
   {
     name: 'SAIYAD SHAH ALAM',
     image: '',
-    backgroundImage: `${BACKGROUND_FOLDER}/1.jpg`,
-    jobTitle: 'CENTRAL CHIEF DIRECTOR',
+    rank: 'CENTRAL CHIEF DIRECTOR',
     facebook: '',
     whatsapp: '',
     twitter: '',
@@ -14,8 +13,7 @@ const teams = [
   {
     name: 'MD NASEEM SAIFI',
     image: `${TEAM_FOLDER}/md_naseem_saifi.jpg`,
-    backgroundImage: `${BACKGROUND_FOLDER}/1.jpg`,
-    jobTitle: 'Central Deputy Director',
+    rank: 'Central Deputy Director',
     facebook: 'fb.com',
     whatsapp: 'w.com',
     twitter: 't.com',
@@ -24,8 +22,7 @@ const teams = [
   {
     name: 'GURDAYAL SINGH GAUTAM',
     image: '',
-    backgroundImage: '',
-    jobTitle: 'OFFICE SUPERINTENDENT',
+    rank: 'OFFICE SUPERINTENDENT',
     facebook: '',
     whatsapp: '',
     twitter: '',
