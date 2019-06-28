@@ -22,7 +22,8 @@ export default {
   image: {
     width: '100%',
     height: '100%',
-    filter: 'grayscale(100%)',
+    filter: 'grayscale(50%)',
+    borderRadius: '5px 5px 0px 0px',
   },
 
   name: {

@@ -40,6 +40,10 @@ class NavBar extends Component {
       stateDisciplinaryBoard: navStyle,
       stateStaffSelectionBoard: navStyle,
 
+      enrolled: navStyle,
+      enrollmentVerification: navStyle,
+      applyEnrollment: navStyle,
+
       volunteers: navStyle,
       volunteerShip: navStyle,
       complaints: navStyle,
@@ -62,6 +66,7 @@ class NavBar extends Component {
       employments: navStyle,
       staffSelectionBoard: navStyle,
       boardList: navListStyle,
+      enrolledList: navListStyle,
       academicsList: navListStyle,
       staffSelectionBoardList: navListStyle
     };
@@ -151,6 +156,9 @@ class NavBar extends Component {
       stateSectionBoard,
       stateDisciplinaryBoard,
       stateStaffSelectionBoard,
+      enrolled,
+      enrollmentVerification,
+      applyEnrollment,
       volunteers,
       volunteerShip,
       complaints,
@@ -172,6 +180,7 @@ class NavBar extends Component {
       employees,
       employments,
       boardList,
+      enrolledList,
       academicsList,
     } = this.state;
 
@@ -191,7 +200,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Home</Typography>
             </li>
           </Link>
-          {/* <Link to={path.board.home}> */}
+          <Link to={path.board.home}>
             <li
               className={classes.li}
               style={{ ...board, ...active.board }}
@@ -442,27 +451,59 @@ class NavBar extends Component {
                 </Link>
               </ul>
             </li>
-          {/* </Link> */}
-          <Link to={path.volunteers}>
-            <li
-              className={classes.li}
-              style={{ ...volunteers, ...active.volunteers }}
-              onMouseEnter={this.handleButtonHover('volunteers', secondary)}
-              onMouseLeave={this.handleButtonHover('volunteers', primary)}
-              onClick={this.handleClick('volunteers')}
-            >
-              <Typography className={classes.text}>Volunteers</Typography>
-            </li>
           </Link>
-          <Link to={path.volunteerShip}>
+          <Link to={path.enrolled.home}>
             <li
               className={classes.li}
-              style={{ ...volunteerShip, ...active.volunteerShip }}
-              onMouseEnter={this.handleButtonHover('volunteerShip', secondary)}
-              onMouseLeave={this.handleButtonHover('volunteerShip', primary)}
-              onClick={this.handleClick('volunteerShip')}
+              style={{ ...enrolled, ...active.enrolled }}
+              onMouseEnter={this.handleButtonHover('enrolled', secondary)}
+              onMouseLeave={this.handleButtonHover('enrolled', primary)}
+              onClick={this.handleClick('enrolled')}
             >
-              <Typography className={classes.text}>Volunteer Ship</Typography>
+              <Typography className={classes.text}>Enrolled</Typography>
+              <ul className={classes.ul_li_ul} style={enrolledList}>
+                <Link to={path.enrolled.enrollmentVerification}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{ ...enrollmentVerification, ...active.enrollmentVerification }}
+                    onMouseEnter={this.handleButtonHover(
+                      'enrollmentVerification',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'enrollmentVerification',
+                      primary
+                    )}
+                    onClick={this.handleClick('enrollmentVerification')}
+                  >
+                    <Typography className={classes.text}>
+                      Enrollment Verification
+                    </Typography>
+                  </li>
+                </Link>
+                <Link to={path.enrolled.applyEnrollment}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...applyEnrollment,
+                      ...active.applyEnrollment
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'applyEnrollment',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'applyEnrollment',
+                      primary
+                    )}
+                    onClick={this.handleClick('applyEnrollment')}
+                  >
+                    <Typography className={classes.text}>
+                      Apply for Enrollment
+                    </Typography>
+                  </li>
+                </Link>
+              </ul>
             </li>
           </Link>
           <Link to={path.complaints}>

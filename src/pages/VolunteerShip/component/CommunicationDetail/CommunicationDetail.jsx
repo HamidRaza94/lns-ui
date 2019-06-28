@@ -33,57 +33,29 @@ class CommunicationDetail extends Component {
 
     return (
       <>
-        <TextField
-          id="email"
-          label="Email"
-          type="email"
-          name="email"
-          value={email}
-          margin="dense"
-          onChange={this.handleChange('email')}
-        />
+        <div className={classes.row} style={{ padding: '10px 0px' }}>
+          <TextField
+            id="phone"
+            label="Phone"
+            value={phone}
+            onChange={this.handleChange('phone')}
+            type="number"
+            margin="dense"
+            className={classes.padding}
+            fullWidth
+          />
 
-        <TextField
-          id="phone"
-          label="Phone"
-          value={phone}
-          onChange={this.handleChange('phone')}
-          type="number"
-          margin="dense"
-        />
-
-        <TextField
-          id="policeStation"
-          label="Police Station"
-          value={policeStation}
-          margin="dense"
-          onChange={this.handleChange('policeStation')}
-        />
-
-        <FormControl>
-          <InputLabel htmlFor="state-select">State</InputLabel>
-          <Select
-            value={state}
-            onChange={this.handleChange('state')}
-            inputProps={{
-              name: 'state',
-              id: 'state-select'
-            }}
-          >
-            {STATES.map(item => (
-              <MenuItem value={item}>{item}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-
-        <TextField
-          id="pincode"
-          label="Pincode"
-          value={pincode}
-          onChange={this.handleChange('pincode')}
-          type="number"
-          margin="dense"
-        />
+          <TextField
+            id="email"
+            label="Email"
+            type="email"
+            name="email"
+            value={email}
+            margin="dense"
+            fullWidth
+            onChange={this.handleChange('email')}
+          />
+        </div>
 
         <TextField
           id="address"
@@ -93,6 +65,42 @@ class CommunicationDetail extends Component {
           onChange={this.handleChange('address')}
           margin="dense"
         />
+
+        <div className={classes.row} style={{ padding: '10px 0px' }}>
+          <TextField
+            id="policeStation"
+            label="Police Station"
+            value={policeStation}
+            fullWidth
+            className={classes.padding}
+            onChange={this.handleChange('policeStation')}
+          />
+
+          <FormControl fullWidth className={classes.padding}>
+            <InputLabel htmlFor="state-select">State</InputLabel>
+            <Select
+              value={state}
+              onChange={this.handleChange('state')}
+              inputProps={{
+                name: 'state',
+                id: 'state-select'
+              }}
+            >
+              {STATES.map(item => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <TextField
+            id="pincode"
+            label="Pincode"
+            value={pincode}
+            onChange={this.handleChange('pincode')}
+            type="number"
+            fullWidth
+          />
+        </div>
       </>
     );
   }

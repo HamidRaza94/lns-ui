@@ -48,7 +48,7 @@ class PersonalDetail extends Component {
 
     return (
       <>
-        <div className={classes.row}>
+        <div className={classes.row} style={{ padding: '10px 0px' }}>
           <TextField
             id="candidateName"
             label="Candidate Name"
@@ -69,7 +69,7 @@ class PersonalDetail extends Component {
           />
         </div>
 
-        <FormControl component="fieldset">
+        <FormControl component="fieldset" style={{ padding: '10px 0px' }}>
           <FormLabel component="legend">Sex</FormLabel>
           <RadioGroup
             aria-label="position"
@@ -88,7 +88,7 @@ class PersonalDetail extends Component {
           </RadioGroup>
         </FormControl>
 
-        <FormControl component="fieldset">
+        <FormControl component="fieldset" style={{ padding: '10px 0px' }}>
           <FormLabel component="legend">Marital Status</FormLabel>
           <RadioGroup
             aria-label="position"
@@ -107,7 +107,7 @@ class PersonalDetail extends Component {
           </RadioGroup>
         </FormControl>
 
-        <div className={classes.row}>
+        <div className={classes.row} style={{ padding: '10px 0px' }}>
           <TextField
             id="dateOfBirth"
             label="Date Of Birth"
@@ -141,23 +141,7 @@ class PersonalDetail extends Component {
         </div>
 
         <div className={classes.row}>
-          <FormControl fullWidth className={classes.padding}>
-            <InputLabel htmlFor="category-select">Category</InputLabel>
-            <Select
-              value={category}
-              onChange={this.handleChange('category')}
-              inputProps={{
-                name: 'category',
-                id: 'category-select'
-              }}
-            >
-              {CATEGORY.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <FormControl fullWidth>
+          <FormControl fullWidth className={classes.padding}  style={{ paddingTop: 10 }}>
             <InputLabel htmlFor="religion-select">Religion</InputLabel>
             <Select
               value={religion}
@@ -172,14 +156,29 @@ class PersonalDetail extends Component {
               ))}
             </Select>
           </FormControl>
+
+          <FormControl fullWidth>
+            <InputLabel htmlFor="category-select">Category</InputLabel>
+            <Select
+              value={category}
+              onChange={this.handleChange('category')}
+              inputProps={{
+                name: 'category',
+                id: 'category-select'
+              }}
+            >
+              {CATEGORY.map(item => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
 
-        <div className={classes.row}>
+        <div className={classes.row} style={{ padding: '10px 0px' }}>
           <TextField
             id="occupation"
             label="Occupation"
             value={occupation}
-            margin="dense"
             fullWidth
             className={classes.padding}
             onChange={this.handleChange('occupation')}

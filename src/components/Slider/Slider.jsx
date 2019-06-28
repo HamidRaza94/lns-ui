@@ -51,7 +51,7 @@ class Slider extends Component {
     return (
       <div className={classes.root}>
         <img
-          alt={altText}
+          alt=""
           src={banners ? banners[index] : defaultBanner}
           className={classes.slider}
           {...rest}

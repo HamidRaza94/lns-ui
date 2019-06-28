@@ -23,6 +23,11 @@ export default {
         disciplinary: `${STATE_BOARD}/disciplinary`
       }
     },
+    enrolled: {
+      home: '/enrolled',
+      enrollmentVerification: '/volunteers',
+      applyEnrollment: '/volunteer_ship',
+    },
     volunteers: '/volunteers',
     volunteerShip: '/volunteer_ship',
     complaints: '/complaints',
