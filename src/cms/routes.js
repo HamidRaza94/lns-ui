@@ -30,7 +30,10 @@ export default {
     },
     volunteers: '/volunteers',
     volunteerShip: '/volunteer_ship',
-    complaints: '/complaints',
+    complaints: {
+      home: '/complaints',
+      grievance: '/grievance',
+    },
     donate: '/donate',
     appointment: '/appointment',
     academics: {

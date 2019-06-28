@@ -47,6 +47,8 @@ class NavBar extends Component {
       volunteers: navStyle,
       volunteerShip: navStyle,
       complaints: navStyle,
+      grievance: navStyle,
+      otherGrievance: navStyle,
       donate: navStyle,
       appointment: navStyle,
       academics: navStyle,
@@ -67,6 +69,7 @@ class NavBar extends Component {
       staffSelectionBoard: navStyle,
       boardList: navListStyle,
       enrolledList: navListStyle,
+      complaintsList: navListStyle,
       academicsList: navListStyle,
       staffSelectionBoardList: navListStyle
     };
@@ -162,6 +165,8 @@ class NavBar extends Component {
       volunteers,
       volunteerShip,
       complaints,
+      grievance,
+      otherGrievance,
       donate,
       appointment,
       academics,
@@ -181,6 +186,7 @@ class NavBar extends Component {
       employments,
       boardList,
       enrolledList,
+      complaintsList,
       academicsList,
     } = this.state;
 
@@ -291,7 +297,7 @@ class NavBar extends Component {
                     onClick={this.handleClick('centralSectionBoard')}
                   >
                     <Typography className={classes.text}>
-                      Central Section Board
+                      Central Board of Section
                     </Typography>
                   </li>
                 </Link>
@@ -401,7 +407,7 @@ class NavBar extends Component {
                     onClick={this.handleClick('stateSectionBoard')}
                   >
                     <Typography className={classes.text}>
-                      State Section Board
+                      State Board of Section
                     </Typography>
                   </li>
                 </Link>
@@ -506,7 +512,7 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to={path.complaints}>
+          <Link to={path.complaints.home}>
             <li
               className={classes.li}
               style={{ ...complaints, ...active.complaints }}
@@ -514,7 +520,50 @@ class NavBar extends Component {
               onMouseLeave={this.handleButtonHover('complaints', primary)}
               onClick={this.handleClick('complaints')}
             >
-              <Typography className={classes.text}>Complaints</Typography>
+              <Typography className={classes.text}>Public Grievance</Typography>
+              <ul className={classes.ul_li_ul} style={complaintsList}>
+                <Link to={path.complaints.grievance}>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{ ...grievance, ...active.grievance }}
+                    onMouseEnter={this.handleButtonHover(
+                      'grievance',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'grievance',
+                      primary
+                    )}
+                    onClick={this.handleClick('grievance')}
+                  >
+                    <Typography className={classes.text}>
+                      Regd. Grievance in LNSPJI
+                    </Typography>
+                  </li>
+                </Link>
+                <Link>
+                  <li
+                    className={classes.ul_li_ul_li}
+                    style={{
+                      ...otherGrievance,
+                      ...active.otherGrievance
+                    }}
+                    onMouseEnter={this.handleButtonHover(
+                      'otherGrievance',
+                      secondary
+                    )}
+                    onMouseLeave={this.handleButtonHover(
+                      'otherGrievance',
+                      primary
+                    )}
+                    onClick={() => {window.open('https://pgportal.gov.in/Registration', '_blank')}}
+                  >
+                    <Typography className={classes.text}>
+                      Regd. Grievance in CPGRAMS
+                    </Typography>
+                  </li>
+                </Link>
+              </ul>
             </li>
           </Link>
           <Link to={path.donate}>
