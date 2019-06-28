@@ -18,7 +18,7 @@ import {
   Academics,
   Employees,
   NoMatch
-} from './pages';
+} from './scenes';
 
 const { path } = routes;
 
