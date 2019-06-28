@@ -1,4 +1,4 @@
-export default {
+const styles = theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
@@ -9,6 +9,7 @@ export default {
     boxShadow: '0px 0px 10px 5px #111433',
     fontFamily: 'Arial, Helvetica, sans-serif',
     color: 'white',
+    margin: '10px 0px',
   },
 
   team: {
@@ -22,8 +23,15 @@ export default {
   image: {
     width: '100%',
     height: '100%',
-    filter: 'grayscale(50%)',
+    filter: 'grayscale(100%)',
     borderRadius: '5px 5px 0px 0px',
+    opacity: 0.5,
+    transition: '0.5s ease',
+
+    '&:hover': {
+      opacity: 1,
+      filter: 'grayscale(0%)',
+    },
   },
 
   name: {
@@ -69,4 +77,6 @@ export default {
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
-}
+});
+
+export default styles;
