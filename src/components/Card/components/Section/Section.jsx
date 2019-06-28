@@ -6,12 +6,12 @@ import { capitalizeAll } from '../../../../lib/utils/helpers';
 
 const Section = props => {
   const { classes, data } = props;
-  const { media, mediaText } = data;
+  const { title, image } = data;
 
   return (
     <div className={classes.card}>
-      <img className={classes.image} alt={mediaText} src={media}/>
-      <div className={classes.text}>{capitalizeAll(mediaText)}</div>
+      <img className={classes.image} alt={title} src={image}/>
+      <div className={classes.text}>{capitalizeAll(title)}</div>
     </div>
   );
 }

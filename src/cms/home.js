@@ -17,23 +17,23 @@ const gallery = [
 
 const sections = [
   {
-    media: `${SECTION_FOLDER}/journalism.jpg`,
-    mediaText: 'Journalism',
+    title: 'Journalism',
+    image: `${SECTION_FOLDER}/journalism.jpg`,
   },
 
   {
-    media: `${SECTION_FOLDER}/handicraft.jpg`,
-    mediaText: 'Handicraft',
+    title: 'Handicraft',
+    image: `${SECTION_FOLDER}/handicraft.jpg`,
   },
 
   {
-    media: `${SECTION_FOLDER}/computer.png`,
-    mediaText: 'Computer',
+    title: 'Computer',
+    image: `${SECTION_FOLDER}/computer.png`,
   },
 
   {
-    media: `${SECTION_FOLDER}/beautician.jpg`,
-    mediaText: 'Beautician',
+    title: 'Beautician',
+    image: `${SECTION_FOLDER}/beautician.jpg`,
   }
 ];
 

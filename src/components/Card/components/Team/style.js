@@ -9,7 +9,7 @@ const styles = theme => ({
     boxShadow: '0px 0px 10px 5px #111433',
     fontFamily: 'Arial, Helvetica, sans-serif',
     color: 'white',
-    margin: '10px 0px',
+    margin: 10,
   },
 
   team: {
