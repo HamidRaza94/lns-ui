@@ -20,6 +20,8 @@ import {
   NoMatch
 } from './scenes';
 
+// import NavBar2 from './test/NavBar/NavBar';
+
 const { path } = routes;
 
 const Routes = () => (
@@ -27,6 +29,7 @@ const Routes = () => (
     <Header />
     <NavBar />
     <Switch>
+      {/* <Route exact path='/test' component={NavBar2} /> */}
       <Route exact path={path.home} component={Home} />
       <Route exact path={path.board.central.home} component={CentralBoard} />
       <Route exact path={path.board.central.protector} component={CentralProtectorBoard} />
