@@ -5,16 +5,16 @@ import styles from './style';
 import { Card } from '../../components';
 import { teams } from '../../cms';
 
-const CentralBoard = props => {
+const CentralProtectorBoard = props => {
   const { classes } = props;
 
   return (
     <div className={classes.root}>      
-      {teams.central.map(team => (
+      {teams.protector.map(team => (
         <Card variant="team" data={team} />
       ))}
     </div>
   );
 };
 
-export default withStyles(styles)(CentralBoard);
+export default withStyles(styles)(CentralProtectorBoard);

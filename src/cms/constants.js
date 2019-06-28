@@ -4,9 +4,10 @@ const CATEGORY = ['General', 'OBC', 'SC', 'ST'];
 const RELIGION = ['Christianity', 'Islam', 'Hinduism', 'Buddhism', 'Sikhism', 'Jainism', 'Other'];
 const PHYSICAL_STATUS = ['Capable', 'Incapable'];
 
-const IMAGE_FOLDER = '../images';
+const IMAGE_FOLDER = '/images';
 
 // Logo
+const LOGO_FOLDER = `${IMAGE_FOLDER}/logo`;
 const LOGO_IMAGE = `${IMAGE_FOLDER}/logo/lns.jpg`;
 
 // Nav Bar
@@ -86,6 +87,7 @@ export {
   CATEGORY,
   RELIGION,
   PHYSICAL_STATUS,
+  LOGO_FOLDER,
   LOGO_IMAGE,
   NAV_BAR_FOLDER,
   NAV_BAR,

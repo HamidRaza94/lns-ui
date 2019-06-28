@@ -3,7 +3,7 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 
 import { SnackBarProvider } from './contexts';
 import theme from './theme';
-import { Routes } from './routes';
+import Routes from './Routes';
 // import Test from './Test';
 
 const App = () => (

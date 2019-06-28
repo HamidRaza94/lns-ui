@@ -4,7 +4,7 @@ import { Grid, Typography } from '@material-ui/core';
 
 import styles from './style';
 import header from '../../../cms/header';
-import { LOGO_IMAGE } from '../../../cms/constants';
+import { LOGO_FOLDER, LOGO_IMAGE } from '../../../cms/constants';
 
 const Header = props => {
   const { classes } = props;
@@ -35,21 +35,21 @@ const Header = props => {
         <Grid container alignItems="center" justify="space-around">
           <Grid item>
             <img
-              src={`./images/logo/gandhi-150.jpg`}
+              src={`${LOGO_FOLDER}/gandhi-150.jpg`}
               alt={header.gandhi150}
               className={classes.gandhi150}
             />
           </Grid>
           <Grid item>
             <img
-              src={`./images/logo/swatch_india.png`}
+              src={`${LOGO_FOLDER}/swatch_india.png`}
               alt={header.swatchBharat}
               className={classes.swatchBharat}
             />
           </Grid>
           <Grid item>
             <img
-              src={`./images/logo/code_india.jpg`}
+              src={`${LOGO_FOLDER}/code_india.jpg`}
               alt={header.codeIndia}
               className={classes.codeIndia}
             />

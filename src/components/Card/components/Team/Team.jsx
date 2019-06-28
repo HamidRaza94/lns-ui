@@ -7,7 +7,7 @@ import { capitalizeAll } from '../../../../lib/utils/helpers';
 
 const Team = props => {
   const { classes, data } = props;
-  const { name, image, rank, facebook, twitter} = data;
+  const { name, image, rank, facebook, whatsapp, twitter} = data;
 
   return (
     <div className={classes.root}>
@@ -26,6 +26,15 @@ const Team = props => {
                 <Typography align="left" style={{ color: 'white' }}>Facebook</Typography>
               </div>
               <Typography align="right" style={{ color: 'white' }}>{facebook}</Typography>
+            </div>
+          )}
+          { whatsapp && (
+            <div className={classes.social}>
+              <div className={classes.socialTitle}>
+                <SVG variant="whatsapp" style={{ width: 25, height: 25 }} />
+                <Typography align="left" style={{ color: 'white' }}>Whatsapp</Typography>
+              </div>
+              <Typography align="right" style={{ color: 'white' }}>{whatsapp}</Typography>
             </div>
           )}
           { twitter && (
