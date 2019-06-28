@@ -4,11 +4,11 @@ import { withStyles } from '@material-ui/core/styles';
 import {
   Paper,
   Typography,
-  List,
-  ListItem,
-  ListItemText,
   Grid,
-  Button
+  // List,
+  // ListItem,
+  // ListItemText,
+  // Button
 } from '@material-ui/core';
 
 import { SVG } from '../../../../components';
