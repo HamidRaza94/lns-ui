@@ -4,18 +4,18 @@ import { config } from '../config';
 
 const { SERVER_URL } = config;
 
-const connection = async (method, api, data) => (
+const connection = async (method, route, data) => (
   await axios({
     method,
-    url: `${SERVER_URL}/${api}`,
+    url: `${SERVER_URL}/${route}`,
     data,
   })
 );
 
-const secureConnection = async (method, api, data) => (
+const secureConnection = async (method, route, data) => (
   await axios({
     method,
-    url: `${SERVER_URL}/${api}`,
+    url: `${SERVER_URL}/${route}`,
     data,
   })
 );
