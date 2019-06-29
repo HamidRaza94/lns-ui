@@ -25,7 +25,7 @@ function getStepContent(stepIndex) {
   }
 }
 
-class Complaints extends Component {
+class Grievance extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -101,4 +101,4 @@ class Complaints extends Component {
   }
 }
 
-export default withStyles(styles)(Complaints);
+export default withStyles(styles)(Grievance);

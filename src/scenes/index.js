@@ -6,7 +6,7 @@ export { StateAdvisoryBoard } from './StateAdvisoryBoard';
 export { StateBoard } from './StateBoard';
 export { Volunteers } from './Volunteers';
 export { VolunteerShip } from './VolunteerShip';
-export { Complaints } from './Complaints';
+export { Grievance } from './Grievance';
 export { Donate } from './Donate';
 export { Appointment } from './Appointment';
 export { Academics } from './Academics';

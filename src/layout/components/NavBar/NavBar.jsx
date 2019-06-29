@@ -69,7 +69,7 @@ class NavBar extends Component {
       staffSelectionBoard: navStyle,
       boardList: navListStyle,
       enrolledList: navListStyle,
-      complaintsList: navListStyle,
+      grievanceList: navListStyle,
       academicsList: navListStyle,
       staffSelectionBoardList: navListStyle
     };
@@ -186,7 +186,7 @@ class NavBar extends Component {
       employments,
       boardList,
       enrolledList,
-      complaintsList,
+      grievanceList,
       academicsList,
     } = this.state;
 
@@ -206,7 +206,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Home</Typography>
             </li>
           </Link>
-          <Link to={path.board.home}>
+          <Link>
             <li
               className={classes.li}
               style={{ ...board, ...active.board }}
@@ -220,85 +220,44 @@ class NavBar extends Component {
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...centralBoard, ...active.centralBoard }}
-                    onMouseEnter={this.handleButtonHover(
-                      'centralBoard',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover(
-                      'centralBoard',
-                      primary
-                    )}
+                    onMouseEnter={this.handleButtonHover('centralBoard', secondary)}
+                    onMouseLeave={this.handleButtonHover('centralBoard', primary)}
                     onClick={this.handleClick('centralBoard')}
                   >
-                    <Typography className={classes.text}>
-                      Central Board
-                    </Typography>
+                    <Typography className={classes.text}>Central Board</Typography>
                   </li>
                 </Link>
                 <Link to={path.board.central.protector}>
                   <li
                     className={classes.ul_li_ul_li}
-                    style={{
-                      ...centralProtectorBoard,
-                      ...active.centralProtectorBoard
-                    }}
-                    onMouseEnter={this.handleButtonHover(
-                      'centralProtectorBoard',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover(
-                      'centralProtectorBoard',
-                      primary
-                    )}
+                    style={{ ...centralProtectorBoard, ...active.centralProtectorBoard }}
+                    onMouseEnter={this.handleButtonHover('centralProtectorBoard', secondary)}
+                    onMouseLeave={this.handleButtonHover('centralProtectorBoard', primary)}
                     onClick={this.handleClick('centralProtectorBoard')}
                   >
-                    <Typography className={classes.text}>
-                      Central Protector Board
-                    </Typography>
+                    <Typography className={classes.text}>Central Protector Board</Typography>
                   </li>
                 </Link>
                 <Link to={path.board.central.advisory}>
                   <li
                     className={classes.ul_li_ul_li}
-                    style={{
-                      ...centralAdvisoryBoard,
-                      ...active.centralAdvisoryBoard
-                    }}
-                    onMouseEnter={this.handleButtonHover(
-                      'centralAdvisoryBoard',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover(
-                      'centralAdvisoryBoard',
-                      primary
-                    )}
+                    style={{ ...centralAdvisoryBoard, ...active.centralAdvisoryBoard }}
+                    onMouseEnter={this.handleButtonHover('centralAdvisoryBoard', secondary)}
+                    onMouseLeave={this.handleButtonHover('centralAdvisoryBoard', primary)}
                     onClick={this.handleClick('centralAdvisoryBoard')}
                   >
-                    <Typography className={classes.text}>
-                      Central Advisory Board
-                    </Typography>
+                    <Typography className={classes.text}>Central Advisory Board</Typography>
                   </li>
                 </Link>
                 <Link to={path.board.central.section}>
                   <li
                     className={classes.ul_li_ul_li}
-                    style={{
-                      ...centralSectionBoard,
-                      ...active.centralSectionBoard
-                    }}
-                    onMouseEnter={this.handleButtonHover(
-                      'centralSectionBoard',
-                      secondary
-                    )}
-                    onMouseLeave={this.handleButtonHover(
-                      'centralSectionBoard',
-                      primary
-                    )}
+                    style={{ ...centralSectionBoard, ...active.centralSectionBoard }}
+                    onMouseEnter={this.handleButtonHover('centralSectionBoard', secondary)}
+                    onMouseLeave={this.handleButtonHover('centralSectionBoard', primary)}
                     onClick={this.handleClick('centralSectionBoard')}
                   >
-                    <Typography className={classes.text}>
-                      Central Board of Section
-                    </Typography>
+                    <Typography className={classes.text}>Central Board of Section</Typography>
                   </li>
                 </Link>
                 <Link to={path.board.central.staffSelection}>
@@ -458,7 +417,7 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to={path.enrolled.home}>
+          <Link>
             <li
               className={classes.li}
               style={{ ...enrolled, ...active.enrolled }}
@@ -512,17 +471,17 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to={path.complaints.home}>
+          <Link>
             <li
               className={classes.li}
-              style={{ ...complaints, ...active.complaints }}
-              onMouseEnter={this.handleButtonHover('complaints', secondary)}
-              onMouseLeave={this.handleButtonHover('complaints', primary)}
-              onClick={this.handleClick('complaints')}
+              style={{ ...grievance, ...active.grievance }}
+              onMouseEnter={this.handleButtonHover('grievance', secondary)}
+              onMouseLeave={this.handleButtonHover('grievance', primary)}
+              onClick={this.handleClick('grievance')}
             >
               <Typography className={classes.text}>Public Grievance</Typography>
-              <ul className={classes.ul_li_ul} style={complaintsList}>
-                <Link to={path.complaints.grievance}>
+              <ul className={classes.ul_li_ul} style={grievanceList}>
+                <Link to={path.grievance.home}>
                   <li
                     className={classes.ul_li_ul_li}
                     style={{ ...grievance, ...active.grievance }}
@@ -556,7 +515,7 @@ class NavBar extends Component {
                       'otherGrievance',
                       primary
                     )}
-                    onClick={() => {window.open('https://pgportal.gov.in/Registration', '_blank')}}
+                    onClick={() => {window.open(path.grievance.cpgrams, '_blank')}}
                   >
                     <Typography className={classes.text}>
                       Regd. Grievance in CPGRAMS
@@ -588,7 +547,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Appointment</Typography>
             </li>
           </Link>
-          <Link to={path.academics.home}>
+          <Link>
             <li
               className={classes.li}
               style={{ ...academics, ...active.academics }}

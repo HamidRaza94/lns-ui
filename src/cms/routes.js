@@ -2,6 +2,8 @@ const BOARD = '/board';
 const CENTRAL_BOARD = `${BOARD}/central`;
 const STATE_BOARD = `${BOARD}/state`;
 
+const ACADEMICS = '/academics';
+
 export default {
   path: {
     home: '/',
@@ -30,26 +32,26 @@ export default {
     },
     volunteers: '/volunteers',
     volunteerShip: '/volunteer_ship',
-    complaints: {
-      home: '/complaints',
-      grievance: '/grievance',
+    grievance: {
+      home: '/grievance',
+      cpgrams: 'https://pgportal.gov.in/Registration',
     },
     donate: '/donate',
     appointment: '/appointment',
     academics: {
-      home: '/academics',
-      studentRegistration: '/student_registration',
-      examinationRegistration: '/examination_registration',
-      course: '/course',
-      feeStructure: '/fee_structure',
-      studentList: '/student_list',
-      passingCertificate: '/passing_certificate',
-      academicCenter: '/academic_center',
-      payOnlineAcademicsFees: '/pay_online_academics_fees',
-      syllabus: '/syllabus',
-      studentAttendance: '/student_attendance',
-      admissionCell: '/admission_cell',
-      feesCollectionCell: '/fees_collection_cell'
+      home: ACADEMICS,
+      studentRegistration: `${ACADEMICS}/student_registration`,
+      examinationRegistration: `${ACADEMICS}/examination_registration`,
+      course: `${ACADEMICS}/course`,
+      feeStructure: `${ACADEMICS}/fee_structure`,
+      studentList: `${ACADEMICS}/student_list`,
+      passingCertificate: `${ACADEMICS}/passing_certificate`,
+      academicCenter: `${ACADEMICS}/academic_center`,
+      payOnlineAcademicsFees: `${ACADEMICS}/pay_online_academics_fees`,
+      syllabus: `${ACADEMICS}/syllabus`,
+      studentAttendance: `${ACADEMICS}/student_attendance`,
+      admissionCell: `${ACADEMICS}/admission_cell`,
+      feesCollectionCell: `${ACADEMICS}/fees_collection_cell`
     },
     employees: '/employees',
     employments: '/employments'
