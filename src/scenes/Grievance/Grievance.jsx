@@ -137,8 +137,9 @@ class Grievance extends Component {
       summary,
     };
 
-    const response = connection('post', 'grievance', data);
+    const response = await connection('post', 'grievance', data);
     console.log(response);
+    alert(response)
   }
 
   handleChange = (field, value) => {

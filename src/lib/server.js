@@ -10,7 +10,7 @@ const connection = async (method, route, data) => (
     url: `${SERVER_URL}/${route}`,
     data,
   })
-);
+)
 
 const secureConnection = async (method, route, data) => (
   await axios({
