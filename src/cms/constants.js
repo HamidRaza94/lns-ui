@@ -1,4 +1,4 @@
-const SEX = ['Male', 'Female', 'Other'];
+const SEX = ['Male', 'Female', 'Transgender'];
 const MARITAL_STATUS = ['Single', 'Married', 'Widowed', 'Divorced', 'Separated'];
 const CATEGORY = ['General', 'OBC', 'SC', 'ST'];
 const RELIGION = ['Christianity', 'Islam', 'Hinduism', 'Buddhism', 'Sikhism', 'Jainism', 'Other'];

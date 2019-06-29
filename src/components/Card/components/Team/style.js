@@ -23,15 +23,8 @@ const styles = theme => ({
   image: {
     width: '100%',
     height: '100%',
-    filter: 'grayscale(100%)',
     borderRadius: '5px 5px 0px 0px',
-    opacity: 0.5,
     transition: '0.5s ease',
-
-    '&:hover': {
-      opacity: 1,
-      filter: 'grayscale(0%)',
-    },
   },
 
   name: {
@@ -39,6 +32,7 @@ const styles = theme => ({
     position: 'absolute',
     left: 20,
     top: 20,
+    color: '#0c1b8a',
   },
 
   description: {
