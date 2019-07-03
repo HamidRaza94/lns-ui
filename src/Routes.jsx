@@ -20,15 +20,12 @@ import {
   NoMatch
 } from './scenes';
 
-// import NavBar2 from './test/NavBar/NavBar';
-
 const { path } = routes;
 
 const Routes = () => (
   <Router>
     <Header />
     <NavBar />
-    {/* <NavBar2 /> */}
     <Switch>
       <Route exact path={path.home} component={Home} />
       <Route exact path={path.board.central.home} component={CentralBoard} />
