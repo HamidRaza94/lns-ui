@@ -13,6 +13,7 @@ import { PersonalDetail, IncidentDetail } from './component';
 import { steps } from '../../cms/grievance';
 import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
+import { personalDetailSchema, incidentDetailSchema } from './validation';
 
 class Grievance extends Component {
   constructor(props) {
@@ -35,6 +36,7 @@ class Grievance extends Component {
       placeOfIncident: '',
       dateTimeIncident: '',
       summary: '',
+      errors: {},
     };
   }
 
@@ -139,7 +141,7 @@ class Grievance extends Component {
 
     const response = await connection('post', 'grievance', data);
     console.log(response);
-    alert(response)
+    alert(response.data.message);
   }
 
   handleChange = (field, value) => {
@@ -156,13 +158,116 @@ class Grievance extends Component {
     });
   }
 
+  handleErrors = (field, errorMsg) => {
+    this.setState(prevState => ({
+      ...prevState,
+      errors: {
+        [field]: errorMsg,
+      },
+    }));
+  }
+
+  handleIsValid = () => {
+    const { activeStep } = this.state;
+
+    const options = {
+      abortEarly: false,
+    };
+
+    if (activeStep === 0) {
+      const {
+        name,
+        fatherName,
+        sex,
+        maritalStatus,
+        email,
+        phone,
+        dateOfBirth,
+        aadhaar,
+        category,
+        religion,
+        address,
+        policeStation,
+        state,
+        pincode,
+      } = this.state;
+
+      const value = {
+        name,
+        fatherName,
+        sex,
+        maritalStatus,
+        email,
+        phone,
+        dateOfBirth,
+        aadhaar,
+        category,
+        religion,
+        address,
+        policeStation,
+        state,
+        pincode,
+      }
+  
+      return personalDetailSchema.isValidSync(value, options);
+    }
+
+    if (activeStep === 1) {
+      const {
+        placeOfIncident,
+        dateTimeIncident,
+        summary,
+      } = this.state;
+
+      const value = {
+        placeOfIncident,
+        dateTimeIncident,
+        summary,
+      }
+  
+      return incidentDetailSchema.isValidSync(value, options);
+    }
+  }
+
+  handleValidation = () => {
+    const { activeStep } = this.state;
+
+    if (activeStep === 0) {
+      const {
+        name,
+        fatherName,
+        sex,
+        maritalStatus,
+        email,
+        phone,
+        dateOfBirth,
+        aadhaar,
+        category,
+        religion,
+        address,
+        policeStation,
+        state,
+        pincode,
+      } = this.state;
+
+      if (!name.length) {
+        alert('Check Name');
+      }
+    }
+  }
+
   handleNext = (activeButton) => () => {
     if (activeButton === 'Submit') {
       this.handleSubmitData();
     } else {
-      this.setState(prevState => ({
-        activeStep: prevState.activeStep + 1
-      }));
+      const validate = this.handleValidation();
+      if (validate) {
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1
+        }));
+      } else {
+        alert('Please Check Detail');
+      }
     }
   }
 
@@ -181,7 +286,7 @@ class Grievance extends Component {
   render() {
     const { classes } = this.props;
     const { activeStep } = this.state;
-    const activeButton = (activeStep === steps.length - 1 ? 'Submit' : 'Next');
+    const activeButtonText = (activeStep === steps.length - 1 ? 'Submit' : 'Next');
 
     return (
       <div className={classes.root}>
@@ -212,9 +317,9 @@ class Grievance extends Component {
             <Button
               variant="contained"
               color="primary"
-              onClick={this.handleNext(activeButton)}
+              onClick={this.handleNext(activeButtonText)}
             >
-              {activeButton}
+              {activeButtonText}
             </Button>
           </div>
         </div>

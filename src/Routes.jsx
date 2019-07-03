@@ -28,8 +28,8 @@ const Routes = () => (
   <Router>
     <Header />
     <NavBar />
+    {/* <NavBar2 /> */}
     <Switch>
-      {/* <Route exact path='/test' component={NavBar2} /> */}
       <Route exact path={path.home} component={Home} />
       <Route exact path={path.board.central.home} component={CentralBoard} />
       <Route exact path={path.board.central.protector} component={CentralProtectorBoard} />

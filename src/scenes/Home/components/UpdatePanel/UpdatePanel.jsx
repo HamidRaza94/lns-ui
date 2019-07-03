@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 import { Card } from '../../../../components';
 import styles from './style';
 import { config } from '../../../../config';
 
-class UpdatePanel extends Component {
+class UpdatePanel extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,22 +27,22 @@ class UpdatePanel extends Component {
           const link = [];
           const notice = [];
 
-          result.data.forEach(({ type, headline }) => {
-            if (type === 'news') {
-              news.push(headline);
-            } else if (type === 'link') {
-              link.push(headline);
-            } else if (type === 'notice') {
-              notice.push(headline);
-            }
+          // result.data.forEach(({ type, headline }) => {
+          //   if (type === 'news') {
+          //     news.push(headline);
+          //   } else if (type === 'link') {
+          //     link.push(headline);
+          //   } else if (type === 'notice') {
+          //     notice.push(headline);
+          //   }
 
-            this.setState({
-              isLoaded: true,
-              news,
-              link,
-              notice
-            });
-          });
+          //   this.setState({
+          //     isLoaded: true,
+          //     news,
+          //     link,
+          //     notice
+          //   });
+          // });
         },
         error => {
           this.setState({

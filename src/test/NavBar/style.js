@@ -1,13 +1,13 @@
 export default {
   nav: {
     display: 'flex',
-    backgroundColor: '#254260'
+    backgroundColor: '#254260',
   },
 
   ul: {
     listStyle: 'none',
     margin: 0,
-    paddingLeft: 0
+    paddingLeft: 0,
   },
 
   li: {
@@ -25,7 +25,7 @@ export default {
   },
 
   text: {
-    color: '#fff'
+    color: '#fff',
   },
 
   ul_li_ul: {
@@ -41,7 +41,7 @@ export default {
     marginTop: '1rem',
     left: 0,
     display: 'none',
-    zIndex: 1
+    zIndex: 1,
   },
 
   ul_li_ul_li: {
@@ -58,5 +58,21 @@ export default {
     '&:hover': {
       backgroundColor: '#a9502c',
     },
-  }
+  },
+
+  active: {
+    backgroundColor: '#a9502c',
+  },
+
+  showList: {
+    visibility: 'visible',
+    opacity: 1,
+    display: 'block',
+  },
+
+  hideList: {
+    visibility: 'hidden',
+    opacity: 0,
+    display: '',
+  },
 };

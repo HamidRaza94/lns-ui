@@ -8,7 +8,7 @@ export default {
   path: {
     home: '/',
     board: {
-      home: BOARD,
+      home: CENTRAL_BOARD,
       central: {
         home: CENTRAL_BOARD,
         protector: `${CENTRAL_BOARD}/protector`,
@@ -49,9 +49,10 @@ export default {
       academicCenter: `${ACADEMICS}/academic_center`,
       payOnlineAcademicsFees: `${ACADEMICS}/pay_online_academics_fees`,
       syllabus: `${ACADEMICS}/syllabus`,
-      studentAttendance: `${ACADEMICS}/student_attendance`,
       admissionCell: `${ACADEMICS}/admission_cell`,
-      feesCollectionCell: `${ACADEMICS}/fees_collection_cell`
+      feesCollectionCell: `${ACADEMICS}/fees_collection_cell`,
+      examinationCell: `${ACADEMICS}/examination_cell`,
+      academicsCell: `${ACADEMICS}/academics_cell`,
     },
     employees: '/employees',
     employments: '/employments'
