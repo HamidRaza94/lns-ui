@@ -14,8 +14,9 @@ function createData(state, name, rank, contact) {
   return { state, name, rank, contact };
 }
 
-const data = {
-  stateBoard: [
+const stateBoardData = {
+  heading: ['state', 'name', 'rank', 'contact'],
+  boardMembers: [
     createData('DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397),
     createData('DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081),
     createData('HARYANA', 'MARDAN ALI', STATE_DIRECTOR_GENERAL, 9671213606),
@@ -31,8 +32,11 @@ const data = {
     createData('UTTAR PRADESH', 'FAISAL MUMTAZ', STATE_DIRECTOR_GENERAL, 9837551110),
     createData('UTTAR PRADESH', 'CHAUDHARY FARMAN RAYEEM', DIRECTOR, 7417282919),
   ],
+}
 
-  advisoryBoard: [
+const stateAdvisoryBoardData = {
+  heading: ['state', 'name', 'rank', 'contact'],
+  boardMembers: [
     createData('DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397),
     createData('DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081),
     createData('HARYANA', 'MARDAN ALI', STATE_DIRECTOR_GENERAL, 9671213606),
@@ -47,7 +51,7 @@ const data = {
     createData('UTTAR PRADESH', 'RAJ BABU GAHLAUT', DEPUTY_SUPERINTENDENT, 9634401079),
     createData('UTTAR PRADESH', 'FAISAL MUMTAZ', STATE_DIRECTOR_GENERAL, 9837551110),
     createData('UTTAR PRADESH', 'CHAUDHARY FARMAN RAYEEM', DIRECTOR, 7417282919),
-  ]
-};
+  ],
+}
 
-export { data }
+export { stateBoardData, stateAdvisoryBoardData }

@@ -3,7 +3,7 @@ import { withStyles, Select, MenuItem } from '@material-ui/core';
 
 import styles from './style';
 import { STATES } from '../../cms/constants';
-import { data } from '../../cms/stateBoard';
+import { stateBoardData } from '../../cms/board';
 import { Table } from '../../components';
 
 class StateBoard extends Component {
@@ -11,18 +11,24 @@ class StateBoard extends Component {
     super(props);
     this.state = {
       state: '',
-      stateBoard: data
+      stateBoard: '',
     };
+  }
+
+  componentWillMount = () => {
+    const { boardMembers } = stateBoardData;
+    this.setState({stateBoard: boardMembers});
   }
 
   handleChangeState = event => {
     const currentState = event.target.value;
     let currentStateBoard;
+    const { boardMembers } = stateBoardData;
 
     if (currentState === '') {
-      currentStateBoard = data;
+      currentStateBoard = boardMembers;
     } else {
-      currentStateBoard = data.filter(row => row.state === currentState);
+      currentStateBoard = boardMembers.filter(row => row.state === currentState);
     }
 
     this.setState({
@@ -34,6 +40,7 @@ class StateBoard extends Component {
   render() {
     const { state, stateBoard } = this.state;
     const { classes } = this.props;
+    const { heading } = stateBoardData
 
     return (
       <div className={classes.root}>
@@ -54,7 +61,7 @@ class StateBoard extends Component {
           </Select>
         </div>
 
-        <Table data={stateBoard} head={['state', 'name', 'rank', 'contact']} />
+        <Table data={stateBoard} head={heading} />
       </div>
     );
   }
