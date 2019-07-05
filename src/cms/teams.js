@@ -2,7 +2,7 @@ import { TEAM_FOLDER, RANKS } from './constants';
 
 const {
   CENTRAL_CHIEF_DIRECTOR,
-  Central_Deputy_Director,
+  CENTRAL_DEPUTY_DIRECTOR,
   OFFICE_SUPERINTENDENT,
 } = RANKS;
 
@@ -20,7 +20,7 @@ const teams = {
     {
       name: 'MD NASEEM SAIFI',
       image: `${TEAM_FOLDER}/md_naseem_saifi.jpg`,
-      rank: Central_Deputy_Director,
+      rank: CENTRAL_DEPUTY_DIRECTOR,
       facebook: 'facebook.com',
       whatsapp: 'whatsapp.com',
       twitter: 'twitter.com',
@@ -49,17 +49,6 @@ const teams = {
 
   advisory: {
     central: [
-      {
-        name: 'SAIYAD SHAH ALAM',
-        image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
-        rank: CENTRAL_CHIEF_DIRECTOR,
-        facebook: 'facebook.com',
-        whatsapp: 'whatsapp.com',
-        twitter: 'twitter.com',
-      },
-    ],
-
-    state: [
       {
         name: 'SAIYAD SHAH ALAM',
         image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,

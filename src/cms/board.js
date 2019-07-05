@@ -1,6 +1,9 @@
-import { RANKS } from './constants';
+import { TEAM_FOLDER, RANKS } from './constants';
 
 const {
+  CENTRAL_CHIEF_DIRECTOR,
+  Central_Deputy_Director,
+  OFFICE_SUPERINTENDENT,
   STATE_INCHARGE,
   SUPERINTENDENT,
   DEPUTY_SUPERINTENDENT,
@@ -13,6 +16,90 @@ const {
 function createData(state, name, rank, contact) {
   return { state, name, rank, contact };
 }
+
+const centralBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+
+  {
+    name: 'MD NASEEM SAIFI',
+    image: `${TEAM_FOLDER}/md_naseem_saifi.jpg`,
+    rank: Central_Deputy_Director,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+
+  {
+    name: 'GURDAYAL SINGH GAUTAM',
+    image: `${TEAM_FOLDER}/guridayal_singh_gautam.jpg`,
+    rank: OFFICE_SUPERINTENDENT,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
+
+const centralProtectorBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
+
+const centralAdvisoryBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
+
+const centralSectionBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
+
+const centralStaffSelectionBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
+
+const centralDisciplinaryBoardData = [
+  {
+    name: 'SAIYAD SHAH ALAM',
+    image: `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+    rank: CENTRAL_CHIEF_DIRECTOR,
+    facebook: 'facebook.com',
+    whatsapp: 'whatsapp.com',
+    twitter: 'twitter.com',
+  },
+];
 
 const stateBoardData = {
   heading: ['state', 'name', 'rank', 'contact'],
@@ -54,4 +141,22 @@ const stateAdvisoryBoardData = {
   ],
 }
 
-export { stateBoardData, stateAdvisoryBoardData }
+const stateSectionBoardData = {};
+
+const stateStaffSelectionBoardData = {};
+
+const stateDisciplinaryBoardData = {};
+
+export {
+  centralBoardData,
+  centralProtectorBoardData,
+  centralAdvisoryBoardData,
+  centralSectionBoardData,
+  centralStaffSelectionBoardData,
+  centralDisciplinaryBoardData,
+  stateBoardData,
+  stateAdvisoryBoardData,
+  stateSectionBoardData,
+  stateStaffSelectionBoardData,
+  stateDisciplinaryBoardData,
+}
