@@ -3,7 +3,6 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     width: 350,
-    height: 500,
     backgroundColor: '#1e2251',
     borderRadius: 5,
     boxShadow: '0px 0px 10px 5px #111433',
@@ -27,14 +26,6 @@ const styles = theme => ({
     transition: '0.5s ease',
   },
 
-  name: {
-    fontWeight: 'bold',
-    position: 'absolute',
-    left: 20,
-    top: 20,
-    color: '#0c1b8a',
-  },
-
   description: {
     display: 'flex',
     flexDirection: 'column',
@@ -49,7 +40,7 @@ const styles = theme => ({
     backgroundColor: '#b247af',
   },
 
-  designation: {
+  typo: {
     color: 'white',
   },
 

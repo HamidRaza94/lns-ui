@@ -13,11 +13,12 @@ const Team = props => {
     <div className={classes.root}>
       <div className={classes.team}>
         <img src={image} alt="" className={classes.image} />
-        <div className={classes.name}>{capitalizeAll(name)}</div>
+        {/* <div className={classes.name}>{capitalizeAll(name)}</div> */}
       </div>
       <div className={classes.description}>
+        <Typography variant="h6" className={classes.typo}>{capitalizeAll(name)}</Typography>
         <span className={classes.span}></span>
-        <Typography variant="h5" className={classes.designation}>{rank}</Typography>
+        <Typography variant="h5" className={classes.typo}>{rank}</Typography>
         <div className={classes.socialDiv}>
           { facebook && (
             <div className={classes.social}>
