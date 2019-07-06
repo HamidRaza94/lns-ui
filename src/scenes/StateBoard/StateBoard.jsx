@@ -18,7 +18,6 @@ class StateBoard extends Component {
   componentWillMount = () => {
     const { boardMembers } = stateBoardData;
     this.setState({stateBoard: boardMembers});
-    console.log(this.state);
   }
 
   handleChangeState = event => {

@@ -163,7 +163,7 @@ const centralDisciplinaryBoardData = [
 ];
 
 const stateBoardData = {
-  heading: ['STATE', 'NAME', 'RANK', 'CONTACT'],
+  heading: ['state', 'name', 'rank', 'contact'],
   boardMembers: [
     createData('DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397),
     createData('DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081),
@@ -185,7 +185,7 @@ const stateBoardData = {
 }
 
 const stateAdvisoryBoardData = {
-  heading: ['STATE', 'NAME', 'RANK', 'CONTACT'],
+  heading: ['state', 'name', 'rank', 'contact'],
   boardMembers: [],
 }
 

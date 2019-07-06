@@ -41,7 +41,7 @@ class Table extends Component {
 
   render() {
     const { rowsPerPage, page } = this.state;
-    const { classes, data, head } = this.props;
+    const { classes, data, head } = this.props;console.log('data is ', data)
 
     return (
       <Paper className={classes.paper}>
