@@ -10,14 +10,15 @@ class StateBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      state: '',
-      stateBoard: '',
+      state: [],
+      stateBoard: [],
     };
   }
 
   componentWillMount = () => {
     const { boardMembers } = stateBoardData;
     this.setState({stateBoard: boardMembers});
+    console.log(this.state);
   }
 
   handleChangeState = event => {
@@ -40,7 +41,7 @@ class StateBoard extends Component {
   render() {
     const { state, stateBoard } = this.state;
     const { classes } = this.props;
-    const { heading } = stateBoardData
+    const { heading } = stateBoardData;
 
     return (
       <div className={classes.root}>

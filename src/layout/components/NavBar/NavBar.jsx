@@ -83,7 +83,7 @@ class NavBar extends Component {
               <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle('boardList'))}>
                 <Link to={path.board.central.home}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('centralBoard'))}>
-                    <Typography className={classes.text}>Central Board</Typography>
+                    <Typography className={classes.text}>Central Governing Board</Typography>
                   </li>
                 </Link>
                 <Link to={path.board.central.protector}>
@@ -183,6 +183,26 @@ class NavBar extends Component {
                     <Typography className={classes.text}>Regd. Grievance in CPGRAMS</Typography>
                   </li>
                 </Link>
+                <Link to={path.grievance.fir}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('fir'))}>
+                    <Typography className={classes.text}>Online FIR (All State in India)</Typography>
+                  </li>
+                </Link>
+                <Link to={path.grievance.lostReport}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                    <Typography className={classes.text}>Online Lost Report (All State in India)</Typography>
+                  </li>
+                </Link>
+                <Link to={path.grievance.lostReport}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                    <Typography className={classes.text}>Regd. in any commission</Typography>
+                  </li>
+                </Link>
+                <Link to={path.grievance.lostReport}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                    <Typography className={classes.text}>Regd. in Chief Minister Office All India</Typography>
+                  </li>
+                </Link>
               </ul>
             </li>
           </Link>
@@ -274,6 +294,11 @@ class NavBar extends Component {
                 <Link to={path.academics.academicsCell}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('academicsCell'))}>
                     <Typography className={classes.text}>Academics Cell</Typography>
+                  </li>
+                </Link>
+                <Link to={path.academics.placementCell}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('placementCell'))}>
+                    <Typography className={classes.text}>Placement Cell</Typography>
                   </li>
                 </Link>
               </ul>

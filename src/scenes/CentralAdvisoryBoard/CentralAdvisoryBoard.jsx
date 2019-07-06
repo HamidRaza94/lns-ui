@@ -3,16 +3,16 @@ import { withStyles, Typography } from '@material-ui/core';
 
 import styles from './style';
 import { Card } from '../../components';
-import { teams } from '../../cms';
+import { centralAdvisoryBoardData } from '../../cms/board';
 
-const CentralAdvisoryBoard = props => {
+const CentralBoard = props => {
   const { classes } = props;
 
   return (
     <div className={classes.root}>
       <Typography className={classes.typo} variant="h2" align="center">Central Advisory Board</Typography>
       <div className={classes.team}>      
-        {teams.advisory.central.map(team => (
+        {centralAdvisoryBoardData.map(team => (
           <Card variant="team" data={team} />
         ))}
       </div>
@@ -20,4 +20,4 @@ const CentralAdvisoryBoard = props => {
   );
 };
 
-export default withStyles(styles)(CentralAdvisoryBoard);
+export default withStyles(styles)(CentralBoard);

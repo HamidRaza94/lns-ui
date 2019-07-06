@@ -35,6 +35,8 @@ export default {
     grievance: {
       home: '/grievance',
       cpgrams: 'https://pgportal.gov.in/Registration',
+      fir: '/online_fir',
+      lostReport: '/lost_report',
     },
     donate: '/donate',
     appointment: '/appointment',
@@ -53,6 +55,7 @@ export default {
       feesCollectionCell: `${ACADEMICS}/fees_collection_cell`,
       examinationCell: `${ACADEMICS}/examination_cell`,
       academicsCell: `${ACADEMICS}/academics_cell`,
+      placementCell: `${ACADEMICS}/placement_cell`,
     },
     employees: '/employees',
     employments: '/employments'
