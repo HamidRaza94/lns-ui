@@ -8,6 +8,7 @@ import {
   CentralBoard,
   CentralProtectorBoard,
   CentralAdvisoryBoard,
+  CentralSectionBoard,
   StateAdvisoryBoard,
   StateBoard,
   Volunteers,
@@ -31,6 +32,7 @@ const Routes = () => (
       <Route exact path={path.board.central.home} component={CentralBoard} />
       <Route exact path={path.board.central.protector} component={CentralProtectorBoard} />
       <Route exact path={path.board.central.advisory} component={CentralAdvisoryBoard} />
+      <Route exact path={path.board.central.section} component={CentralSectionBoard} />
       <Route exact path={path.board.state.advisory} component={StateAdvisoryBoard} />
       <Route exact path={path.board.state.home} component={StateBoard} />
       <Route exact path={path.volunteers} component={Volunteers} />

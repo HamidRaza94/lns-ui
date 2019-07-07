@@ -27,6 +27,10 @@ function createCentralData(name, image, rank, facebook, whatsapp, twitter) {
   return { name, image, rank, facebook, whatsapp, twitter };
 }
 
+function createSectionData(courseName, facultyNames) {
+  return { courseName, facultyNames };
+}
+
 const centralBoardData = [
   createCentralData(
     'SAIYAD SAJID ALI (EX-SERVICEMAN DEPARTMENT OF ARMY GOVT. OF INDIA)',
@@ -116,7 +120,116 @@ const centralAdvisoryBoardData = [
 ];
 
 const centralSectionBoardData = [
-  
+  createSectionData(
+    'Central Journalism Training/Experience Section (PJI)',
+    [createCentralData(
+      'SAIYAD SHAH ALAM',
+      `${TEAM_FOLDER}/saiyad_shah_alam.jpg`,
+      CENTRAL_CHIEF_DIRECTOR,
+      'saiyad.shahalam',
+      '9911521255, 9454156405',
+    ),]
+  ),
+
+  createSectionData(
+    'Central Handicraft Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Nursing Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Technical (Small Industries) Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Indian Legal (Necessary) Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Self Defense Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Adult Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Disaster Management Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Pollution Control Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Tournament (Playing) Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Yoga Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Beautician Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Motor Driving Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Primary Level Education Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Cultural Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Socialist Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Business Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Professionally Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Office Management Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Photographic, Video Mixing and Photoshop Training/Experience Section (PJI)',
+    []
+  ),
+
+  createSectionData(
+    'Central Central Cameraman in Journalism Training/Experience Section (PJI)',
+    []
+  ),
 ];
 
 const centralStaffSelectionBoardData = [
