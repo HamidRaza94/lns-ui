@@ -260,8 +260,8 @@ class Grievance extends Component {
     if (activeButton === 'Submit') {
       this.handleSubmitData();
     } else {
-      const validate = this.handleValidation();
-      if (validate) {
+      const isValid = this.handleValidation();
+      if (isValid) {
         this.setState(prevState => ({
           activeStep: prevState.activeStep + 1
         }));

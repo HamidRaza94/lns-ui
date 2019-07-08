@@ -29,7 +29,7 @@ const Footer = props => {
           <SVG variant="twitter" />
         </div>
         <Typography className={classes.designer}>
-          Designed by: <br /> Mohammad Hamid Raza
+          Designed by: <br /> Mohammad Hamid Raza & Sagun Saluja
         </Typography>
       </div>
     </div>
