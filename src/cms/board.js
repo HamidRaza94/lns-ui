@@ -1,4 +1,4 @@
-import { TEAM_FOLDER, RANKS } from './constants';
+import { TEAM_FOLDER, RANKS, ROW_PER_PAGE_OPTIONS } from './constants';
 
 const {
   CHIEF_FOUNDER,
@@ -18,10 +18,6 @@ const {
   STATE_DIRECTOR_GENERAL,
   DIRECTOR,
 } = RANKS;
-
-function createData(state, name, rank, contact) {
-  return { state, name, rank, contact };
-}
 
 function createCentralData(name, image, rank, facebook, whatsapp, twitter) {
   return { name, image, rank, facebook, whatsapp, twitter };
@@ -276,30 +272,52 @@ const centralDisciplinaryBoardData = [
 ];
 
 const stateBoardData = {
-  heading: ['state', 'name', 'rank', 'contact'],
-  boardMembers: [
-    createData('DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397),
-    createData('DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081),
-    createData('HARYANA', 'MARDAN ALI', STATE_DIRECTOR_GENERAL, 9671213606),
-    createData('BIHAR', 'MD. YAKUB ANSARI', STATE_INCHARGE, 7903798853),
-    createData('BIHAR', 'SUMAN KUMAR', CHIEF_SECRETORY_STATE, 8210767690),
-    createData('BIHAR', 'ARADHANA KUMARI', STATE_SECRETORY, 6201841772),
-    createData('GUJARAT', 'HARESH AMBALIYA', STATE_INCHARGE, 9714428903),
-    createData('GUJARAT', 'GHAN SHYAM DONGA', SUPERINTENDENT, 8160350508),
-    createData('MAHARASHTRA', 'RAHIM MD. PINJARI', SUPERINTENDENT, 8530378535),
-    createData('UTTAR PRADESH', 'VED PRAKASH SHARMA', STATE_INCHARGE, 9548540575),
-    createData('UTTAR PRADESH', 'S. M. KHALID ADV. HIGH COURT OF U.P.', SUPERINTENDENT, 9839110962),
-    createData('UTTAR PRADESH', 'RAJ BABU GAHLAUT', DEPUTY_SUPERINTENDENT, 9634401079),
-    createData('UTTAR PRADESH', 'FAISAL MUMTAZ', STATE_DIRECTOR_GENERAL, 9837551110),
-    createData('UTTAR PRADESH', 'CHAUDHARY FARMAN RAYEEM', DIRECTOR, 7417282919),
-    createData('UTTAR PRADESH', 'REKHA SAXENA', CHIEF_SECRETORY_STATE, 9412541576),
-    createData('UTTAR PRADESH', 'RASHID ALI', STATE_SECRETORY, 8384017620),
+  title: 'State Boards List',
+  columns: ['STATE', 'NAME', 'RANK', 'CONTACT'],
+  options: {
+    filterType: 'dropdown',
+    selectableRows: 'none',
+    responsive: 'scroll',
+    print: false,
+    rowsPerPage: 5,
+    rowsPerPageOptions: ROW_PER_PAGE_OPTIONS,
+    fixedHeader: false,
+  },
+  data: [
+    ['DELHI', 'YOGESH MEHTA', SUPERINTENDENT, 9015826397],
+    ['DELHI', 'DR. M. H. PASHA', DIRECTOR, 9990547081],
+    ['HARYANA', 'MARDAN ALI', STATE_DIRECTOR_GENERAL, 9671213606],
+    ['BIHAR', 'MD. YAKUB ANSARI', STATE_INCHARGE, 7903798853],
+    ['BIHAR', 'SUMAN KUMAR', CHIEF_SECRETORY_STATE, 8210767690],
+    ['BIHAR', 'ARADHANA KUMARI', STATE_SECRETORY, 6201841772],
+    ['GUJARAT', 'HARESH AMBALIYA', STATE_INCHARGE, 9714428903],
+    ['GUJARAT', 'GHAN SHYAM DONGA', SUPERINTENDENT, 8160350508],
+    ['MAHARASHTRA', 'RAHIM MD. PINJARI', SUPERINTENDENT, 8530378535],
+    ['UTTAR PRADESH', 'VED PRAKASH SHARMA', STATE_INCHARGE, 9548540575],
+    ['UTTAR PRADESH', 'S. M. KHALID ADV. HIGH COURT OF U.P.', SUPERINTENDENT, 9839110962],
+    ['UTTAR PRADESH', 'RAJ BABU GAHLAUT', DEPUTY_SUPERINTENDENT, 9634401079],
+    ['UTTAR PRADESH', 'FAISAL MUMTAZ', STATE_DIRECTOR_GENERAL, 9837551110],
+    ['UTTAR PRADESH', 'CHAUDHARY FARMAN RAYEEM', DIRECTOR, 7417282919],
+    ['UTTAR PRADESH', 'REKHA SAXENA', CHIEF_SECRETORY_STATE, 9412541576],
+    ['UTTAR PRADESH', 'RASHID ALI', STATE_SECRETORY, 8384017620],
   ],
 }
 
 const stateAdvisoryBoardData = {
-  heading: ['state', 'name', 'rank', 'contact'],
-  boardMembers: [],
+  title: 'State Boards List',
+  columns: ['STATE', 'NAME', 'RANK', 'CONTACT'],
+  options: {
+    filterType: 'dropdown',
+    selectableRows: 'none',
+    responsive: 'scroll',
+    print: false,
+    rowsPerPage: 5,
+    rowsPerPageOptions: ROW_PER_PAGE_OPTIONS,
+    fixedHeader: false,
+  },
+  data: [
+    ['No Data'],
+  ],
 }
 
 const stateSectionBoardData = {};

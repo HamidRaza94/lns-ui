@@ -1,1 +1,2 @@
-export { default as Academics } from './Academics';
+export { LearnerRegistration } from './LearnerRegistration';
+export { LearnerVerification } from './LearnerVerification';

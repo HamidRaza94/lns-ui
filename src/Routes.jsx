@@ -16,7 +16,6 @@ import {
   Grievance,
   Donate,
   Appointment,
-  Academics,
   LearnerRegistration,
   LearnerVerification,
   Employees,
@@ -42,7 +41,6 @@ const Routes = () => (
       <Route exact path={path.grievance.home} component={Grievance} />
       <Route exact path={path.donate} component={Donate} />
       <Route exact path={path.appointment} component={Appointment} />
-      <Route exact path={path.academics.home} component={Academics} />
       <Route exact path={path.academics.studentRegistration} component={LearnerRegistration} />
       <Route exact path={path.academics.studentList} component={LearnerVerification} />
       <Route exact path={path.employees} component={Employees} />

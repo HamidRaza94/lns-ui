@@ -1,17 +1,27 @@
 export { Home } from './Home';
-export { CentralBoard } from './CentralBoard';
-export { CentralProtectorBoard } from './CentralProtectorBoard';
-export { CentralAdvisoryBoard } from './CentralAdvisoryBoard';
-export { CentralSectionBoard } from './CentralSectionBoard';
-export { StateAdvisoryBoard } from './StateAdvisoryBoard';
-export { StateBoard } from './StateBoard';
-export { LearnerVerification } from './LearnerVerification';
-export { EnrollmentVerification } from './EnrollmentVerification';
-export { VolunteerShip } from './VolunteerShip';
+
+export {
+  CentralBoard,
+  CentralAdvisoryBoard,
+  CentralProtectorBoard,
+  CentralSectionBoard,
+  StateBoard,
+  StateAdvisoryBoard,
+} from './Boards';
+
+export { EnrollmentVerification, VolunteerShip } from './Enrolled';
+
 export { Grievance } from './Grievance';
+
 export { Donate } from './Donate';
+
 export { Appointment } from './Appointment';
-export { Academics } from './Academics';
-export { LearnerRegistration } from './LearnerRegistration';
+
+export {
+  LearnerRegistration,
+  LearnerVerification,
+} from './Academics';
+
 export { Employees } from './Employees';
+
 export { NoMatch } from './NoMatch';
