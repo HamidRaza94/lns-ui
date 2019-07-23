@@ -6,7 +6,7 @@ export { CentralSectionBoard } from './CentralSectionBoard';
 export { StateAdvisoryBoard } from './StateAdvisoryBoard';
 export { StateBoard } from './StateBoard';
 export { LearnerVerification } from './LearnerVerification';
-export { Volunteers } from './Volunteers';
+export { EnrollmentVerification } from './EnrollmentVerification';
 export { VolunteerShip } from './VolunteerShip';
 export { Grievance } from './Grievance';
 export { Donate } from './Donate';

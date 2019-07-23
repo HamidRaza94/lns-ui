@@ -27,11 +27,9 @@ export default {
     },
     enrolled: {
       home: '/enrolled',
-      enrollmentVerification: '/volunteers',
-      applyEnrollment: '/volunteer_ship',
+      enrollmentVerification: '/enrolled/enrollment_verification',
+      applyEnrollment: '/enrolled/enrollment',
     },
-    volunteers: '/volunteers',
-    volunteerShip: '/volunteer_ship',
     grievance: {
       home: '/grievance',
       cpgrams: 'https://pgportal.gov.in/Registration',

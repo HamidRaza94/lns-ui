@@ -1,6 +1,6 @@
 import { ROW_PER_PAGE_OPTIONS } from './constants';
 
-const volunteers = {
+const enrollmentVerification = {
   title: 'Volunteers List',
   columns: ['ENROLLMENT ID', 'NAME', 'FATHER/HUSBAND NAME', 'ADDRESS'],
   options: {
@@ -40,4 +40,4 @@ const volunteers = {
   ],
 }
 
-export default volunteers;
+export default enrollmentVerification;

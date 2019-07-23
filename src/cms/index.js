@@ -4,7 +4,7 @@ export * from './volunteerShip';
 export * from './grievance';
 export * from './board';
 export { default as learnerVerification } from './learnerVerification';
-export { default as volunteers } from './volunteers';
+export { default as enrollmentVerification } from './enrollmentVerification';
 export { default as routes } from './routes';
 export { default as header } from './header';
 export { default as sections } from './sections';

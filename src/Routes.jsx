@@ -11,7 +11,7 @@ import {
   CentralSectionBoard,
   StateAdvisoryBoard,
   StateBoard,
-  Volunteers,
+  EnrollmentVerification,
   VolunteerShip,
   Grievance,
   Donate,
@@ -37,8 +37,8 @@ const Routes = () => (
       <Route exact path={path.board.central.section} component={CentralSectionBoard} />
       <Route exact path={path.board.state.advisory} component={StateAdvisoryBoard} />
       <Route exact path={path.board.state.home} component={StateBoard} />
-      <Route exact path={path.volunteers} component={Volunteers} />
-      <Route exact path={path.volunteerShip} component={VolunteerShip} />
+      <Route exact path={path.enrolled.enrollmentVerification} component={EnrollmentVerification} />
+      <Route exact path={path.enrolled.applyEnrollment} component={VolunteerShip} />
       <Route exact path={path.grievance.home} component={Grievance} />
       <Route exact path={path.donate} component={Donate} />
       <Route exact path={path.appointment} component={Appointment} />
