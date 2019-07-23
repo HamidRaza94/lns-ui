@@ -66,9 +66,9 @@ class UpdatePanel extends PureComponent {
 
       return (
         <div style={styles.root}>
-          <Card variant="update" data={newsData} />
           <Card variant="update" data={linkData} />
           <Card variant="update" data={noticeData} />
+          <Card variant="update" data={newsData} />
         </div>
       );
     } else if (error) {
@@ -78,9 +78,9 @@ class UpdatePanel extends PureComponent {
 
       return (
         <div style={styles.root}>
-          <Card variant="update" data={newsData} />
           <Card variant="update" data={linkData} />
           <Card variant="update" data={noticeData} />
+          <Card variant="update" data={newsData} />
         </div>
       );
     } else {
@@ -91,9 +91,9 @@ class UpdatePanel extends PureComponent {
 
       return (
         <div style={styles.root}>
-          <Card variant="update" data={newsData} />
           <Card variant="update" data={linkData} />
           <Card variant="update" data={noticeData} />
+          <Card variant="update" data={newsData} />
         </div>
       );
     }

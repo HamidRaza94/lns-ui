@@ -15,6 +15,7 @@ export default {
     display: 'block',
     float: 'left',
     padding: '1rem',
+    // padding: '1rem 2rem 1rem 2rem',
     position: 'relative',
     textDecoration: 'none',
     transitionDuration: '0.5s',

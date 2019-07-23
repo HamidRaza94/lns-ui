@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   withStyles,
   TextField,
+  Input,
 } from '@material-ui/core';
 
 // import {
@@ -31,7 +32,6 @@ class IncidentDetail extends Component {
             label="Place of Incident"
             value={placeOfIncident}
             onChange={this.handleChange('placeOfIncident')}
-            type="number"
             className={classes.padding}
             fullWidth
           />
@@ -52,11 +52,21 @@ class IncidentDetail extends Component {
 
         <TextField
           id="summary"
-          label="Summary"
+          label="Content of Complaints"
           multiline
           value={summary}
           onChange={this.handleChange('summary')}
           margin="dense"
+        />
+
+        <Input
+          id="attachment"
+          type="file"
+          name="attachment"
+          classes={{ input: classes.attachment, root: classes.attachment }}
+          // onChange={event => this.onChange(event)}
+          inputProps={{ accept : ['.jpg', '.jpeg', '.png'] }}
+          // inputRef={this.fileInput}
         />
       </>
     );

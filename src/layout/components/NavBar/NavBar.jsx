@@ -233,7 +233,7 @@ class NavBar extends Component {
               <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle('academicsList'))}>
                 <Link to={path.academics.studentRegistration}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('studentRegistration'))}>
-                    <Typography className={classes.text}>Student Registration</Typography>
+                    <Typography className={classes.text}>Learner Registration</Typography>
                   </li>
                 </Link>
                 <Link to={path.academics.examinationRegistration}>
@@ -253,7 +253,7 @@ class NavBar extends Component {
                 </Link>
                 <Link to={path.academics.studentList}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('studentList'))}>
-                    <Typography className={classes.text}>Student List</Typography>
+                    <Typography className={classes.text}>Learner Verification</Typography>
                   </li>
                 </Link>
                 <Link to={path.academics.passingCertificate}>
@@ -296,11 +296,6 @@ class NavBar extends Component {
                     <Typography className={classes.text}>Academics Cell</Typography>
                   </li>
                 </Link>
-                <Link to={path.academics.placementCell}>
-                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('placementCell'))}>
-                    <Typography className={classes.text}>Placement Cell</Typography>
-                  </li>
-                </Link>
               </ul>
             </li>
           </Link>
@@ -318,6 +313,11 @@ class NavBar extends Component {
               onClick={this.handleNavClick('employments')}
             >
               <Typography className={classes.text}>Employments</Typography>
+            </li>
+          </Link>
+          <Link to={path.academics.placementCell}>
+            <li className={classNames(classes.li, this.getActiveNavStyle('placementCell'))}>
+              <Typography className={classes.text}>Placement Cell</Typography>
             </li>
           </Link>
         </ul>

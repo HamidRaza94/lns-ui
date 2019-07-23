@@ -18,11 +18,7 @@ const Home = props => {
 
       <div className={classes.body}>
         <div className={classes.update}>
-          <UpdatePanel className={classes.updatePanel} />
-        </div>
-
-        <div className={classes.content}>
-          <div className={classes.chiefDirector}>
+        <div className={classes.chiefDirector}>
             <div className={classes.chiefDirectorImage}>
               <img
                 src={`${TEAM_FOLDER}/saiyad_shah_alam.jpg`}
@@ -33,6 +29,10 @@ const Home = props => {
             </div>
             <div className={classes.chiefDirectorMessage} />
           </div>
+          <UpdatePanel className={classes.updatePanel} />
+        </div>
+
+        <div className={classes.content}>
           <Content />
           <Slider banners={gallery} className={classes.banner} random />
         </div>

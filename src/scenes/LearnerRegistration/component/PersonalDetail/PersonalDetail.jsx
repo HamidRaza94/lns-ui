@@ -21,6 +21,7 @@ import {
   MARITAL_STATUS,
   CATEGORY,
   RELIGION,
+  PHYSICAL_STATUS,
   STATES
 } from '../../../../cms/constants';
 import styles from './style';
@@ -33,44 +34,31 @@ class PersonalDetail extends Component {
   render() {
     const {
       classes,
-      name,
+      candidateName,
       fatherName,
       sex,
       maritalStatus,
-      email,
-      phone,
       dateOfBirth,
-      aadhaar,
+      placeOfBirth,
       category,
       religion,
-      address,
-      policeStation,
-      state,
-      pincode,
-      // hasErrors,
-      // getErrors
     } = this.props;
 
     return (
       <>
         <div className={classes.row} style={{ padding: '10px 0px' }}>
           <TextField
-            id="name"
-            // error={hasErrors.name}
-            // helperText={getErrors.name}
-            label="Name"
-            value={name}
+            id="candidateName"
+            label="Candidate Name"
+            value={candidateName}
             margin="dense"
             fullWidth
             className={classes.padding}
-            onChange={this.handleChange('name')}
-            // onBlur={this.handleValidation('name')}
+            onChange={this.handleChange('candidateName')}
           />
 
           <TextField
             id="fatherName"
-            // error={hasErrors.fatherName}
-            // helperText={getErrors.fatherName}
             label="Father Name"
             value={fatherName}
             margin="dense"
@@ -119,37 +107,7 @@ class PersonalDetail extends Component {
 
         <div className={classes.row} style={{ padding: '10px 0px' }}>
           <TextField
-            id="phone"
-            // error={hasErrors.phone}
-            // helperText={getErrors.phone}
-            label="Phone"
-            value={phone}
-            onChange={this.handleChange('phone')}
-            type="number"
-            margin="dense"
-            className={classes.padding}
-            fullWidth
-          />
-
-          <TextField
-            id="email"
-            // error={hasErrors.email}
-            // helperText={getErrors.email}
-            label="Email"
-            type="email"
-            name="email"
-            value={email}
-            margin="dense"
-            fullWidth
-            onChange={this.handleChange('email')}
-          />
-        </div>
-
-        <div className={classes.row} style={{ padding: '10px 0px' }}>
-          <TextField
             id="dateOfBirth"
-            // error={hasErrors.dateOfBirth}
-            // helperText={getErrors.dateOfBirth}
             label="Date Of Birth"
             value={dateOfBirth}
             type="date"
@@ -161,20 +119,27 @@ class PersonalDetail extends Component {
             }}
           />
 
-        <TextField
-          id="aadhaar"
-          // error={hasErrors.aadhaar}
-          // helperText={getErrors.aadhaar}
-          label="Aadhar"
-          value={aadhaar}
-          onChange={this.handleChange('aadhaar')}
-          type="number"
-          fullWidth
-        />
+          <FormControl fullWidth>
+            <InputLabel htmlFor="placeOfBirth-select">
+              Place Of Birth
+            </InputLabel>
+            <Select
+              value={placeOfBirth}
+              onChange={this.handleChange('placeOfBirth')}
+              inputProps={{
+                name: 'placeOfBirth',
+                id: 'placeOfBirth-select'
+              }}
+            >
+              {STATES.map(item => (
+                <MenuItem value={item}>{item}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </div>
 
-        <div className={classes.row} style={{ paddingTop: 10 }}>
-          <FormControl fullWidth className={classes.padding}>
+        <div className={classes.row}>
+          <FormControl fullWidth className={classes.padding}  style={{ paddingTop: 10 }}>
             <InputLabel htmlFor="religion-select">Religion</InputLabel>
             <Select
               value={religion}
@@ -205,57 +170,6 @@ class PersonalDetail extends Component {
               ))}
             </Select>
           </FormControl>
-        </div>
-
-        <TextField
-          id="address"
-          // error={hasErrors.address}
-          // helperText={getErrors.address}
-          label="Address"
-          multiline
-          value={address}
-          onChange={this.handleChange('address')}
-          margin="dense"
-        />
-
-        <div className={classes.row} style={{ padding: '10px 0px' }}>
-          <TextField
-            id="policeStation"
-            // error={hasErrors.policeStation}
-            // helperText={getErrors.policeStation}
-            label="Police Station"
-            value={policeStation}
-            fullWidth
-            className={classes.padding}
-            onChange={this.handleChange('policeStation')}
-          />
-
-          <FormControl fullWidth className={classes.padding}>
-            <InputLabel htmlFor="state-select">State</InputLabel>
-            <Select
-              value={state}
-              onChange={this.handleChange('state')}
-              inputProps={{
-                name: 'state',
-                id: 'state-select'
-              }}
-            >
-              {STATES.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-
-          <TextField
-            id="pincode"
-            // error={hasErrors.pincode}
-            // helperText={getErrors.pincode}
-            label="Pincode"
-            value={pincode}
-            onChange={this.handleChange('pincode')}
-            type="number"
-            fullWidth
-          />
         </div>
       </>
     );

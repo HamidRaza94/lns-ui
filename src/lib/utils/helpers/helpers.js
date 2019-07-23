@@ -14,9 +14,14 @@ function capitalizeFirst(str){
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+function filtering(data, filterBy, matchBy) {
+  return data.filter(item => item[filterBy].includes(matchBy));
+}
+
 export {
   getRandomNumber,
   getNextRoundRobin,
   capitalizeAll,
   capitalizeFirst,
+  filtering,
 };

@@ -36,7 +36,6 @@ class Grievance extends Component {
       placeOfIncident: '',
       dateTimeIncident: '',
       summary: '',
-      errors: {},
     };
   }
 
@@ -139,9 +138,15 @@ class Grievance extends Component {
       summary,
     };
 
-    const response = await connection('post', 'grievance', data);
-    console.log(response);
-    alert(response.data.message);
+    try {
+      const response = await connection('post', 'grievance', data);
+      // console.log('.....<<<<', response);
+      alert(response.data.message);
+      this.handleReset();
+    } catch (err) {
+      console.log(err.message);
+      alert(err.message);
+    }
   }
 
   handleChange = (field, value) => {
@@ -156,15 +161,6 @@ class Grievance extends Component {
     this.setState({
       [field]: data
     });
-  }
-
-  handleErrors = (field, errorMsg) => {
-    this.setState(prevState => ({
-      ...prevState,
-      errors: {
-        [field]: errorMsg,
-      },
-    }));
   }
 
   handleIsValid = () => {
@@ -229,44 +225,25 @@ class Grievance extends Component {
     }
   }
 
-  handleValidation = () => {
-    const { activeStep } = this.state;
-
-    if (activeStep === 0) {
-      const {
-        name,
-        fatherName,
-        sex,
-        maritalStatus,
-        email,
-        phone,
-        dateOfBirth,
-        aadhaar,
-        category,
-        religion,
-        address,
-        policeStation,
-        state,
-        pincode,
-      } = this.state;
-
-      if (!name.length) {
-        alert('Check Name');
-      }
-    }
-  }
-
   handleNext = (activeButton) => () => {
-    if (activeButton === 'Submit') {
-      this.handleSubmitData();
-    } else {
-      const isValid = this.handleValidation();
-      if (isValid) {
+    const isValid = this.handleIsValid();
+
+    if (isValid) {
+      if (activeButton === 'Submit') {
+        this.handleSubmitData();
+      } else {
         this.setState(prevState => ({
           activeStep: prevState.activeStep + 1
         }));
+      }
+    } else {
+      // alert('Please Fill Complete Detail');
+      if (activeButton === 'Submit') {
+        this.handleSubmitData();
       } else {
-        alert('Please Check Detail');
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1
+        }));
       }
     }
   }
@@ -279,7 +256,23 @@ class Grievance extends Component {
 
   handleReset = () => {
     this.setState({
-      activeStep: 0
+      activeStep: 0,
+      name: '',
+      fatherName: '',
+      sex: '',
+      maritalStatus: '',
+      dateOfBirth: '',
+      aadhaar: '',
+      religion: '',
+      category: '',
+      address: '',
+      phone: '',
+      policeStation: '',
+      state: '',
+      pincode: '',
+      placeOfIncident: '',
+      dateTimeIncident: '',
+      summary: '',
     });
   }
 

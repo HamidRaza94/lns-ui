@@ -41,14 +41,14 @@ class Table extends Component {
 
   render() {
     const { rowsPerPage, page } = this.state;
-    const { classes, data, head } = this.props;console.log('data is ', data)
+    const { classes, title, data, head } = this.props;
 
     return (
       <Paper className={classes.paper}>
         <T className={classes.table}>
           <TableHead>
             <TableRow>
-              {head.map(item => (
+              {title.map(item => (
                 <TableCell className={classes.tableCell}>{item}</TableCell>
               ))}
             </TableRow>

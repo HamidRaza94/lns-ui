@@ -87,6 +87,8 @@ const RANKS = {
   DIRECTOR: 'DIRECTOR',
 }
 
+const ROW_PER_PAGE_OPTIONS = [5, 10, 15, 20, 25, 50, 100];
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -104,4 +106,5 @@ export {
   SECTION_FOLDER,
   STATES,
   RANKS,
+  ROW_PER_PAGE_OPTIONS,
 };
