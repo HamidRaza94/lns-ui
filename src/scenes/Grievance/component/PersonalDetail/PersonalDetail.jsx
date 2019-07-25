@@ -9,7 +9,7 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
 } from '@material-ui/core';
 
 import {

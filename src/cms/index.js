@@ -8,3 +8,5 @@ export { default as enrollmentVerification } from './enrollmentVerification';
 export { default as routes } from './routes';
 export { default as header } from './header';
 export { default as sections } from './sections';
+export { default as donate } from './donate';
+export { default as appointment } from './appointment';
