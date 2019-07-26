@@ -1,14 +1,10 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core';
+import MUIDataTable from 'mui-datatables';
 
-import styles from './style';
+import { employees } from '../../cms';
 
-const Employees = () => {
-  return (
-    <div>
-      <h1>Employees Page</h1>
-    </div>
-  );
-};
+const { title, columns, options, data } = employees;
 
-export default withStyles(styles)(Employees);
+const Employees = () => <MUIDataTable title={title} data={data} columns={columns} options={options} />
+
+export default Employees;

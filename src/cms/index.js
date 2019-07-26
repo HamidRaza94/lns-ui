@@ -10,3 +10,4 @@ export { default as header } from './header';
 export { default as sections } from './sections';
 export { default as donate } from './donate';
 export { default as appointment } from './appointment';
+export { default as employees } from './employees';

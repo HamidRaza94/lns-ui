@@ -1,10 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Update, Section, Team } from './components';
 
-const Card = props => {
-  const { variant, data } = props;
-
+const Card = ({ variant, data }) => {
   switch (variant) {
     case 'update':
       return <Update data={data} />;
@@ -18,6 +17,16 @@ const Card = props => {
     default:
       return <></>;
   }
+};
+
+Card.propTypes = {
+  variant: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+};
+
+Card.defaultProps = {
+  variant: '',
+  data: {},
 };
 
 export default Card;

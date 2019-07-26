@@ -7,6 +7,11 @@ export const ButtonPropTypes = {
   value: PropTypes.string.isRequired
 };
 
+export const CardPropTypes = {
+  variant: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+}
+
 export const SectionPropTypes = {
   style: PropTypes.object.isRequired
 };
