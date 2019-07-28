@@ -72,7 +72,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Home</Typography>
             </li>
           </Link>
-          <Link to={path.board.home}>
+          <Link to={path.board.central.home}>
             <li
               className={classNames(classes.li, this.getActiveNavStyle('boardList'))}
               onClick={this.handleNavClick('boardList')}
@@ -139,7 +139,7 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to={path.enrolled.home}>
+          <Link to={path.enrolled.enrollmentVerification}>
             <li
               className={classNames(classes.li, this.getActiveNavStyle('enrolledList'))}
               onClick={this.handleNavClick('enrolledList')}
@@ -222,7 +222,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Appointment</Typography>
             </li>
           </Link>
-          <Link to={path.academics.home}>
+          <Link to={path.academics.studentRegistration}>
             <li
               className={classNames(classes.li, this.getActiveNavStyle('academicsList'))}
               onClick={this.handleNavClick('academicsList')}
