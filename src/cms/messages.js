@@ -1,0 +1,22 @@
+export default {
+  chiefDirector: [
+    'Dear friends,',
+    '',
+    'I want to provide you some information about My personal life today.',
+    'That My name is Saiyad Shah Alam and I am The Central Chief Director of Public Justice institution.',
+    'Since childhood, I have been moving forward in public service and country service.',
+    'My family as played an important role in promoting my heart in the service of the country',
+    'THe history of my ancestors is also very strong in the serviceof India.',
+    'My dear late grandfather Mr. Saiyad Ibne Ali and his elder brother Mr. Saiyad Salamat Ali have been appointed by the high posts in the Indian Army.',
+    'My father, Mr. Saiyad Sajid Ali has also served in the Indian Army.',
+    'Country service is in blood drops of our family',
+    'For the service of the people of India, we have chosen the said Public Justice Institution.',
+    'I hope that you will continue to encourage us every day in the country service and publi service.',
+    '',
+    'Thanking you.',
+    'Aspiring to your cooperation',
+    'S. S. ALAM',
+    '(PRESIDENT & CHIEF DIRECTOR)',
+    'PUBLIC JUSTICE INSTITUTION',
+  ],
+}

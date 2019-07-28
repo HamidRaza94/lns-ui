@@ -13,7 +13,6 @@ import {
 
 import styles from './style';
 import { appointment } from '../../cms';
-import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
 import { appointmentSchema } from './validation';
 import { SEX, MARITAL_STATUS } from '../../cms/constants';

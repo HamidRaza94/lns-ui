@@ -327,7 +327,11 @@ class NavBar extends Component {
 }
 
 NavBar.propTypes = {
-  classes: PropTypes.shape().isRequired
-};
+  classes: PropTypes.object.isRequired,
+}
+
+NavBar.defaultProps = {
+  classes: {},
+}
 
 export default withStyles(styles)(NavBar);

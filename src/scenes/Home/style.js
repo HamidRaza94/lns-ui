@@ -20,11 +20,29 @@ const style = theme => ({
 
   chiefDirector: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    width: 300,
+    height: 130,
+    margin: 5,
+  },
+
+  chiefDirectorMessage: {
+    width: 180,
+    height: 130,
+    padding: 10,
+    overflow: 'hidden',
+  },
+
+  readMoreButton: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    marginBottom: 10,
+    paddingBottom: 10,
   },
 
   update: {
-    minWidth: 300
+    minWidth: 300,
+    height: 'auto',
   },
 
   updatePanel: {
@@ -40,7 +58,32 @@ const style = theme => ({
     justifyContent: 'center',
     flexWrap: 'wrap',
     transition: '0.5s',
-  }
+  },
+
+  card: {
+    display: 'flex',
+    width: 300,
+    height: 150,
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+    width: 200,
+  },
+  content: {
+    flex: '1 0 auto',
+    height: 80,
+    overflowY: 'scroll',
+  },
+  cover: {
+    width: 151,
+  },
+  controls: {
+    display: 'flex',
+    alignItems: 'center',
+    paddingLeft: theme.spacing.unit,
+    paddingBottom: theme.spacing.unit,
+  },
 });
 
 export default style;

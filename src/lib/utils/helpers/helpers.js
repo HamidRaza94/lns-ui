@@ -18,10 +18,21 @@ function filtering(data, filterBy, matchBy) {
   return data.filter(item => item[filterBy].includes(matchBy));
 }
 
+function responseHandler(response) {
+  const { status, data } = response;
+
+  if (status === 200) {
+    return data
+  }
+
+  return data;
+}
+
 export {
   getRandomNumber,
   getNextRoundRobin,
   capitalizeAll,
   capitalizeFirst,
   filtering,
+  responseHandler
 };

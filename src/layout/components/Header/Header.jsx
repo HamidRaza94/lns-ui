@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import { Grid, Typography } from '@material-ui/core';
 
@@ -59,5 +60,13 @@ const Header = props => {
     </Grid>
   );
 };
+
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+Header.defaultProps = {
+  classes: {},
+}
 
 export default withStyles(styles)(Header);
