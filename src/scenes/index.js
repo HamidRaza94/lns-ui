@@ -23,5 +23,6 @@ export {
 } from './Academics';
 
 export { Employees } from './Employees';
+export { Employment } from './Employment';
 
 export { NoMatch } from './NoMatch';

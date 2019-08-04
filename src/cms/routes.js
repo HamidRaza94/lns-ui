@@ -25,10 +25,10 @@ export default {
         disciplinary: `${STATE_BOARD}/disciplinary`
       }
     },
-    enrolled: {
-      home: '/enrolled',
-      enrollmentVerification: '/enrolled/enrollment_verification',
-      applyEnrollment: '/enrolled/enrollment',
+    enrollment: {
+      home: '/enrollment',
+      verification: '/enrollment/verification',
+      registration: '/enrollment/registration',
     },
     grievance: {
       home: '/grievance',
@@ -40,11 +40,16 @@ export default {
     appointment: '/appointment',
     academics: {
       home: ACADEMICS,
-      studentRegistration: `${ACADEMICS}/student_registration`,
+      learner: {
+        home: 'learner',
+        registration: `${ACADEMICS}/learner/registration`,
+        verification: `${ACADEMICS}/learner/verification`,
+      },
+      learnerRegistration: `${ACADEMICS}/learner_registration`,
       examinationRegistration: `${ACADEMICS}/examination_registration`,
       course: `${ACADEMICS}/course`,
       feeStructure: `${ACADEMICS}/fee_structure`,
-      studentList: `${ACADEMICS}/student_list`,
+      studentList: `${ACADEMICS}/learner-verification`,
       passingCertificate: `${ACADEMICS}/passing_certificate`,
       academicCenter: `${ACADEMICS}/academic_center`,
       payOnlineAcademicsFees: `${ACADEMICS}/pay_online_academics_fees`,
@@ -53,9 +58,9 @@ export default {
       feesCollectionCell: `${ACADEMICS}/fees_collection_cell`,
       examinationCell: `${ACADEMICS}/examination_cell`,
       academicsCell: `${ACADEMICS}/academics_cell`,
-      placementCell: `${ACADEMICS}/placement_cell`,
     },
     employees: '/employees',
-    employments: '/employments'
+    employments: '/employments',
+    placementCell: '/placement_cell',
   }
 };

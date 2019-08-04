@@ -1,10 +1,10 @@
-export default {
-  home: {
+export default [
+  {
     label: 'Home',
     value: 'home',
   },
 
-  boardList: {
+  {
     label: 'All Boards',
     value: 'boardList',
     children: [
@@ -55,7 +55,7 @@ export default {
     ],
   },
 
-  enrolledList: {
+  {
     label: 'Enrolled',
     value: 'enrolledList',
     children: [
@@ -70,7 +70,7 @@ export default {
     ],
   },
 
-  grievanceList: {
+  {
     label: 'Public Grievance',
     value: 'grievanceList',
     children: [
@@ -82,11 +82,112 @@ export default {
         label: 'Regd. Grievance in CPGRAMS',
         value: 'grievanceCPGRAMS',
       },
+      {
+        label: 'Online FIR (All State in India)',
+        value: 'fir',
+      },
+      {
+        label: 'Online Lost Report (All State in India)',
+        value: 'lostReport',
+      },
+      {
+        label: 'Regd. in any commission',
+        value: 'lostReport2',
+      },
+      {
+        label: 'lostReport3',
+        value: 'Regd. in Chief Minister Office All India',
+        children: [
+          {
+            label: 'demo',
+            value: 'demo',
+          },
+        ]
+      },
     ],
   },
 
-  demo: {
-    label: '',
-    value: '',
+  {
+    label: 'Donate',
+    value: 'donate',
   },
-}
+
+  {
+    label: 'appointment',
+    value: 'Appointment',
+  },
+
+  {
+    label: 'Academics',
+    value: 'academicsList',
+    children: [
+      {
+        label: 'Learner Registration',
+        value: 'learnerRegistration',
+      },
+      {
+        label: 'Examination Registration',
+        value: 'examinationRegistration',
+      },
+      {
+        label: 'Course',
+        value: 'course',
+      },
+      {
+        label: 'Fee Structure',
+        value: 'feeStructure',
+      },
+      {
+        label: 'Learner Verification',
+        value: 'studentList',
+      },
+      {
+        label: 'Passing Certificate',
+        value: 'passingCertificate',
+      },
+      {
+        label: 'Academic Center',
+        value: 'academicCenter',
+      },
+      {
+        label: 'Pay Online Academics Fees',
+        value: 'payOnlineAcademicsFees',
+      },
+      {
+        label: 'Syllabus',
+        value: 'syllabus',
+      },
+      {
+        label: 'Admission Cell',
+        value: 'admissionCell',
+      },
+      {
+        label: 'Fees Collection Cell',
+        value: 'feesCollectionCell',
+      },
+      {
+        label: 'Examination Cell',
+        value: 'examinationCell',
+      },
+      {
+        label: 'Academics Cell',
+        value: 'academicsCell',
+      },
+    ]
+  },
+
+  {
+    label: 'Employees',
+    value: 'employees',
+  },
+
+  {
+    label: 'Employments',
+    value: 'employments',
+  },
+
+  {
+    label: 'Placement Cell',
+    value: 'placementCell',
+  },
+];

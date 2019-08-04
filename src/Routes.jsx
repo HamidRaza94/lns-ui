@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { routes } from './cms';
+// import Test from './Test';
 import { Header, NavBar, Footer } from './layout';
 import {
   Home,
@@ -19,6 +20,7 @@ import {
   LearnerRegistration,
   LearnerVerification,
   Employees,
+  Employment,
   NoMatch
 } from './scenes';
 
@@ -28,6 +30,7 @@ const Routes = () => (
   <Router>
     <Header />
     <NavBar />
+    {/* <Test /> */}
     <Switch>
       <Route exact path={path.home} component={Home} />
       <Route exact path={path.board.central.home} component={CentralBoard} />
@@ -36,14 +39,16 @@ const Routes = () => (
       <Route exact path={path.board.central.section} component={CentralSectionBoard} />
       <Route exact path={path.board.state.advisory} component={StateAdvisoryBoard} />
       <Route exact path={path.board.state.home} component={StateBoard} />
-      <Route exact path={path.enrolled.enrollmentVerification} component={EnrollmentVerification} />
-      <Route exact path={path.enrolled.applyEnrollment} component={VolunteerShip} />
+      <Route exact path={path.enrollment.verification} component={EnrollmentVerification} />
+      <Route exact path={path.enrollment.registration} component={VolunteerShip} />
       <Route exact path={path.grievance.home} component={Grievance} />
       <Route exact path={path.donate} component={Donate} />
       <Route exact path={path.appointment} component={Appointment} />
-      <Route exact path={path.academics.studentRegistration} component={LearnerRegistration} />
-      <Route exact path={path.academics.studentList} component={LearnerVerification} />
+      <Route exact path={path.academics.learner.registration} component={LearnerRegistration} />
+      <Route exact path={path.academics.learner.verification} component={LearnerVerification} />
       <Route exact path={path.employees} component={Employees} />
+      <Route exact path={path.employments} component={Employment} />
+      <Route exact path={path.placementCell} component={NoMatch} />
       <Route exact component={NoMatch} />
     </Switch>
     <Footer />

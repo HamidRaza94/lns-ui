@@ -12,7 +12,7 @@ const learnerVerification = {
     selectableRows: 'none',
     responsive: 'scroll',
     print: false,
-    rowsPerPage: 5,
+    rowsPerPage: ROW_PER_PAGE_OPTIONS[0],
     rowsPerPageOptions: ROW_PER_PAGE_OPTIONS,
     fixedHeader: false,
   },

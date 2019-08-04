@@ -139,7 +139,7 @@ class NavBar extends Component {
               </ul>
             </li>
           </Link>
-          <Link to={path.enrolled.enrollmentVerification}>
+          <Link to={path.enrollment.verification}>
             <li
               className={classNames(classes.li, this.getActiveNavStyle('enrolledList'))}
               onClick={this.handleNavClick('enrolledList')}
@@ -148,12 +148,12 @@ class NavBar extends Component {
             >
               <Typography className={classes.text}>Enrolled</Typography>
               <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle('enrolledList'))}>
-                <Link to={path.enrolled.enrollmentVerification}>
+                <Link to={path.enrollment.verification}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('enrollmentVerification'))}>
                     <Typography className={classes.text}>Enrollment Verification</Typography>
                   </li>
                 </Link>
-                <Link to={path.enrolled.applyEnrollment}>
+                <Link to={path.enrollment.registration}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('enrollment'))}>
                     <Typography className={classes.text}>Apply for Enrollment</Typography>
                   </li>
@@ -189,17 +189,19 @@ class NavBar extends Component {
                   </li>
                 </Link>
                 <Link to={path.grievance.lostReport}>
-                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport2'))}>
                     <Typography className={classes.text}>Online Lost Report (All State in India)</Typography>
                   </li>
                 </Link>
                 <Link to={path.grievance.lostReport}>
-                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport1'))}>
                     <Typography className={classes.text}>Regd. in any commission</Typography>
                   </li>
                 </Link>
                 <Link to={path.grievance.lostReport}>
-                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('lostReport'))}>
+                  <li
+                    className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('demoList'))}
+                  >
                     <Typography className={classes.text}>Regd. in Chief Minister Office All India</Typography>
                   </li>
                 </Link>
@@ -222,7 +224,7 @@ class NavBar extends Component {
               <Typography className={classes.text}>Appointment</Typography>
             </li>
           </Link>
-          <Link to={path.academics.studentRegistration}>
+          <Link to={path.academics.learnerRegistration}>
             <li
               className={classNames(classes.li, this.getActiveNavStyle('academicsList'))}
               onClick={this.handleNavClick('academicsList')}
@@ -231,8 +233,8 @@ class NavBar extends Component {
             >
               <Typography className={classes.text}>Academics</Typography>
               <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle('academicsList'))}>
-                <Link to={path.academics.studentRegistration}>
-                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('studentRegistration'))}>
+                <Link to={path.academics.learner.registration}>
+                  <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('learnerRegistration'))}>
                     <Typography className={classes.text}>Learner Registration</Typography>
                   </li>
                 </Link>
@@ -251,7 +253,7 @@ class NavBar extends Component {
                     <Typography className={classes.text}>Fee Structure</Typography>
                   </li>
                 </Link>
-                <Link to={path.academics.studentList}>
+                <Link to={path.academics.learner.verification}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('studentList'))}>
                     <Typography className={classes.text}>Learner Verification</Typography>
                   </li>
@@ -315,8 +317,11 @@ class NavBar extends Component {
               <Typography className={classes.text}>Employments</Typography>
             </li>
           </Link>
-          <Link to={path.academics.placementCell}>
-            <li className={classNames(classes.li, this.getActiveNavStyle('placementCell'))}>
+          <Link to={path.placementCell}>
+            <li
+              className={classNames(classes.li, this.getActiveNavStyle('placementCell'))}
+              onClick={this.handleNavClick('placementCell')}
+            >
               <Typography className={classes.text}>Placement Cell</Typography>
             </li>
           </Link>
