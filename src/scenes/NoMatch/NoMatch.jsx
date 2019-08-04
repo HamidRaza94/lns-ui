@@ -3,12 +3,23 @@ import { withStyles } from '@material-ui/core';
 
 import styles from './style';
 
-const NoMatch = () => {
+const NoMatch = props => {
+  const { classes } = props;
+
   return (
-    <div style={styles.root}>
-      <div style={styles.status}>404</div>
-      <div style={styles.message}>Page Not Found</div>
-    </div>
+    <div className={classes.root}>
+		  <div className={classes.notFound}>
+			  <div className={classes.notFound404}>
+				  <h3 className={classes.h3}>Oops! Page not found</h3>
+				  <h1 className={classes.h1}>
+            <span className={classes.span}>4</span>
+            <span className={classes.span}>0</span>
+            <span className={classes.span}>4</span>
+          </h1>
+			  </div>
+			  <h2 className={classes.h2}>we are sorry, but the page you requested was not found</h2>
+		  </div>
+	  </div>
   );
 };
 
