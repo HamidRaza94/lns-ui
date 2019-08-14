@@ -28,11 +28,24 @@ function responseHandler(response) {
   return data;
 }
 
+const formatedDataToTable = (data) => {
+  return data.map((item) => {
+    const arr = [];
+
+    for (const key in item) {
+      arr.push(item[key]);
+    }
+
+    return arr;
+  })
+}
+
 export {
   getRandomNumber,
   getNextRoundRobin,
   capitalizeAll,
   capitalizeFirst,
   filtering,
-  responseHandler
+  responseHandler,
+  formatedDataToTable,
 };

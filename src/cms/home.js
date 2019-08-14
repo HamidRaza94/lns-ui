@@ -39,8 +39,7 @@ const sections = [
 
 const content = {
   heading: 'WELCOME TO PUBLIC JUSTICE INSTITUTION',
-  description:
-    'Department of Consumer Affairs is one of the two Departments under the Ministry of Consumer Affairs, Food &amp; Public Distribution. It was constituted as a separate Department in June 1997 as it was considered necessary to have a separate Department to give a fillip to the nascent consumer movement in the country.',
+  description: 'Hello visitor, welcome to the Public Justice Institution.\nIt is bring to your notice through this message that an organization designated by the Ministry of COnsumer affairs food and Public Distribution, Govt. Of India, Under the Approved by Name Emblem and (PIU) Act-1950, and His Excellency the President\'s Secretariat, Government of India and Honorable Prime Minster\'s Office, Government of India and Honorable Ministry of Human Resource and Development, Government of India By which the solution of various problems of the public is ensured Raya is. Although there are many institutions operating the country, but there are very special powers in the constitutional form of the Public Justice Institution. The Institution is fully capable of taking action against all kinds of illegal activities.',
   button: {
     text: 'More'
   },
