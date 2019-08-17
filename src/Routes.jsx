@@ -39,13 +39,13 @@ const Routes = () => (
       <Route exact path={path.board.state.home} component={StateBoard} />
       <Route exact path={path.enrollment.verification} component={EnrollmentVerification} />
       <Route exact path={path.enrollment.registration} component={EnrollmentRegistration} />
-      <Route exact path={path.grievance.home} component={Grievance} />
-      <Route exact path={path.donate.home} component={Donate} />
-      <Route exact path={path.appointment.home} component={Appointment} />
+      <Route exact path={path.grievance} component={Grievance} />
+      <Route exact path={path.donate} component={Donate} />
+      <Route exact path={path.appointment} component={Appointment} />
       <Route exact path={path.academics.learner.registration} component={LearnerRegistration} />
       <Route exact path={path.academics.learner.verification} component={LearnerVerification} />
-      <Route exact path={path.employees.home} component={Employees} />
-      <Route exact path={path.employments.home} component={Employment} />
+      <Route exact path={path.employees} component={Employees} />
+      <Route exact path={path.employments} component={Employment} />
       <Route exact component={NoMatch} />
     </Switch>
     <Footer />
