@@ -51,9 +51,9 @@ class Home extends Component {
 
     return (
       <div className={classes.root}>
-        <div className={classes.slider}>
+        {/* <div className={classes.slider}>
           <Slider banners={banners} className={classes.banner} />
-        </div>
+        </div> */}
 
         <div className={classes.body}>
           <div className={classes.update}>

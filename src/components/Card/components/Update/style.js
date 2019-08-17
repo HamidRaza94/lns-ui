@@ -1,6 +1,6 @@
 export default {
   card: {
-    margin: '0px 5px 5px 0px'
+    width: '100%',
   },
 
   content: {
