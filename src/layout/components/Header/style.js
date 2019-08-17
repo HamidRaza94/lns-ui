@@ -30,8 +30,11 @@ const style = theme => ({
     height: 160,
 
     [theme.breakpoints.down(485)]: {
-      paddingLeft: 5,
-      paddingRight: 5,
+      height: 140,
+    },
+
+    [theme.breakpoints.down(400)]: {
+      height: 120,
     },
   },
 
@@ -45,6 +48,11 @@ const style = theme => ({
       width: 120,
       height: 120,
     },
+
+    [theme.breakpoints.down(400)]: {
+      width: 100,
+      height: 100,
+    },
   },
 
   title: {
@@ -56,9 +64,11 @@ const style = theme => ({
     [theme.breakpoints.down(510)]: {
       fontSize: 17,
     },
+
     [theme.breakpoints.down(485)]: {
       fontSize: 16,
     },
+
     [theme.breakpoints.down(450)]: {
       fontSize: 15,
     },
