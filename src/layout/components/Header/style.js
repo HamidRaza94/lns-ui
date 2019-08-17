@@ -9,14 +9,11 @@ const style = theme => ({
     transition: '0.2s',
 
     [theme.breakpoints.down(580)]: {
-      paddingLeft: 10,
-      paddingRight: 10,
+      padding: 10,
     },
+
     [theme.breakpoints.down(485)]: {
-      paddingTop: 0,
-      paddingBottom: 0,
-      paddingLeft: 5,
-      paddingRight: 5,
+      padding: '0px 5px',
     },
   },
 
