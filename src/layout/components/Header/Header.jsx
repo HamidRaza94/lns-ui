@@ -13,7 +13,11 @@ const Header = props => {
   return (
     <div className={classes.root}>
       <div className={classes.leftHeader}>
-        <img src={LOGO_IMAGE} alt={header.lns} className={classes.logoImage} />
+        <img
+          src={LOGO_IMAGE}
+          alt={header.lns}
+          className={classes.logoImage}
+        />
         <Typography align="center" className={classes.title}>
           {header.lnsHindi} <br />
           {header.pji} <br />
