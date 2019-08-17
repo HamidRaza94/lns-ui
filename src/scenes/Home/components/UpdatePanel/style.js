@@ -8,6 +8,10 @@ const style = theme => ({
       flexDirection: 'row',
       justifyContent: 'space-around',
     },
+
+    [theme.breakpoints.down(650)]: {
+      flexDirection: 'column',
+    },
   },
 });
 
