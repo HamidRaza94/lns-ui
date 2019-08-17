@@ -1,2 +1,2 @@
 export { EnrollmentVerification } from './EnrollmentVerification'
-export { VolunteerShip } from './VolunteerShip';
+export { EnrollmentRegistration } from './EnrollmentRegistration';

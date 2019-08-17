@@ -14,7 +14,7 @@ class DocumentDetail extends Component {
 
   render() {
     const {
-      classes,
+      // classes,
       aadhaar,
     } = this.props;
 

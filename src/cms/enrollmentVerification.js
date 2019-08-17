@@ -1,8 +1,8 @@
 import { ROW_PER_PAGE_OPTIONS } from './constants';
 
-const sangamVihar = 'SANGAM VIHAR, NEW DELHI - 110080';
+// const sangamVihar = 'SANGAM VIHAR, NEW DELHI - 110080';
 
-const enrollmentVerification = {
+export default {
   title: 'Enrollment Verification',
   columns: ['ENROLLMENT ID', 'NAME', 'FATHER/HUSBAND NAME', 'ADDRESS'],
   options: {
@@ -724,5 +724,3 @@ const enrollmentVerification = {
     // }
   ]
 }
-
-export default enrollmentVerification;
