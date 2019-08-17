@@ -43,10 +43,10 @@ class UpdatePanel extends PureComponent {
         notice,
       });
     })
-    .catch(error => {
+    .catch(({ data: { message } }) => {
       this.setState({
         isLoaded: true,
-        error,
+        error: message,
       });
     });
   };
