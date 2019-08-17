@@ -9,7 +9,7 @@ export {
   StateAdvisoryBoard,
 } from './Boards';
 
-export { EnrollmentVerification, EnrollmentRegistration } from './Enrolled';
+export { EnrollmentVerification, EnrollmentRegistration } from './Enrollment';
 export { Grievance } from './Grievance';
 export { Donate } from './Donate';
 export { Appointment } from './Appointment';

@@ -146,7 +146,7 @@ class NavBar extends Component {
               onMouseEnter={this.handleNavHover('enrolledList')}
               onMouseLeave={this.handleNavHover('')}
             >
-              <Typography className={classes.text}>Enrolled</Typography>
+              <Typography className={classes.text}>Enrollment</Typography>
               <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle('enrolledList'))}>
                 <Link to={path.enrollment.verification}>
                   <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle('enrollmentVerification'))}>
