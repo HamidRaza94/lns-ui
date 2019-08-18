@@ -14,8 +14,13 @@ const style = theme => ({
 
     [theme.breakpoints.down(1000)]: {
       flexDirection: 'column-reverse',
-      margin: '0 5%'
-    }
+      margin: '0 5%',
+    },
+
+    [theme.breakpoints.down(500)]: {
+      flexDirection: 'column-reverse',
+      margin: 0,
+    },
   },
 
   chiefDirector: {

@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 import { Card } from '../../../../components';
@@ -55,6 +56,7 @@ class UpdatePanel extends PureComponent {
   render() {
     const { classes } = this.props;
     const { error, isLoaded } = this.state;
+
     const newsData = { title: 'News' }
     const linkData = { title: 'Important Link' }
     const noticeData = { title: 'Notice' }
@@ -82,6 +84,14 @@ class UpdatePanel extends PureComponent {
       </div>
     );
   }
+}
+
+UpdatePanel.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+UpdatePanel.defaultProps = {
+  classes: {},
 }
 
 export default withStyles(styles)(UpdatePanel);
