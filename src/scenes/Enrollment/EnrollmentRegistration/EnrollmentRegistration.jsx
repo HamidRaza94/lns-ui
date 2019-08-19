@@ -9,11 +9,11 @@ import {
 } from '@material-ui/core';
 
 import styles from './style';
-import { steps } from '../../../cms/volunteerShip';
+import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
 import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component';
 
-class VolunteerShip extends Component {
+class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -40,10 +40,6 @@ class VolunteerShip extends Component {
       pan: ''
     };
   }
-
-  componentDidUpdate = () => {
-    console.log(this.state);
-  };
 
   getStepContent = (activeStep) => {
     const {
@@ -150,10 +146,10 @@ class VolunteerShip extends Component {
     return (
       <div className={classes.root}>
         <Typography variant="h4" align="center">
-          Volunteer Ship Form
+          {enrollmentRegistration.title}
         </Typography>
         <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => (
+          {enrollmentRegistration.steps.map(label => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
             </Step>
@@ -171,14 +167,14 @@ class VolunteerShip extends Component {
               onClick={this.handleBack}
               className={classes.backButton}
             >
-              Back
+              {enrollmentRegistration.backButtonLabel}
             </Button>
             <Button
               variant="contained"
               color="primary"
               onClick={this.handleNext}
             >
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === enrollmentRegistration.steps.length - 1 ? 'Finish' : 'Next'}
             </Button>
           </div>
         </div>
@@ -187,4 +183,4 @@ class VolunteerShip extends Component {
   }
 }
 
-export default withStyles(styles)(VolunteerShip);
+export default withStyles(styles)(EnrollmentRegistration);

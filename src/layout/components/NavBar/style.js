@@ -1,7 +1,14 @@
+const color = {
+  blue: '#254260',
+  orange: '#a9502c',
+}
+
+const { blue, orange } = color;
+
 export default {
   nav: {
     display: 'flex',
-    backgroundColor: '#254260',
+    backgroundColor: blue,
   },
 
   ul: {
@@ -11,7 +18,7 @@ export default {
   },
 
   li: {
-    backgroundColor: '#254260',
+    backgroundColor: blue,
     display: 'block',
     float: 'left',
     padding: '1rem',
@@ -21,19 +28,20 @@ export default {
     transitionDuration: '0.5s',
 
     '&:hover': {
-      backgroundColor: '#a9502c',
+      backgroundColor: orange,
     },
   },
 
   text: {
     color: '#fff',
+    cursor: 'pointer',
   },
 
   ul_li_ul: {
     listStyle: 'none',
     margin: 0,
     paddingLeft: 0,
-    backgroundColor: '#254260',
+    backgroundColor: blue,
     visibility: 'hidden',
     opacity: 0,
     minWidth: '5rem',
@@ -48,7 +56,7 @@ export default {
   ul_li_ul_li: {
     clear: 'both',
     width: 200,
-    backgroundColor: '#254260',
+    backgroundColor: blue,
     display: 'block',
     float: 'left',
     padding: 10,
@@ -57,12 +65,12 @@ export default {
     transitionDuration: '0.5s',
 
     '&:hover': {
-      backgroundColor: '#a9502c',
+      backgroundColor: orange,
     },
   },
 
   active: {
-    backgroundColor: '#a9502c',
+    backgroundColor: orange,
   },
 
   showList: {

@@ -14,8 +14,9 @@ import styles from './style';
 import { Content, UpdatePanel } from './components';
 import { Slider, Card, DialogBox } from '../../components';
 import { gallery, banners, sections } from '../../cms/home';
-import { TEAM_FOLDER } from '../../cms/constants';
+import { TEAM_FOLDER } from '../../lib/extra/constants';
 import { messages } from '../../cms';
+import { config } from '../../config';
 
 const getFormatedMessage = (message) => (
   message.map(msg => {
@@ -25,9 +26,9 @@ const getFormatedMessage = (message) => (
           {msg}
         </Typography>
       )
-    } else {
-      return <br/>
     }
+
+    return <br/>
   })
 )
 
@@ -48,6 +49,7 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
     const { isDialogBoxOpen } = this.state;
+    console.log('env variable is ', config.SERVER_URL);
 
     return (
       <div className={classes.root}>

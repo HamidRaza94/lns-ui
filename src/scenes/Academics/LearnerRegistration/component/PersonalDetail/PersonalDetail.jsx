@@ -21,7 +21,6 @@ import {
   MARITAL_STATUS,
   CATEGORY,
   RELIGION,
-  PHYSICAL_STATUS,
   STATES
 } from '../../../../../cms/constants';
 import styles from './style';

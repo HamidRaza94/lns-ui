@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import { routes } from './cms';
+import { path } from './cms/routes';
 // import Test from './Test';
 import { Header, NavBar, Footer } from './layout';
 import {
@@ -13,7 +13,7 @@ import {
   StateAdvisoryBoard,
   StateBoard,
   EnrollmentVerification,
-  VolunteerShip,
+  EnrollmentRegistration,
   Grievance,
   Donate,
   Appointment,
@@ -23,8 +23,6 @@ import {
   Employment,
   NoMatch
 } from './scenes';
-
-const { path } = routes;
 
 const Routes = () => (
   <Router>
@@ -40,15 +38,14 @@ const Routes = () => (
       <Route exact path={path.board.state.advisory} component={StateAdvisoryBoard} />
       <Route exact path={path.board.state.home} component={StateBoard} />
       <Route exact path={path.enrollment.verification} component={EnrollmentVerification} />
-      <Route exact path={path.enrollment.registration} component={VolunteerShip} />
-      <Route exact path={path.grievance.home} component={Grievance} />
+      <Route exact path={path.enrollment.registration} component={EnrollmentRegistration} />
+      <Route exact path={path.grievance} component={Grievance} />
       <Route exact path={path.donate} component={Donate} />
       <Route exact path={path.appointment} component={Appointment} />
       <Route exact path={path.academics.learner.registration} component={LearnerRegistration} />
       <Route exact path={path.academics.learner.verification} component={LearnerVerification} />
       <Route exact path={path.employees} component={Employees} />
       <Route exact path={path.employments} component={Employment} />
-      <Route exact path={path.placementCell} component={NoMatch} />
       <Route exact component={NoMatch} />
     </Switch>
     <Footer />

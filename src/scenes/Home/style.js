@@ -14,8 +14,13 @@ const style = theme => ({
 
     [theme.breakpoints.down(1000)]: {
       flexDirection: 'column-reverse',
-      margin: '0 5%'
-    }
+      margin: '0 5%',
+    },
+
+    [theme.breakpoints.down(500)]: {
+      flexDirection: 'column-reverse',
+      margin: 0,
+    },
   },
 
   chiefDirector: {
@@ -43,13 +48,18 @@ const style = theme => ({
   update: {
     minWidth: 300,
     height: 'auto',
+    marginRight: 5,
+
+    [theme.breakpoints.down(1000)]: {
+      marginRight: 0,
+    },
   },
 
   updatePanel: {
     [theme.breakpoints.down(1000)]: {
       display: 'flex',
-      flexDirection: 'row-reverse'
-    }
+      flexDirection: 'row-reverse',
+    },
   },
 
   sections: {
@@ -62,22 +72,26 @@ const style = theme => ({
 
   card: {
     display: 'flex',
-    width: 300,
     height: 150,
+    margin: '5px 0px',
   },
+
   details: {
     display: 'flex',
     flexDirection: 'column',
     width: 200,
   },
+
   content: {
     flex: '1 0 auto',
     height: 80,
     overflowY: 'scroll',
   },
+
   cover: {
     width: 151,
   },
+
   controls: {
     display: 'flex',
     alignItems: 'center',

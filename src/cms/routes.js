@@ -1,66 +1,293 @@
-const BOARD = '/board';
-const CENTRAL_BOARD = `${BOARD}/central`;
-const STATE_BOARD = `${BOARD}/state`;
+export const path = {
+  home: '/',
+  board: {
+    home: '/board',
+    central: {
+      home: '/board/central/governing',
+      protector: '/board/central/protector',
+      advisory: '/board/central/advisory',
+      section: '/board/central/section',
+      staffSelection: '/board/central/staffSelection',
+      disciplinary: '/board/central/disciplinary',
+    },
+    state: {
+      home: '/board/state/governing',
+      advisory: '/board/state/advisory',
+      section: '/board/state/section',
+      staffSelection: '/board/state/staffSelection',
+      disciplinary: '/board/state/disciplinary',
+    },
+  },
+  enrollment: {
+    home: '/enrollment',
+    verification: '/enrollment/verification',
+    registration: '/enrollment/registration',
+  },
+  grievance: '/grievance',
+  donate: '/donate',
+  appointment: '/appointment',
+  academics: {
+    home: '/academics',
+    learner: {
+      home: '/learner',
+      registration: '/academics/learner/registration',
+      verification: '/academics/learner/verification',
+    },
+    examinationRegistration: '/academics/examination-registration',
+    course: '/academics/course',
+    feeStructure: '/academics/fee-structure',
+    passingCertificate: '/academics/passing-certificate',
+    academicCenter: '/academics/academic-center',
+    payOnlineAcademicsFees: '/academics/pay-online-academics-fees',
+    syllabus: '/academics/syllabus',
+    admissionCell: '/academics/admission-cell',
+    feesCollectionCell: '/academics/fees-collection-cell',
+    examinationCell: '/academics/examination-cell',
+    academicsCell: '/academics/academics-cell',
+  },
+  employees: '/employees',
+  employments: '/employments',
+  placementCell: '/placement-cell',
+}
 
-const ACADEMICS = '/academics';
+export default [
+  {
+    label: 'Home',
+    value: 'home',
+    path: path.home,
+  },
 
-export default {
-  path: {
-    home: '/',
-    board: {
-      home: CENTRAL_BOARD,
-      central: {
-        home: CENTRAL_BOARD,
-        protector: `${CENTRAL_BOARD}/protector`,
-        advisory: `${CENTRAL_BOARD}/advisory`,
-        section: `${CENTRAL_BOARD}/section`,
-        staffSelection: `${CENTRAL_BOARD}/staff_selection`,
-        disciplinary: `${CENTRAL_BOARD}/disciplinary`
+  {
+    label: 'All Boards',
+    value: 'board',
+    path: path.board.home,
+    children: [
+      {
+        label: 'Central Governing Board',
+        value: 'centralBoard',
+        path: path.board.central.home,
       },
-      state: {
-        home: STATE_BOARD,
-        advisory: `${STATE_BOARD}/advisory`,
-        section: `${STATE_BOARD}/section`,
-        staffSelection: `${STATE_BOARD}/staff_selection`,
-        disciplinary: `${STATE_BOARD}/disciplinary`
-      }
-    },
-    enrollment: {
-      home: '/enrollment',
-      verification: '/enrollment/verification',
-      registration: '/enrollment/registration',
-    },
-    grievance: {
-      home: '/grievance',
-      cpgrams: 'https://pgportal.gov.in/Registration',
-      fir: '/online_fir',
-      lostReport: '/lost_report',
-    },
-    donate: '/donate',
-    appointment: '/appointment',
-    academics: {
-      home: ACADEMICS,
-      learner: {
-        home: 'learner',
-        registration: `${ACADEMICS}/learner/registration`,
-        verification: `${ACADEMICS}/learner/verification`,
+      {
+        label: 'Central Protector Board',
+        value: 'centralProtectorBoard',
+        path: path.board.central.protector,
       },
-      learnerRegistration: `${ACADEMICS}/learner_registration`,
-      examinationRegistration: `${ACADEMICS}/examination_registration`,
-      course: `${ACADEMICS}/course`,
-      feeStructure: `${ACADEMICS}/fee_structure`,
-      studentList: `${ACADEMICS}/learner-verification`,
-      passingCertificate: `${ACADEMICS}/passing_certificate`,
-      academicCenter: `${ACADEMICS}/academic_center`,
-      payOnlineAcademicsFees: `${ACADEMICS}/pay_online_academics_fees`,
-      syllabus: `${ACADEMICS}/syllabus`,
-      admissionCell: `${ACADEMICS}/admission_cell`,
-      feesCollectionCell: `${ACADEMICS}/fees_collection_cell`,
-      examinationCell: `${ACADEMICS}/examination_cell`,
-      academicsCell: `${ACADEMICS}/academics_cell`,
-    },
-    employees: '/employees',
-    employments: '/employments',
-    placementCell: '/placement_cell',
-  }
-};
+      {
+        label: 'Central Advisory Section',
+        value: 'centralAdvisoryBoard',
+        path: path.board.central.advisory,
+      },
+      {
+        label: 'Central Board of Section',
+        value: 'centralSectionBoard',
+        path: path.board.central.section,
+      },
+      {
+        label: 'Central Staff Selection Board',
+        value: 'centralStaffSelectionBoard',
+        path: path.board.central.staffSelection,
+      },
+      {
+        label: 'Central Disciplinary Board',
+        value: 'centralDisciplinaryBoard',
+        path: path.board.central.disciplinary,
+      },
+      {
+        label: 'State Board',
+        value: 'stateBoard',
+        path: path.board.state.home,
+      },
+      {
+        label: 'State Advisory Board',
+        value: 'stateAdvisoryBoard',
+        path: path.board.state.advisory,
+      },
+      {
+        label: 'State Board of Section',
+        value: 'stateSectionBoard',
+        path: path.board.state.section,
+      },
+      {
+        label: 'State Staff Selection Board',
+        value: 'stateStaffSelectionBoard',
+        path: path.board.state.staffSelection,
+      },
+      {
+        label: 'State Disciplinary Board',
+        value: 'stateDisciplinaryBoard',
+        path: path.board.state.disciplinary,
+      },
+    ],
+  },
+
+  {
+    label: 'Enrollment',
+    value: 'enrollment',
+    path: path.enrollment.home,
+    children: [
+      {
+        label: 'Enrollment Verification',
+        value: 'enrollmentVerification',
+        path: path.enrollment.verification,
+      },
+      {
+        label: 'Apply for Enrollment',
+        value: 'enrollmentRegistration',
+        path: path.enrollment.registration,
+      },
+    ],
+  },
+
+  {
+    label: 'Public Grievance',
+    value: 'publicGrievance',
+    path: path.grievance,
+    children: [
+      {
+        label: 'Regd. Grievance in LNSPJI',
+        value: 'grievance',
+        path: path.grievance,
+      },
+      {
+        label: 'Regd. Grievance in CPGRAMS',
+        value: 'grievanceCPGRAMS',
+        external: true,
+        path: 'https://pgportal.gov.in/Registration',
+      },
+      {
+        label: 'Online FIR (All State in India)',
+        value: 'fir',
+        external: true,
+        path: '/fir',
+      },
+      {
+        label: 'Online Lost Report (All State in India)',
+        value: 'lostReport',
+        external: true,
+        path: '/lost-report',
+      },
+      {
+        label: 'Regd. in any commission',
+        value: 'lostReport2',
+        external: true,
+        path: '/lost-report-2',
+      },
+      {
+        label: 'lostReport3',
+        value: 'Regd. in Chief Minister Office All India',
+        path: '/lost-report-3',
+        children: [
+          {
+            label: 'demo',
+            value: 'demo',
+            external: true,
+            path: '/demo',
+          },
+        ]
+      },
+    ],
+  },
+
+  {
+    label: 'Donate',
+    value: 'donate',
+    path: path.donate,
+  },
+
+  {
+    label: 'appointment',
+    value: 'Appointment',
+    path: path.appointment,
+  },
+
+  {
+    label: 'Academics',
+    value: 'academics',
+    path: path.academics.home,
+    children: [
+      {
+        label: 'Learner Registration',
+        value: 'learnerRegistration',
+        path: path.academics.learner.registration,
+      },
+      {
+        label: 'Learner Verification',
+        value: 'learnerVerification',
+        path: path.academics.learner.verification,
+      },
+      {
+        label: 'Examination Registration',
+        value: 'examinationRegistration',
+        path: path.academics.examinationRegistration,
+      },
+      {
+        label: 'Course',
+        value: 'course',
+        path: path.academics.course,
+      },
+      {
+        label: 'Fee Structure',
+        value: 'feeStructure',
+        path: path.academics.feeStructure,
+      },
+      {
+        label: 'Passing Certificate',
+        value: 'passingCertificate',
+        path: path.academics.passingCertificate,
+      },
+      {
+        label: 'Academic Center',
+        value: 'academicCenter',
+        path: path.academics.academicCenter,
+      },
+      {
+        label: 'Pay Online Academics Fees',
+        value: 'payOnlineAcademicsFees',
+        path: path.academics.payOnlineAcademicsFees,
+      },
+      {
+        label: 'Syllabus',
+        value: 'syllabus',
+        path: path.academics.syllabus,
+      },
+      {
+        label: 'Admission Cell',
+        value: 'admissionCell',
+        path: path.academics.admissionCell,
+      },
+      {
+        label: 'Fees Collection Cell',
+        value: 'feesCollectionCell',
+        path: path.academics.feesCollectionCell,
+      },
+      {
+        label: 'Examination Cell',
+        value: 'examinationCell',
+        path: path.academics.examinationCell,
+      },
+      {
+        label: 'Academics Cell',
+        value: 'academicsCell',
+        path: path.academics.academicsCell,
+      },
+    ]
+  },
+
+  {
+    label: 'Employees',
+    value: 'employees',
+    path: path.employees,
+  },
+
+  {
+    label: 'Employments',
+    value: 'employments',
+    path: path.employments,
+  },
+
+  {
+    label: 'Placement Cell',
+    value: 'placementCell',
+    path: path.placementCell,
+  },
+];

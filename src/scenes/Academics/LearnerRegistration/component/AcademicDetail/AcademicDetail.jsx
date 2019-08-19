@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles, TextField } from '@material-ui/core';
 
-// import {
-//   DocumentDetailDefaultProps,
-//   DocumentDetailPropTypes
-// } from '../../../../lib/utils/props';
 import styles from './style';
 
 class DocumentDetail extends Component {
@@ -14,9 +10,9 @@ class DocumentDetail extends Component {
 
   render() {
     const {
-      classes,
-      academicCenter,
-      courseName,
+      // classes,
+      // academicCenter,
+      // courseName,
       academicShift,
     } = this.props;
 

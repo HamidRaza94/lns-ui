@@ -46,7 +46,7 @@ function Update(props) {
           color="primary"
           className={classes.button}
         >
-          More {title}
+          More
           <SendIcon className={classes.rightIcon} />
         </Button>
       </CardActions>

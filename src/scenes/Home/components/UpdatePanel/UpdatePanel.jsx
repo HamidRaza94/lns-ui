@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core';
 
 import { Card } from '../../../../components';
 import styles from './style';
@@ -43,7 +45,7 @@ class UpdatePanel extends PureComponent {
         notice,
       });
     })
-    .catch(error => {
+    .catch((error) => {
       this.setState({
         isLoaded: true,
         error,
@@ -52,7 +54,9 @@ class UpdatePanel extends PureComponent {
   };
 
   render() {
+    const { classes } = this.props;
     const { error, isLoaded } = this.state;
+
     const newsData = { title: 'News' }
     const linkData = { title: 'Important Link' }
     const noticeData = { title: 'Notice' }
@@ -73,7 +77,7 @@ class UpdatePanel extends PureComponent {
     }
 
     return (
-      <div style={styles.root}>
+      <div className={classes.root}>
         <Card variant="update" data={linkData} />
         <Card variant="update" data={noticeData} />
         <Card variant="update" data={newsData} />
@@ -82,4 +86,12 @@ class UpdatePanel extends PureComponent {
   }
 }
 
-export default UpdatePanel;
+UpdatePanel.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+UpdatePanel.defaultProps = {
+  classes: {},
+}
+
+export default withStyles(styles)(UpdatePanel);
