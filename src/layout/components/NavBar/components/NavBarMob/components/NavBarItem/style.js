@@ -21,7 +21,7 @@ export default {
   },
 
   navChildren: {
-    marginLeft: 10,
+    paddingLeft: 20,
     paddingTop: 5,
     paddingBottom: 5,
   },

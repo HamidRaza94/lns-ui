@@ -31,7 +31,7 @@ class NavBarItem extends Component {
           {routes.map(nav => nav.children ? ((nav.show === true || nav.show === undefined) ? (
             <Fragment>
               <Link to={nav.path} className={classes.link}>
-                <ListItem className={classNames(classes.nav, this.getActiveNavStyle(nav.path))} button>
+                <ListItem className={classNames(classes.nav)} button>
                   <ListItemText primary={nav.label} />
                 </ListItem>
               </Link>
