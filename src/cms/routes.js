@@ -60,7 +60,7 @@ export default [
   {
     label: 'All Boards',
     value: 'board',
-    path: path.board.home,
+    path: path.board.central.home,
     children: [
       {
         label: 'Central Governing Board',
@@ -123,7 +123,7 @@ export default [
   {
     label: 'Enrollment',
     value: 'enrollment',
-    path: path.enrollment.home,
+    path: path.enrollment.verification,
     children: [
       {
         label: 'Enrollment Verification',
@@ -134,6 +134,7 @@ export default [
         label: 'Apply for Enrollment',
         value: 'enrollmentRegistration',
         path: path.enrollment.registration,
+        show: false,
       },
     ],
   },
@@ -159,23 +160,27 @@ export default [
         value: 'fir',
         external: true,
         path: '/fir',
+        show: false,
       },
       {
         label: 'Online Lost Report (All State in India)',
         value: 'lostReport',
         external: true,
         path: '/lost-report',
+        show: false,
       },
       {
         label: 'Regd. in any commission',
         value: 'lostReport2',
         external: true,
         path: '/lost-report-2',
+        show: false,
       },
       {
         label: 'lostReport3',
         value: 'Regd. in Chief Minister Office All India',
         path: '/lost-report-3',
+        show: false,
         children: [
           {
             label: 'demo',
@@ -192,23 +197,26 @@ export default [
     label: 'Donate',
     value: 'donate',
     path: path.donate,
+    show: false,
   },
 
   {
-    label: 'appointment',
-    value: 'Appointment',
+    label: 'Appointment',
+    value: 'appointment',
     path: path.appointment,
+    show: false,
   },
 
   {
     label: 'Academics',
     value: 'academics',
-    path: path.academics.home,
+    path: path.academics.learner.registration,
     children: [
       {
         label: 'Learner Registration',
         value: 'learnerRegistration',
         path: path.academics.learner.registration,
+        show: false,
       },
       {
         label: 'Learner Verification',
@@ -219,56 +227,73 @@ export default [
         label: 'Examination Registration',
         value: 'examinationRegistration',
         path: path.academics.examinationRegistration,
+        show: false,
       },
       {
         label: 'Course',
         value: 'course',
         path: path.academics.course,
+        show: false,
       },
       {
         label: 'Fee Structure',
         value: 'feeStructure',
         path: path.academics.feeStructure,
+        show: false,
       },
       {
         label: 'Passing Certificate',
         value: 'passingCertificate',
         path: path.academics.passingCertificate,
+        show: false,
       },
       {
         label: 'Academic Center',
         value: 'academicCenter',
         path: path.academics.academicCenter,
+        show: false,
       },
       {
         label: 'Pay Online Academics Fees',
         value: 'payOnlineAcademicsFees',
         path: path.academics.payOnlineAcademicsFees,
+        show: false,
       },
       {
         label: 'Syllabus',
         value: 'syllabus',
         path: path.academics.syllabus,
+        show: false,
       },
       {
         label: 'Admission Cell',
         value: 'admissionCell',
         path: path.academics.admissionCell,
+        show: false,
       },
       {
         label: 'Fees Collection Cell',
         value: 'feesCollectionCell',
         path: path.academics.feesCollectionCell,
+        show: false,
       },
       {
         label: 'Examination Cell',
         value: 'examinationCell',
         path: path.academics.examinationCell,
+        show: false,
       },
       {
         label: 'Academics Cell',
         value: 'academicsCell',
         path: path.academics.academicsCell,
+        show: false,
+      },
+      {
+        label: 'Placement Cell',
+        value: 'placementCell',
+        path: path.placementCell,
+        show: false,
       },
     ]
   },
@@ -277,17 +302,13 @@ export default [
     label: 'Employees',
     value: 'employees',
     path: path.employees,
+    show: false,
   },
 
   {
     label: 'Employments',
     value: 'employments',
     path: path.employments,
-  },
-
-  {
-    label: 'Placement Cell',
-    value: 'placementCell',
-    path: path.placementCell,
+    show: false,
   },
 ];

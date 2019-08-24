@@ -5,10 +5,14 @@ const color = {
 
 const { blue, orange } = color;
 
-export default {
+const style = theme => ({
   nav: {
     display: 'flex',
     backgroundColor: blue,
+
+    [theme.breakpoints.down(940)]: {
+      display: 'none',
+    },
   },
 
   ul: {
@@ -84,4 +88,6 @@ export default {
     opacity: 0,
     display: '',
   },
-};
+});
+
+export default style;
