@@ -66,51 +66,59 @@ class NavBarDesktop extends Component {
       <nav className={classes.nav}>
         <ul className={classes.ul}>
           {routes.map((nav) => {
-            if (nav.children) {
-              return (
-                <li
-                  className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
-                  onClick={this.handleNavClick(nav.value)}
-                  onMouseEnter={this.handleNavHover(nav.path)}
-                  onMouseLeave={this.handleNavHover('')}
-                >
-                  <Typography className={classes.text}>{nav.label}</Typography>
-                  <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle(nav.path))}>
-                    {nav.children.map((navChildren) => {
-                      if (navChildren.external) {
-                        return (
-                          <li
-                            className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}
-                            onClick={() => {window.open(navChildren.path, '_blank')}}
-                          >
-                            <Typography className={classes.text}>{navChildren.label}</Typography>
-                          </li>
-                        )
-                      }
+            if (nav.show === true || nav.show === undefined) {
+              if (nav.children) {
+                return (
+                  <li
+                    className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
+                    onClick={this.handleNavClick(nav.value)}
+                    onMouseEnter={this.handleNavHover(nav.path)}
+                    onMouseLeave={this.handleNavHover('')}
+                  >
+                    <Typography className={classes.text}>{nav.label}</Typography>
+                    <ul className={classNames(classes.ul_li_ul, this.getActiveNavListStyle(nav.path))}>
+                      {nav.children.map((navChildren) => {
+                        if (navChildren.show === true || navChildren.show === undefined) {
+                          if (navChildren.external) {
+                            return (
+                              <li
+                                className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}
+                                onClick={() => {window.open(navChildren.path, '_blank')}}
+                              >
+                                <Typography className={classes.text}>{navChildren.label}</Typography>
+                              </li>
+                            )
+                          }
+    
+                          return (
+                            <Link to={navChildren.path}>
+                              <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}>
+                                <Typography className={classes.text}>{navChildren.label}</Typography>
+                              </li>
+                            </Link>
+                          )
+                        }
 
-                      return (
-                        <Link to={navChildren.path}>
-                          <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}>
-                            <Typography className={classes.text}>{navChildren.label}</Typography>
-                          </li>
-                        </Link>
-                      )
-                    })}
-                  </ul>
-                </li>
+                        return null;
+                      })}
+                    </ul>
+                  </li>
+                )
+              }
+  
+              return (
+                <Link to={nav.path}>
+                  <li
+                    className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
+                    onClick={this.handleNavClick(nav.value)}
+                  >
+                    <Typography className={classes.text}>{nav.label}</Typography>
+                  </li>
+                </Link>
               )
             }
 
-            return (
-              <Link to={nav.path}>
-                <li
-                  className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
-                  onClick={this.handleNavClick(nav.value)}
-                >
-                  <Typography className={classes.text}>{nav.label}</Typography>
-                </li>
-              </Link>
-            )
+            return null;
           })}
         </ul>
       </nav>

@@ -20,6 +20,10 @@ export default {
     paddingBottom: 8,
   },
 
+  navItem: {
+    paddingLeft: 0,
+  },
+
   navChildren: {
     paddingLeft: 20,
     paddingTop: 5,

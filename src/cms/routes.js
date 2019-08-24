@@ -55,6 +55,7 @@ export default [
     label: 'Home',
     value: 'home',
     path: path.home,
+    // icon: 'home',
   },
 
   {
