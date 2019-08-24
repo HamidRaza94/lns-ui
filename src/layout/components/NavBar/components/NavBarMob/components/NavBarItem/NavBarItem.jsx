@@ -44,7 +44,7 @@ class NavBarItem extends Component {
                       {this.getIcon(nav.icon)}
                     </ListItemIcon>
                   )}
-                  <ListItemText primary={nav.label} />
+                  <ListItemText primary={nav.label + " +"} />
                 </ListItem>
               </Link>
               {nav.children.map(navChildren => ((navChildren.show === true || navChildren.show === undefined) ? (
