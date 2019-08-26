@@ -1,31 +1,29 @@
 const style = theme => ({
   root: {
-    flexGrow: 1,
     display: 'none',
+    backgroundColor: '#254260',
     cursor: 'pointer',
+
+    '&:hover': {
+      backgroundColor: '#0a1f36',
+    },
 
     [theme.breakpoints.down(940)]: {
       display: 'block',
     },
   },
 
-  appBar: {
-    backgroundColor: '#254260',
-
-    '&:hover': {
-      backgroundColor: '#0a1f36',
-    },
-  },
-
-  toolbar: {
+  menuButton: {
+    width: '100%',
+    padding: 15,
     display: 'flex',
     justifyContent: 'center',
-    alignContent: 'center',
-  },
-
-  menuButton: {
     color: 'white',
   },
-});
+
+  list: {
+    width: 250,
+  },
+})
 
 export default style;

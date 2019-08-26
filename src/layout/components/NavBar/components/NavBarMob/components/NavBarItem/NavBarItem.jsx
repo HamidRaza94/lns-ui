@@ -38,7 +38,7 @@ class NavBarItem extends Component {
           {routes.map(nav => nav.children ? ((nav.show === true || nav.show === undefined) ? (
             <Fragment>
               <Link to={nav.path} className={classes.link}>
-                <ListItem className={classNames(classes.nav)} button>
+                <ListItem className={classNames(classes.nav)} button key={nav.label}>
                   {nav.icon && (
                     <ListItemIcon>
                       {this.getIcon(nav.icon)}
@@ -49,7 +49,7 @@ class NavBarItem extends Component {
               </Link>
               {nav.children.map(navChildren => ((navChildren.show === true || navChildren.show === undefined) ? (
                 navChildren.external ? (
-                  <ListItem className={classNames(classes.navChildren, this.getActiveNavStyle(navChildren.path))} button>
+                  <ListItem className={classNames(classes.navChildren, this.getActiveNavStyle(navChildren.path))} button key={nav.label}>
                     {nav.icon && (
                       <ListItemIcon>
                         {this.getIcon(nav.icon)}
@@ -59,7 +59,7 @@ class NavBarItem extends Component {
                   </ListItem>
                 ) : (
                   <Link to={navChildren.path} className={classes.link}>
-                    <ListItem className={classNames(classes.navChildren, this.getActiveNavStyle(navChildren.path))} button>
+                    <ListItem className={classNames(classes.navChildren, this.getActiveNavStyle(navChildren.path))} button key={nav.label}>
                     {nav.icon && (
                       <ListItemIcon>
                         {this.getIcon(nav.icon)}
@@ -73,7 +73,7 @@ class NavBarItem extends Component {
             </Fragment>) : null
           ) : ((nav.show === true || nav.show === undefined) ? (
             <Link to={nav.path} className={classes.link}>
-              <ListItem className={classNames(classes.nav, this.getActiveNavStyle(nav.path))} button>
+              <ListItem className={classNames(classes.nav, this.getActiveNavStyle(nav.path))} button key={nav.label}>
                 {nav.icon && (
                   <ListItemIcon>
                     {this.getIcon(nav.icon)}
