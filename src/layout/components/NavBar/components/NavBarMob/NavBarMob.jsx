@@ -11,6 +11,8 @@ class AppBarHeader extends Component {
 
     this.state = {
       openDrawer: false,
+      activeNav: window.location.pathname,
+      activeNavList: '',
     }
   }
 
@@ -26,7 +28,6 @@ class AppBarHeader extends Component {
     const { classes } = this.props;
     const { openDrawer } = this.state;
 
-
     return (
       <div className={classes.root}>
         <Typography onClick={this.toggleDrawer(true)} className={classes.menuButton}>Menu</Typography>
@@ -41,7 +42,7 @@ class AppBarHeader extends Component {
             onClick={this.toggleDrawer(false)}
             onKeyDown={this.toggleDrawer(false)}
           >
-            <NavBarItem />
+            <NavBarItem toggle={this.toggleDrawer} />
           </div>
         </SwipeableDrawer>
       </div>

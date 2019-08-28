@@ -11,13 +11,16 @@ export default {
     width: 250,
   },
 
-  fullList: {
-    width: 'auto',
-  },
-
   nav: {
     paddingTop: 8,
     paddingBottom: 8,
+  },
+
+  hover: {
+    '&:hover': {
+      backgroundColor: orange,
+      color: 'white',
+    }
   },
 
   navItem: {
@@ -28,17 +31,35 @@ export default {
     paddingLeft: 20,
     paddingTop: 5,
     paddingBottom: 5,
+    display: 'none',
   },
 
   link: {
     textDecoration: 'none',
   },
 
+  showList: {
+    display: 'block',
+  },
+
   active: {
     backgroundColor: orange,
   },
 
+  activeText: {
+    color: 'white',
+  },
+
+  notActiveText: {
+    color: 'black',
+  },
+
   activeChildren: {
-    backgroundColor: lightOrange,
+    // backgroundColor: lightOrange,
+    color: orange,
+  },
+
+  expand: {
+    color: 'white',
   },
 };
