@@ -4,7 +4,7 @@ const color = {
   lightOrange: '#c46741',
 }
 
-const { lightOrange, orange } = color;
+const { orange } = color;
 
 export default {
   list: {

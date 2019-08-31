@@ -100,7 +100,7 @@ class NavBarItem extends Component {
 
   render() {
     const { classes, toggle } = this.props;
-    const { isExpand, activeNav, isParent } = this.state;
+    const { isExpand, activeNav } = this.state;
 
     return (
       <List className={classes.list}>

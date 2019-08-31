@@ -25,7 +25,6 @@ class NavBarDesktop extends Component {
     let nav = window.location.href.split('/')[3];
 
     if (nav === '') nav = 'home';
-    console.log('navvv is ', window.location);
     this.handleNavClick(nav)();
   };
 
@@ -70,6 +69,7 @@ class NavBarDesktop extends Component {
               if (nav.children) {
                 return (
                   <li
+                    key={nav.value}
                     className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
                     onClick={this.handleNavClick(nav.value)}
                     onMouseEnter={this.handleNavHover(nav.path)}
@@ -82,6 +82,7 @@ class NavBarDesktop extends Component {
                           if (navChildren.external) {
                             return (
                               <li
+                                key={navChildren.value}
                                 className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}
                                 onClick={() => {window.open(navChildren.path, '_blank')}}
                               >
@@ -91,8 +92,8 @@ class NavBarDesktop extends Component {
                           }
     
                           return (
-                            <Link to={navChildren.path}>
-                              <li className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}>
+                            <Link key={navChildren.path} to={navChildren.path}>
+                              <li key={navChildren.value} className={classNames(classes.ul_li_ul_li, this.getActiveNavStyle(navChildren.value))}>
                                 <Typography className={classes.text}>{navChildren.label}</Typography>
                               </li>
                             </Link>
@@ -107,8 +108,9 @@ class NavBarDesktop extends Component {
               }
   
               return (
-                <Link to={nav.path}>
+                <Link key={nav.path} to={nav.path}>
                   <li
+                    key={nav.value}
                     className={classNames(classes.li, this.getActiveNavStyle(nav.value))}
                     onClick={this.handleNavClick(nav.value)}
                   >
