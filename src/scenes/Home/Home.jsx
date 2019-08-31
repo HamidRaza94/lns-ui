@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Sliders from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import {
   withStyles,
-  Grid,
   Button,
   Card as C,
   CardContent,
@@ -31,6 +33,29 @@ const getFormatedMessage = (message) => (
     return <br/>
   })
 )
+
+const settings = {
+  className: 'center',
+  centerMode: true,
+  infinite: true,
+  centerPadding: 60,
+  slidesToShow: 3,
+  speed: 500,
+  responsive: [
+    {
+      breakpoint: 1000,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 750,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
 class Home extends Component {
   constructor(props) {
@@ -93,13 +118,9 @@ class Home extends Component {
           </div>
         </div>
 
-        <div className={classes.sections}>
-          {sections.map((section) => (
-            <Grid item>
-              <Card variant="section" data={section} />
-            </Grid>
-          ))}
-        </div>
+        <Sliders {...settings}>
+          {sections.map((section) => <Card variant="section" data={section} />)}
+        </Sliders>
       </div>
     );
   }
