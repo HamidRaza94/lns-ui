@@ -17,18 +17,20 @@ import styles from './style';
 
 class CommunicationDetail extends Component {
   handleChange = field => e => {
-    this.props.onChange(field, e.target.value);
+    this.props.onChange('communicationDetailData', field, e.target.value);
   }
 
   render() {
     const {
       classes,
-      email,
-      phone,
-      policeStation,
-      state,
-      pincode,
-      address,
+      data: {
+        email,
+        phone,
+        policeStation,
+        state,
+        pincode,
+        address,
+      },
     } = this.props;
 
     return (

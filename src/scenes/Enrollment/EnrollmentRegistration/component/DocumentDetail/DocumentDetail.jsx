@@ -17,7 +17,7 @@ class DocumentDetail extends Component {
     }
   }
   handleChange = field => e => {
-    this.props.onChange(field, e.target.value);
+    this.props.onChange('documentDetailData', field, e.target.value);
   }
 
   handleFileChange = field => e => {
@@ -26,7 +26,13 @@ class DocumentDetail extends Component {
   }
 
   render() {
-    const { classes, aadhaar, pan } = this.props;
+    const {
+      classes,
+      data: {
+        aadhaar,
+        pan,
+      },
+    } = this.props;
     const { photo, sign } = this.state;
 
     return (

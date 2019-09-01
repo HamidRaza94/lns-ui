@@ -11,94 +11,55 @@ import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component
 import { connection } from '../../../lib/server';
 import { API_METHOD, SERVER_ROUTE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
+import {
+  personalDetailSchema,
+  communicationDetailSchema,
+  documentDetailSchema,
+  enrollmentRegistrationSchema,
+} from './validation';
 
 class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeStep: 0,
-      candidateName: '',
-      fatherName: '',
-      sex: '',
-      maritalStatus: '',
-      dateOfBirth: '',
-      placeOfBirth: '',
-      occupation: '',
-      category: '',
-      religion: '',
-      physicalStatus: '',
-      email: '',
-      phone: '',
-      policeStation: '',
-      state: '',
-      pincode: '',
-      address: '',
-      photo: '',
-      sign: '',
-      aadhaar: '',
-      pan: ''
+      personalDetailData: {
+        candidateName: '',
+        fatherName: '',
+        sex: '',
+        maritalStatus: '',
+        dateOfBirth: '',
+        placeOfBirth: '',
+        category: '',
+        religion: '',
+        occupation: '',
+        physicalStatus: '',
+      },
+      communicationDetailData: {
+        email: '',
+        phone: '',
+        policeStation: '',
+        state: '',
+        pincode: '',
+        address: '',
+      },
+      documentDetailData: {
+        aadhaar: '',
+        pan: '',
+        photo: '',
+        sign: '',
+      },
     };
   }
 
   getStepContent = (activeStep) => {
-    const {
-      candidateName,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      placeOfBirth,
-      occupation,
-      category,
-      religion,
-      physicalStatus,
-      email,
-      phone,
-      policeStation,
-      state,
-      pincode,
-      address,
-      aadhaar,
-      pan
-    } = this.state;
-
     switch (activeStep) {
       case 0:
-        return (
-          <PersonalDetail
-            onChange={this.handleChange}
-            candidateName={candidateName}
-            fatherName={fatherName}
-            sex={sex}
-            maritalStatus={maritalStatus}
-            dateOfBirth={dateOfBirth}
-            placeOfBirth={placeOfBirth}
-            category={category}
-            religion={religion}
-            occupation={occupation}
-            physicalStatus={physicalStatus}
-          />
-        );
+        return <PersonalDetail onChange={this.handleChange} data={this.state.personalDetailData} />;
       case 1:
-        return (
-          <CommunicationDetail
-            onChange={this.handleChange}
-            email={email}
-            phone={phone}
-            policeStation={policeStation}
-            state={state}
-            pincode={pincode}
-            address={address}
-          />
-        );
+        return <CommunicationDetail onChange={this.handleChange} data={this.state.communicationDetailData} />;
       case 2:
-        return (
-          <DocumentDetail
-            onChange={this.handleChange}
-            aadhaar={aadhaar}
-            pan={pan}
-          />
-        );
+        return <DocumentDetail onChange={this.handleChange} data={this.state.documentDetailData} />;
       case 3:
         return <PaymentDetail />;
       default:
@@ -106,52 +67,96 @@ class EnrollmentRegistration extends Component {
     }
   };
 
-  handleChange = (field, value) => {
-    this.setState({
-      [field]: field === 'pan' ? capitalizeAll(value) : value,
-    });
-  };
+  handleChange = (fieldTitle, field, value) => {
+    this.setState(prevState => ({
+      [fieldTitle]: {
+        ...prevState[fieldTitle],
+        [field]: field === 'pan' ? capitalizeAll(value) : value,
+      }
+    }));
+  }
+
+  handleIsValid = () => {
+    const { activeStep } = this.state;
+    const options = { abortEarly: false }
+
+    if (activeStep === 0) {
+      return true;
+      // const { personalDetailData } = this.state;
+      // return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+    } else if (activeStep === 1) {
+      return true;
+      // const { communicationDetailData } = this.state;
+      // return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+    } else if (activeStep === 2) {
+      const { documentDetailData } = this.state;
+      return documentDetailSchema.isValidSync({ ...documentDetailData }, options);
+    } else if (activeStep === 3) {
+      return false;
+    } else if (this.getLastStep()) {
+      return false;
+      // const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
+      // return enrollmentRegistrationSchema.isValidSync({
+      //   ...personalDetailData,
+      //   ...communicationDetailData,
+      //   ...documentDetailData,
+      // }, options);
+    } else {
+      return false;
+    }
+  }
 
   handleNext = () => {
-    const { activeStep } = this.state;
+    const isValid = this.handleIsValid();
 
-    if (activeStep === enrollmentRegistration.steps.length - 1) {
-      const { snackBarStateUpdater } = this.props;
-      const data = new FormData();
-      data.append('file', this.state.photo);
-      connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
-      .then(res => {
-        snackBarStateUpdater({
-          showSnackBar: true,
-          variant: 'success',
-          snackBarMsg: 'Enrollment Saved Successfully',
+    if (isValid) {
+      if (this.getLastStep()) {
+        const { snackBarStateUpdater } = this.props;
+        const data = new FormData();
+        data.append('file', this.state.photo);
+        connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
+        .then(res => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'success',
+            snackBarMsg: res.data.message,
+          })
         })
-      })
-      .catch(error => {
-        snackBarStateUpdater({
-          showSnackBar: true,
-          variant: 'error',
-          snackBarMsg: 'Enrollment Not Saved',
-        })
-      });
+        .catch(error => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'error',
+            snackBarMsg: error.message,
+          })
+        });
+      } else {
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1,
+        }));
+      }
     } else {
-      this.setState(prevState => ({
-        activeStep: prevState.activeStep + 1,
-      }));
-    }    
-  };
+      const { snackBarStateUpdater } = this.props;
+      snackBarStateUpdater({
+        showSnackBar: true,
+        variant: 'error',
+        snackBarMsg: 'Please Fill Required Field',
+      });
+    }
+  }
 
   handleBack = () => {
     this.setState(prevState => ({
       activeStep: prevState.activeStep - 1,
     }));
-  };
+  }
 
   handleReset = () => {
     this.setState({
       activeStep: 0,
     });
-  };
+  }
+
+  getLastStep = () => this.state.activeStep === enrollmentRegistration.steps.length - 1 ? true : false;
 
   render() {
     const { classes } = this.props;
@@ -190,7 +195,7 @@ class EnrollmentRegistration extends Component {
               color="primary"
               onClick={this.handleNext}
             >
-              {activeStep === enrollmentRegistration.steps.length - 1 ? form.button.finish : form.button.next}
+              {this.getLastStep() ? form.button.finish : form.button.next}
             </Button>
           </div>
         </div>

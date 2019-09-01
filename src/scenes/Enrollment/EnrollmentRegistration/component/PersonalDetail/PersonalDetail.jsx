@@ -32,22 +32,24 @@ import styles from './style';
 
 class PersonalDetail extends Component {
   handleChange = field => e => {
-    this.props.onChange(field, e.target.value);
+    this.props.onChange('personalDetailData', field, e.target.value);
   }
 
   render() {
     const {
       classes,
-      candidateName,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      placeOfBirth,
-      category,
-      religion,
-      occupation,
-      physicalStatus,
+      data: {
+        candidateName,
+        fatherName,
+        sex,
+        maritalStatus,
+        dateOfBirth,
+        placeOfBirth,
+        religion,
+        category,
+        occupation,
+        physicalStatus,
+      },
     } = this.props;
 
     return (
