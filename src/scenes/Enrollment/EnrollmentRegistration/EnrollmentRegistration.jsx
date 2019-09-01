@@ -123,13 +123,15 @@ class EnrollmentRegistration extends Component {
       .then(res => {
         snackBarStateUpdater({
           showSnackBar: true,
-          ...enrollmentRegistration.response.success,
+          variant: 'success',
+          snackBarMsg: 'Enrollment Saved Successfully',
         })
       })
       .catch(error => {
         snackBarStateUpdater({
           showSnackBar: true,
-          ...enrollmentRegistration.response.error,
+          variant: 'error',
+          snackBarMsg: 'Enrollment Not Saved',
         })
       });
     } else {

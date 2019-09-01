@@ -4,12 +4,12 @@ import PropTypes from 'prop-types';
 import { SnackBar } from '../SnackBar';
 import { withSnackBar } from '../../contexts';
 
-const SuccessSnackBar = ({ showSnackBar, snackBarMsg, handleClose, variant }) => (
+const SuccessSnackBar = ({ showSnackBar, variant, snackBarMsg, handleClose }) => (
   <SnackBar
-    message={snackBarMsg}
     open={showSnackBar}
-    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
     variant={variant}
+    message={snackBarMsg}
+    anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
     autoHideDuration={3000}
     onClose={handleClose}
     close
@@ -18,8 +18,8 @@ const SuccessSnackBar = ({ showSnackBar, snackBarMsg, handleClose, variant }) =>
 
 SuccessSnackBar.propTypes = {
   showSnackBar: PropTypes.bool.isRequired,
-  snackBarMsg: PropTypes.string.isRequired,
   variant: PropTypes.string.isRequired,
+  snackBarMsg: PropTypes.string.isRequired,
   handleClose: PropTypes.func.isRequired,
 }
 
