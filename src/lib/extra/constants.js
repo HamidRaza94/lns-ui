@@ -89,6 +89,22 @@ const RANKS = {
 
 const ROW_PER_PAGE_OPTIONS = [5, 10, 15, 20, 25, 50, 100];
 
+const API_METHOD = {
+  post: 'post',
+  get: 'get',
+  put: 'put',
+  delete: 'delete',
+}
+
+const SERVER_ROUTE = {
+  team: 'team',
+  member: 'member',
+  contact: 'contact',
+  update: 'update',
+  grievance: 'grievance',
+  enrollment: 'enrollment',
+}
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -107,4 +123,6 @@ export {
   STATES,
   RANKS,
   ROW_PER_PAGE_OPTIONS,
+  API_METHOD,
+  SERVER_ROUTE,
 };

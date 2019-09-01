@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-  withStyles,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-} from '@material-ui/core';
+import { withStyles, Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core';
 
 import styles from './style';
 import { PaymentDetail } from '../../../components';
@@ -16,6 +9,7 @@ import { enrollmentRegistration, form } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
 import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
+import { API_METHOD, SERVER_ROUTE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
 
 class EnrollmentRegistration extends Component {
@@ -123,19 +117,21 @@ class EnrollmentRegistration extends Component {
 
     if (activeStep === enrollmentRegistration.steps.length - 1) {
       const { snackBarStateUpdater } = this.props;
-      console.log('snackBar is ', snackBarStateUpdater)
       const data = new FormData();
       data.append('file', this.state.photo);
-      connection('post', 'enrollment', data)
-      .then((res) => {
-        console.log('response is ', res);
+      connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
+      .then(res => {
         snackBarStateUpdater({
           showSnackBar: true,
-          variant: 'success',
-          snackBarMsg: 'Enrollment Saved Successfully',
+          ...enrollmentRegistration.response.success,
         })
       })
-      .catch(err => console.log('error is ', err));
+      .catch(error => {
+        snackBarStateUpdater({
+          showSnackBar: true,
+          ...enrollmentRegistration.response.error,
+        })
+      });
     } else {
       this.setState(prevState => ({
         activeStep: prevState.activeStep + 1,
