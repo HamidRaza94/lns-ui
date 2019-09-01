@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+// import { KeyboardDatePicker } from '@material-ui/pickers';
+// import 'date-fns';
+// import DateFnsUtils from 'date-fns';
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardDatePicker,
+// } from '@material-ui/pickers';
 import {
   withStyles,
   TextField,
@@ -9,20 +16,17 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
 } from '@material-ui/core';
 
-import {
-  PersonalDetailDefaultProps,
-  PersonalDetailPropTypes
-} from '../../../../../lib/utils/props';
+import { PersonalDetailDefaultProps, PersonalDetailPropTypes } from '../../../../../lib/utils/props';
 import {
   SEX,
   MARITAL_STATUS,
   CATEGORY,
   RELIGION,
   PHYSICAL_STATUS,
-  STATES
+  STATES,
 } from '../../../../../cms/constants';
 import styles from './style';
 
@@ -108,6 +112,27 @@ class PersonalDetail extends Component {
         </FormControl>
 
         <div className={classes.row} style={{ padding: '10px 0px' }}>
+          {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              margin="normal"
+              id="date-picker-dialog"
+              label="Date Of Birth"
+              format="MM/dd/yyyy"
+              value={dateOfBirth}
+              onChange={this.handleChange('dateOfBirth')}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}
+            />
+          </MuiPickersUtilsProvider> */}
+          {/* <KeyboardDatePicker
+            clearable
+            value={dateOfBirth}
+            // placeholder="10/10/2018"
+            onChange={this.handleChange('dateOfBirth')}
+            // minDate={new Date()}
+            format="MM/dd/yyyy"
+          /> */}
           <TextField
             id="dateOfBirth"
             label="Date Of Birth"
@@ -140,8 +165,8 @@ class PersonalDetail extends Component {
           </FormControl>
         </div>
 
-        <div className={classes.row}>
-          <FormControl fullWidth className={classes.padding}  style={{ paddingTop: 10 }}>
+        <div className={classes.row} style={{ paddingTop: 10 }}>
+          <FormControl fullWidth className={classes.padding}>
             <InputLabel htmlFor="religion-select">Religion</InputLabel>
             <Select
               value={religion}

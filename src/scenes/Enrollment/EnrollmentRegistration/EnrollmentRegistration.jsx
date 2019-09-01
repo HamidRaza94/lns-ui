@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   withStyles,
   Stepper,
@@ -9,9 +10,13 @@ import {
 } from '@material-ui/core';
 
 import styles from './style';
-import { enrollmentRegistration } from '../../../cms';
+import { PaymentDetail } from '../../../components';
+import { QontoConnector, QontoStepIcon } from '../../../components/Stepper/Stepper';
+import { enrollmentRegistration, form } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
 import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component';
+import { connection } from '../../../lib/server';
+import { withSnackBar } from '../../../contexts';
 
 class EnrollmentRegistration extends Component {
   constructor(props) {
@@ -101,41 +106,52 @@ class EnrollmentRegistration extends Component {
           />
         );
       case 3:
-        return <></>;
+        return <PaymentDetail />;
       default:
         return 'Unknown stepIndex';
     }
   };
 
   handleChange = (field, value) => {
-    let data;
-
-    if (field === 'pan') {
-      data = capitalizeAll(value);
-    } else {
-      data = value;
-    }
-
     this.setState({
-      [field]: data
+      [field]: field === 'pan' ? capitalizeAll(value) : value,
     });
   };
 
   handleNext = () => {
-    this.setState(prevState => ({
-      activeStep: prevState.activeStep + 1
-    }));
+    const { activeStep } = this.state;
+
+    if (activeStep === enrollmentRegistration.steps.length - 1) {
+      const { snackBarStateUpdater } = this.props;
+      console.log('snackBar is ', snackBarStateUpdater)
+      const data = new FormData();
+      data.append('file', this.state.photo);
+      connection('post', 'enrollment', data)
+      .then((res) => {
+        console.log('response is ', res);
+        snackBarStateUpdater({
+          showSnackBar: true,
+          variant: 'success',
+          snackBarMsg: 'Enrollment Saved Successfully',
+        })
+      })
+      .catch(err => console.log('error is ', err));
+    } else {
+      this.setState(prevState => ({
+        activeStep: prevState.activeStep + 1,
+      }));
+    }    
   };
 
   handleBack = () => {
     this.setState(prevState => ({
-      activeStep: prevState.activeStep - 1
+      activeStep: prevState.activeStep - 1,
     }));
   };
 
   handleReset = () => {
     this.setState({
-      activeStep: 0
+      activeStep: 0,
     });
   };
 
@@ -148,13 +164,15 @@ class EnrollmentRegistration extends Component {
         <Typography variant="h4" align="center">
           {enrollmentRegistration.title}
         </Typography>
-        <Stepper activeStep={activeStep} alternativeLabel>
+
+        <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
           {enrollmentRegistration.steps.map(label => (
             <Step key={label}>
-              <StepLabel>{label}</StepLabel>
+              <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
             </Step>
           ))}
         </Stepper>
+
         <div>
           <div className={classes.form}>
             <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -167,14 +185,14 @@ class EnrollmentRegistration extends Component {
               onClick={this.handleBack}
               className={classes.backButton}
             >
-              {enrollmentRegistration.backButtonLabel}
+              {form.button.back}
             </Button>
             <Button
               variant="contained"
               color="primary"
               onClick={this.handleNext}
             >
-              {activeStep === enrollmentRegistration.steps.length - 1 ? 'Finish' : 'Next'}
+              {activeStep === enrollmentRegistration.steps.length - 1 ? form.button.finish : form.button.next}
             </Button>
           </div>
         </div>
@@ -183,4 +201,12 @@ class EnrollmentRegistration extends Component {
   }
 }
 
-export default withStyles(styles)(EnrollmentRegistration);
+EnrollmentRegistration.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+EnrollmentRegistration.defaultProps = {
+  classes: {},
+}
+
+export default withSnackBar(withStyles(styles)(EnrollmentRegistration));

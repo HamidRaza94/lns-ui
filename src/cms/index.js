@@ -13,3 +13,4 @@ export { default as appointment } from './appointment';
 export { default as employees } from './employees';
 export { default as employment } from './employment';
 export { default as messages } from './messages';
+export { default as form } from './form';

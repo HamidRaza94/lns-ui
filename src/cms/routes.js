@@ -135,7 +135,6 @@ export default [
         label: 'Apply for Enrollment',
         value: 'enrollmentRegistration',
         path: path.enrollment.registration,
-        show: false,
       },
     ],
   },
