@@ -17,7 +17,7 @@ class PaymentDetail extends Component {
       paymentStatus ? (
         <Typography>Payment is Successful</Typography>
       ) : (
-        <Typography>Do not close <br />Until Payment is successful</Typography>
+        <Typography>Payment Gateway is not configured!!! <br /> Please contact with administration</Typography>
       )
     )
   }

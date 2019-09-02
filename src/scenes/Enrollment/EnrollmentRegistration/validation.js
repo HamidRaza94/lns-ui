@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { REGEX } from '../../../lib/extra/constants';
+import { REGEX, FILE_SIZE, SUPPORTED_FORMATS } from '../../../lib/extra/constants';
 
 const personalDetailSchema = yup.object().shape({
   candidateName: yup.string().min(3).required().label('Name'),
@@ -27,6 +27,16 @@ const communicationDetailSchema = yup.object().shape({
 const documentDetailSchema = yup.object().shape({
   aadhaar: yup.number().required().label('Aadhar'),
   pan: yup.string().required().label('PAN'),
+  photo: yup
+    .mixed()
+    .required('A Photo is required')
+    .test('fileSize', 'File too large', value => value && value.size <= FILE_SIZE.image)
+    .test('fileFormat', 'Unsupported Format', value => value && SUPPORTED_FORMATS.image.includes(value.type)),
+  sign: yup
+    .mixed()
+    .required('A Signature is required')
+    .test('fileSize', 'File too large', value => value && value.size <= FILE_SIZE.image)
+    .test('fileFormat', 'Unsupported Format', value => value && SUPPORTED_FORMATS.image.includes(value.type)),
 });
 
 const enrollmentRegistrationSchema = personalDetailSchema

@@ -1,7 +1,7 @@
 export default {
   title: 'Enrollment Registration Form',
   steps: [
-    'Personal Details',
+    'Personal Detail',
     'Communication Detail',
     'Document Detail',
     'Payment',

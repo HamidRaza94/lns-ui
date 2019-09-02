@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, Stepper, Step, StepLabel, Button, Typography } from '@material-ui/core';
 
-import styles from './style';
-import { PaymentDetail } from '../../../components';
-import { QontoConnector, QontoStepIcon } from '../../../components/Stepper/Stepper';
-import { enrollmentRegistration, form } from '../../../cms';
+import { FormPage, PaymentDetail } from '../../../components';
+import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
 import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
@@ -76,31 +72,28 @@ class EnrollmentRegistration extends Component {
     }));
   }
 
+  handleValidation
+
   handleIsValid = () => {
     const { activeStep } = this.state;
     const options = { abortEarly: false }
 
     if (activeStep === 0) {
-      return true;
-      // const { personalDetailData } = this.state;
-      // return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+      const { personalDetailData } = this.state;
+      return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
     } else if (activeStep === 1) {
-      return true;
-      // const { communicationDetailData } = this.state;
-      // return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+      const { communicationDetailData } = this.state;
+      return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
     } else if (activeStep === 2) {
       const { documentDetailData } = this.state;
       return documentDetailSchema.isValidSync({ ...documentDetailData }, options);
-    } else if (activeStep === 3) {
-      return false;
     } else if (this.getLastStep()) {
-      return false;
-      // const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
-      // return enrollmentRegistrationSchema.isValidSync({
-      //   ...personalDetailData,
-      //   ...communicationDetailData,
-      //   ...documentDetailData,
-      // }, options);
+      const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
+      return enrollmentRegistrationSchema.isValidSync({
+        ...personalDetailData,
+        ...communicationDetailData,
+        ...documentDetailData,
+      }, options);
     } else {
       return false;
     }
@@ -159,57 +152,19 @@ class EnrollmentRegistration extends Component {
   getLastStep = () => this.state.activeStep === enrollmentRegistration.steps.length - 1 ? true : false;
 
   render() {
-    const { classes } = this.props;
     const { activeStep } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Typography variant="h4" align="center">
-          {enrollmentRegistration.title}
-        </Typography>
-
-        <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
-          {enrollmentRegistration.steps.map(label => (
-            <Step key={label}>
-              <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-
-        <div>
-          <div className={classes.form}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {this.getStepContent(activeStep)}
-            </div>
-          </div>
-          <div className={classes.button}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={this.handleBack}
-              className={classes.backButton}
-            >
-              {form.button.back}
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleNext}
-            >
-              {this.getLastStep() ? form.button.finish : form.button.next}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <FormPage
+        formTitle={enrollmentRegistration.title}
+        steps={enrollmentRegistration.steps}
+        activeStep={activeStep}
+        stepContent={this.getStepContent(activeStep)}
+        handleNext={this.handleNext}
+        handleBack={this.handleBack}
+      />
     );
   }
 }
 
-EnrollmentRegistration.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-EnrollmentRegistration.defaultProps = {
-  classes: {},
-}
-
-export default withSnackBar(withStyles(styles)(EnrollmentRegistration));
+export default withSnackBar(EnrollmentRegistration);

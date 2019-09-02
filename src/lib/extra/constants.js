@@ -109,6 +109,18 @@ const REGEX = {
   phone: /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
 }
 
+const FILE_SIZE = {
+  image: 160 * 1024,
+}
+
+const SUPPORTED_FORMATS = {
+  image: [
+    "image/jpg",
+    "image/jpeg",
+    "image/png",
+  ],
+}
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -130,4 +142,6 @@ export {
   API_METHOD,
   SERVER_ROUTE,
   REGEX,
+  FILE_SIZE,
+  SUPPORTED_FORMATS,
 };
