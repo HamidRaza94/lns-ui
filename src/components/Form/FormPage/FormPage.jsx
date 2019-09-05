@@ -10,7 +10,7 @@ const FormPage = ({ classes, formTitle, steps, activeStep, stepContent, handleNe
   <div className={classes.root}>
     <Typography variant="h4" align="center">{formTitle}</Typography>
 
-    <Stepper alternativeLabel activeStep={activeStep} connector={<QontoConnector />}>
+    <Stepper alternativeLabel className={classes.stepper} activeStep={activeStep} connector={<QontoConnector />}>
       {steps.map(label => (
         <Step key={label}>
           <StepLabel StepIconComponent={QontoStepIcon}>{label}</StepLabel>

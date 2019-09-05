@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { FormPage, PaymentDetail } from '../../../components';
+import { FormPage, PersonalDetail, PaymentDetail } from '../../../components';
 import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
-import { PersonalDetail, CommunicationDetail, DocumentDetail } from './component';
+import { CommunicationDetail, DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
 import { API_METHOD, SERVER_ROUTE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
@@ -14,17 +14,22 @@ import {
   enrollmentRegistrationSchema,
 } from './validation';
 
+const RESET_TYPE = {
+  current: 'current',
+  all: 'all',
+}
+
 class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeStep: 0,
       personalDetailData: {
-        candidateName: '',
+        name: '',
         fatherName: '',
         sex: '',
         maritalStatus: '',
-        dateOfBirth: '',
+        dateOfBirth: null,
         placeOfBirth: '',
         category: '',
         religion: '',
@@ -72,8 +77,6 @@ class EnrollmentRegistration extends Component {
     }));
   }
 
-  handleValidation
-
   handleIsValid = () => {
     const { activeStep } = this.state;
     const options = { abortEarly: false }
@@ -114,6 +117,7 @@ class EnrollmentRegistration extends Component {
             variant: 'success',
             snackBarMsg: res.data.message,
           })
+          this.handleReset(RESET_TYPE.all);
         })
         .catch(error => {
           snackBarStateUpdater({
@@ -143,10 +147,25 @@ class EnrollmentRegistration extends Component {
     }));
   }
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-    });
+  handleReset = type => {
+    if (type === RESET_TYPE.current) {
+      const { activeStep } = this.state;
+
+      if (activeStep === 0) {
+        this.setState({ personalDetailData: {} });
+      } else if (activeStep === 1) {
+        this.setState({ communicationDetailData: {} });
+      } else if (activeStep === 2) {
+        this.setState({ documentDetailData: {} });
+      }
+    } else if (type === RESET_TYPE.all) {
+      this.setState({
+        activeStep: 0,
+        personalDetailData: {},
+        communicationDetailData: {},
+        documentDetailData: {},
+      });
+    }
   }
 
   getLastStep = () => this.state.activeStep === enrollmentRegistration.steps.length - 1 ? true : false;
@@ -162,6 +181,7 @@ class EnrollmentRegistration extends Component {
         stepContent={this.getStepContent(activeStep)}
         handleNext={this.handleNext}
         handleBack={this.handleBack}
+        stateUpdater={this.state}
       />
     );
   }

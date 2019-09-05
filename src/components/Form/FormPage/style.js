@@ -1,43 +1,65 @@
 const styles = theme => ({
   root: {
-    width: '60%',
-    margin: '0 auto',
-    marginTop: 20,
-    marginBottom: 20,
+    margin: '20px 200px',
     padding: 15,
     borderRadius: 10,
     boxShadow: '0px 0px 5px #565656',
     backgroundColor: 'white',
     transition: '0.2s',
 
-    [theme.breakpoints.down(1000)]: {
-      width: '70%'
+    [theme.breakpoints.down(1115)]: {
+      marginLeft: 150,
+      marginRight: 150,
     },
-    [theme.breakpoints.down(850)]: {
-      width: '80%'
+
+    [theme.breakpoints.down(1015)]: {
+      marginLeft: 100,
+      marginRight: 100,
     },
+
+    [theme.breakpoints.down(915)]: {
+      marginLeft: 50,
+      marginRight: 50,
+    },
+
+    [theme.breakpoints.down(815)]: {
+      marginLeft: 20,
+      marginRight: 20,
+    },
+
     [theme.breakpoints.down(750)]: {
-      width: '90%',
-      paddingLeft: 10,
-      paddingRight: 10,
+      marginLeft: 10,
+      marginRight: 10,
     },
-    [theme.breakpoints.down(650)]: {
-      width: '95%',
-      paddingLeft: 0,
-      paddingRight: 0,
-    },
+  },
+
+  stepper: {
+    paddingLeft: 0,
+    paddingRight: 0,
   },
 
   form: {
     display: 'flex',
     flexDirection: 'column',
-    margin: '0px 20px',
+    paddingLeft: 10,
+    paddingRight: 10,
+    transition: '0.2s',
+
+    [theme.breakpoints.down(450)]: {
+      paddingLeft: 5,
+      paddingRight: 5,
+    },
   },
 
   button: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: 10
+    padding: 10,
+
+    [theme.breakpoints.down(450)]: {
+      paddingLeft: 5,
+      paddingRight: 5,
+    },
   },
 });
 
