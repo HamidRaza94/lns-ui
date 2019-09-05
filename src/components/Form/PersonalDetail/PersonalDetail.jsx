@@ -96,10 +96,10 @@ class PersonalDetail extends Component {
             id="name"
             label={personalDetail.name.label}
             value={data.name}
-            margin="dense"
             fullWidth
-            onChange={this.handleChange('name')}
+            margin="dense"
             className={classes.field}
+            onChange={this.handleChange('name')}
           />
         )}
 
@@ -108,10 +108,10 @@ class PersonalDetail extends Component {
             id="fatherName"
             label={personalDetail.fatherName.label}
             value={data.fatherName}
-            margin="dense"
             fullWidth
-            onChange={this.handleChange('fatherName')}
+            margin="dense"
             className={classes.field}
+            onChange={this.handleChange('fatherName')}
           />
         )}
 
@@ -171,8 +171,8 @@ class PersonalDetail extends Component {
               disableFuture
               clearable
               fullWidth
-              onChange={this.handleDateChange('dateOfBirth')}
               className={classes.field}
+              onChange={this.handleDateChange('dateOfBirth')}
             />
           </MuiPickersUtilsProvider>
         )}

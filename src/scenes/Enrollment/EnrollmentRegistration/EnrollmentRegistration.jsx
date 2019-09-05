@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
-import { DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
@@ -10,6 +9,7 @@ import {
   FormPage,
   PersonalDetail,
   CommunicationDetail,
+  DocumentDetail,
   PaymentDetail,
 } from '../../../components';
 import {
@@ -23,7 +23,7 @@ class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStep: 1,
+      activeStep: 2,
       personalDetailData: {
         name: '',
         fatherName: '',

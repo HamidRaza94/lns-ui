@@ -32,6 +32,15 @@ const styles = theme => ({
   radioFieldLabel: {
     paddingTop: 5,
   },
+
+  imageDiv: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    padding: 5,
+  },
 });
 
 export default styles;

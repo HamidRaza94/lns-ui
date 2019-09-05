@@ -16,3 +16,4 @@ export { default as messages } from './messages';
 export { default as form } from './form';
 export { default as personalDetail } from './personalDetail';
 export { default as communicationDetail } from './communicationDetail';
+export { default as documentDetail } from './documentDetail';

@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles, TextField, Button, Typography } from '@material-ui/core';
-import classNames from 'classnames';
 
-import styles from './style';
-
-function bytesToSize(bytes) {
-  const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-  if (bytes === 0) return '0 Byte';
-  const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
-  return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
-}
+import styles from '../style';
+import { bytesToSize } from '../../../lib/utils/helpers'
+import { documentDetail } from '../../../cms';
 
 class DocumentDetail extends Component {
   constructor(props) {
@@ -34,11 +28,17 @@ class DocumentDetail extends Component {
     }
 
     if (photo) {
-      return { photo: (photo.name + ` (${bytesToSize(photo.size)})`), photoPreview: URL.createObjectURL(photo) }
+      return {
+        photo: (photo.name + ` (${bytesToSize(photo.size)})`),
+        photoPreview: URL.createObjectURL(photo),
+      }
     }
 
     if (sign) {
-      return { sign: (sign.name + ` (${bytesToSize(sign.size)})`), signPreview: URL.createObjectURL(sign) }
+      return {
+        sign: (sign.name + ` (${bytesToSize(sign.size)})`),
+        signPreview: URL.createObjectURL(sign),
+      }
     }
   }
 
@@ -55,39 +55,35 @@ class DocumentDetail extends Component {
     const { photo, sign, photoPreview, signPreview } = this.state;
     const {
       classes,
-      data: {
-        aadhaar,
-        pan,
-      },
+      data: { aadhaar, pan },
     } = this.props;
 
     return (
-      <>
-        <div className={classNames(classes.row, classes.spaceBetween)}>
-          <TextField
-            id="aadhaar"
-            type="number"
-            label="Aadhar"
-            value={aadhaar}
-            margin="dense"
-            fullWidth
-            onChange={this.handleChange('aadhaar')}
-            className={classes.padding}
-          />
+      <div className={classes.root}>
+        <TextField
+          id="aadhaar"
+          type="number"
+          label="Aadhar"
+          value={aadhaar}
+          fullWidth
+          margin="dense"
+          className={classes.field}
+          onChange={this.handleChange('aadhaar')}
+        />
 
-          <TextField
-            id="pan"
-            label="PAN"
-            value={pan}
-            margin="dense"
-            fullWidth
-            onChange={this.handleChange('pan')}
-          />
-        </div>
+        <TextField
+          id="pan"
+          label="PAN"
+          value={pan}
+          margin="dense"
+          fullWidth
+          className={classes.field}
+          onChange={this.handleChange('pan')}
+        />
 
-        <div className={classNames(classes.row, classes.flexStart)}>
+        <div className={classes.imageDiv}>
           <Button variant="contained" component="label" style={{ marginRight: 10 }}>
-            Upload Photo
+            {documentDetail.photo.label}
             <input type="file" onChange={this.handleFileChange('photo')} style={{ display: "none" }} />
           </Button>
 
@@ -96,21 +92,21 @@ class DocumentDetail extends Component {
           {photoPreview && <img alt="Pic" src={photoPreview} width={100} heigh={100} />}
         </div>
 
-        <Typography>Note: Maximum File Size is 160 kb and Supported File is .jpg, .jpeg, .png</Typography>
+        <Typography style={{ padding: 5 }}>{documentDetail.photo.message}</Typography>
 
-        <div className={classNames(classes.row, classes.flexStart)}>
+        <div className={classes.imageDiv}>
           <Button variant="contained" component="label" style={{ marginRight: 10 }}>
-            Upload Signature
+            {documentDetail.sign.label}
             <input type="file" onChange={this.handleFileChange('sign')} style={{ display: "none" }} />
           </Button>
 
           <Typography>{sign}</Typography>
 
-          {signPreview && <img alt="Sign" src={signPreview} width={50} height={100} />}
+          {signPreview && <img alt="Pic" src={signPreview} width={100} heigh={100} />}
         </div>
 
-        <Typography>Note: Maximum File Size is 160 kb and Supported File is .jpg, .jpeg, .png</Typography>
-      </>
+        <Typography style={{ padding: 5 }}>{documentDetail.sign.message}</Typography>
+      </div>
     );
   }
 }
