@@ -15,3 +15,4 @@ export { default as employment } from './employment';
 export { default as messages } from './messages';
 export { default as form } from './form';
 export { default as personalDetail } from './personalDetail';
+export { default as communicationDetail } from './communicationDetail';

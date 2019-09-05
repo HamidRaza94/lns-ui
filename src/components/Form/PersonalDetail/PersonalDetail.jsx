@@ -15,7 +15,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
-import styles from './style';
+import styles from '../style';
 import { personalDetail } from '../../../cms';
 import {
   SEX,
@@ -190,9 +190,7 @@ class PersonalDetail extends Component {
                 id: 'placeOfBirth-select'
               }}
             >
-              {STATES.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
+              {STATES.map(item => <MenuItem value={item}>{item}</MenuItem>)}
             </Select>
           </FormControl>
         )}

@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
 
-import { FormPage, PersonalDetail, PaymentDetail } from '../../../components';
 import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
-import { CommunicationDetail, DocumentDetail } from './component';
+import { DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
+import {
+  FormPage,
+  PersonalDetail,
+  CommunicationDetail,
+  PaymentDetail,
+} from '../../../components';
 import {
   personalDetailSchema,
   communicationDetailSchema,
@@ -18,7 +23,7 @@ class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStep: 0,
+      activeStep: 1,
       personalDetailData: {
         name: '',
         fatherName: '',
