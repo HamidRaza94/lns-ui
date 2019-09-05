@@ -5,7 +5,7 @@ import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../lib/utils/helpers';
 import { CommunicationDetail, DocumentDetail } from './component';
 import { connection } from '../../../lib/server';
-import { API_METHOD, SERVER_ROUTE } from '../../../lib/extra/constants';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../lib/extra/constants';
 import { withSnackBar } from '../../../contexts';
 import {
   personalDetailSchema,
@@ -13,11 +13,6 @@ import {
   documentDetailSchema,
   enrollmentRegistrationSchema,
 } from './validation';
-
-const RESET_TYPE = {
-  current: 'current',
-  all: 'all',
-}
 
 class EnrollmentRegistration extends Component {
   constructor(props) {

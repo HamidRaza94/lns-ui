@@ -121,6 +121,11 @@ const SUPPORTED_FORMATS = {
   ],
 }
 
+const RESET_TYPE = {
+  current: 'current',
+  all: 'all',
+}
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -144,4 +149,5 @@ export {
   REGEX,
   FILE_SIZE,
   SUPPORTED_FORMATS,
+  RESET_TYPE,
 };

@@ -270,31 +270,21 @@ class PersonalDetail extends Component {
 
 PersonalDetail.propTypes = {
   classes: PropTypes.object.isRequired,
-  name: PropTypes.string.isRequired,
-  fatherName: PropTypes.string.isRequired,
-  sex: PropTypes.string.isRequired,
-  maritalStatus: PropTypes.string.isRequired,
-  dateOfBirth: PropTypes.string.isRequired,
-  placeOfBirth: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
-  religion: PropTypes.string.isRequired,
-  occupation: PropTypes.string.isRequired,
-  physicalStatus: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  fatherName: PropTypes.string,
+  sex: PropTypes.string,
+  maritalStatus: PropTypes.string,
+  dateOfBirth: PropTypes.string,
+  placeOfBirth: PropTypes.string,
+  category: PropTypes.string,
+  religion: PropTypes.string,
+  occupation: PropTypes.string,
+  physicalStatus: PropTypes.string,
   fields: PropTypes.arrayOf(PropTypes.string),
 }
 
 PersonalDetail.defaultProps = {
   classes: {},
-  name: '',
-  fatherName: '',
-  sex: '',
-  maritalStatus: '',
-  dateOfBirth: '',
-  placeOfBirth: '',
-  category: '',
-  religion: '',
-  occupation: '',
-  physicalStatus: '',
 }
 
 export default withStyles(styles)(PersonalDetail);
