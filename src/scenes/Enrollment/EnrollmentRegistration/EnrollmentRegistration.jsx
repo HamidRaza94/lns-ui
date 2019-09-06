@@ -23,7 +23,7 @@ class EnrollmentRegistration extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStep: 0,
+      activeStep: 3,
       personalDetailData: {
         name: '',
         fatherName: '',

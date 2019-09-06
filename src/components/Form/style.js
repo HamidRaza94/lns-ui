@@ -37,6 +37,7 @@ const styles = theme => ({
     width: '100%',
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'flex-start',
     alignItems: 'center',
     padding: 5,
