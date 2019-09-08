@@ -64,7 +64,7 @@ class EnrollmentRegistration extends Component {
       case 3:
         return <PaymentDetail />;
       default:
-        return 'Unknown stepIndex';
+        return 'Something is wrong';
     }
   };
 

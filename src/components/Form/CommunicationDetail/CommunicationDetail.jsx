@@ -94,7 +94,6 @@ class CommunicationDetail extends Component {
             id="address"
             label={communicationDetail.address.label}
             value={data.address}
-            multiline
             fullWidth
             margin="dense"
             className={classes.field}
@@ -156,6 +155,7 @@ CommunicationDetail.propTypes = {
   state: PropTypes.string,
   pincode: PropTypes.number,
   address: PropTypes.string,
+  fields: PropTypes.arrayOf(PropTypes.string),
 }
 
 CommunicationDetail.defaultProps = {

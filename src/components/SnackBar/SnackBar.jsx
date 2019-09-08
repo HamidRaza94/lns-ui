@@ -86,18 +86,18 @@ const SnackBar = (props) => {
   message = message || <span id="message-id">.</span>
   anchorOrigin = anchorOrigin || {
     vertical: 'bottom',
-    horizontal: 'left',
+    horizontal: 'right',
   }
 
   return (
     <Snackbar
       id="snackbar"
-      {...rest}
-      {...additionalProps}
       onClose={onClose}
       anchorOrigin={anchorOrigin}
       ContentProps={ContentProps || { 'aria-describedby': 'message-id' }}
       message={message}
+      {...additionalProps}
+      {...rest}
     >
       {variant && (
         <SnackbarContentWrapper

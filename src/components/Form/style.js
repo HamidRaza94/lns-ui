@@ -42,6 +42,15 @@ const styles = theme => ({
     alignItems: 'center',
     padding: 5,
   },
+
+  multiline: {
+    width: '100%',
+    padding: 5,
+
+    '& label': {
+      padding: 5,
+    },
+  },
 });
 
 export default styles;

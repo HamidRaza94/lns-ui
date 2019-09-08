@@ -1,8 +1,8 @@
-const steps = [
-  'Personal Details',
-  'Incident Detail',
-];
-
-export {
-  steps
+export default {
+  title: 'Grievance Form',
+  steps: [
+    'Personal Detail',
+    'Communication Detail',
+    'Incident Detail',
+  ],
 }

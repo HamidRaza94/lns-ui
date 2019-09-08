@@ -1,324 +1,206 @@
 import React, { Component } from 'react';
-import {
-  withStyles,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-} from '@material-ui/core';
 
-import styles from './style';
-import { PersonalDetail, IncidentDetail } from './component';
-import { steps } from '../../cms/grievance';
+import { grievance } from '../../cms';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
+import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail } from '../../components';
 import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
-import { personalDetailSchema, incidentDetailSchema } from './validation';
+import { withSnackBar } from '../../contexts';
+import {
+  personalDetailSchema,
+  communicationDetailSchema,
+  incidentDetailSchema,
+} from './validation';
 
 class Grievance extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeStep: 0,
-      name: '',
-      fatherName: '',
-      sex: '',
-      maritalStatus: '',
-      dateOfBirth: '',
-      aadhaar: '',
-      religion: '',
-      category: '',
-      address: '',
-      phone: '',
-      policeStation: '',
-      state: '',
-      pincode: '',
-      placeOfIncident: '',
-      dateTimeIncident: '',
-      summary: '',
+      activeStep: 2,
+      personalDetailData: {
+        name: '',
+        fatherName: '',
+        sex: '',
+        maritalStatus: '',
+        dateOfBirth: null,
+        aadhaar: '',
+        religion: '',
+        category: '',
+      },
+      communicationDetailData: {
+        phone: '',
+        address: '',
+        policeStation: '',
+        state: '',
+        pincode: '',
+      },
+      incidentDetailData: {
+        placeOfIncident: '',
+        dateTimeIncident: null,
+        summary: '',
+        attachment: '',
+      },
     };
   }
 
   getStepContent = (activeStep) => {
-    const {
-      name,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      aadhaar,
-      religion,
-      category,
-      address,
-      email,
-      phone,
-      policeStation,
-      state,
-      pincode,
-      placeOfIncident,
-      dateTimeIncident,
-      summary,
-    } = this.state;
-
     switch (activeStep) {
       case 0:
         return (
           <PersonalDetail
             onChange={this.handleChange}
-            name={name}
-            fatherName={fatherName}
-            sex={sex}
-            maritalStatus={maritalStatus}
-            email={email}
-            phone={phone}
-            dateOfBirth={dateOfBirth}
-            category={category}
-            religion={religion}
-            aadhaar={aadhaar}
-            address={address}
-            policeStation={policeStation}
-            state={state}
-            pincode={pincode}
+            data={this.state.personalDetailData}
+            fields={[
+              'name',
+              'fatherName',
+              'sex',
+              'maritalStatus',
+              'dateOfBirth',
+              'aadhaar',
+              'religion',
+              'category',
+            ]}
           />
         );
 
       case 1:
         return (
+          <CommunicationDetail
+            onChange={this.handleChange}
+            data={this.state.communicationDetailData}
+            fields={[
+              'phone',
+              'address',
+              'policeStation',
+              'state',
+              'pincode',
+            ]}
+          />
+        );
+
+      case 2:
+        return (
           <IncidentDetail
             onChange={this.handleChange}
-            placeOfIncident={placeOfIncident}
-            dateTimeIncident={dateTimeIncident}
-            summary={summary}
+            data={this.state.incidentDetailData}
           />
         );
 
       default:
         return 'Something is wrong';
     }
-  };
-
-  handleSubmitData = async () => {
-    const {
-      name,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      aadhaar,
-      religion,
-      category,
-      address,
-      email,
-      phone,
-      policeStation,
-      state,
-      pincode,
-      placeOfIncident,
-      dateTimeIncident,
-      summary,
-    } = this.state;
-
-    const data = {
-      name,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      aadhaar,
-      religion,
-      category,
-      address,
-      email,
-      phone,
-      policeStation,
-      state,
-      pincode,
-      placeOfIncident,
-      dateTimeIncident,
-      summary,
-    };
-
-    try {
-      const response = await connection('post', 'grievance', data);
-      // console.log('.....<<<<', response);
-      alert(response.data.message);
-      this.handleReset();
-    } catch (err) {
-      console.log(err.message);
-      alert(err.message);
-    }
   }
 
-  handleChange = (field, value) => {
-    let data;
-
-    if (field === 'pan') {
-      data = capitalizeAll(value);
-    } else {
-      data = value;
-    }
-
-    this.setState({
-      [field]: data
-    });
+  handleChange = (fieldTitle, field, value) => {
+    this.setState(prevState => ({
+      [fieldTitle]: {
+        ...prevState[fieldTitle],
+        [field]: field === 'pan' ? capitalizeAll(value) : value,
+      }
+    }));
   }
 
   handleIsValid = () => {
     const { activeStep } = this.state;
-
-    const options = {
-      abortEarly: false,
-    };
+    const options = { abortEarly: false }
 
     if (activeStep === 0) {
-      const {
-        name,
-        fatherName,
-        sex,
-        maritalStatus,
-        email,
-        phone,
-        dateOfBirth,
-        aadhaar,
-        category,
-        religion,
-        address,
-        policeStation,
-        state,
-        pincode,
-      } = this.state;
-
-      const value = {
-        name,
-        fatherName,
-        sex,
-        maritalStatus,
-        email,
-        phone,
-        dateOfBirth,
-        aadhaar,
-        category,
-        religion,
-        address,
-        policeStation,
-        state,
-        pincode,
-      }
-  
-      return personalDetailSchema.isValidSync(value, options);
-    }
-
-    if (activeStep === 1) {
-      const {
-        placeOfIncident,
-        dateTimeIncident,
-        summary,
-      } = this.state;
-
-      const value = {
-        placeOfIncident,
-        dateTimeIncident,
-        summary,
-      }
-  
-      return incidentDetailSchema.isValidSync(value, options);
+      const { personalDetailData } = this.state;
+      return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+    } else if (activeStep === 1) {
+      const { communicationDetailData } = this.state;
+      return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+    } else if (activeStep === 2) {
+      const { incidentDetailData } = this.state;
+      return incidentDetailSchema.isValidSync({ ...incidentDetailData }, options);
+    } else {
+      return false;
     }
   }
 
-  handleNext = (activeButton) => () => {
+  handleNext = () => {
     const isValid = this.handleIsValid();
 
     if (isValid) {
-      if (activeButton === 'Submit') {
-        this.handleSubmitData();
+      if (this.getLastStep()) {
+        const { snackBarStateUpdater } = this.props;
+        const data = new FormData();
+        data.append('file', this.state.photo);
+        connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
+        .then(res => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'success',
+            snackBarMsg: res.data.message,
+          })
+          this.handleReset(RESET_TYPE.all);
+        })
+        .catch(error => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'error',
+            snackBarMsg: error.message,
+          })
+        });
       } else {
         this.setState(prevState => ({
-          activeStep: prevState.activeStep + 1
+          activeStep: prevState.activeStep + 1,
         }));
       }
     } else {
-      // alert('Please Fill Complete Detail');
-      if (activeButton === 'Submit') {
-        this.handleSubmitData();
-      } else {
-        this.setState(prevState => ({
-          activeStep: prevState.activeStep + 1
-        }));
-      }
+      const { snackBarStateUpdater } = this.props;
+      snackBarStateUpdater({
+        showSnackBar: true,
+        variant: 'error',
+        snackBarMsg: 'Please Fill Required Field',
+      });
     }
   }
 
   handleBack = () => {
     this.setState(prevState => ({
-      activeStep: prevState.activeStep - 1
+      activeStep: prevState.activeStep - 1,
     }));
   }
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0,
-      name: '',
-      fatherName: '',
-      sex: '',
-      maritalStatus: '',
-      dateOfBirth: '',
-      aadhaar: '',
-      religion: '',
-      category: '',
-      address: '',
-      phone: '',
-      policeStation: '',
-      state: '',
-      pincode: '',
-      placeOfIncident: '',
-      dateTimeIncident: '',
-      summary: '',
-    });
+  handleReset = type => {
+    if (type === RESET_TYPE.current) {
+      const { activeStep } = this.state;
+
+      if (activeStep === 0) {
+        this.setState({ personalDetailData: {} });
+      } else if (activeStep === 1) {
+        this.setState({ communicationDetailData: {} });
+      } else if (activeStep === 2) {
+        this.setState({ documentDetailData: {} });
+      }
+    } else if (type === RESET_TYPE.all) {
+      this.setState({
+        activeStep: 0,
+        personalDetailData: {},
+        communicationDetailData: {},
+        documentDetailData: {},
+      });
+    }
   }
 
+  getLastStep = () => this.state.activeStep === grievance.steps.length - 1 ? true : false;
+
   render() {
-    const { classes } = this.props;
     const { activeStep } = this.state;
-    const activeButtonText = (activeStep === steps.length - 1 ? 'Submit' : 'Next');
 
     return (
-      <div className={classes.root}>
-        <Typography variant="h4" align="center">
-          Public Grievance Form
-        </Typography>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <div>
-          <div className={classes.form}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {this.getStepContent(activeStep)}
-            </div>
-          </div>
-          <div className={classes.button}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={this.handleBack}
-              className={classes.backButton}
-            >
-              Back
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleNext(activeButtonText)}
-            >
-              {activeButtonText}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <FormPage
+        formTitle={grievance.title}
+        steps={grievance.steps}
+        activeStep={activeStep}
+        stepContent={this.getStepContent(activeStep)}
+        handleNext={this.handleNext}
+        handleBack={this.handleBack}
+        stateUpdater={this.state}
+      />
     );
   }
 }
 
-export default withStyles(styles)(Grievance);
+export default withSnackBar(Grievance);

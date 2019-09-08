@@ -70,6 +70,7 @@ class PersonalDetail extends Component {
   handleDateChange = field => date => {
     this.props.onChange('personalDetailData', field, date);
   }
+
   handleChange = field => e => {
     this.props.onChange('personalDetailData', field, e.target.value);
   }
