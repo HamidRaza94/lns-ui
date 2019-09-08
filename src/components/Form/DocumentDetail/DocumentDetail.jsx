@@ -10,6 +10,10 @@ class DocumentDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      aadhaar: true,
+      pan: true,
+      p: true,
+      s: true,
       photo: '',
       sign: '',
       photoPreview: null,
@@ -17,7 +21,22 @@ class DocumentDetail extends Component {
     }
   }
 
-  static getDerivedStateFromProps({ data: { photo, sign } }) {
+  static getDerivedStateFromProps({ fields, data: { photo, sign } }) {
+    if (fields && fields.length) {
+      const whichOneIsExist = {
+        aadhaar: false,
+        pan: false,
+        p: false,
+        s: false,
+      }
+
+      fields.forEach((field) => {
+        whichOneIsExist[field] = true;
+      });
+
+      return whichOneIsExist;
+    }
+
     if (photo && sign) {
       return {
         photo: (photo.name + ` (${bytesToSize(photo.size)})`),
@@ -52,60 +71,78 @@ class DocumentDetail extends Component {
   }
 
   render() {
-    const { photo, sign, photoPreview, signPreview } = this.state;
     const {
-      classes,
-      data: { aadhaar, pan },
-    } = this.props;
+      aadhaar,
+      pan,
+      p,
+      s,
+      photo,
+      sign,
+      photoPreview,
+      signPreview,
+    } = this.state;
+    const { classes, data } = this.props;
 
     return (
       <div className={classes.root}>
-        <TextField
-          id="aadhaar"
-          type="number"
-          label="Aadhar"
-          value={aadhaar}
-          fullWidth
-          margin="dense"
-          className={classes.field}
-          onChange={this.handleChange('aadhaar')}
-        />
+        {aadhaar && (
+          <TextField
+            id="aadhaar"
+            type="number"
+            label="Aadhar"
+            value={data.aadhaar}
+            fullWidth
+            margin="dense"
+            className={classes.field}
+            onChange={this.handleChange('aadhaar')}
+          />
+        )}
 
-        <TextField
-          id="pan"
-          label="PAN"
-          value={pan}
-          margin="dense"
-          fullWidth
-          className={classes.field}
-          onChange={this.handleChange('pan')}
-        />
+        {pan && (
+          <TextField
+            id="pan"
+            label="PAN"
+            value={data.pan}
+            margin="dense"
+            fullWidth
+            className={classes.field}
+            onChange={this.handleChange('pan')}
+          />
+        )}
 
-        <div className={classes.imageDiv}>
-          <Button variant="contained" component="label" style={{ marginRight: 10 }}>
-            {documentDetail.photo.label}
-            <input type="file" onChange={this.handleFileChange('photo')} style={{ display: "none" }} />
-          </Button>
+        {p && (
+          <>
+            <div className={classes.imageDiv}>
+              <Button variant="contained" component="label" style={{ marginRight: 10 }}>
+                {documentDetail.photo.label}
+                <input type="file" onChange={this.handleFileChange('photo')} style={{ display: "none" }} />
+              </Button>
 
-          <Typography>{photo}</Typography>
+              <Typography>{photo}</Typography>
 
-          {photoPreview && <img alt="Pic" src={photoPreview} width={100} heigh={100} />}
-        </div>
+              {photoPreview && <img alt="Pic" src={photoPreview} width={100} heigh={100} />}
+            </div>
 
-        <Typography style={{ padding: 5 }}>{documentDetail.photo.message}</Typography>
+            <Typography style={{ padding: 5 }}>{documentDetail.photo.message}</Typography>
+          </>
+        )}
 
-        <div className={classes.imageDiv}>
-          <Button variant="contained" component="label" style={{ marginRight: 10 }}>
-            {documentDetail.sign.label}
-            <input type="file" onChange={this.handleFileChange('sign')} style={{ display: "none" }} />
-          </Button>
+        {s && (
+          <>
+            <div className={classes.imageDiv}>
+              <Button variant="contained" component="label" style={{ marginRight: 10 }}>
+                {documentDetail.sign.label}
+                <input type="file" onChange={this.handleFileChange('sign')} style={{ display: "none" }} />
+              </Button>
 
-          <Typography>{sign}</Typography>
+              <Typography>{sign}</Typography>
 
-          {signPreview && <img alt="Pic" src={signPreview} width={100} heigh={100} />}
-        </div>
+              {signPreview && <img alt="Pic" src={signPreview} width={100} heigh={100} />}
+            </div>
 
-        <Typography style={{ padding: 5 }}>{documentDetail.sign.message}</Typography>
+            <Typography style={{ padding: 5 }}>{documentDetail.sign.message}</Typography>
+          </>
+        )}
       </div>
     );
   }
