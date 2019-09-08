@@ -6,6 +6,12 @@ import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
 import { withSnackBar } from '../../contexts';
+import {
+  personalDetailSchema,
+  communicationDetailSchema,
+  documentDetailSchema,
+  donateSchema,
+} from './validation';
 
 class Donate extends Component {
   constructor(props) {
@@ -86,28 +92,25 @@ class Donate extends Component {
 
   handleIsValid = () => {
     const { activeStep } = this.state;
-    // const options = { abortEarly: false }
+    const options = { abortEarly: false }
 
     if (activeStep === 0) {
-      return false;
-      // const { personalDetailData } = this.state;
-      // return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+      const { personalDetailData } = this.state;
+      console.log('personalDetail is ', personalDetailData)
+      return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
     } else if (activeStep === 1) {
-      return false;
-      // const { communicationDetailData } = this.state;
-      // return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+      const { communicationDetailData } = this.state;
+      return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
     } else if (activeStep === 2) {
-      return false;
-      // const { documentDetailData } = this.state;
-      // return documentDetailSchema.isValidSync({ ...documentDetailData }, options);
+      const { documentDetailData } = this.state;
+      return documentDetailSchema.isValidSync({ ...documentDetailData }, options);
     } else if (this.getLastStep()) {
-      return false;
-      // const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
-      // return enrollmentRegistrationSchema.isValidSync({
-      //   ...personalDetailData,
-      //   ...communicationDetailData,
-      //   ...documentDetailData,
-      // }, options);
+      const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
+      return donateSchema.isValidSync({
+        ...personalDetailData,
+        ...communicationDetailData,
+        ...documentDetailData,
+      }, options);
     } else {
       return false;
     }
