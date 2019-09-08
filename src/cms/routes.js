@@ -203,7 +203,6 @@ export default [
     label: 'Appointment',
     value: 'appointment',
     path: path.appointment,
-    show: false,
   },
 
   {
