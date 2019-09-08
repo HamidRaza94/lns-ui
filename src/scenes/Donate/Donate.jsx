@@ -96,7 +96,6 @@ class Donate extends Component {
 
     if (activeStep === 0) {
       const { personalDetailData } = this.state;
-      console.log('personalDetail is ', personalDetailData)
       return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
     } else if (activeStep === 1) {
       const { communicationDetailData } = this.state;
@@ -124,7 +123,7 @@ class Donate extends Component {
         const { snackBarStateUpdater } = this.props;
         const data = new FormData();
         data.append('file', this.state.photo);
-        connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
+        connection(API_METHOD.post, SERVER_ROUTE.donate, data)
         .then(res => {
           snackBarStateUpdater({
             showSnackBar: true,

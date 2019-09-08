@@ -7,7 +7,7 @@ const personalDetailSchema = yup.object().shape({
   fatherName: yup.string().min(3).required().label('Father Name'),
   sex: yup.string().required().label('Sex'),
   maritalStatus: yup.string().required().label('Marital Status'),
-  dateOfBirth: yup.string().required().label('Date of Birth'),
+  dateOfBirth: yup.date().required().label('Date of Birth'),
 });
 
 const communicationDetailSchema = yup.object().shape({
