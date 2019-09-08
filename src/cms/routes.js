@@ -197,7 +197,6 @@ export default [
     label: 'Donate',
     value: 'donate',
     path: path.donate,
-    show: false,
   },
 
   {
