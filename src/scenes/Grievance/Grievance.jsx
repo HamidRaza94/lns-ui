@@ -126,7 +126,7 @@ class Grievance extends Component {
         const { snackBarStateUpdater } = this.props;
         const data = new FormData();
         data.append('file', this.state.photo);
-        connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
+        connection(API_METHOD.post, SERVER_ROUTE.grievance, data)
         .then(res => {
           snackBarStateUpdater({
             showSnackBar: true,
