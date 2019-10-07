@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { REGEX, FILE_SIZE, SUPPORTED_FORMATS } from '../../../lib/extra/constants';
 
 const personalDetailSchema = yup.object().shape({
-  candidateName: yup.string().min(3).required().label('Name'),
+  name: yup.string().min(3).required().label('Name'),
   fatherName: yup.string().min(3).required().label('Father Name'),
   sex: yup.string().required().label('Sex'),
   maritalStatus: yup.string().required().label('Marital Status'),

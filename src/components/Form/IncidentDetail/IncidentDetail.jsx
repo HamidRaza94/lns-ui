@@ -88,7 +88,7 @@ class IncidentDetail extends Component {
         <div className={classes.imageDiv}>
           <Button variant="contained" component="label" style={{ marginRight: 10 }}>
             {incidentDetail.attachment.label}
-            <input type="file" onChange={this.handleFileChange('photo')} style={{ display: "none" }} />
+            <input type="file" onChange={this.handleFileChange('attachment')} style={{ display: "none" }} />
           </Button>
 
           <Typography>{attachment}</Typography>

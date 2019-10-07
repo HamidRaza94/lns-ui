@@ -36,7 +36,6 @@ const FormPage = ({ classes, formTitle, steps, activeStep, stepContent, handleNe
           variant="contained"
           color="primary"
           onClick={handleNext}
-          disabled={activeStep === steps.length - 1}
         >
           {activeStep === steps.length - 1 ? form.button.finish : form.button.next}
         </Button>

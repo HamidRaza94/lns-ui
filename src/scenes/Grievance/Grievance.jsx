@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { grievance } from '../../cms';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
 import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail } from '../../components';
+import { FormForMember } from './component';
 import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
 import { withSnackBar } from '../../contexts';
@@ -10,6 +11,7 @@ import {
   personalDetailSchema,
   communicationDetailSchema,
   incidentDetailSchema,
+  grievanceSchema,
 } from './validation';
 
 class Grievance extends Component {
@@ -23,11 +25,11 @@ class Grievance extends Component {
         sex: '',
         maritalStatus: '',
         dateOfBirth: null,
-        aadhaar: '',
         religion: '',
         category: '',
       },
       communicationDetailData: {
+        email: '',
         phone: '',
         address: '',
         policeStation: '',
@@ -56,7 +58,6 @@ class Grievance extends Component {
               'sex',
               'maritalStatus',
               'dateOfBirth',
-              'aadhaar',
               'religion',
               'category',
             ]}
@@ -69,6 +70,7 @@ class Grievance extends Component {
             onChange={this.handleChange}
             data={this.state.communicationDetailData}
             fields={[
+              'email',
               'phone',
               'address',
               'policeStation',
@@ -118,30 +120,55 @@ class Grievance extends Component {
     }
   }
 
+  handleSubmitData = () => {
+    const { snackBarStateUpdater } = this.props;
+    const { personalDetailData, communicationDetailData, incidentDetailData } = this.state;
+    let payload = new FormData();
+
+    payload.append('name', personalDetailData.name);
+    payload.append('fatherName', personalDetailData.fatherName);
+    payload.append('sex', personalDetailData.sex);
+    payload.append('maritalStatus', personalDetailData.maritalStatus);
+    payload.append('dateOfBirth', personalDetailData.dateOfBirth);
+    payload.append('religion', personalDetailData.religion);
+    payload.append('category', personalDetailData.category);
+
+    payload.append('email', communicationDetailData.email);
+    payload.append('phone', communicationDetailData.phone);
+    payload.append('address', communicationDetailData.address);
+    payload.append('policeStation', communicationDetailData.policeStation);
+    payload.append('state', communicationDetailData.state);
+    payload.append('pincode', communicationDetailData.pincode);
+
+    payload.append('placeOfIncident', incidentDetailData.placeOfIncident);
+    payload.append('dateTimeIncident', incidentDetailData.dateTimeIncident);
+    payload.append('summary', incidentDetailData.summary);
+    payload.append('attachment', incidentDetailData.attachment);
+
+    connection(API_METHOD.post, SERVER_ROUTE.grievance, payload)
+    .then(res => {
+      snackBarStateUpdater({
+        showSnackBar: true,
+        variant: 'success',
+        snackBarMsg: res.data.message,
+      })
+      this.handleReset(RESET_TYPE.all);
+    })
+    .catch(error => {
+      snackBarStateUpdater({
+        showSnackBar: true,
+        variant: 'error',
+        snackBarMsg: error.message,
+      })
+    });
+  }
+
   handleNext = () => {
     const isValid = this.handleIsValid();
 
     if (isValid) {
       if (this.getLastStep()) {
-        const { snackBarStateUpdater } = this.props;
-        const data = new FormData();
-        data.append('file', this.state.photo);
-        connection(API_METHOD.post, SERVER_ROUTE.grievance, data)
-        .then(res => {
-          snackBarStateUpdater({
-            showSnackBar: true,
-            variant: 'success',
-            snackBarMsg: res.data.message,
-          })
-          this.handleReset(RESET_TYPE.all);
-        })
-        .catch(error => {
-          snackBarStateUpdater({
-            showSnackBar: true,
-            variant: 'error',
-            snackBarMsg: error.message,
-          })
-        });
+        this.handleSubmitData();
       } else {
         this.setState(prevState => ({
           activeStep: prevState.activeStep + 1,
@@ -177,9 +204,29 @@ class Grievance extends Component {
     } else if (type === RESET_TYPE.all) {
       this.setState({
         activeStep: 0,
-        personalDetailData: {},
-        communicationDetailData: {},
-        documentDetailData: {},
+        personalDetailData: {
+          name: '',
+          fatherName: '',
+          sex: '',
+          maritalStatus: '',
+          dateOfBirth: null,
+          religion: '',
+          category: '',
+        },
+        communicationDetailData: {
+          email: '',
+          phone: '',
+          address: '',
+          policeStation: '',
+          state: '',
+          pincode: '',
+        },
+        incidentDetailData: {
+          placeOfIncident: '',
+          dateTimeIncident: null,
+          summary: '',
+          attachment: '',
+        },
       });
     }
   }
@@ -190,15 +237,23 @@ class Grievance extends Component {
     const { activeStep } = this.state;
 
     return (
-      <FormPage
-        formTitle={grievance.title}
-        steps={grievance.steps}
-        activeStep={activeStep}
-        stepContent={this.getStepContent(activeStep)}
-        handleNext={this.handleNext}
-        handleBack={this.handleBack}
-        stateUpdater={this.state}
-      />
+      <>
+        <FormForMember
+          snackBarStateUpdater={this.props.snackBarStateUpdater}
+          incidentDetailData={this.state.incidentDetailData}
+          onChange={this.handleChange}
+        />
+
+        <FormPage
+          formTitle={grievance.title}
+          steps={grievance.steps}
+          activeStep={activeStep}
+          stepContent={this.getStepContent(activeStep)}
+          handleNext={this.handleNext}
+          handleBack={this.handleBack}
+          stateUpdater={this.state}
+        />
+      </>
     );
   }
 }

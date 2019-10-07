@@ -83,6 +83,7 @@ class EnrollmentRegistration extends Component {
 
     if (activeStep === 0) {
       const { personalDetailData } = this.state;
+      console.log('personalDetailData is ', personalDetailData)
       return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
     } else if (activeStep === 1) {
       const { communicationDetailData } = this.state;

@@ -8,7 +8,6 @@ const personalDetailSchema = yup.object().shape({
   sex: yup.string().required().label('Sex'),
   maritalStatus: yup.string().required().label('Marital Status'),
   dateOfBirth: yup.date().required().label('Date of Birth'),
-  aadhaar: yup.number().required().label('Aadhar'),
   religion: yup.string().required().label('Religion'),
   category: yup.string().required().label('Category'),
 });
