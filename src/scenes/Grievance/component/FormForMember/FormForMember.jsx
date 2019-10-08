@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import CancelIcon from '@material-ui/icons/Cancel';
+import SearchIcon from '@material-ui/icons/Search';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 import {
   withStyles,
   Paper,
-  Typography,
   TextField,
   Button,
-  FormControlLabel,
-  Switch,
+  Fab,
 } from '@material-ui/core';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CancelIcon from '@material-ui/icons/Cancel';
 
 import style from './style';
 import { DialogBox, IncidentDetail } from '../../../../components';
@@ -106,22 +106,16 @@ class FormForMember extends Component {
 
     return (
       <>
-        <Paper style={{
-          margin: '20px 200px',
-          padding: 15,
-        }}>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={isMember}
-                onChange={this.checkMember}
-                value="isMember"
-                color="primary"
-              />
-            }
-            label="Are you member of Lok Niyay Sansthan"
-          />
-        </Paper>
+        {/* <Paper className={classes.root}>
+          <Fab variant="extended" color="primary" aria-label="add" className={classes.margin}>
+            <SearchIcon className={classes.extendedIcon} />
+            Search Your Complaint
+          </Fab> */}
+          <Fab variant="extended" color="primary" aria-label="add" className={classes.margin}>
+            <AssignmentIcon className={classes.extendedIcon} />
+            Registered Member Lodge Here!
+          </Fab>
+        {/* </Paper> */}
 
         <DialogBox
           open={isDialogBoxOpen}

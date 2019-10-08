@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { withStyles, Paper } from '@material-ui/core';
 
 import { grievance } from '../../cms';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
 import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail } from '../../components';
-import { FormForMember } from './component';
+import { SearchGrievance, FormForMember } from './component';
 import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
 import { withSnackBar } from '../../contexts';
@@ -13,6 +14,7 @@ import {
   incidentDetailSchema,
   grievanceSchema,
 } from './validation';
+import style from './component/FormForMember/style';
 
 class Grievance extends Component {
   constructor(props) {
@@ -235,14 +237,19 @@ class Grievance extends Component {
 
   render() {
     const { activeStep } = this.state;
+    const { classes } = this.props;
 
     return (
       <>
-        <FormForMember
+        {/* <FormForMember
           snackBarStateUpdater={this.props.snackBarStateUpdater}
           incidentDetailData={this.state.incidentDetailData}
           onChange={this.handleChange}
-        />
+        /> */}
+        <Paper className={classes.root}>
+          <SearchGrievance snackBarStateUpdater={this.props.snackBarStateUpdater} />
+          <FormForMember />
+        </Paper>
 
         <FormPage
           formTitle={grievance.title}
@@ -258,4 +265,4 @@ class Grievance extends Component {
   }
 }
 
-export default withSnackBar(Grievance);
+export default withStyles(style)(withSnackBar(Grievance));
