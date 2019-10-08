@@ -1,2 +1,1 @@
-export { PersonalDetail } from './PersonalDetail';
-export { IncidentDetail } from './IncidentDetail';
+export { FormForMember } from './FormForMember';

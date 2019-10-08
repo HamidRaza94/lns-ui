@@ -1,6 +1,9 @@
-const donate = {
+export default {
   title: 'Donate Form',
-  buttonLabel: 'Pay',
+  steps: [
+    'Personal Detail',
+    'Communication Detail',
+    'Documentation Detail',
+    'Payment',
+  ],
 }
-
-export default donate;

@@ -2,7 +2,6 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import { path } from './cms/routes';
-// import Test from './Test';
 import { Header, NavBar, Footer } from './layout';
 import {
   Home,
@@ -28,7 +27,6 @@ const Routes = () => (
   <Router>
     <Header />
     <NavBar />
-    {/* <Test /> */}
     <Switch>
       <Route exact path={path.home} component={Home} />
       <Route exact path={path.board.central.home} component={CentralBoard} />

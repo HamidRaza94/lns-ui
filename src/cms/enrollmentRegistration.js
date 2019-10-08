@@ -1,11 +1,9 @@
 export default {
   title: 'Enrollment Registration Form',
-  backButtonLabel: 'Back',
   steps: [
-    'Personal Details',
+    'Personal Detail',
     'Communication Detail',
     'Document Detail',
-    'Photo and Sign',
     'Payment',
   ],
 }

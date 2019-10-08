@@ -1,247 +1,203 @@
 import React, { Component } from 'react';
-import {
-  withStyles,
-  Button,
-  Typography,
-  TextField,
-  Radio,
-  RadioGroup,
-  FormLabel,
-  FormControlLabel,
-  FormControl,
-} from '@material-ui/core';
 
-import styles from './style';
 import { appointment } from '../../cms';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
 import { connection } from '../../lib/server';
-import { appointmentSchema } from './validation';
-import { SEX, MARITAL_STATUS } from '../../cms/constants';
+import { FormPage, PersonalDetail, CommunicationDetail, DocumentDetail, PaymentDetail } from '../../components';
+import { capitalizeAll } from '../../lib/utils/helpers';
+import { withSnackBar } from '../../contexts';
+import {
+  personalDetailSchema,
+  communicationDetailSchema,
+  documentDetailSchema,
+  appointmentSchema,
+} from './validation';
 
 class Appointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
+      activeStep: 0,
+      personalDetailData: {
         name: '',
         fatherName: '',
         sex: '',
         maritalStatus: '',
-        dateOfBirth: '',
-        aadhaar: '',
-        address: '',
+        dateOfBirth: null,
+      },
+      communicationDetailData: {
         phone: '',
-        place: '',
+        address: '',
+      },
+      documentDetailData: {
+        aadhaar: '',
+        pan: '',
       },
     };
   }
 
-  handleSubmitData = async () => {
-    try {
-      const response = await connection('post', 'donate', this.state.data);
-      // console.log('.....<<<<', response);
-      alert(response.data.message);
-      this.handleResetState();
-    } catch (err) {
-      console.log(err.message);
-      alert(err.message);
+  getStepContent = (activeStep) => {
+    switch (activeStep) {
+      case 0:
+        return (
+          <PersonalDetail
+            onChange={this.handleChange}
+            data={this.state.personalDetailData}
+            fields={[
+              'name',
+              'fatherName',
+              'sex',
+              'maritalStatus',
+              'dateOfBirth',
+            ]}
+          />
+        );
+      case 1:
+        return (
+          <CommunicationDetail
+            onChange={this.handleChange}
+            data={this.state.communicationDetailData}
+            fields={[
+              'phone',
+              'address',
+            ]}
+          />
+        );
+      case 2:
+        return (
+          <DocumentDetail
+            onChange={this.handleChange}
+            data={this.state.documentDetailData}
+            fields={[
+              'aadhaar',
+              'pan',
+            ]}
+          />
+        );
+      case 3:
+        return <PaymentDetail />;
+      default:
+        return 'Something is wrong';
+    }
+  };
+
+  handleChange = (fieldTitle, field, value) => {
+    this.setState(prevState => ({
+      [fieldTitle]: {
+        ...prevState[fieldTitle],
+        [field]: field === 'pan' ? capitalizeAll(value) : value,
+      }
+    }));
+  }
+
+  handleIsValid = () => {
+    const { activeStep } = this.state;
+    const options = { abortEarly: false }
+
+    if (activeStep === 0) {
+      const { personalDetailData } = this.state;
+      return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+    } else if (activeStep === 1) {
+      const { communicationDetailData } = this.state;
+      return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+    } else if (activeStep === 2) {
+      const { documentDetailData } = this.state;
+      return documentDetailSchema.isValidSync({ ...documentDetailData }, options);
+    } else if (this.getLastStep()) {
+      const { personalDetailData, communicationDetailData, documentDetailData } = this.state;
+      return appointmentSchema.isValidSync({
+        ...personalDetailData,
+        ...communicationDetailData,
+        ...documentDetailData,
+      }, options);
+    } else {
+      return false;
     }
   }
 
-  handleChange = field => e => {
-    this.setState({
-      data: { [field]: e.target.value },
-    });
+  handleNext = () => {
+    const isValid = this.handleIsValid();
+
+    if (isValid) {
+      if (this.getLastStep()) {
+        const { snackBarStateUpdater } = this.props;
+        const data = new FormData();
+        data.append('file', this.state.photo);
+        connection(API_METHOD.post, SERVER_ROUTE.appointment, data)
+        .then(res => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'success',
+            snackBarMsg: res.data.message,
+          })
+          this.handleReset(RESET_TYPE.all);
+        })
+        .catch(error => {
+          snackBarStateUpdater({
+            showSnackBar: true,
+            variant: 'error',
+            snackBarMsg: error.message,
+          })
+        });
+      } else {
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1,
+        }));
+      }
+    } else {
+      const { snackBarStateUpdater } = this.props;
+      snackBarStateUpdater({
+        showSnackBar: true,
+        variant: 'error',
+        snackBarMsg: 'Please Fill Required Field',
+      });
+    }
   }
 
-  handleIsValid = () => {  
-    return appointmentSchema.isValidSync(this.state.data, { abortEarly: false });
+  handleBack = () => {
+    this.setState(prevState => ({
+      activeStep: prevState.activeStep - 1,
+    }));
   }
 
-  handleResetState = () => {
-    this.setState({
-      data: {
-        name: '',
-        fatherName: '',
-        sex: '',
-        maritalStatus: '',
-        dateOfBirth: '',
-        aadhaar: '',
-        address: '',
-        phone: '',
-        place: '',
-      },
-    });
+  handleReset = type => {
+    if (type === RESET_TYPE.current) {
+      const { activeStep } = this.state;
+
+      if (activeStep === 0) {
+        this.setState({ personalDetailData: {} });
+      } else if (activeStep === 1) {
+        this.setState({ communicationDetailData: {} });
+      } else if (activeStep === 2) {
+        this.setState({ documentDetailData: {} });
+      }
+    } else if (type === RESET_TYPE.all) {
+      this.setState({
+        activeStep: 0,
+        personalDetailData: {},
+        communicationDetailData: {},
+        documentDetailData: {},
+      });
+    }
   }
+
+  getLastStep = () => this.state.activeStep === appointment.steps.length - 1 ? true : false;
 
   render() {
-    const { classes } = this.props;
-    const {
-      data: {
-        name,
-        fatherName,
-        sex,
-        maritalStatus,
-        dateOfBirth,
-        aadhaar,
-        address,
-        phone,
-        place,
-      },
-    } = this.state;
+    const { activeStep } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Typography variant="h4" align="center">
-          {appointment.title}
-        </Typography>
-        <div className={classes.row} style={{ padding: '10px 0px' }}>
-          <TextField
-            id="name"
-            // error={hasErrors.name}
-            // helperText={getErrors.name}
-            label="Name"
-            value={name}
-            margin="dense"
-            fullWidth
-            className={classes.padding}
-            onChange={this.handleChange('name')}
-            // onBlur={this.handleValidation('name')}
-          />
-
-          <TextField
-            id="fatherName"
-            // error={hasErrors.fatherName}
-            // helperText={getErrors.fatherName}
-            label="Father Name"
-            value={fatherName}
-            margin="dense"
-            fullWidth
-            onChange={this.handleChange('fatherName')}
-          />
-        </div>
-
-        <FormControl component="fieldset" style={{ padding: '10px 0px' }}>
-          <FormLabel component="legend">Sex</FormLabel>
-          <RadioGroup
-            aria-label="position"
-            name="position"
-            value={sex}
-            onChange={this.handleChange('sex')}
-            row
-          >
-            {SEX.map(item => (
-              <FormControlLabel
-                value={item}
-                control={<Radio color="primary" />}
-                label={item}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-
-        <FormControl component="fieldset" style={{ padding: '10px 0px' }}>
-          <FormLabel component="legend">Marital Status</FormLabel>
-          <RadioGroup
-            aria-label="position"
-            name="position"
-            value={maritalStatus}
-            onChange={this.handleChange('maritalStatus')}
-            row
-          >
-            {MARITAL_STATUS.map(item => (
-              <FormControlLabel
-                value={item}
-                control={<Radio color="primary" />}
-                label={item}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-
-        <TextField
-          id="address"
-          // error={hasErrors.address}
-          // helperText={getErrors.address}
-          label="Address"
-          multiline
-          value={address}
-          onChange={this.handleChange('address')}
-          // margin="dense"
-          fullWidth
-        />
-
-        <div className={classes.row} style={{ padding: '10px 0px' }}>
-          <TextField
-            id="phone"
-            // error={hasErrors.phone}
-            // helperText={getErrors.phone}
-            label="Phone"
-            value={phone}
-            onChange={this.handleChange('phone')}
-            type="number"
-            // margin="dense"
-            className={classes.padding}
-            fullWidth
-          />
-
-          <TextField
-            id="dateOfBirth"
-            // error={hasErrors.dateOfBirth}
-            // helperText={getErrors.dateOfBirth}
-            label="Date Of Birth"
-            value={dateOfBirth}
-            type="date"
-            fullWidth
-            className={classes.padding}
-            onChange={this.handleChange('dateOfBirth')}
-            InputLabelProps={{
-              shrink: true
-            }}
-          />
-
-          <TextField
-            id="aadhaar"
-            // error={hasErrors.aadhaar}
-            // helperText={getErrors.aadhaar}
-            label="Aadhar"
-            value={aadhaar}
-            onChange={this.handleChange('aadhaar')}
-            type="number"
-            fullWidth
-          />
-        </div>
-
-        <div className={classes.row} style={{ padding: '10px 0px' }}>
-          <TextField
-            id="aadhaar"
-            // error={hasErrors.name}
-            // helperText={getErrors.name}
-            label="Aadhaar"
-            value={aadhaar}
-            margin="dense"
-            // fullWidth
-            className={classes.padding}
-            onChange={this.handleChange('aadhaar')}
-            // onBlur={this.handleValidation('name')}
-          />
-        </div>
-
-        <TextField
-          id="place"
-          label="Place"
-          value={place}
-          margin="dense"
-          onChange={this.handleChange('place')}
-        />
-
-        <div className={classes.button}>
-          <Button variant="contained" color="primary">
-            {appointment.buttonLabel}
-          </Button>
-        </div>
-      </div>
+      <FormPage
+        formTitle={appointment.title}
+        steps={appointment.steps}
+        activeStep={activeStep}
+        stepContent={this.getStepContent(activeStep)}
+        handleNext={this.handleNext}
+        handleBack={this.handleBack}
+        stateUpdater={this.state}
+      />
     );
   }
 }
 
-export default withStyles(styles)(Appointment);
+export default withSnackBar(Appointment);

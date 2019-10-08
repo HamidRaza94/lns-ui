@@ -1,6 +1,9 @@
-const appointment = {
+export default {
   title: 'Appointment Form',
-  buttonLabel: 'Submit',
+  steps: [
+    'Personal Detail',
+    'Communication Detail',
+    'Documentation Detail',
+    'Payment',
+  ],
 }
-
-export default appointment;

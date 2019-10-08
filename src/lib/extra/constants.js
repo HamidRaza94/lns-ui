@@ -38,10 +38,15 @@ const SECTION_FOLDER = `${IMAGE_FOLDER}/section`;
 // State
 const STATES = [
   'ANDHRA PRADESH',
+  'ANDAMAN AND NICOBAR',
   'ARUNACHAL PRADESH',
   'ASSAM',
   'BIHAR',
+  'CHANDIGARH',
   'CHASTTISGARH',
+  'DADRA AND NAGAR HAVELI',
+  'DAMAN AND DIU',
+  'DELHI',
   'GOA',
   'GUJARAT',
   'HARYANA',
@@ -50,6 +55,8 @@ const STATES = [
   'JHARKHAND',
   'KARNATAKA',
   'KERALA',
+  'LADAKH',
+  'LAKSHADWEEP',
   'MADHYA PRADESH',
   'MAHARASHTRA',
   'MANIPUR',
@@ -57,11 +64,13 @@ const STATES = [
   'MIZORAM',
   'NAGALAND',
   'ODISHA',
+  'PUDUCHERRY',
   'PUNJAB',
   'RAJASTHAN',
   'SIKKIM',
   'TAMIL NADU',
   'TELANGANA',
+  'TRIPURA',
   'UTTAR PRADESH',
   'UTTARAKHAND',
   'WEST BENGAL',
@@ -89,6 +98,43 @@ const RANKS = {
 
 const ROW_PER_PAGE_OPTIONS = [5, 10, 15, 20, 25, 50, 100];
 
+const API_METHOD = {
+  post: 'post',
+  get: 'get',
+  put: 'put',
+  delete: 'delete',
+}
+
+const SERVER_ROUTE = {
+  team: 'team',
+  member: 'member',
+  contact: 'contact',
+  update: 'update',
+  grievance: 'grievance',
+  enrollment: 'enrollment',
+}
+
+const REGEX = {
+  phone: /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+}
+
+const FILE_SIZE = {
+  image: 160 * 1024,
+}
+
+const SUPPORTED_FORMATS = {
+  image: [
+    "image/jpg",
+    "image/jpeg",
+    "image/png",
+  ],
+}
+
+const RESET_TYPE = {
+  current: 'current',
+  all: 'all',
+}
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -107,4 +153,10 @@ export {
   STATES,
   RANKS,
   ROW_PER_PAGE_OPTIONS,
+  API_METHOD,
+  SERVER_ROUTE,
+  REGEX,
+  FILE_SIZE,
+  SUPPORTED_FORMATS,
+  RESET_TYPE,
 };
