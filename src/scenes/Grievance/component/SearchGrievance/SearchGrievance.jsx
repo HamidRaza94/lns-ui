@@ -60,11 +60,14 @@ class SearchGrievance extends Component {
   }
 
   handleAgreeDialogBox = () => {
-    this.setState({ isDialogBoxOpen: false });
-  }
-
-  handleDisagreeDialogBox = () => {
-    this.setState({ isDialogBoxOpen: false });
+    this.setState({
+      isDialogBoxOpen: false,
+      grievanceId: '',
+      IncidentDetail: '',
+      dateTimeIncident: null,
+      summary: '',
+      attachment: null,
+    });
   }
 
   render() {

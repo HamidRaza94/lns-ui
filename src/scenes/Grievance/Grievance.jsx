@@ -154,6 +154,7 @@ class Grievance extends Component {
         variant: 'success',
         snackBarMsg: res.data.message,
       })
+      console.log('response is ', res);
       this.handleReset(RESET_TYPE.all);
     })
     .catch(error => {

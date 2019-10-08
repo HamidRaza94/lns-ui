@@ -30,9 +30,9 @@ class FormForMember extends Component {
     }
   }
 
-  componentDidUpdate = () => {
-    console.log('state222 >', this.state);
-  }
+  // componentDidUpdate = () => {
+  //   console.log('state222 >', this.state);
+  // }
 
   checkMember = () => {
     const { isMember } = this.state;
