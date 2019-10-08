@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { withStyles, Paper } from '@material-ui/core';
+import { withStyles, Paper, Typography } from '@material-ui/core';
 
 import { grievance } from '../../cms';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
-import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail } from '../../components';
+import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail, DialogBox } from '../../components';
 import { SearchGrievance, FormForMember } from './component';
 import { capitalizeAll } from '../../lib/utils/helpers';
 import { connection } from '../../lib/server';
@@ -21,6 +21,7 @@ class Grievance extends Component {
     super(props);
     this.state = {
       activeStep: 0,
+      isDialogBoxOpen: false,
       personalDetailData: {
         name: '',
         fatherName: '',
@@ -44,6 +45,13 @@ class Grievance extends Component {
         summary: '',
         attachment: '',
       },
+      response: {
+        grievanceId: '',
+        placeOfIncident: '',
+        dateTimeIncident: null,
+        summary: '',
+        attachment: '',
+      }
     };
   }
 
@@ -155,7 +163,17 @@ class Grievance extends Component {
         snackBarMsg: res.data.message,
       })
       console.log('response is ', res);
-      this.handleReset(RESET_TYPE.all);
+      this.setState({
+        isDialogBoxOpen: true,
+        response: {
+          grievanceId: res.data.data.originalId,
+          placeOfIncident: res.data.data.placeOfIncident,
+          dateTimeIncident: res.data.data.dateTimeIncident,
+          summary: res.data.data.summary,
+          // attachment: res.data.data.attachment,
+        }
+      });
+      // this.handleReset(RESET_TYPE.all);
     })
     .catch(error => {
       snackBarStateUpdater({
@@ -207,6 +225,7 @@ class Grievance extends Component {
     } else if (type === RESET_TYPE.all) {
       this.setState({
         activeStep: 0,
+        isDialogBoxOpen: false,
         personalDetailData: {
           name: '',
           fatherName: '',
@@ -236,8 +255,12 @@ class Grievance extends Component {
 
   getLastStep = () => this.state.activeStep === grievance.steps.length - 1 ? true : false;
 
+  handleAgreeDialogBox = () => {
+    this.handleReset(RESET_TYPE.all);
+  }
+
   render() {
-    const { activeStep } = this.state;
+    const { activeStep, isDialogBoxOpen, response } = this.state;
     const { classes } = this.props;
 
     return (
@@ -261,6 +284,20 @@ class Grievance extends Component {
           handleBack={this.handleBack}
           stateUpdater={this.state}
         />
+
+        <DialogBox
+          open={isDialogBoxOpen}
+          title="Lodged Grievance Detail"
+          disableDisagreeButton={true}
+          agreeButtonLabel='Okay'
+          agreeButtonAction={this.handleAgreeDialogBox}
+        >
+          <Typography>Grievance ID: <b>{response.grievanceId}</b></Typography>
+          <Typography>Incident Detail: <b>{response.placeOfIncident}</b></Typography>
+          <Typography>Date and Time of Incident: <b>{response.dateTimeIncident}</b></Typography>
+          <Typography>Summary: <b>{response.summary}</b></Typography>
+          <Typography>Attachment: <b>{response.attachment}</b></Typography>
+        </DialogBox>
       </>
     );
   }
