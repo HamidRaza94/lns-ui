@@ -13,8 +13,8 @@ import {
 
 import styles from './style';
 import { employment } from '../../cms';
-import { capitalizeAll } from '../../lib/utils/helpers';
-import { connection } from '../../lib/server';
+import { capitalizeAll } from '../../libs/utils/helpers';
+import { connection } from '../../libs/server';
 import { donateSchema } from './validation';
 import { SEX, MARITAL_STATUS } from '../../cms/constants';
 

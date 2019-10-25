@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 
 import styles from './style';
-import { ButtonDefaultProps, ButtonPropTypes } from '../../lib/utils/props';
+import { ButtonDefaultProps, ButtonPropTypes } from '../../libs/utils/props';
 
 const Button = props => {
   const {

@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 
 import { Card } from '../../../../components';
 import styles from './style';
-import { connection } from '../../../../lib/server';
+import { connection } from '../../../../libs/server';
 
 class UpdatePanel extends PureComponent {
   constructor(props) {

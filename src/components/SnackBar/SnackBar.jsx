@@ -6,6 +6,7 @@ import { Close, Warning, CheckCircle, Info } from '@material-ui/icons';
 import ErrorIcon from '@material-ui/icons/Error';
 
 import styles from './styles';
+import { SNACKBAR_VARIANTS } from '../../libs/extra/constants';
 
 const variantIcon = {
   success: CheckCircle,
@@ -47,7 +48,7 @@ ContentWrapper.propTypes = {
   className: PropTypes.element.isRequired,
   anchorOrigin: PropTypes.element.isRequired,
   action: PropTypes.element,
-  variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
+  variant: PropTypes.oneOf(SNACKBAR_VARIANTS).isRequired,
 }
 
 const SnackBar = (props) => {
@@ -122,7 +123,7 @@ SnackBar.propTypes = {
   className: PropTypes.element,
   anchorOrigin: PropTypes.element,
   action: PropTypes.element,
-  variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']),
+  variant: PropTypes.oneOf(SNACKBAR_VARIANTS),
 }
 
 SnackBar.defaultProps = {

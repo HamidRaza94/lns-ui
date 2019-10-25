@@ -24,7 +24,7 @@ import {
   RELIGION,
   PHYSICAL_STATUS,
   STATES,
-} from '../../../lib/extra/constants';
+} from '../../../libs/extra/constants';
 
 class PersonalDetail extends Component {
   constructor(props) {

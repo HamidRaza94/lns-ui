@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core';
 
 import styles from './style';
-import { capitalizeAll } from '../../../../lib/utils/helpers';
+import { capitalizeAll } from '../../../../libs/utils/helpers';
 
 const Section = ({ classes, data: { title, image } }) => (
   <div className={classes.card}>

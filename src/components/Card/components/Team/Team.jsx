@@ -3,7 +3,7 @@ import { withStyles, Typography } from '@material-ui/core';
 
 import styles from './style';
 import { SVG } from '../../../SVG';
-import { capitalizeAll } from '../../../../lib/utils/helpers';
+import { capitalizeAll } from '../../../../libs/utils/helpers';
 
 const Team = props => {
   const { classes, data } = props;

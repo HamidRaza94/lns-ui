@@ -135,6 +135,10 @@ const RESET_TYPE = {
   all: 'all',
 }
 
+const SUPPORTED_FILES = ['jpg', 'jpeg', 'png'];
+
+const SNACKBAR_VARIANTS= ['success', 'error', 'warning', 'info'];
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -159,4 +163,6 @@ export {
   FILE_SIZE,
   SUPPORTED_FORMATS,
   RESET_TYPE,
+  SUPPORTED_FILES,
+  SNACKBAR_VARIANTS,
 };

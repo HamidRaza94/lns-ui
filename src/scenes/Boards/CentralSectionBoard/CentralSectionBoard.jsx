@@ -9,7 +9,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import styles from './style';
 import { centralSectionBoardData } from '../../../cms/board';
 import { Card } from '../../../components';
-import { capitalizeAll } from '../../../lib/utils/helpers';
+import { capitalizeAll } from '../../../libs/utils/helpers';
 
 const CentralSectionBoard = props => {
   const { classes } = props;

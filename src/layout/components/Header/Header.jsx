@@ -4,7 +4,7 @@ import { withStyles, Typography } from '@material-ui/core';
 
 import styles from './style';
 import { header } from '../../../cms';
-import { LOGO_FOLDER, LOGO_IMAGE } from '../../../lib/extra/constants';
+import { LOGO_FOLDER, LOGO_IMAGE } from '../../../libs/extra/constants';
 
 const Header = ({ classes }) => (
   <div className={classes.root}>

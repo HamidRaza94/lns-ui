@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { enrollmentRegistration } from '../../../cms';
-import { capitalizeAll } from '../../../lib/utils/helpers';
-import { connection } from '../../../lib/server';
-import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../lib/extra/constants';
+import { capitalizeAll } from '../../../libs/utils/helpers';
+import { connection } from '../../../libs/server';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../libs/extra/constants';
 import { withSnackBar } from '../../../contexts';
 import {
   FormPage,

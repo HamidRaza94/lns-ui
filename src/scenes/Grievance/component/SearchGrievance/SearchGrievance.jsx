@@ -4,8 +4,8 @@ import SearchIcon from '@material-ui/icons/Search';
 
 import style from '../FormForMember/style';
 import { DialogBox } from '../../../../components';
-import { connection } from '../../../../lib/server';
-import { API_METHOD, SERVER_ROUTE } from '../../../../lib/extra/constants';
+import { connection } from '../../../../libs/server';
+import { API_METHOD, SERVER_ROUTE } from '../../../../libs/extra/constants';
 
 class SearchGrievance extends Component {
   constructor(props) {

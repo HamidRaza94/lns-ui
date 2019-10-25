@@ -11,7 +11,7 @@ import {
 // import {
 //   CommunicationDetailDefaultProps,
 //   CommunicationDetailPropTypes
-// } from '../../../../lib/utils/props';
+// } from '../../../../libs/utils/props';
 import { STATES } from '../../../../../cms/constants';
 import styles from './style';
 

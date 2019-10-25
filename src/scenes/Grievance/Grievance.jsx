@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { withStyles, Paper, Typography } from '@material-ui/core';
 
 import { grievance } from '../../cms';
-import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../libs/extra/constants';
 import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail, DialogBox } from '../../components';
 import { SearchGrievance, FormForMember } from './component';
-import { capitalizeAll } from '../../lib/utils/helpers';
-import { connection } from '../../lib/server';
+import { capitalizeAll } from '../../libs/utils/helpers';
+import { connection } from '../../libs/server';
 import { withSnackBar } from '../../contexts';
 import {
   personalDetailSchema,
@@ -265,14 +265,14 @@ class Grievance extends Component {
 
     return (
       <>
-        {/* <FormForMember
-          snackBarStateUpdater={this.props.snackBarStateUpdater}
-          incidentDetailData={this.state.incidentDetailData}
-          onChange={this.handleChange}
-        /> */}
         <Paper className={classes.root}>
           <SearchGrievance snackBarStateUpdater={this.props.snackBarStateUpdater} />
-          <FormForMember />
+          <FormForMember
+            snackBarStateUpdater={this.props.snackBarStateUpdater}
+            incidentDetailData={this.state.incidentDetailData}
+            onChange={this.handleChange}
+            reset={(type) => this.handleReset(type)}
+          />
         </Paper>
 
         <FormPage

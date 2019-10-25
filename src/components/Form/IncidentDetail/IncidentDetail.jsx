@@ -6,7 +6,7 @@ import { DateTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 import styles from '../style';
 import { incidentDetail } from '../../../cms';
-import { bytesToSize } from '../../../lib/utils/helpers'
+import { bytesToSize } from '../../../libs/utils/helpers'
 
 class IncidentDetail extends Component {
   constructor(props) {

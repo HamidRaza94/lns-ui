@@ -11,7 +11,7 @@ import {
 
 import styles from '../style';
 import { communicationDetail } from '../../../cms';
-import { STATES } from '../../../lib/extra/constants';
+import { STATES } from '../../../libs/extra/constants';
 
 class CommunicationDetail extends Component {
   constructor(props) {

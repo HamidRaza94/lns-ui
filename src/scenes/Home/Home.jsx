@@ -16,7 +16,7 @@ import styles from './style';
 import { Content, UpdatePanel } from './components';
 import { Slider, Card, DialogBox } from '../../components';
 import { gallery, banners, sections } from '../../cms/home';
-import { TEAM_FOLDER } from '../../lib/extra/constants';
+import { TEAM_FOLDER } from '../../libs/extra/constants';
 import { messages } from '../../cms';
 
 const getFormatedMessage = (message) => (

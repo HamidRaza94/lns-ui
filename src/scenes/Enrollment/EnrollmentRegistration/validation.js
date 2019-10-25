@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { REGEX, FILE_SIZE, SUPPORTED_FORMATS } from '../../../lib/extra/constants';
+import { REGEX, FILE_SIZE, SUPPORTED_FORMATS } from '../../../libs/extra/constants';
 
 const personalDetailSchema = yup.object().shape({
   name: yup.string().min(3).required().label('Name'),

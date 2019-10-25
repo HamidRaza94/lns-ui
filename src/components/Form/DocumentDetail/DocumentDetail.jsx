@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles, TextField, Button, Typography } from '@material-ui/core';
 
 import styles from '../style';
-import { bytesToSize } from '../../../lib/utils/helpers'
+import { bytesToSize } from '../../../libs/utils/helpers'
 import { documentDetail } from '../../../cms';
 
 class DocumentDetail extends Component {

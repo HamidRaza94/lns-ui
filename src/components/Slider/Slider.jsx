@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
-import { getRandomNumber, getNextRoundRobin } from '../../lib/utils/helpers';
+import { getRandomNumber, getNextRoundRobin } from '../../libs/utils/helpers';
 import styles from './style';
-import { SliderDefaultProps, SliderPropTypes } from '../../lib/utils/props'
+import { SliderDefaultProps, SliderPropTypes } from '../../libs/utils/props'
 
 class Slider extends Component {
   constructor(props) {

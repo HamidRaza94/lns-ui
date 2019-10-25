@@ -2,7 +2,7 @@ import React from 'react';
 import MUIDataTable from 'mui-datatables';
 
 import { enrollmentVerification } from '../../../cms';
-import { formatedDataToTable } from '../../../lib/utils/helpers';
+import { formatedDataToTable } from '../../../libs/utils/helpers';
 
 const { title, columns, options, data } = enrollmentVerification;
 

@@ -7,13 +7,13 @@ import { SnackBarProvider } from './contexts'
 import { SuccessSnackBar } from './components';
 
 const App = () => (
-  <SnackBarProvider>
-    <MuiThemeProvider theme={theme}>
+  <MuiThemeProvider theme={theme}>
+    <SnackBarProvider>
       <CssBaseline />
       <Routes />
-    </MuiThemeProvider>
-    <SuccessSnackBar />
-  </SnackBarProvider>
+      <SuccessSnackBar />
+    </SnackBarProvider>
+  </MuiThemeProvider>
 );
 
 export default App;

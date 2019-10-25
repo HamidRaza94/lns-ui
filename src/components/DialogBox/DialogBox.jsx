@@ -55,11 +55,23 @@ class DialogBox extends Component {
         </DialogContent>
         <DialogActions>
           {disagreeButtonLabel && (
-            <Button id="button-disagree" disabled={disableDisagreeButton} onClick={this.handleClick(disagreeButtonAction)} color="primary">
+            <Button
+              id="button-disagree"
+              disabled={disableDisagreeButton}
+              onClick={this.handleClick(disagreeButtonAction)}
+              variant="contained"
+              color="secondary"
+            >
               {disagreeButtonLabel}
             </Button>
           )}
-          <Button id="button-agree" disabled={disableAgreeButton} onClick={this.handleClick(agreeButtonAction)} color="primary">
+          <Button
+            id="button-agree"
+            disabled={disableAgreeButton}
+            onClick={this.handleClick(agreeButtonAction)}
+            variant="contained"
+            color="primary"
+          >
             {isLoading ? <CircularProgress size={20} thickness={8} /> : agreeButtonLabel}
           </Button>
         </DialogActions>

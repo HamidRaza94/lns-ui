@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-import { REGEX } from '../../lib/extra/constants';
+import { REGEX } from '../../libs/extra/constants';
 
 const personalDetailSchema = yup.object().shape({
   name: yup.string().min(3).required().label('Name'),

@@ -10,7 +10,7 @@ import {
 
 import styles from './style';
 // import { steps } from '../../cms/volunteerShip';
-import { capitalizeAll } from '../../../lib/utils/helpers';
+import { capitalizeAll } from '../../../libs/utils/helpers';
 import { PersonalDetail, CommunicationDetail, DocumentDetail, AcademicDetail } from './component';
 
 const steps = [

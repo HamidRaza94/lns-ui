@@ -15,7 +15,7 @@ import {
 import {
   PersonalDetailDefaultProps,
   PersonalDetailPropTypes
-} from '../../../../../lib/utils/props';
+} from '../../../../../libs/utils/props';
 import {
   SEX,
   MARITAL_STATUS,

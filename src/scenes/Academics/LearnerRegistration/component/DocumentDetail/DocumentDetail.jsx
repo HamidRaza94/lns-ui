@@ -4,7 +4,7 @@ import { withStyles, TextField } from '@material-ui/core';
 // import {
 //   DocumentDetailDefaultProps,
 //   DocumentDetailPropTypes
-// } from '../../../../lib/utils/props';
+// } from '../../../../libs/utils/props';
 import styles from './style';
 
 class DocumentDetail extends Component {

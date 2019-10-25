@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import { appointment } from '../../cms';
-import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../lib/extra/constants';
-import { connection } from '../../lib/server';
+import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../libs/extra/constants';
+import { connection } from '../../libs/server';
 import { FormPage, PersonalDetail, CommunicationDetail, DocumentDetail, PaymentDetail } from '../../components';
-import { capitalizeAll } from '../../lib/utils/helpers';
+import { capitalizeAll } from '../../libs/utils/helpers';
 import { withSnackBar } from '../../contexts';
 import {
   personalDetailSchema,
