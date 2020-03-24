@@ -1,142 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles, Snackbar, IconButton, SnackbarContent } from '@material-ui/core';
-import { Close, Warning, CheckCircle, Info } from '@material-ui/icons';
-import ErrorIcon from '@material-ui/icons/Error';
+import { Snackbar, Slide } from '@material-ui/core';
+import Alert from '@material-ui/lab/Alert';
 
-import styles from './styles';
-import { SNACKBAR_VARIANTS } from '../../libs/extra/constants';
-
-const variantIcon = {
-  success: CheckCircle,
-  warning: Warning,
-  error: ErrorIcon,
-  info: Info,
-}
-
-const ContentWrapper = (props) => {
-  const { classes, className, message, onClose, variant, action, ...rest } = props;
-  const Icon = variantIcon[variant];
-
-  return (
-    <SnackbarContent
-      className={classNames(classes[variant], className)}
-      aria-describedby="client-snackbar"
-      message={(
-        <span id="client-snackbar" className={classes.message}>
-          <Icon className={classNames(classes.icon, classes.iconVariant)} />
-          {message}
-        </span>
-      )}
-      action={action}
-      {...rest}
-    />
-  )
-}
-
-const SnackbarContentWrapper = withStyles(styles)(ContentWrapper);
-
-ContentWrapper.propTypes = {
-  open: PropTypes.bool.isRequired,
-  autoHideDuration: PropTypes.number.isRequired,
-  onClose: PropTypes.func.isRequired,
-  ContentProps: PropTypes.element.isRequired,
-  message: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-  TransitionComponent: PropTypes.element.isRequired,
-  className: PropTypes.element.isRequired,
-  anchorOrigin: PropTypes.element.isRequired,
-  action: PropTypes.element,
-  variant: PropTypes.oneOf(SNACKBAR_VARIANTS).isRequired,
-}
-
-const SnackBar = (props) => {
-  const {
-    autoHideDuration,
-    onClose,
-    ContentProps,
-    action,
-    classes,
-    TransitionComponent,
-    variant,
-    ...rest
-  } = props;
-
-  const additionalProps = {}
-
-  if (action !== false) {
-    additionalProps.action = action || [
-      <IconButton
-        key="close"
-        aria-label="Close"
-        color="inherit"
-        className={classes.close}
-        onClick={onClose}
-      >
-        <Close />
-      </IconButton>,
-    ];
-  }
-
-  if ((autoHideDuration !== false)) additionalProps.autoHideDuration = autoHideDuration || 6000;
-  if (TransitionComponent) additionalProps.TransitionComponent = TransitionComponent;
-
-  let { anchorOrigin, message } = props;
-
-  message = message || <span id="message-id">.</span>
-  anchorOrigin = anchorOrigin || {
-    vertical: 'bottom',
-    horizontal: 'right',
-  }
-
-  return (
-    <Snackbar
-      id="snackbar"
-      onClose={onClose}
-      anchorOrigin={anchorOrigin}
-      ContentProps={ContentProps || { 'aria-describedby': 'message-id' }}
-      message={message}
-      {...additionalProps}
-      {...rest}
-    >
-      {variant && (
-        <SnackbarContentWrapper
-          onClose={onClose}
-          variant={variant}
-          message={message}
-          {...additionalProps}
-        />
-      )}
-    </Snackbar>
-  )
-}
+const SnackBar = ({ open, message, variant, autoHideDuration, anchorOrigin, handleClose }) => (
+  <Snackbar
+    open={open}
+    autoHideDuration={autoHideDuration}
+    anchorOrigin={anchorOrigin}
+    onClose={handleClose}
+    TransitionComponent={Slide}
+  >
+    <Alert elevation={6} variant="filled" severity={variant} onClose={handleClose}>
+      {message}
+    </Alert>
+  </Snackbar>
+);
 
 SnackBar.propTypes = {
   open: PropTypes.bool,
+  message: PropTypes.string,
+  variant: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
   autoHideDuration: PropTypes.number,
-  onClose: PropTypes.func,
-  ContentProps: PropTypes.element,
-  message: PropTypes.node,
-  classes: PropTypes.object,
-  TransitionComponent: PropTypes.element,
-  className: PropTypes.element,
-  anchorOrigin: PropTypes.element,
-  action: PropTypes.element,
-  variant: PropTypes.oneOf(SNACKBAR_VARIANTS),
+  anchorOrigin: PropTypes.shape({
+    vertical: PropTypes.oneOf(['top', 'bottom']),
+    horizontal: PropTypes.oneOf(['left', 'center', 'right']),
+  }),
+  handleClose: PropTypes.func.isRequired,
 }
 
 SnackBar.defaultProps = {
   open: false,
-  autoHideDuration: null,
-  onClose: null,
-  ContentProps: null,
-  message: null,
-  classes: null,
-  TransitionComponent: null,
-  className: null,
-  anchorOrigin: null,
-  variant: null,
+  message: '',
+  variant: 'success',
+  autoHideDuration: 4000,
+  anchorOrigin: {
+    vertical: 'bottom',
+    horizontal: 'left',
+  },
 }
 
-export default withStyles(styles)(SnackBar);
+export default SnackBar;

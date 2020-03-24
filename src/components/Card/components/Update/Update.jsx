@@ -30,8 +30,8 @@ function Update(props) {
         {isLoading ? (
           <CircularProgress />
         ) : value.length ? (
-          value.map(item => (
-            <Typography gutterBottom>
+          value.map((item, index) => (
+            <Typography key={index} gutterBottom>
               {bull}
               {item}
             </Typography>

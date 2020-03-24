@@ -1,75 +1,71 @@
 import React, { Component } from 'react';
+
+import { learnerRegistration } from '../../../cms';
+import { connection, capitalizeAll, API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../libs';
+import { withSnackBarConsumer } from '../../../hoc';
 import {
-  withStyles,
-  Stepper,
-  Step,
-  StepLabel,
-  Button,
-  Typography,
-} from '@material-ui/core';
+  FormPage,
+  PersonalDetail,
+  CommunicationDetail,
+  DocumentDetail,
+  AcademicDetail,
+  PaymentDetail,
+} from '../../../components';
+// import {
+//   personalDetailSchema,
+//   communicationDetailSchema,
+//   incidentDetailSchema,
+//   grievanceSchema,
+// } from './validation';
 
-import styles from './style';
-// import { steps } from '../../cms/volunteerShip';
-import { capitalizeAll } from '../../../libs/utils/helpers';
-import { PersonalDetail, CommunicationDetail, DocumentDetail, AcademicDetail } from './component';
-
-const steps = [
-  'Personal Details',
-  'Communication Detail',
-  'Document Detail',
-  'Photo and Sign',
-  'Academic Detail',
-  'Payment'
-];
-
-class LearnerRegistration extends Component {
+class Grievance extends Component {
   constructor(props) {
     super(props);
     this.state = {
       activeStep: 0,
-      candidateName: '',
-      fatherName: '',
-      sex: '',
-      maritalStatus: '',
-      dateOfBirth: '',
-      placeOfBirth: '',
-      category: '',
-      religion: '',
-      aadhaar: '',
-      email: '',
-      phone: '',
-      state: '',
-      pincode: '',
-      address: '',
-      academicCenter: '',
-      courseName: '',
-      academicShift: '',
+      personalDetailData: {
+        name: '',
+        fatherName: '',
+        sex: '',
+        maritalStatus: '',
+        dateOfBirth: null,
+        placeOfBirth: '',
+        category: '',
+        religion: '',
+      },
+      communicationDetailData: {
+        email: '',
+        phone: '',
+        state: '',
+        pincode: '',
+        address: '',
+      },
+      documentDetailData: {
+        aadhaar: '',
+        photo: '',
+        sign: '',
+      },
+      academicDetailData: {
+        academicCenter: '',
+        courseName: '',
+        academicShift: '',
+      },
+      response: {
+        grievanceId: '',
+        placeOfIncident: '',
+        dateTimeIncident: null,
+        summary: '',
+        attachment: '',
+      }
     };
   }
 
-  componentDidUpdate = () => {
-    console.log(this.state);
-  };
-
   getStepContent = (activeStep) => {
     const {
-      candidateName,
-      fatherName,
-      sex,
-      maritalStatus,
-      dateOfBirth,
-      placeOfBirth,
-      category,
-      religion,
-      aadhaar,
-      email,
-      phone,
-      state,
-      pincode,
-      address,
-      academicCenter,
-      courseName,
-      academicShift,
+      personalDetailData,
+      communicationDetailData,
+      documentDetailData,
+      academicDetailData,
     } = this.state;
 
     switch (activeStep) {
@@ -77,124 +73,209 @@ class LearnerRegistration extends Component {
         return (
           <PersonalDetail
             onChange={this.handleChange}
-            candidateName={candidateName}
-            fatherName={fatherName}
-            sex={sex}
-            maritalStatus={maritalStatus}
-            dateOfBirth={dateOfBirth}
-            placeOfBirth={placeOfBirth}
-            category={category}
-            religion={religion}
+            data={personalDetailData}
+            fields={[
+              'name',
+              'fatherName',
+              'sex',
+              'maritalStatus',
+              'dateOfBirth',
+              'placeOfBirth',
+              'category',
+              'religion',
+            ]}
           />
         );
+
       case 1:
         return (
           <CommunicationDetail
             onChange={this.handleChange}
-            email={email}
-            phone={phone}
-            state={state}
-            pincode={pincode}
-            address={address}
+            data={communicationDetailData}
+            fields={['email', 'phone', 'state', 'pincode', 'address']}
           />
         );
+
       case 2:
         return (
           <DocumentDetail
             onChange={this.handleChange}
-            aadhaar={aadhaar}
+            data={documentDetailData}
+            fields={['aadhaar', 'p', 's']}
           />
         );
+
       case 3:
-        return <></>
-      case 4:
         return (
           <AcademicDetail
             onChange={this.handleChange}
-            academicCenter={academicCenter}
-            courseName={courseName}
-            academicShift={academicShift}
+            data={academicDetailData}
           />
         );
+      
+      case 4:
+        return <PaymentDetail />
+
       default:
-        return 'Unknown stepIndex';
+        return 'Something is wrong';
     }
-  };
+  }
 
-  handleChange = (field, value) => {
-    let data;
+  handleChange = (fieldTitle, field, value) => {
+    this.setState(prevState => ({
+      [fieldTitle]: {
+        ...prevState[fieldTitle],
+        [field]: field === 'pan' ? capitalizeAll(value) : value,
+      }
+    }));
+  }
 
-    if (field === 'pan') {
-      data = capitalizeAll(value);
-    } else {
-      data = value;
-    }
+  handleIsValid = () => {
+    return true;
+    // const { activeStep } = this.state;
+    // const options = { abortEarly: false }
 
-    this.setState({
-      [field]: data
+    // if (activeStep === 0) {
+    //   const { personalDetailData } = this.state;
+    //   return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
+    // } else if (activeStep === 1) {
+    //   const { communicationDetailData } = this.state;
+    //   return communicationDetailSchema.isValidSync({ ...communicationDetailData}, options);
+    // } else if (activeStep === 2) {
+    //   const { incidentDetailData } = this.state;
+    //   return incidentDetailSchema.isValidSync({ ...incidentDetailData }, options);
+    // } else {
+    //   return false;
+    // }
+  }
+
+  handleSubmitData = () => {
+    const { openSnackBar } = this.props;
+    const { personalDetailData, communicationDetailData, incidentDetailData } = this.state;
+    let payload = new FormData();
+
+    payload.append('name', personalDetailData.name);
+    payload.append('fatherName', personalDetailData.fatherName);
+    payload.append('sex', personalDetailData.sex);
+    payload.append('maritalStatus', personalDetailData.maritalStatus);
+    payload.append('dateOfBirth', personalDetailData.dateOfBirth);
+    payload.append('religion', personalDetailData.religion);
+    payload.append('category', personalDetailData.category);
+
+    payload.append('email', communicationDetailData.email);
+    payload.append('phone', communicationDetailData.phone);
+    payload.append('address', communicationDetailData.address);
+    payload.append('policeStation', communicationDetailData.policeStation);
+    payload.append('state', communicationDetailData.state);
+    payload.append('pincode', communicationDetailData.pincode);
+
+    payload.append('placeOfIncident', incidentDetailData.placeOfIncident);
+    payload.append('dateTimeIncident', incidentDetailData.dateTimeIncident);
+    payload.append('summary', incidentDetailData.summary);
+    payload.append('attachment', incidentDetailData.attachment);
+
+    connection(API_METHOD.post, SERVER_ROUTE.learnerRegistration, {})
+    .then(res => {
+      openSnackBar({ variant: 'success', message: res.data.message });
+      this.setState({
+        isDialogBoxOpen: true,
+        response: {
+          grievanceId: res.data.data.originalId,
+          placeOfIncident: res.data.data.placeOfIncident,
+          dateTimeIncident: res.data.data.dateTimeIncident,
+          summary: res.data.data.summary,
+          // attachment: res.data.data.attachment,
+        }
+      });
+      // this.handleReset(RESET_TYPE.all);
+    })
+    .catch(error => {
+      openSnackBar({ variant: 'error', message: error.message });
     });
-  };
+  }
 
   handleNext = () => {
-    this.setState(prevState => ({
-      activeStep: prevState.activeStep + 1
-    }));
-  };
+    const isValid = this.handleIsValid();
+
+    if (isValid) {
+      if (this.getLastStep()) {
+        this.handleSubmitData();
+      } else {
+        this.setState(prevState => ({
+          activeStep: prevState.activeStep + 1,
+        }));
+      }
+    } else {
+      const { openSnackBar } = this.props;
+      openSnackBar({ variant: 'error', message: 'Please Fill Required Field' });
+    }
+  }
 
   handleBack = () => {
     this.setState(prevState => ({
-      activeStep: prevState.activeStep - 1
+      activeStep: prevState.activeStep - 1,
     }));
-  };
+  }
 
-  handleReset = () => {
-    this.setState({
-      activeStep: 0
-    });
-  };
+  handleReset = type => {
+    if (type === RESET_TYPE.current) {
+      const { activeStep } = this.state;
+
+      if (activeStep === 0) {
+        this.setState({ personalDetailData: {} });
+      } else if (activeStep === 1) {
+        this.setState({ communicationDetailData: {} });
+      } else if (activeStep === 2) {
+        this.setState({ documentDetailData: {} });
+      }
+    } else if (type === RESET_TYPE.all) {
+      this.setState({
+        activeStep: 0,
+        isDialogBoxOpen: false,
+        personalDetailData: {
+          name: '',
+          fatherName: '',
+          sex: '',
+          maritalStatus: '',
+          dateOfBirth: null,
+          religion: '',
+          category: '',
+        },
+        communicationDetailData: {
+          email: '',
+          phone: '',
+          address: '',
+          policeStation: '',
+          state: '',
+          pincode: '',
+        },
+        incidentDetailData: {
+          placeOfIncident: '',
+          dateTimeIncident: null,
+          summary: '',
+          attachment: '',
+        },
+      });
+    }
+  }
+
+  getLastStep = () => this.state.activeStep === learnerRegistration.steps.length - 1 ? true : false;
 
   render() {
-    const { classes } = this.props;
     const { activeStep } = this.state;
 
     return (
-      <div className={classes.root}>
-        <Typography variant="h4" align="center">
-          Learner Registration Form
-        </Typography>
-        <Stepper activeStep={activeStep} alternativeLabel>
-          {steps.map(label => (
-            <Step key={label}>
-              <StepLabel>{label}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
-        <div>
-          <div className={classes.form}>
-            <div style={{ display: 'flex', flexDirection: 'column' }}>
-              {this.getStepContent(activeStep)}
-            </div>
-          </div>
-          <div className={classes.button}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={this.handleBack}
-              className={classes.backButton}
-            >
-              Back
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={this.handleNext}
-            >
-              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-            </Button>
-          </div>
-        </div>
-      </div>
+      <FormPage
+        formTitle={learnerRegistration.title}
+        steps={learnerRegistration.steps}
+        activeStep={activeStep}
+        stepContent={this.getStepContent(activeStep)}
+        handleNext={this.handleNext}
+        handleBack={this.handleBack}
+        stateUpdater={this.state}
+      />
     );
   }
 }
 
-export default withStyles(styles)(LearnerRegistration);
+export default withSnackBarConsumer(Grievance);

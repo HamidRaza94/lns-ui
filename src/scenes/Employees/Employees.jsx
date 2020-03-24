@@ -1,10 +1,10 @@
 import React from 'react';
-import MUIDataTable from 'mui-datatables';
 
+import { MUITable } from '../../components';
 import { employees } from '../../cms';
 
-const { title, columns, options, data } = employees;
+const { title, columns, data } = employees;
 
-const Employees = () => <MUIDataTable title={title} data={data} columns={columns} options={options} />
+const Employees = () => <MUITable title={title} data={data} columns={columns} />
 
 export default Employees;

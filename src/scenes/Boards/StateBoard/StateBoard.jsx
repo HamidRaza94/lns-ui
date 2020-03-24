@@ -1,10 +1,10 @@
 import React from 'react';
-import MUIDataTable from 'mui-datatables';
 
+import { MUITable } from '../../../components';
 import { stateBoardData } from '../../../cms';
 
-const { title, columns, options, data } = stateBoardData;
+const { title, columns, data } = stateBoardData;
 
-const StateBoard = () => <MUIDataTable title={title} data={data} columns={columns} options={options} />
+const StateBoard = () => <MUITable title={title} data={data} columns={columns} />
 
 export default StateBoard;

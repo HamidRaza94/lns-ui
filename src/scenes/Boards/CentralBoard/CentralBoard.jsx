@@ -12,8 +12,8 @@ const CentralBoard = props => {
     <div className={classes.root}>
       <Typography className={classes.typo} variant="h2" align="center">Central Governing Board</Typography>
       <div className={classes.team}>      
-        {centralBoardData.map(team => (
-          <Card variant="team" data={team} />
+        {centralBoardData.map((team, index) => (
+          <Card key={index} variant="team" data={team} />
         ))}
       </div>
     </div>

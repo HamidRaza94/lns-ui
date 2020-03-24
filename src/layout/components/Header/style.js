@@ -4,7 +4,7 @@ const style = theme => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: '#f2944d',
+    backgroundColor: theme.palette.primary.main,
     padding: '10px 40px',
     transition: '0.2s',
 

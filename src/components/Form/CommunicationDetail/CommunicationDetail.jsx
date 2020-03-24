@@ -126,7 +126,7 @@ class CommunicationDetail extends Component {
                 id: 'state-select'
               }}
             >
-              {STATES.map(item => <MenuItem value={item}>{item}</MenuItem>)}
+              {STATES.map(item => <MenuItem key={item} value={item}>{item}</MenuItem>)}
             </Select>
           </FormControl>
         )}

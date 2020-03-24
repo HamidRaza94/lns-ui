@@ -1,0 +1,26 @@
+.rc-menu {
+  border: none !important;
+  border-bottom: none !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.rc-menu-submenu-popup {
+  top: 228px;
+}
+
+.rc-menu-submenu-title {
+  background-color: inherit !important;
+  color: #ffffff;
+}
+
+.rc-menu-submenu-active {
+  border: 0px !important;
+  background-color: inherit !important;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+li {
+  border: none !important;
+}

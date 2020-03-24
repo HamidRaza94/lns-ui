@@ -31,7 +31,7 @@ class SearchGrievance extends Component {
 
   handleFetchGrievance = () => {
     const { grievanceId } = this.state;
-    const { snackBarStateUpdater } = this.props;
+    const { openSnackBar } = this.props;
 
     if (grievanceId) {
       connection(API_METHOD.get, `${SERVER_ROUTE.grievance}/${grievanceId}`).then((res) => {
@@ -42,20 +42,12 @@ class SearchGrievance extends Component {
           summary: res.data.data.summary,
           // attachment: res.data.data.attachment,
         });
-        snackBarStateUpdater({
-          showSnackBar: true,
-          variant: 'success',
-          snackBarMsg: 'Successfully Fetch Grievance Data',
-        });
+        openSnackBar({ variant: 'success', message: 'Successfully Fetch Grievance Data' });
       }).catch((err) => {
         console.log('err is ', err);
       })
     } else {
-      snackBarStateUpdater({
-        showSnackBar: true,
-        variant: 'error',
-        snackBarMsg: 'Please Enter Grievance ID',
-      });
+      openSnackBar({ variant: 'error', message: 'Please Enter Grievance ID' });
     }
   }
 

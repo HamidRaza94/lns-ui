@@ -20,7 +20,7 @@ import {
   LearnerVerification,
   Employees,
   Employment,
-  NoMatch
+  NoMatch,
 } from './scenes';
 
 const Routes = () => (

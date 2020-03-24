@@ -141,12 +141,12 @@ export default [
 
   {
     label: 'Public Grievance',
-    value: 'publicGrievance',
+    value: 'grievance',
     path: path.grievance,
     children: [
       {
         label: 'Regd. Grievance in LNSPJI',
-        value: 'grievance',
+        value: 'grievanceLNS',
         path: path.grievance,
       },
       {
@@ -214,7 +214,6 @@ export default [
         label: 'Learner Registration',
         value: 'learnerRegistration',
         path: path.academics.learner.registration,
-        show: false,
       },
       {
         label: 'Learner Verification',

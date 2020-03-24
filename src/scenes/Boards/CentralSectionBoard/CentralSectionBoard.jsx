@@ -18,8 +18,8 @@ const CentralSectionBoard = props => {
 
   return (
     <div className={classes.root}>
-      {centralSectionBoardData.map(({ courseName, facultyNames }) => (
-        <ExpansionPanel>
+      {centralSectionBoardData.map(({ courseName, facultyNames }, index) => (
+        <ExpansionPanel key={index}>
           <ExpansionPanelSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -29,8 +29,8 @@ const CentralSectionBoard = props => {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <div className={classes.team}>      
-              {facultyNames.map(facultyName => (
-                <Card variant="team" data={facultyName} />
+              {facultyNames.map((facultyName, subIndex) => (
+                <Card key={subIndex} variant="team" data={facultyName} />
               ))}
             </div>
           </ExpansionPanelDetails>

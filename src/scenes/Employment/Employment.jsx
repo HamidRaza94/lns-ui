@@ -145,6 +145,7 @@ class Employment extends Component {
           >
             {SEX.map(item => (
               <FormControlLabel
+                key={item}
                 value={item}
                 control={<Radio color="primary" />}
                 label={item}
@@ -164,6 +165,7 @@ class Employment extends Component {
           >
             {MARITAL_STATUS.map(item => (
               <FormControlLabel
+                key={item}
                 value={item}
                 control={<Radio color="primary" />}
                 label={item}

@@ -1,43 +1,4 @@
-import { BANNER_FOLDER, GALLERY_FOLDER, SECTION_FOLDER } from './constants';
-
-const banners = [`${BANNER_FOLDER}/1.jpg`];
-
-const gallery = [
-  `${GALLERY_FOLDER}/1.jpg`,
-  `${GALLERY_FOLDER}/2.jpg`,
-  `${GALLERY_FOLDER}/3.jpg`,
-  `${GALLERY_FOLDER}/4.jpg`,
-  `${GALLERY_FOLDER}/5.jpg`,
-  `${GALLERY_FOLDER}/6.jpg`,
-  `${GALLERY_FOLDER}/7.jpg`,
-  `${GALLERY_FOLDER}/8.jpg`,
-  `${GALLERY_FOLDER}/9.jpg`,
-  `${GALLERY_FOLDER}/10.jpg`
-];
-
-const sections = [
-  {
-    title: 'Journalism',
-    image: `${SECTION_FOLDER}/journalism.jpg`,
-  },
-
-  {
-    title: 'Handicraft',
-    image: `${SECTION_FOLDER}/handicraft.jpg`,
-  },
-
-  {
-    title: 'Computer',
-    image: `${SECTION_FOLDER}/computer.png`,
-  },
-
-  {
-    title: 'Beautician',
-    image: `${SECTION_FOLDER}/beautician.jpg`,
-  }
-];
-
-const content = {
+export default {
   heading: 'WELCOME TO PUBLIC JUSTICE INSTITUTION',
   description: 'Hello visitor, welcome to the Public Justice Institution.\nIt is bring to your notice through this message that an organization designated by the Ministry of COnsumer affairs food and Public Distribution, Govt. Of India, Under the Approved by Name Emblem and (PIU) Act-1950, and His Excellency the President\'s Secretariat, Government of India and Honorable Prime Minster\'s Office, Government of India and Honorable Ministry of Human Resource and Development, Government of India By which the solution of various problems of the public is ensured Raya is. Although there are many institutions operating the country, but there are very special powers in the constitutional form of the Public Justice Institution. The Institution is fully capable of taking action against all kinds of illegal activities.',
   button: {
@@ -223,12 +184,6 @@ const content = {
     'To request the govt. to provide the certificate to those organization which work out for the welfare of the govt. to officials for their progress.',
     'To provide the right to the cultivator and to demands for financial facility to them.',
     'To provide the facility of the letter boxes for the improvement of the problems of the people in which people can drop the letters at any time containing the problems on which the president of the organisation Mr. Shah Alam himself take himself'
-  ]
-};
-
-export {
-  banners,
-  gallery,
-  sections,
-  content,
+  ],
+  readMore: 'Read more',
 };

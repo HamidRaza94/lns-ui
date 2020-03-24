@@ -3,7 +3,9 @@ const style = theme => ({
 
   banner: {
     width: '100%',
-    height: '10%'
+    height: '10%',
+    display: 'flex',
+    flexDirection: 'column',
   },
 
   body: {
@@ -95,8 +97,8 @@ const style = theme => ({
   controls: {
     display: 'flex',
     alignItems: 'center',
-    paddingLeft: theme.spacing.unit,
-    paddingBottom: theme.spacing.unit,
+    paddingLeft: theme.spacing(1),
+    paddingBottom: theme.spacing(1),
   },
 });
 

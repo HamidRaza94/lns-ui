@@ -139,6 +139,22 @@ const SUPPORTED_FILES = ['jpg', 'jpeg', 'png'];
 
 const SNACKBAR_VARIANTS= ['success', 'error', 'warning', 'info'];
 
+const TIME_SHIFT = [
+  '10 AM',
+  '11 AM',
+  '12 PM',
+  '01 PM',
+  '02 PM',
+  '03 PM',
+  '04 PM',
+  '05 PM',
+  '06 PM',
+  '07 PM',
+  '08 PM',
+  '09 PM',
+  '10 PM',
+];
+
 export {
   SEX,
   MARITAL_STATUS,
@@ -165,4 +181,5 @@ export {
   RESET_TYPE,
   SUPPORTED_FILES,
   SNACKBAR_VARIANTS,
+  TIME_SHIFT,
 };

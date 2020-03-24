@@ -1,32 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, Paper, Typography, Grid } from '@material-ui/core';
+import { makeStyles, Paper, Typography, Grid } from '@material-ui/core';
 
 import { SVG } from '../../../../components';
-import { content } from '../../../../cms/home';
+import { home } from '../../../../cms';
 import styles from './style';
 
-const Content = ({ classes }) => (
-  <div>
-    <Paper className={classes.root} elevation={1} square>
-      <Grid container>
-        <SVG
-          variant="bookmark"
-          style={{ fill: '#864fa6', width: 45, height: 45 }}
-        />
-        <Typography variant="h5" component="h3">{content.heading}</Typography>
-      </Grid>
-      <Typography component="p">{content.description}</Typography>
-    </Paper>
-  </div>
-)
+const useStyles = makeStyles(styles);
 
-Content.propTypes = {
-  classes: PropTypes.object.isRequired,
+const Content = () => {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <Paper className={classes.root} elevation={1} square>
+        <Grid container>
+          <SVG
+            variant="bookmark"
+            style={{ fill: '#864fa6', width: 45, height: 45 }}
+          />
+          <Typography variant="h5" component="h3">{home.heading}</Typography>
+        </Grid>
+        <Typography component="p">{home.description}</Typography>
+      </Paper>
+    </div>
+  );
 }
 
-Content.defaultProps = {
-  classes: {},
-}
-
-export default withStyles(styles)(Content);
+export default Content;

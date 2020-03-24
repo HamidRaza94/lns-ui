@@ -1,7 +1,8 @@
 export * from './constants';
-export * from './home';
+export { default as home } from './home';
 export * from './board';
 export { default as grievance } from './grievance';
+export { default as learnerRegistration } from './learnerRegistration';
 export { default as learnerVerification } from './learnerVerification';
 export { default as enrollmentRegistration } from './enrollmentRegistration';
 export { default as enrollmentVerification } from './enrollmentVerification';
@@ -18,3 +19,6 @@ export { default as personalDetail } from './personalDetail';
 export { default as communicationDetail } from './communicationDetail';
 export { default as documentDetail } from './documentDetail';
 export { default as incidentDetail } from './incidentDetail';
+export { default as academicDetail } from './academicDetail';
+export { default as centers } from './centers';
+export { default as courses } from './courses';

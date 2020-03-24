@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import {
   withStyles,
-  Paper,
+  // Paper,
   TextField,
   Button,
   Fab,

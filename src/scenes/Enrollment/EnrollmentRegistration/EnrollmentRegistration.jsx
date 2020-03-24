@@ -4,7 +4,7 @@ import { enrollmentRegistration } from '../../../cms';
 import { capitalizeAll } from '../../../libs/utils/helpers';
 import { connection } from '../../../libs/server';
 import { API_METHOD, SERVER_ROUTE, RESET_TYPE } from '../../../libs/extra/constants';
-import { withSnackBar } from '../../../contexts';
+import { withSnackBarConsumer } from '../../../hoc';
 import {
   FormPage,
   PersonalDetail,
@@ -83,7 +83,6 @@ class EnrollmentRegistration extends Component {
 
     if (activeStep === 0) {
       const { personalDetailData } = this.state;
-      console.log('personalDetailData is ', personalDetailData)
       return personalDetailSchema.isValidSync({ ...personalDetailData }, options);
     } else if (activeStep === 1) {
       const { communicationDetailData } = this.state;
@@ -108,24 +107,16 @@ class EnrollmentRegistration extends Component {
 
     if (isValid) {
       if (this.getLastStep()) {
-        const { snackBarStateUpdater } = this.props;
+        const { openSnackBar } = this.props;
         const data = new FormData();
         data.append('file', this.state.photo);
         connection(API_METHOD.post, SERVER_ROUTE.enrollment, data)
         .then(res => {
-          snackBarStateUpdater({
-            showSnackBar: true,
-            variant: 'success',
-            snackBarMsg: res.data.message,
-          })
+          openSnackBar({ variant: 'success', message: res.data.message })
           this.handleReset(RESET_TYPE.all);
         })
         .catch(error => {
-          snackBarStateUpdater({
-            showSnackBar: true,
-            variant: 'error',
-            snackBarMsg: error.message,
-          })
+          openSnackBar({ variant: 'error', message: error.message })
         });
       } else {
         this.setState(prevState => ({
@@ -133,12 +124,8 @@ class EnrollmentRegistration extends Component {
         }));
       }
     } else {
-      const { snackBarStateUpdater } = this.props;
-      snackBarStateUpdater({
-        showSnackBar: true,
-        variant: 'error',
-        snackBarMsg: 'Please Fill Required Field',
-      });
+      const { openSnackBar } = this.props;
+      openSnackBar({ variant: 'error', message: 'Please Fill Required Field' });
     }
   }
 
@@ -188,4 +175,4 @@ class EnrollmentRegistration extends Component {
   }
 }
 
-export default withSnackBar(EnrollmentRegistration);
+export default withSnackBarConsumer(EnrollmentRegistration);

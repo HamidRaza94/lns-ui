@@ -18,7 +18,7 @@ class UpdatePanel extends PureComponent {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     connection('get', 'update')
     .then(res => {
       const news = [];
@@ -37,20 +37,8 @@ class UpdatePanel extends PureComponent {
 
       return { news, link, notice }
     })
-    .then(({ news, link, notice }) => {
-      this.setState({
-        isLoaded: true,
-        news,
-        link,
-        notice,
-      });
-    })
-    .catch(({ message }) => {
-      this.setState({
-        isLoaded: true,
-        error: [message],
-      });
-    });
+    .then(({ news, link, notice }) => this.setState({ isLoaded: true, news, link, notice }))
+    .catch(({ message }) => this.setState({ isLoaded: true, error: [message] }));
   };
 
   render() {

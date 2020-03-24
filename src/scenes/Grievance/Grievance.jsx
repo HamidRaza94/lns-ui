@@ -7,12 +7,12 @@ import { FormPage, PersonalDetail, CommunicationDetail, IncidentDetail, DialogBo
 import { SearchGrievance, FormForMember } from './component';
 import { capitalizeAll } from '../../libs/utils/helpers';
 import { connection } from '../../libs/server';
-import { withSnackBar } from '../../contexts';
+import { withSnackBarConsumer } from '../../hoc';
 import {
   personalDetailSchema,
   communicationDetailSchema,
   incidentDetailSchema,
-  grievanceSchema,
+  // grievanceSchema,
 } from './validation';
 import style from './component/FormForMember/style';
 
@@ -131,7 +131,7 @@ class Grievance extends Component {
   }
 
   handleSubmitData = () => {
-    const { snackBarStateUpdater } = this.props;
+    const { openSnackBar } = this.props;
     const { personalDetailData, communicationDetailData, incidentDetailData } = this.state;
     let payload = new FormData();
 
@@ -157,11 +157,7 @@ class Grievance extends Component {
 
     connection(API_METHOD.post, SERVER_ROUTE.grievance, payload)
     .then(res => {
-      snackBarStateUpdater({
-        showSnackBar: true,
-        variant: 'success',
-        snackBarMsg: res.data.message,
-      })
+      openSnackBar({ variant: 'success', message: res.data.message });
       console.log('response is ', res);
       this.setState({
         isDialogBoxOpen: true,
@@ -176,11 +172,7 @@ class Grievance extends Component {
       // this.handleReset(RESET_TYPE.all);
     })
     .catch(error => {
-      snackBarStateUpdater({
-        showSnackBar: true,
-        variant: 'error',
-        snackBarMsg: error.message,
-      })
+      openSnackBar({ variant: 'error', message: error.message });
     });
   }
 
@@ -196,12 +188,8 @@ class Grievance extends Component {
         }));
       }
     } else {
-      const { snackBarStateUpdater } = this.props;
-      snackBarStateUpdater({
-        showSnackBar: true,
-        variant: 'error',
-        snackBarMsg: 'Please Fill Required Field',
-      });
+      const { openSnackBar } = this.props;
+      openSnackBar({ variant: 'error', message: 'Please Fill Required Field' });
     }
   }
 
@@ -266,9 +254,9 @@ class Grievance extends Component {
     return (
       <>
         <Paper className={classes.root}>
-          <SearchGrievance snackBarStateUpdater={this.props.snackBarStateUpdater} />
+          <SearchGrievance openSnackBar={this.props.openSnackBar} />
           <FormForMember
-            snackBarStateUpdater={this.props.snackBarStateUpdater}
+            openSnackBar={this.props.openSnackBar}
             incidentDetailData={this.state.incidentDetailData}
             onChange={this.handleChange}
             reset={(type) => this.handleReset(type)}
@@ -303,4 +291,4 @@ class Grievance extends Component {
   }
 }
 
-export default withStyles(style)(withSnackBar(Grievance));
+export default withStyles(style)(withSnackBarConsumer(Grievance));

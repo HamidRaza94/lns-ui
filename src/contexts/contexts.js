@@ -1,11 +1,8 @@
-import React from 'react';
+import { createContext } from 'react';
 
-const defaultState = {
-  showSnackBar : false,
-  snackBarMsg : '',
-  variant : 'success',
-};
+import defaultValues from './defaultValues';
 
-const SnackBarContext = React.createContext(defaultState);
+const SnackBarContext = createContext(defaultValues.snackBar);
+SnackBarContext.displayName = 'SnackBar';
 
-export { SnackBarContext }
+export { SnackBarContext };

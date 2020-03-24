@@ -28,7 +28,7 @@ function responseHandler(response) {
   return data;
 }
 
-const formatedDataToTable = (data) => {
+const formattedDataToTable = (data) => {
   return data.map((item) => {
     const arr = [];
 
@@ -54,6 +54,6 @@ export {
   capitalizeFirst,
   filtering,
   responseHandler,
-  formatedDataToTable,
+  formattedDataToTable,
   bytesToSize,
 };

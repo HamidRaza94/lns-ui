@@ -130,6 +130,7 @@ class PersonalDetail extends Component {
             >
               {SEX.map(item => (
                 <FormControlLabel
+                  key={item}
                   value={item}
                   control={<Radio color="primary" />}
                   label={item}
@@ -153,6 +154,7 @@ class PersonalDetail extends Component {
             >
               {MARITAL_STATUS.map(item => (
                 <FormControlLabel
+                  key={item}
                   value={item}
                   control={<Radio color="primary" />}
                   label={item}
@@ -191,7 +193,7 @@ class PersonalDetail extends Component {
                 id: 'placeOfBirth-select'
               }}
             >
-              {STATES.map(item => <MenuItem value={item}>{item}</MenuItem>)}
+              {STATES.map(item => <MenuItem key={item} value={item}>{item}</MenuItem>)}
             </Select>
           </FormControl>
         )}
@@ -208,7 +210,7 @@ class PersonalDetail extends Component {
               }}
             >
               {RELIGION.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
+                <MenuItem key={item} value={item}>{item}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -226,7 +228,7 @@ class PersonalDetail extends Component {
               }}
             >
               {CATEGORY.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
+                <MenuItem key={item} value={item}>{item}</MenuItem>
               ))}
             </Select>
           </FormControl>
@@ -257,7 +259,7 @@ class PersonalDetail extends Component {
               }}
             >
               {PHYSICAL_STATUS.map(item => (
-                <MenuItem value={item}>{item}</MenuItem>
+                <MenuItem key={item} value={item}>{item}</MenuItem>
               ))}
             </Select>
           </FormControl>
