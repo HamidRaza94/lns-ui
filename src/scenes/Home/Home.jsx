@@ -45,17 +45,15 @@ const Home = () => {
                 {getFormattedMessage(messages.chiefDirector)}
               </CardContent>
               <div className={classes.controls}>
-                <Button onClick={handleDialogBox}>{home.readMore}</Button>
-                {
-                  <DialogBox
-                    open={isDialogBoxOpen}
-                    title="SAIYAD SHAH ALAM"
-                    agreeButtonLabel="OK"
-                    agreeButtonAction={handleDialogBox}
-                  >
-                    {getFormattedMessage(messages.chiefDirector)}
-                  </DialogBox>
-                }
+                <Button className={classes.controlButton} onClick={handleDialogBox}>{home.readMore}</Button>
+                <DialogBox
+                  open={isDialogBoxOpen}
+                  title="SAIYAD SHAH ALAM"
+                  agreeButtonLabel="OK"
+                  agreeButtonAction={handleDialogBox}
+                >
+                  {getFormattedMessage(messages.chiefDirector)}
+                </DialogBox>
               </div>
             </div>
           </MCard>

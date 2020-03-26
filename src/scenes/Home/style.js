@@ -96,9 +96,19 @@ const style = theme => ({
 
   controls: {
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
     paddingLeft: theme.spacing(1),
     paddingBottom: theme.spacing(1),
+  },
+  controlButton: {
+    color: theme.palette.ternary.dark,
+    backgroundColor: theme.palette.primary.main,
+
+    '&:hover': {
+      color: theme.palette.ternary.main,
+      backgroundColor: theme.palette.primary.dark,
+    },
   },
 });
 

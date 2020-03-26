@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
+  makeStyles,
   Button,
   Dialog,
   DialogActions,
@@ -9,75 +10,64 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 
-class DialogBox extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false,
-    };
+import style from './style';
+
+const useStyles = makeStyles(style);
+
+const DialogBox = ({
+  open,
+  fullWidth,
+  title,
+  content,
+  children,
+  agreeButtonLabel,
+  disagreeButtonLabel,
+  agreeButtonAction,
+  disagreeButtonAction,
+  disableAgreeButton,
+  disableDisagreeButton,
+}) => {
+  const [isLoading, setIsLoading] = useState(false);
+  const classes = useStyles();
+
+  const handleClick = actionCall => () => {
+    setIsLoading(true);
+    actionCall();
+    setIsLoading(false);
   }
 
-  handleClick = actionCall => () => {
-    this.setState({
-      isLoading: true,
-    }, () => {
-      actionCall();
-      this.handleClose();
-    });
-  }
-
-  handleClose = () => {
-    this.setState({ isLoading: false });
-  }
-
-  render() {
-    const { isLoading } = this.state;
-    const {
-      open,
-      fullWidth,
-      title,
-      content,
-      children,
-      agreeButtonLabel,
-      disagreeButtonLabel,
-      agreeButtonAction,
-      disagreeButtonAction,
-      disableAgreeButton,
-      disableDisagreeButton,
-    } = this.props;
-
-    return (
-      <Dialog open={open} onClose={this.handleClose} aria-labelledby="dialog-title" fullWidth={fullWidth}>
-        <DialogTitle id="dialog-title">{title}</DialogTitle>
-        <DialogContent>
-          {content}
-          {children}
-        </DialogContent>
-        <DialogActions>
-          {disagreeButtonLabel && (
-            <Button
-              id="button-disagree"
-              disabled={disableDisagreeButton}
-              onClick={this.handleClick(disagreeButtonAction)}
-              variant="contained"
-              color="secondary"
-            >
-              {disagreeButtonLabel}
-            </Button>
-          )}
+  return (
+    <Dialog open={open} onClose={() => setIsLoading(false)} aria-labelledby="dialog-title" fullWidth={fullWidth}>
+      <DialogTitle id="dialog-title">{title}</DialogTitle>
+      <DialogContent>
+        {content}
+        {children}
+      </DialogContent>
+      <DialogActions>
+        {disagreeButtonLabel && (
           <Button
-            id="button-agree"
-            disabled={disableAgreeButton}
-            onClick={this.handleClick(agreeButtonAction)}
+            id="button-disagree"
+            disabled={disableDisagreeButton}
+            onClick={handleClick(disagreeButtonAction)}
             variant="contained"
-            color="primary"
+            color="secondary"
           >
-            {isLoading ? <CircularProgress size={20} thickness={8} /> : agreeButtonLabel}
+            {disagreeButtonLabel}
           </Button>
-        </DialogActions>
-      </Dialog>
-    );
-  }
+        )}
+        <Button
+          id="button-agree"
+          disabled={disableAgreeButton}
+          onClick={handleClick(agreeButtonAction)}
+          variant="contained"
+          color="primary"
+          className={classes.footerPrimaryButton}
+        >
+          {isLoading ? <CircularProgress className={classes.circular} size={20} thickness={8} /> : agreeButtonLabel}
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
 }
 
 DialogBox.propTypes = {

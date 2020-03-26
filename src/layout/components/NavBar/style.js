@@ -14,6 +14,7 @@ export default ({ palette: { primary, secondary, ternary } }) => ({
     backgroundColor: `${secondary.main} !important`,
     color: ternary.main,
     border: 'none !important',
+    transition: '0.3s',
 
     '&:hover': {
       backgroundColor: `${primary.dark} !important`,

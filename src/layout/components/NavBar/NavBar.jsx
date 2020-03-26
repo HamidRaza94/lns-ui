@@ -17,8 +17,6 @@ const NavBar = () => {
   const classes = useStyles();
   const [hoveredMenu, setHoveredMenu] = useState('');
 
-  console.log('hoveredMenu ==>', hoveredMenu);
-
   const activeSubMenu = pathname.split('/')[1];
 
   const handleNavClick = path => () => history.push(path);
