@@ -71,45 +71,6 @@ const style = theme => ({
     flexWrap: 'wrap',
     transition: '0.5s',
   },
-
-  card: {
-    display: 'flex',
-    height: 150,
-    margin: '5px 0px',
-  },
-
-  details: {
-    display: 'flex',
-    flexDirection: 'column',
-    width: 200,
-  },
-
-  content: {
-    flex: '1 0 auto',
-    height: 80,
-    overflowY: 'scroll',
-  },
-
-  cover: {
-    width: 151,
-  },
-
-  controls: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  controlButton: {
-    color: theme.palette.ternary.dark,
-    backgroundColor: theme.palette.primary.main,
-
-    '&:hover': {
-      color: theme.palette.ternary.main,
-      backgroundColor: theme.palette.primary.dark,
-    },
-  },
 });
 
 export default style;

@@ -4,6 +4,11 @@ const styles = theme => ({
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
   },
+
+  heading: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
 })
 
 export default styles;

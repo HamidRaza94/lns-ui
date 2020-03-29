@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Update, Section, Team } from './components';
+import { Update, Message, Section, Team } from './components';
 
 const Card = ({ variant, data }) => {
   switch (variant) {
@@ -14,19 +14,17 @@ const Card = ({ variant, data }) => {
     case 'team':
       return <Team data={data} />;
 
+    case 'message':
+      return <Message data={data} />;
+
     default:
       return <></>;
   }
 };
 
 Card.propTypes = {
-  variant: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(['update, section, team, message']).isRequired,
   data: PropTypes.object.isRequired,
-};
-
-Card.defaultProps = {
-  variant: '',
-  data: {},
 };
 
 export default Card;

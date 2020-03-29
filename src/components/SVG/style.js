@@ -3,7 +3,7 @@ export default {
     width: 35,
     height: 35,
     fill: '#000000',
-    margin: 5
+    margin: 5,
   },
 
   bookmark: {
@@ -16,6 +16,6 @@ export default {
     textTransform: 'none',
     blockProgression: 'tb',
     isolation: 'auto',
-    mixBlendMode: 'normal'
+    mixBlendMode: 'normal',
   }
 };
