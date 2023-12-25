@@ -9,28 +9,6 @@ export const path = {
   grievance: '/grievance',
   donate: '/donate',
   appointment: '/appointment',
-  academics: {
-    home: '/academics',
-    learner: {
-      home: '/learner',
-      registration: '/academics/learner/registration',
-      verification: '/academics/learner/verification',
-    },
-    examinationRegistration: '/academics/examination-registration',
-    course: '/academics/course',
-    feeStructure: '/academics/fee-structure',
-    passingCertificate: '/academics/passing-certificate',
-    academicCenter: '/academics/academic-center',
-    payOnlineAcademicsFees: '/academics/pay-online-academics-fees',
-    syllabus: '/academics/syllabus',
-    admissionCell: '/academics/admission-cell',
-    feesCollectionCell: '/academics/fees-collection-cell',
-    examinationCell: '/academics/examination-cell',
-    academicsCell: '/academics/academics-cell',
-  },
-  employees: '/employees',
-  employments: '/employments',
-  placementCell: '/placement-cell',
 }
 
 const routes = [
@@ -125,107 +103,6 @@ const routes = [
     label: 'Appointment',
     value: 'appointment',
     path: path.appointment,
-  },
-  {
-    label: 'Academics',
-    value: 'academics',
-    path: path.academics.learner.registration,
-    children: [
-      {
-        label: 'Learner Registration',
-        value: 'learnerRegistration',
-        path: path.academics.learner.registration,
-      },
-      {
-        label: 'Learner Verification',
-        value: 'learnerVerification',
-        path: path.academics.learner.verification,
-      },
-      {
-        label: 'Examination Registration',
-        value: 'examinationRegistration',
-        path: path.academics.examinationRegistration,
-        show: false,
-      },
-      {
-        label: 'Course',
-        value: 'course',
-        path: path.academics.course,
-        show: false,
-      },
-      {
-        label: 'Fee Structure',
-        value: 'feeStructure',
-        path: path.academics.feeStructure,
-        show: false,
-      },
-      {
-        label: 'Passing Certificate',
-        value: 'passingCertificate',
-        path: path.academics.passingCertificate,
-        show: false,
-      },
-      {
-        label: 'Academic Center',
-        value: 'academicCenter',
-        path: path.academics.academicCenter,
-        show: false,
-      },
-      {
-        label: 'Pay Online Academics Fees',
-        value: 'payOnlineAcademicsFees',
-        path: path.academics.payOnlineAcademicsFees,
-        show: false,
-      },
-      {
-        label: 'Syllabus',
-        value: 'syllabus',
-        path: path.academics.syllabus,
-        show: false,
-      },
-      {
-        label: 'Admission Cell',
-        value: 'admissionCell',
-        path: path.academics.admissionCell,
-        show: false,
-      },
-      {
-        label: 'Fees Collection Cell',
-        value: 'feesCollectionCell',
-        path: path.academics.feesCollectionCell,
-        show: false,
-      },
-      {
-        label: 'Examination Cell',
-        value: 'examinationCell',
-        path: path.academics.examinationCell,
-        show: false,
-      },
-      {
-        label: 'Academics Cell',
-        value: 'academicsCell',
-        path: path.academics.academicsCell,
-        show: false,
-      },
-      {
-        label: 'Placement Cell',
-        value: 'placementCell',
-        path: path.placementCell,
-        show: false,
-      },
-    ]
-  },
-  {
-    label: 'Employees',
-    value: 'employees',
-    path: path.employees,
-    show: false,
-  },
-  {
-    label: 'Employments',
-    value: 'employments',
-    path: path.employments,
-    show: false,
   },
 ];
 

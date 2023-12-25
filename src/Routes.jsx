@@ -11,10 +11,6 @@ import {
   Grievance,
   Donate,
   Appointment,
-  LearnerRegistration,
-  LearnerVerification,
-  Employees,
-  Employment,
   NoMatch,
 } from './scenes';
 
@@ -30,10 +26,6 @@ const Routes = () => (
       <Route exact path={path.grievance} component={Grievance} />
       <Route exact path={path.donate} component={Donate} />
       <Route exact path={path.appointment} component={Appointment} />
-      <Route exact path={path.academics.learner.registration} component={LearnerRegistration} />
-      <Route exact path={path.academics.learner.verification} component={LearnerVerification} />
-      <Route exact path={path.employees} component={Employees} />
-      <Route exact path={path.employments} component={Employment} />
       <Route exact component={NoMatch} />
     </Switch>
     <Footer />
