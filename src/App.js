@@ -4,6 +4,7 @@ import { MuiThemeProvider, CssBaseline } from '@material-ui/core';
 import theme from './theme';
 import Routes from './Routes';
 import { SnackBarProvider } from './contexts';
+import './global.css';
 
 const App = () => (
   <MuiThemeProvider theme={theme}>

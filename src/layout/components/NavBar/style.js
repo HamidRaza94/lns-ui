@@ -1,4 +1,4 @@
-export default ({ palette: { primary, secondary, ternary } }) => ({
+const style = ({ palette: { primary, secondary, ternary } }) => ({
   menu: {
     backgroundColor: `${secondary.main} !important`,
     borderRadius: 0,
@@ -29,3 +29,5 @@ export default ({ palette: { primary, secondary, ternary } }) => ({
     backgroundColor: `${primary.dark} !important`,
   },
 });
+
+export default style;

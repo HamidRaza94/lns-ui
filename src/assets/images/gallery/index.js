@@ -26,7 +26,7 @@ import gallery25 from './25.jpg';
 import gallery26 from './26.jpg';
 import gallery27 from './27.jpg';
 
-export default [
+const gallery = [
   { id: 'gallery-1', image: gallery1, title: 'gallery1' },
   { id: 'gallery-2', image: gallery2, title: 'gallery2' },
   { id: 'gallery-3', image: gallery3, title: 'gallery3' },
@@ -55,3 +55,5 @@ export default [
   { id: 'gallery-26', image: gallery26, title: 'gallery26' },
   { id: 'gallery-27', image: gallery27, title: 'gallery27' },
 ];
+
+export default gallery;
