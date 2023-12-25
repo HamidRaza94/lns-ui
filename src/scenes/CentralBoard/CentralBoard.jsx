@@ -2,8 +2,8 @@ import React from 'react';
 import { withStyles, Typography } from '@material-ui/core';
 
 import styles from './style';
-import { Card } from '../../../components';
-import { centralBoardData } from '../../../cms/board';
+import { Card } from '../../components';
+import { centralBoardData } from '../../cms/board';
 
 const CentralBoard = props => {
   const { classes } = props;

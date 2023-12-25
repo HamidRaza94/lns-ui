@@ -6,11 +6,6 @@ import { Header, NavBar, Footer } from './layout';
 import {
   Home,
   CentralBoard,
-  CentralProtectorBoard,
-  CentralAdvisoryBoard,
-  CentralSectionBoard,
-  StateAdvisoryBoard,
-  StateBoard,
   EnrollmentVerification,
   EnrollmentRegistration,
   Grievance,
@@ -29,12 +24,7 @@ const Routes = () => (
     <NavBar />
     <Switch>
       <Route exact path={path.home} component={Home} />
-      <Route exact path={path.board.central.home} component={CentralBoard} />
-      <Route exact path={path.board.central.protector} component={CentralProtectorBoard} />
-      <Route exact path={path.board.central.advisory} component={CentralAdvisoryBoard} />
-      <Route exact path={path.board.central.section} component={CentralSectionBoard} />
-      <Route exact path={path.board.state.advisory} component={StateAdvisoryBoard} />
-      <Route exact path={path.board.state.home} component={StateBoard} />
+      <Route exact path={path.centralBoard} component={CentralBoard} />
       <Route exact path={path.enrollment.verification} component={EnrollmentVerification} />
       <Route exact path={path.enrollment.registration} component={EnrollmentRegistration} />
       <Route exact path={path.grievance} component={Grievance} />

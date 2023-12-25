@@ -1,23 +1,6 @@
 export const path = {
   home: '/',
-  board: {
-    home: '/board',
-    central: {
-      home: '/board/central/governing',
-      protector: '/board/central/protector',
-      advisory: '/board/central/advisory',
-      section: '/board/central/section',
-      staffSelection: '/board/central/staffSelection',
-      disciplinary: '/board/central/disciplinary',
-    },
-    state: {
-      home: '/board/state/governing',
-      advisory: '/board/state/advisory',
-      section: '/board/state/section',
-      staffSelection: '/board/state/staffSelection',
-      disciplinary: '/board/state/disciplinary',
-    },
-  },
+  centralBoard: '/central-board',
   enrollment: {
     home: '/enrollment',
     verification: '/enrollment/verification',
@@ -50,77 +33,18 @@ export const path = {
   placementCell: '/placement-cell',
 }
 
-export default [
+const routes = [
   {
     label: 'Home',
     value: 'home',
     path: path.home,
     // icon: 'home',
   },
-
   {
-    label: 'All Boards',
-    value: 'board',
-    path: path.board.central.home,
-    children: [
-      {
-        label: 'Central Governing Board',
-        value: 'centralBoard',
-        path: path.board.central.home,
-      },
-      {
-        label: 'Central Protector Board',
-        value: 'centralProtectorBoard',
-        path: path.board.central.protector,
-      },
-      {
-        label: 'Central Advisory Section',
-        value: 'centralAdvisoryBoard',
-        path: path.board.central.advisory,
-      },
-      {
-        label: 'Central Board of Section',
-        value: 'centralSectionBoard',
-        path: path.board.central.section,
-      },
-      {
-        label: 'Central Staff Selection Board',
-        value: 'centralStaffSelectionBoard',
-        path: path.board.central.staffSelection,
-      },
-      {
-        label: 'Central Disciplinary Board',
-        value: 'centralDisciplinaryBoard',
-        path: path.board.central.disciplinary,
-      },
-      {
-        label: 'State Board',
-        value: 'stateBoard',
-        path: path.board.state.home,
-      },
-      {
-        label: 'State Advisory Board',
-        value: 'stateAdvisoryBoard',
-        path: path.board.state.advisory,
-      },
-      {
-        label: 'State Board of Section',
-        value: 'stateSectionBoard',
-        path: path.board.state.section,
-      },
-      {
-        label: 'State Staff Selection Board',
-        value: 'stateStaffSelectionBoard',
-        path: path.board.state.staffSelection,
-      },
-      {
-        label: 'State Disciplinary Board',
-        value: 'stateDisciplinaryBoard',
-        path: path.board.state.disciplinary,
-      },
-    ],
+    label: 'Central Board',
+    value: 'centralBoard',
+    path: path.centralBoard,
   },
-
   {
     label: 'Enrollment',
     value: 'enrollment',
@@ -192,19 +116,16 @@ export default [
       },
     ],
   },
-
   {
     label: 'Donate',
     value: 'donate',
     path: path.donate,
   },
-
   {
     label: 'Appointment',
     value: 'appointment',
     path: path.appointment,
   },
-
   {
     label: 'Academics',
     value: 'academics',
@@ -294,14 +215,12 @@ export default [
       },
     ]
   },
-
   {
     label: 'Employees',
     value: 'employees',
     path: path.employees,
     show: false,
   },
-
   {
     label: 'Employments',
     value: 'employments',
@@ -309,3 +228,5 @@ export default [
     show: false,
   },
 ];
+
+export default routes;

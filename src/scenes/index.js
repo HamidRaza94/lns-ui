@@ -1,14 +1,5 @@
 export { Home } from './Home';
-
-export {
-  CentralBoard,
-  CentralAdvisoryBoard,
-  CentralProtectorBoard,
-  CentralSectionBoard,
-  StateBoard,
-  StateAdvisoryBoard,
-} from './Boards';
-
+export { CentralBoard } from './CentralBoard'
 export { EnrollmentVerification, EnrollmentRegistration } from './Enrollment';
 export { Grievance } from './Grievance';
 export { Donate } from './Donate';
