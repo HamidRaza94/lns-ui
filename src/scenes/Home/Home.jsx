@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core';
 
 import styles from './style';
 import { Content, UpdatePanel } from './components';
-import { Card, SlickSlider, Carousel } from '../../components';
-import { gallery, banners, sections } from '../../assets';
+import { Card, Carousel } from '../../components';
+import { gallery, banners } from '../../assets';
 
 const useStyles = makeStyles(styles);
 
@@ -32,10 +32,6 @@ const Home = () => {
           </Carousel>
         </div>
       </div>
-
-      <SlickSlider>
-        {sections.map((section) => <Card key={section.id} variant="section" data={section} />)}
-      </SlickSlider>
     </div>
   )
 }
