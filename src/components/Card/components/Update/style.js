@@ -1,6 +1,7 @@
-export default {
+const style = {
   card: {
     width: '100%',
+    margin: '10px 0 0 0',
   },
 
   content: {
@@ -33,3 +34,5 @@ export default {
     marginLeft: 5
   }
 };
+
+export default style;

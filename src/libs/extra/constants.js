@@ -105,6 +105,12 @@ const API_METHOD = {
   delete: 'delete',
 }
 
+export const ENDPOINTS = {
+  update: '/update',
+};
+
+export const UPDATE_TYPE = ['news', 'link', 'notice'];
+
 const SERVER_ROUTE = {
   team: 'team',
   member: 'member',

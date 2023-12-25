@@ -4,7 +4,8 @@ import { withStyles } from '@material-ui/core';
 
 import { Card } from '../../../../components';
 import styles from './style';
-import { connection } from '../../../../libs/server';
+import request, { API_METHOD, ENDPOINTS } from '../../../../libs/request';
+import { UPDATE_TYPE } from '../../../../libs/extra/constants';
 
 class UpdatePanel extends PureComponent {
   constructor(props) {
@@ -19,26 +20,18 @@ class UpdatePanel extends PureComponent {
   }
 
   componentDidMount = () => {
-    connection('get', 'update')
-    .then(res => {
-      const news = [];
-      const link = [];
-      const notice = [];
+    request(API_METHOD.get, ENDPOINTS.update)
+      .then((res) => {
+        const [NEWS, LINK, NOTICE] = UPDATE_TYPE
 
-      res.data.data.forEach(({ type, headline }) => {
-        if (type === 'news') {
-          news.push(headline);
-        } else if (type === 'link') {
-          link.push(headline);
-        } else if (type === 'notice') {
-          notice.push(headline);
-        }
-      });
+        const news = res.filter(({ type }) => type === NEWS).map(({ headline }) => headline);
+        const link = res.filter(({ type }) => type === LINK).map(({ headline }) => headline);
+        const notice = res.filter(({ type }) => type === NOTICE).map(({ headline }) => headline);
 
-      return { news, link, notice }
-    })
-    .then(({ news, link, notice }) => this.setState({ isLoaded: true, news, link, notice }))
-    .catch(({ message }) => this.setState({ isLoaded: true, error: [message] }));
+        return { news, link, notice }
+      })
+      .then(({ news, link, notice }) => this.setState({ isLoaded: true, news, link, notice }))
+      .catch(({ message }) => this.setState({ isLoaded: true, error: [message] }));
   };
 
   render() {

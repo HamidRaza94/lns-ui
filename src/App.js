@@ -5,6 +5,9 @@ import theme from './theme';
 import Routes from './Routes';
 import { SnackBarProvider } from './contexts';
 import './global.css';
+import { initializeAxios } from './libs/request';
+
+initializeAxios();
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
