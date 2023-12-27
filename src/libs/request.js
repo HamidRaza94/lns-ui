@@ -27,7 +27,17 @@ const request = async (method, endpoint, { data = {}, params = {} } = {}) => {
 
     return response;
   } catch (err) {
-    throw new Error(err);
+    if (err.response) {
+      throw err.response.data
+    }
+    
+    if (err.request) {
+      throw err.request;
+    }
+
+    throw new Error({
+      message: err.message,
+    });
   }
 };
 

@@ -18,6 +18,23 @@ function Update(props) {
   const { title, isLoading, value } = data;
   const bull = <span className={classes.bullet}>•</span>;
 
+  const getContent = () => {
+    if (isLoading) {
+      return <CircularProgress />;
+    }
+
+    if (value?.length) {
+      return value.map((item, index) => (
+        <Typography key={index} gutterBottom>
+          {bull}
+          {item}
+        </Typography>
+      ));
+    }
+
+    return `No ${title} Here !`;
+  };
+
   return (
     <Card className={classes.card}>
       <Typography
@@ -27,29 +44,20 @@ function Update(props) {
         {title}
       </Typography>
       <CardContent className={classes.content}>
-        {isLoading ? (
-          <CircularProgress />
-        ) : value.length ? (
-          value.map((item, index) => (
-            <Typography key={index} gutterBottom>
-              {bull}
-              {item}
-            </Typography>
-          ))
-        ) : (
-          `No ${title} Here !`
-        )}
+        {getContent()}
       </CardContent>
-      <CardActions>
-        <Button
-          variant="contained"
-          color="primary"
-          className={classes.button}
-        >
-          More
-          <SendIcon className={classes.rightIcon} />
-        </Button>
-      </CardActions>
+      {value?.length >= 5 && (
+        <CardActions>
+          <Button
+            variant="contained"
+            color="primary"
+            className={classes.button}
+          >
+            More
+            <SendIcon className={classes.rightIcon} />
+          </Button>
+        </CardActions>
+      )}
     </Card>
   );
 }

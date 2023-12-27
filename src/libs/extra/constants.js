@@ -107,6 +107,9 @@ const API_METHOD = {
 
 export const ENDPOINTS = {
   update: '/update',
+  login: '/user/login',
+  signup: '/user/signup',
+  allUsers: '/user',
 };
 
 export const UPDATE_TYPE = ['news', 'link', 'notice'];

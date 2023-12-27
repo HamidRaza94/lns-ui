@@ -1,4 +1,5 @@
 export const path = {
+  admin: '/admin',
   home: '/',
   centralBoard: '/central-board',
   enrollment: {
@@ -40,7 +41,6 @@ const routes = [
       },
     ],
   },
-
   {
     label: 'Public Grievance',
     value: 'grievance',

@@ -1,24 +1,26 @@
-function getRandomNumber(max) {
+import { jwtDecode } from 'jwt-decode';
+
+export function getRandomNumber(max) {
   return Math.floor((Math.random() * max));
 }
 
-function getNextRoundRobin(total, current) {
+export function getNextRoundRobin(total, current) {
   return (current < total - 1) ? (current + 1) : 0;
 }
 
-function capitalizeAll(str) {
+export function capitalizeAll(str) {
   return str.toUpperCase();
 }
 
-function capitalizeFirst(str){
+export function capitalizeFirst(str){
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-function filtering(data, filterBy, matchBy) {
+export function filtering(data, filterBy, matchBy) {
   return data.filter(item => item[filterBy].includes(matchBy));
 }
 
-function responseHandler(response) {
+export function responseHandler(response) {
   const { status, data } = response;
 
   if (status === 200) {
@@ -28,7 +30,7 @@ function responseHandler(response) {
   return data;
 }
 
-const formattedDataToTable = (data) => {
+export const formattedDataToTable = (data) => {
   return data.map((item) => {
     const arr = [];
 
@@ -40,20 +42,27 @@ const formattedDataToTable = (data) => {
   })
 }
 
-const bytesToSize = (bytes) => {
+export const bytesToSize = (bytes) => {
   const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
   if (bytes === 0) return '0 Byte';
   const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 }
 
-export {
-  getRandomNumber,
-  getNextRoundRobin,
-  capitalizeAll,
-  capitalizeFirst,
-  filtering,
-  responseHandler,
-  formattedDataToTable,
-  bytesToSize,
+export const setAccessToken = (accessToken) => {
+  sessionStorage.setItem('accessToken', accessToken);
 };
+
+export const getUser = () => {
+  const accessToken = sessionStorage.getItem('accessToken');
+
+  if (accessToken) {
+    const decodedToken = jwtDecode(accessToken);
+
+    const { firstName, lastName, username, role } = decodedToken;
+
+    return { firstName, lastName, username, role };
+  }
+
+  return null;
+}
