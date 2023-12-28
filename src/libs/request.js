@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import config from '../config';
 import { API_METHOD, ENDPOINTS } from '../libs/extra/constants';
+import { getAccessToken, removeAccessToken } from '../libs/utils/helpers';
 
 const { lnsServiceUrl } = config;
 
@@ -13,9 +14,21 @@ const initializeAxios = () => {
   });
 };
 
-const request = async (method, endpoint, { data = {}, params = {} } = {}) => {
+const request = async (method, endpoint, { data = {}, params = {}, secure = false } = {}) => {
   try {
-    const response = await axiosInstance({ method, url: endpoint, params, data });
+    const options = {};
+
+    if (secure) {
+      options.headers = { Authorization: `Bearer ${getAccessToken()}` }
+    }
+
+    const response = await axiosInstance({
+      method,
+      url: endpoint,
+      params,
+      data,
+      ...options,
+    });
 
     if (response?.data?.data) {
       return response.data.data;
@@ -28,6 +41,11 @@ const request = async (method, endpoint, { data = {}, params = {} } = {}) => {
     return response;
   } catch (err) {
     if (err.response) {
+      if (err.response.data && (err.response.data.error === '301' || err.response.data.error === '302')) {
+        removeAccessToken();
+        window.location.reload();
+      }
+
       throw err.response.data
     }
     

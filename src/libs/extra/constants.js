@@ -119,6 +119,8 @@ export const ENDPOINTS = {
 
 export const UPDATE_TYPE = ['news', 'link', 'notice'];
 
+export const ROLES = ['admin', 'user'];
+
 const SERVER_ROUTE = {
   team: 'team',
   member: 'member',

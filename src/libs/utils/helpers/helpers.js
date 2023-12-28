@@ -49,12 +49,18 @@ export const bytesToSize = (bytes) => {
   return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
 }
 
+const ACCESS_TOKEN = 'accessToken';
+
 export const setAccessToken = (accessToken) => {
-  sessionStorage.setItem('accessToken', accessToken);
+  sessionStorage.setItem(ACCESS_TOKEN, accessToken);
 };
 
+export const getAccessToken = () => sessionStorage.getItem(ACCESS_TOKEN);
+
+export const removeAccessToken = () => sessionStorage.removeItem(ACCESS_TOKEN);
+
 export const getUser = () => {
-  const accessToken = sessionStorage.getItem('accessToken');
+  const accessToken = sessionStorage.getItem(ACCESS_TOKEN);
 
   if (accessToken) {
     const decodedToken = jwtDecode(accessToken);

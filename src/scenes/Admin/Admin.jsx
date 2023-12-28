@@ -105,7 +105,7 @@ const Admin = () => {
           </div>
         </div>
       ) : (
-        <AdminPanel />
+        <AdminPanel user={user} />
       )}
     </div>
   )

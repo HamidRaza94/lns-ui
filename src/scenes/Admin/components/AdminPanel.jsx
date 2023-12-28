@@ -8,6 +8,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Member from './Member';
 import Gallery from './Gallery';
 import styles from './style';
+import { ROLES } from '../../../libs/extra/constants';
 
 const useStyles = makeStyles(styles);
 
@@ -16,9 +17,13 @@ const PANELS = {
   gallery: 'gallery',
 };
 
-const AdminPanel = () => {
+const AdminPanel = (props) => {
+  const { user } = props;
+
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+
+  const [ADMIN_ROLE] = ROLES;
 
   const handleChange = (panel) => (_, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -26,16 +31,18 @@ const AdminPanel = () => {
 
   return (
     <div className={classes.root}>
-      <Accordion expanded={expanded === PANELS.member} onChange={handleChange(PANELS.member)}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1bh-content"
-          id="panel1bh-header"
-        >
-          <Typography className={classes.heading}>Members</Typography>
-        </AccordionSummary>
-        <Member />
-      </Accordion>
+      {user.role === ADMIN_ROLE ? (
+        <Accordion expanded={expanded === PANELS.member} onChange={handleChange(PANELS.member)}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1bh-content"
+            id="panel1bh-header"
+          >
+            <Typography className={classes.heading}>Members</Typography>
+          </AccordionSummary>
+          <Member />
+        </Accordion>
+      ) : null}
       <Accordion expanded={expanded === PANELS.gallery} onChange={handleChange(PANELS.gallery)}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -44,7 +51,7 @@ const AdminPanel = () => {
         >
           <Typography className={classes.heading}>Gallery</Typography>
         </AccordionSummary>
-        <Gallery />
+        <Gallery user={user} />
       </Accordion>
     </div>
   );

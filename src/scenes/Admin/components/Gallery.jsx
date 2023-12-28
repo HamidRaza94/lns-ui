@@ -15,8 +15,11 @@ import ImageUpload from '../../../components/ImageUpload';
 import DialogBox from '../../../components/DialogBox';
 import Loader from '../../../components/Loader';
 import request, { API_METHOD, ENDPOINTS } from '../../../libs/request';
+import { ROLES } from '../../../libs/extra/constants';
 
-const Gallery = () => {
+const Gallery = (props) => {
+  const { user } = props;
+
   const [gallery, setGallery] = useState([]);
 
   const [image, setImage] = useState('');
@@ -25,6 +28,8 @@ const Gallery = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [deleteImage, setDeleteImage] = useState('');
   const [deleteLoader, setDeleteLoader] = useState(false);
+
+  const [ADMIN_ROLE] = ROLES;
 
   useEffect(() => {
     const fetchAllUsers = () => {
@@ -42,7 +47,7 @@ const Gallery = () => {
     form.append('type', 'gallery');
     form.append('image', image);
 
-    request(API_METHOD.post, ENDPOINTS.uploadImage, { data: form })
+    request(API_METHOD.post, ENDPOINTS.uploadImage, { data: form, secure: true })
       .then((res) => {
         setImage('');
         setGallery((prevGallery) => [...prevGallery, res]);
@@ -89,7 +94,9 @@ const Gallery = () => {
           <TableHead>
             <TableRow>
               <TableCell>Image</TableCell>
-              <TableCell align='center'>Actions</TableCell>
+              {user.role === ADMIN_ROLE ? (
+                <TableCell align='center'>Actions</TableCell>
+              ) : null}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -102,16 +109,18 @@ const Gallery = () => {
                     src={gallery.imageURL}
                   />
                 </TableCell>
-                <TableCell align='center'>
-                  <DeleteIcon
-                    color="error"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      setIsDialogOpen(true);
-                      setDeleteImage(gallery.originalId);
-                    }}
-                  />
-                </TableCell>
+                {user.role === ADMIN_ROLE ? (
+                  <TableCell align='center'>
+                    <DeleteIcon
+                      color="error"
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => {
+                        setIsDialogOpen(true);
+                        setDeleteImage(gallery.originalId);
+                      }}
+                    />
+                  </TableCell>
+                ) : null}
               </TableRow>
             ))}
           </TableBody>
