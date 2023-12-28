@@ -110,6 +110,7 @@ export const ENDPOINTS = {
   login: '/user/login',
   signup: '/user/signup',
   allUsers: '/user',
+  deleteUser: '/user/:id',
 };
 
 export const UPDATE_TYPE = ['news', 'link', 'notice'];

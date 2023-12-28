@@ -1,6 +1,5 @@
 export * from './constants';
 export { default as home } from './home';
-export * from './board';
 export { default as grievance } from './grievance';
 export { default as learnerRegistration } from './learnerRegistration';
 export { default as learnerVerification } from './learnerVerification';

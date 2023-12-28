@@ -26,6 +26,8 @@ const DialogBox = ({
   disagreeButtonAction,
   disableAgreeButton,
   disableDisagreeButton,
+  isDeleteModal,
+  disableButtonColor,
 }) => {
   const [isLoading, setIsLoading] = useState(false);
   const classes = useStyles();
@@ -50,7 +52,7 @@ const DialogBox = ({
             disabled={disableDisagreeButton}
             onClick={handleClick(disagreeButtonAction)}
             variant="contained"
-            color="secondary"
+            color={disableButtonColor || 'secondary'}
           >
             {disagreeButtonLabel}
           </Button>
@@ -61,6 +63,10 @@ const DialogBox = ({
           onClick={handleClick(agreeButtonAction)}
           variant="contained"
           color="primary"
+          style={{
+            backgroundColor: !disableAgreeButton && isDeleteModal ? '#FF3333' : '',
+            color: !disableAgreeButton && isDeleteModal ? '#ffffff' : '',
+          }}
           className={classes.footerPrimaryButton}
         >
           {isLoading ? <CircularProgress className={classes.circular} size={20} thickness={8} /> : agreeButtonLabel}
@@ -82,6 +88,7 @@ DialogBox.propTypes = {
   disagreeButtonAction: PropTypes.func,
   disableAgreeButton: PropTypes.bool,
   disableDisagreeButton: PropTypes.bool,
+  isDeleteModal: PropTypes.bool,
 };
 
 DialogBox.defaultProps = {
@@ -94,6 +101,7 @@ DialogBox.defaultProps = {
   disagreeButtonAction: () => {},
   disableAgreeButton: false,
   disableDisagreeButton: false,
+  isDeleteModal: false,
 }
 
 export default DialogBox;

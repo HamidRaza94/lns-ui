@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField, makeStyles } from '@material-ui/core';
-import Accordion from '@material-ui/core/Accordion';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
 import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -12,16 +9,19 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import ImageUpload from '../../../components/ImageUpload';
+import DialogBox from '../../../components/DialogBox';
 import Loader from '../../../components/Loader';
 import request, { API_METHOD, ENDPOINTS } from '../../../libs/request';
 import styles from './style';
 
 const useStyles = makeStyles(styles);
 
-const ROLES = [{ label: 'Admin', value: 'admin' }, { label: 'User', value: 'user' }]
-const USER_TYPES = [{ label: 'Admin', value: 'admin' }, { label: 'Member', value: 'member' }];
+const ROLES = [{ label: 'Admin', value: 'admin' }, { label: 'User', value: 'user' }];
+
+const deleteUserSchema = { fullName: '', id: '' };
 
 const AdminPanel = () => {
   const classes = useStyles();
@@ -33,7 +33,6 @@ const AdminPanel = () => {
   const [role, setRole] = useState(ROLES[1].value);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [type, setType] = useState(USER_TYPES[1].value);
   const [designation, setDesignation] = useState('');
   const [profile, setProfile] = useState('');
   const [message, setMessage] = useState('');
@@ -48,6 +47,11 @@ const AdminPanel = () => {
     timestamp: '',
   });
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [deleteUser, setDeleteUser] = useState(deleteUserSchema);
+  const [enteredDeleteUser, setEnteredDeleteUser] = useState('');
+  const [deleteLoader, setDeleteLoader] = useState(false);
+
   useEffect(() => {
     const fetchAllUsers = () => {
       request(API_METHOD.get, ENDPOINTS.allUsers, { params: { type: 'member' }})
@@ -59,7 +63,7 @@ const AdminPanel = () => {
   }, []);
 
   const clearButtonDisabled = (isLoading || (
-    !firstName && !lastName && !role && !type &&
+    !firstName && !lastName && !role &&
     !username && !password && !designation &&
     !profile && !message && !facebook && !whatsapp
   ));
@@ -70,7 +74,6 @@ const AdminPanel = () => {
     setRole(ROLES[1].value);
     setUsername('');
     setPassword('');
-    setType(USER_TYPES[1].value);
     setDesignation('');
     setProfile('');
     setMessage('');
@@ -78,12 +81,14 @@ const AdminPanel = () => {
     setWhatsapp([]);
   };
 
-  const addUser = () => {
-    if (!firstName || !lastName || !role || !username || !password || !type) {
-      return false;
-    }
+  const closeDeleteModal = () => {
+    setIsDialogOpen(false);
+    setDeleteUser(deleteUserSchema);
+    setEnteredDeleteUser('');
+  };
 
-    if (type === USER_TYPES[1].value && (!designation || !profile)) {
+  const addUser = () => {
+    if (!firstName || !lastName || !role || !username || !password || !designation || !profile) {
       return false;
     }
 
@@ -103,7 +108,6 @@ const AdminPanel = () => {
     form.append('role', role);
     form.append('username', username);
     form.append('password', password);
-    form.append('type', type);
     form.append('designation', designation);
     form.append('profile', profile);
     form.append('message', message);
@@ -115,9 +119,24 @@ const AdminPanel = () => {
     setIsLoading(true);
 
     request(API_METHOD.post, ENDPOINTS.signup, { data: form })
-      .then(() => resetFields())
+      .then((res) => {
+        resetFields();
+        setUsers((prevUsers) => [...prevUsers, res]);
+      })
       .catch((err) => setError(err))
       .finally(() => setIsLoading(false));
+  };
+
+  const removeUser = () => {
+    setDeleteLoader(true);
+    request(API_METHOD.delete, ENDPOINTS.deleteUser.replace(':id', deleteUser.id))
+      .then(() => {
+        const restUsers = users.filter((user) => user.originalId !== deleteUser.id);
+        setUsers(restUsers);
+        closeDeleteModal();
+      })
+      .catch((err) => console.error(err))
+      .finally(() => setDeleteLoader(false));
   };
 
   return (
@@ -164,19 +183,6 @@ const AdminPanel = () => {
             onChange={(e) => setRole(e.target.value)}
           >
             {ROLES.map((role) => <MenuItem value={role.value}>{role.label}</MenuItem>)}
-          </Select>
-        </FormControl>
-
-        {/* User Type */}
-        <FormControl style={{ margin: '0 10px' }}>
-          <InputLabel id="role">User Type</InputLabel>
-          <Select
-            labelId="role"
-            id="role-select"
-            value={type}
-            onChange={(e) => setRole(e.target.value)}
-          >
-            {USER_TYPES.map((userType) => <MenuItem value={userType.value}>{userType.label}</MenuItem>)}
           </Select>
         </FormControl>
 
@@ -288,6 +294,7 @@ const AdminPanel = () => {
               <TableCell align="right">Profile Image</TableCell>
               <TableCell align="right">Designation</TableCell>
               <TableCell align="right">Message</TableCell>
+              <TableCell align='center'>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -306,11 +313,49 @@ const AdminPanel = () => {
                 </TableCell>
                 <TableCell align="right">{user.designation}</TableCell>
                 <TableCell align="right">{user.message}</TableCell>
+                <TableCell align='center'>
+                  <DeleteIcon
+                    color="error"
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      setIsDialogOpen(true);
+                      setDeleteUser({
+                        fullName: `${user.firstName} ${user.lastName}`,
+                        id: user.originalId
+                      });
+                    }}
+                  />
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
+
+      <DialogBox
+        open={isDialogOpen}
+        title="Delete Member"
+        content={`Do you really want to remove "${deleteUser.fullName}"? This action can't undo.`}
+        agreeButtonLabel="Delete Member"
+        disagreeButtonLabel="Cancel"
+        agreeButtonAction={() => removeUser()}
+        disagreeButtonAction={() => setIsDialogOpen(false)}
+        disableAgreeButton={!deleteUser.id || deleteUser.fullName !== enteredDeleteUser || deleteLoader}
+        disableDisagreeButton={false}
+        isDeleteModal
+        disableButtonColor="ternary"
+        children={
+          <TextField
+            autoFocus
+            margin="dense"
+            id="name"
+            label="Repeat Full Name"
+            type="text"
+            fullWidth
+            onChange={(e) => setEnteredDeleteUser(e.target.value)}
+          />
+        }
+      />
     </AccordionDetails>
   );
 };

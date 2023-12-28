@@ -1,1 +1,3 @@
-export { default as DialogBox } from './DialogBox';
+import DialogBox from './DialogBox';
+
+export default DialogBox;

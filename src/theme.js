@@ -11,6 +11,9 @@ const theme = createMuiTheme({
     ternary: {
       main: '#ffffff',
     },
+    error: {
+      main: '#FF3333',
+    },
   },
   typography: {
     fontFamily: ['"Trebuchet MS"', 'Helvetica', 'sans-serif'].join(','),
