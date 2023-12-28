@@ -1,22 +1,29 @@
-import React, { useState, Fragment } from 'react';
-import { makeStyles, Card, CardContent, CardMedia, Typography } from '@material-ui/core';
+import React, { useState, Fragment, useEffect } from 'react';
+import { makeStyles, Card, CardContent, CardMedia } from '@material-ui/core';
 
 import styles from './style';
 import { DialogBox } from '../../../../components';
-import { TEAM_FOLDER } from '../../../../libs/extra/constants';
-import { messages } from '../../../../cms';
+import request, { API_METHOD, ENDPOINTS } from '../../../../libs/request';
+import config from '../../../../config';
 
 const useStyles = makeStyles(styles);
 
 const Message = () => {
   const classes = useStyles();
   const [isDialogBoxOpen, setIsDialogBoxOpen] = useState(false);
+  const [user, setUser] = useState({ profile: '', message: '' });
 
-  const cardMessage = messages.chiefDirector.map((msg, index) => msg ? (
-    <Typography key={index} variant="body2" color="textSecondary">
-      {msg}
-    </Typography>
-  ) : <br key={index} />);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { REACT_APP_CEO_USERNAME } = config;
+
+      request(API_METHOD.get, ENDPOINTS.user.replace(':username', REACT_APP_CEO_USERNAME))
+        .then((res) => setUser(res))
+        .catch((err) => console.error(err))
+    }
+
+    fetchUser();
+  }, []);
 
   const handleDialogBox = () => {
     setIsDialogBoxOpen(!isDialogBoxOpen);
@@ -26,12 +33,12 @@ const Message = () => {
     <Fragment>
       <Card className={classes.card} onClick={handleDialogBox}>
         <CardMedia
+          image={user.profile}
           className={classes.cardMedia}
-          image={`${TEAM_FOLDER}/saiyad_shah_alam.jpg`}
           title="Saiyad Shah Alam"
         />
         <CardContent className={classes.cardContent}>
-          {cardMessage}
+          {user.message}
         </CardContent>
       </Card>
       <DialogBox
@@ -40,7 +47,7 @@ const Message = () => {
         agreeButtonLabel="OK"
         agreeButtonAction={handleDialogBox}
       >
-        {cardMessage}
+        {user.message}
       </DialogBox>
     </Fragment>
   )
