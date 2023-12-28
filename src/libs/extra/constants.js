@@ -112,6 +112,9 @@ export const ENDPOINTS = {
   allUsers: '/user',
   deleteUser: '/user/:id',
   user: '/user/:username',
+  uploadImage: '/image',
+  fetchImage: '/image/:type',
+  removeImage: '/image/:id',
 };
 
 export const UPDATE_TYPE = ['news', 'link', 'notice'];

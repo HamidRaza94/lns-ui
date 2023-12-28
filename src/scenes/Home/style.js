@@ -54,6 +54,10 @@ const style = theme => ({
 
     [theme.breakpoints.down(1000)]: {
       marginRight: 0,
+      width: '100%',
+    },
+    [theme.breakpoints.up(1000)]: {
+      width: 300,
     },
   },
 
