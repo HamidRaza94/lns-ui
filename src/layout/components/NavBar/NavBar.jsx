@@ -19,7 +19,15 @@ const NavBar = () => {
 
   const activeSubMenu = pathname.split('/')[1];
 
-  const handleNavClick = path => () => history.push(path);
+  const handleNavClick = (path, external) => () => {
+    if (external) {
+      window.open(path, '_blank');
+
+      return null;
+    }
+
+    history.push(path);
+  };
 
   return (
     <Menu
@@ -27,11 +35,11 @@ const NavBar = () => {
       openAnimation="slide-up"
       className={classes.menu}
     >
-      {routes.map(({ path, label, value, children }) => !children ? (
+      {routes.map(({ path, label, value, children, external }) => !children ? (
         <MenuItem
           key={value}
           className={classNames(classes.menuItem, pathname === path ? classes.active : '')}
-          onClick={handleNavClick(path)}
+          onClick={handleNavClick(path, external)}
         >
           {label}
         </MenuItem>
@@ -41,13 +49,13 @@ const NavBar = () => {
           title={label}
           className={classNames(classes.menuItem, classes.subMenu, (hoveredMenu === value || activeSubMenu === value) ? classes.active : '')}
         >
-          {children.map(({ path: subPath, label: subLabel, value: subValue }) => (
+          {children.map(({ path: subPath, label: subLabel, value: subValue, external: subExternal }) => (
             <MenuItem
               key={subValue}
               className={classNames(classes.menuItem, classes.subMenuItem, pathname === subPath ? classes.active : '')}
               onMouseEnter={() => setHoveredMenu(value)}
               onMouseLeave={() => setHoveredMenu('')}
-              onClick={handleNavClick(subPath)}
+              onClick={handleNavClick(subPath, subExternal)}
             >
               {subLabel}
             </MenuItem>
